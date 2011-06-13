@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:ViewStack
+  xmlns:mx="library://ns.adobe.com/flex/mx"
+  xmlns:fx="http://ns.adobe.com/mxml/2009"
+  xmlns:productview="view.productview.*"
+  xmlns:checkout="view.checkout.*"
+  width="100%" height="100%"
+  selectedIndex="{ model.workflowState }" >
+
+  <fx:Script>
+  <![CDATA[
+      import model.ShopModelLocator;
+
+      import mx.core.UIComponent;
+
+    [Bindable]
+    public var model : ShopModelLocator = ShopModelLocator.getInstance();
+
+    public function bodyViewToShow( workflowState : Number ) : UIComponent
+    {
+      var model : ShopModelLocator = ShopModelLocator.getInstance();
+      var selectedChild : UIComponent;
+
+      if( model.workflowState == ShopModelLocator.VIEWING_PRODUCTS_IN_THUMBNAILS )
+      {
+        selectedChild = graphicalProductList;
+      }
+      else if( model.workflowState == ShopModelLocator.VIEWING_PRODUCTS_IN_GRID )
+      {
+        selectedChild = textualProductList;
+      }
+      else if( model.workflowState == ShopModelLocator.VIEWING_CHECKOUT )
+      {
+        selectedChild = checkout;
+      }
+      return selectedChild;
+    }
+  ]]>
+  </fx:Script>
+
+  <productview:GraphicalProductList
+    id="graphicalProductList"
+    products="{ model.products }"
+    select="model.selectedItem = event.target.selectedItem;" />
+
+  <productview:TextualProductList
+    id="textualProductList"
+    products="{ model.products }"
+    selectedItem="{ model.selectedItem }"
+    select="model.selectedItem = event.target.selectedItem"
+    currencyFormatter="{ model.currencyFormatter }" />
+
+  <checkout:Checkout
+    id="checkout"
+    shoppingCart="{ model.shoppingCart }"
+    currencyFormatter="{  model.currencyFormatter }" />
+
+</mx:ViewStack>

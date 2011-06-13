@@ -10,10 +10,10 @@
         <version>1.1</version>
     </parent>
 
-    <groupId>org.springextensions.actionscript</groupId>
-    <artifactId>helloWorld</artifactId>
-    <packaging>swf</packaging>
-    <name>helloWorld</name>
+    <groupId>com.ncs</groupId>
+    <artifactId>cairngormstore</artifactId>
+    <packaging>swc</packaging>
+    <name>cairngormstore</name>
 
     <dependencies>
         <dependency>

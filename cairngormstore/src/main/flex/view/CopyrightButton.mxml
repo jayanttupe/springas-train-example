@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:HBox
+  xmlns:fx="http://ns.adobe.com/mxml/2009"
+  xmlns:mx="library://ns.adobe.com/flex/mx"
+  width="100%"
+  paddingTop="8"
+  horizontalGap="4"
+  horizontalAlign="center">
+
+  <fx:Script>
+    <![CDATA[
+      private var thinkgeekURL : URLRequest =
+        new URLRequest( 'http://www.thinkgeek.com' );
+    ]]>
+  </fx:Script>
+
+    <mx:VBox paddingTop="6">
+
+      <mx:LinkButton
+        label="Product images and descriptions courtesy of ThinkGeek"
+        fontSize="9"
+        click="navigateToURL( thinkgeekURL, '_blank' );" />
+
+    </mx:VBox>
+
+    <mx:Image
+      source="@Embed( '/assets/products/tg-logo.gif' )"
+      mouseDown="navigateToURL( thinkgeekURL, '_blank' )" />
+
+</mx:HBox>

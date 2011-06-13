@@ -36,6 +36,7 @@
         <module>helloWorld</module>
         <module>metadataprocessor</module>
         <module>cafe-townsend-mvc</module>
+        <module>cairngormstore</module>
         <!--<module>localization</module>-->
         <!--<module>movie-app</module>-->
         <!--<module>movie-app-mxml</module>-->
@@ -43,9 +44,6 @@
         <!--<module>multiple-modules</module>-->
         <!--<module>security</module>-->
         <!--<module>stagewiring</module>-->
-        <!--<module>cairngormstore</module>-->
-        <!--<module>cafe-townsend</module>-->
-        <!--<module>cafe-townsend-metadata-config</module>-->
     </modules>
 
     <repositories>

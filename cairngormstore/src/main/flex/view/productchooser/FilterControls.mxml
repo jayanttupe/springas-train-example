@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:HBox xmlns:fx="http://ns.adobe.com/mxml/2009"
+         xmlns:mx="library://ns.adobe.com/flex/mx"
+      styleName="fitlerControls"
+      width="100%" height="100%">
+
+
+  <fx:Script>
+    <![CDATA[
+    import com.adobe.cairngorm.control.CairngormEventDispatcher;
+
+    import event.FilterProductsEvent;
+    import event.SortProductsEvent;
+
+    import model.ShopModelLocator;
+
+    public function onSliderChange( event : Event ) : void
+    {
+      var filterEvent : FilterProductsEvent = new FilterProductsEvent();
+
+      filterEvent.filterOn = "price";
+      filterEvent.min = event.target.values[ 0 ];
+      filterEvent.max = event.target.values[ 1 ];
+
+      CairngormEventDispatcher.getInstance().dispatchEvent( filterEvent );
+    }
+
+    public function sortProducts( event : Object ) : void
+    {
+      var sortEvent : SortProductsEvent = new SortProductsEvent();
+
+      sortEvent.sortBy = String( event.target.selectedItem.data );
+
+      CairngormEventDispatcher.getInstance().dispatchEvent( sortEvent );
+    }
+
+    public function unselectProduct() : void
+    {
+      ShopModelLocator.getInstance().selectedItem = undefined;
+    }
+    ]]>
+  </fx:Script>
+
+  <mx:Label text="Price range" />
+
+  <mx:HSlider
+    id="priceSliderComp" width="150"
+    minimum="0"
+    maximum="150"
+    tickInterval="10"
+    snapInterval="1"
+    thumbCount="2"
+    values="[ 0, 150 ]"
+    labels="[ 0, 150 ]"
+    liveDragging="true"
+    change="onSliderChange( event );"
+    thumbPress="unselectProduct();" />
+
+  <mx:Label text="Sort by" />
+
+  <mx:ComboBox
+    id="comboBoxComp"
+    width="70"
+    change="sortProducts( event );">
+
+    <mx:dataProvider>
+      <mx:Array>
+        <fx:Object label="Name" data="name" />
+        <fx:Object label="Price" data="price" />
+      </mx:Array>
+    </mx:dataProvider>
+
+  </mx:ComboBox>
+
+</mx:HBox>
