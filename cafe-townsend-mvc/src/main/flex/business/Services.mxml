@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<cairngorm:ServiceLocator
+	xmlns:fx="http://ns.adobe.com/mxml/2009"
+    xmlns:mx="library://ns.adobe.com/flex/mx"
+	xmlns:cairngorm="com.adobe.cairngorm.business.*">
+
+	<mx:HTTPService id="loadEmployeesService" url="assets/Employees.xml" />
+
+</cairngorm:ServiceLocator>

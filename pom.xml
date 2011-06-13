@@ -4,11 +4,11 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
-    <groupId>org.springextensions.actionscript</groupId>
-    <artifactId>spring-actionscript-samples</artifactId>
-    <version>1.1-SNAPSHOT</version>
+    <groupId>com.ncs</groupId>
+    <artifactId>springas-train-examples</artifactId>
+    <version>1.1</version>
     <packaging>pom</packaging>
-    <name>Spring ActionScript Samples</name>
+    <name>springas train examples</name>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -34,20 +34,18 @@
 
     <modules>
         <module>helloWorld</module>
+        <module>metadataprocessor</module>
+        <module>cafe-townsend-mvc</module>
         <!--<module>localization</module>-->
         <!--<module>movie-app</module>-->
         <!--<module>movie-app-mxml</module>-->
         <!--<module>movie-app-metadata</module>-->
-        <!--<module>metadataprocessor</module>-->
         <!--<module>multiple-modules</module>-->
         <!--<module>security</module>-->
         <!--<module>stagewiring</module>-->
-        <!--<module>puremvc-standard-arch101demo</module>-->
-        <!--<module>puremvc-standard-arch101demo2</module>-->
         <!--<module>cairngormstore</module>-->
         <!--<module>cafe-townsend</module>-->
         <!--<module>cafe-townsend-metadata-config</module>-->
-        <!--<module>cafe-townsend-mvc</module>-->
     </modules>
 
     <repositories>

@@ -11,10 +11,10 @@
     </parent>
 
     <groupId>org.springextensions.actionscript</groupId>
-    <artifactId>helloWorld</artifactId>
+    <artifactId>metadataprocessor</artifactId>
     <packaging>swf</packaging>
     <version>1.1-SNAPSHOT</version>
-    <name>helloWorld</name>
+    <name>metadataprocessor</name>
 
     <dependencies>
         <dependency>

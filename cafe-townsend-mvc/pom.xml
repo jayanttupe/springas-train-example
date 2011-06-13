@@ -11,12 +11,12 @@
     </parent>
 
     <groupId>org.springextensions.actionscript</groupId>
-    <artifactId>helloWorld</artifactId>
-    <packaging>swf</packaging>
+    <artifactId>cafe-townsend-mvc</artifactId>
     <version>1.1-SNAPSHOT</version>
-    <name>helloWorld</name>
+    <packaging>swf</packaging>
+    <name>cafeTownsendMvc</name>
 
-    <dependencies>
+     <dependencies>
         <dependency>
             <groupId>org.springextensions.actionscript</groupId>
             <artifactId>spring-actionscript-core</artifactId>
@@ -120,4 +120,5 @@
             </plugin>
         </plugins>
     </build>
+
 </project>
