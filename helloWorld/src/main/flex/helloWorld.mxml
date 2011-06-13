@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application xmlns:fx="http://ns.adobe.com/mxml/2009"
+			   xmlns:mx="library://ns.adobe.com/flex/mx" minWidth="955" minHeight="600" creationComplete="init()">
+
+	<fx:Script>
+		<![CDATA[
+        import mx.containers.Panel;
+        import mx.controls.List;
+        import org.springextensions.actionscript.context.support.FlexXMLApplicationContext;
+
+            private var _includeClass:Array = [mx.containers.Panel,mx.controls.List];
+            private var context:FlexXMLApplicationContext;
+
+			private function init():void {
+				var appContextPath:String = "application_context.xml";//定义xml的地址
+				context = new FlexXMLApplicationContext(appContextPath);//创建一个IoC容器
+				context.addEventListener(Event.COMPLETE,onIoCLoadComplete);//添加事件侦听器，侦听完成事件，执行回调
+				context.load();//加载配置文件
+			}
+			private function onIoCLoadComplete(e:Event):void {
+				addChild(context.getObject("container"));//加载配置结束后，将 container容器（即Panel）添加到显示列表
+			}
+		]]>
+	</fx:Script>
+
+
+</mx:Application>

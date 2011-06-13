@@ -1,0 +1,14 @@
+<objects>
+	<object id="myData" class="mx.collections.ArrayCollection">
+		<constructor-arg>
+			<array>
+				<value>Zhang San</value>
+				<value>Li Si</value>
+				<value>Wang wu</value>
+				<value>11111</value>
+				<value>22222222222</value>
+				<value>33333333333</value>
+			</array>
+		</constructor-arg>
+	</object>
+</objects>

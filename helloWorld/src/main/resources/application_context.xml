@@ -1,0 +1,15 @@
+<objects>
+	<property file="global.prop"/>
+	<import file="data.xml"/>
+	<object id="container" class="mx.containers.Panel">
+		<property name="title" value="${siteName}" />
+		<method-invocation name="addChild">
+			<arg ref="myList" />
+		</method-invocation>
+	</object>
+	<object id="myList" class="mx.controls.List">
+		<property name="width" value="500" />
+		<property name="height" value="500" />
+		<property name="dataProvider" ref="myData" />
+	</object>
+</objects>
