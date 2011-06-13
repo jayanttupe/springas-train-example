@@ -5,10 +5,19 @@
 				<value>Zhang San</value>
 				<value>Li Si</value>
 				<value>Wang wu</value>
-				<value>11111</value>
-				<value>22222222222</value>
-				<value>33333333333</value>
+				<value>44</value>
+				<value>555</value>
+				<value>6666</value>
 			</array>
 		</constructor-arg>
 	</object>
-</objects>
+    <object id="myData2" class="mx.collections.ArrayCollection">
+		<constructor-arg>
+			<array>
+				<value>aaa</value>
+				<value>bbb</value>
+				<value>ccc</value>
+			</array>
+		</constructor-arg>
+	</object>
+</objects>r
