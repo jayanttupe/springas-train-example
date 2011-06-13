@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Panel
+        xmlns:fx="http://ns.adobe.com/mxml/2009"
+        xmlns:mx="library://ns.adobe.com/flex/mx"
+        title="Shopping Cart">
+
+    <fx:Metadata>
+        [Event("select")]
+    </fx:Metadata>
+
+    <fx:Script>
+  <![CDATA[
+        import com.adobe.cairngorm.control.CairngormEvent;
+        import com.adobe.cairngorm.control.CairngormEventDispatcher;
+
+        import event.UpdateShoppingCartEvent;
+
+        import model.ShopModelLocator;
+        import model.ShoppingCart;
+
+        import mx.core.IUIComponent;
+        import mx.events.DragEvent;
+        import mx.formatters.CurrencyFormatter;
+        import mx.managers.DragManager;
+
+        import vo.ProductVO;
+
+        [Bindable]
+        public var shoppingCart:ShoppingCart;
+
+        [Bindable]
+        public var currencyFormatter:CurrencyFormatter;
+
+        public var selectedItem:ProductVO;
+
+        public var model:ShopModelLocator = ShopModelLocator.getInstance();
+
+        public static var SELECT_EVENT:String = "select";
+
+        public function format(item:Object, dataField:String):String {
+            return currencyFormatter.format(item.price);
+        }
+
+        public function addProductToShoppingCart(product:ProductVO):void {
+            var event:UpdateShoppingCartEvent = new UpdateShoppingCartEvent(UpdateShoppingCartEvent.EVENT_ADD_PRODUCT_TO_SHOPPING_CART);
+
+            event.product = product;
+            event.quantity = 1;
+
+            CairngormEventDispatcher.getInstance().dispatchEvent(event);
+        }
+
+        /*Drag and drop events*/
+        public function doDragOver(event:DragEvent):void {
+            event.currentTarget.showDropFeedback(event);
+        }
+
+        public function doDragEnter(event:DragEvent):void {
+            DragManager.acceptDragDrop(IUIComponent(event.currentTarget));
+        }
+
+        public function doDragExit(event:DragEvent):void {
+            event.currentTarget.hideDropFeedback(event);
+        }
+
+        public function doDragDrop(event:DragEvent):void {
+            var item:Object = event.dragSource.dataForFormat("item");
+
+            if (item == null) {
+                /*Item was dragged from the thumbnailViewComp*/
+                var items:Object = event.dragSource.dataForFormat("items");
+                item = items[ 0 ];
+            }
+
+            /*
+             FYI: A change event of a DataGrid or a TileList might fire
+             after the dragDrop event of the DataGrid. Therefore we add the
+             item property of the dragging operation and not selectedItem of view.
+             */
+            addProductToShoppingCart(ProductVO(item));
+
+            doDragExit(event);
+        }
+
+        public function doDragComplete(event:DragEvent):void {
+            doDragExit(event);
+        }
+
+        public function deleteProductFromShoppingCart():void {
+            var event:UpdateShoppingCartEvent = new UpdateShoppingCartEvent(UpdateShoppingCartEvent.EVENT_DELETE_PRODUCT_FROM_SHOPPING_CART);
+
+            event.product = selectedItem;
+
+            CairngormEventDispatcher.getInstance().dispatchEvent(event);
+        }
+
+        public function updateSelectedProduct(event:Object):void {
+            /*
+             A selectedItem of the dataprovider of ShoppingCart's DataGrid is a ShoppingCart instance
+             and not a ProductVO. We access the ProductVO of a specific ShoppingCart instance via its element
+             property. See documentation of com.adobe.cairngorm.samples.store.model.shoppingcart.
+             */
+            selectedItem = event.target.selectedItem.element;
+            CairngormEventDispatcher.getInstance().dispatchEvent(new CairngormEvent(SELECT_EVENT));
+        }
+        ]]>
+  </fx:Script>
+
+    <mx:DataGrid
+            id="dataGridComp"
+            dataProvider="{ shoppingCart.elements }"
+            change="updateSelectedProduct( event );"
+            width="100%" height="100%"
+            dragEnter="doDragEnter( event )"
+            dragExit="doDragExit( event )"
+            dragDrop="doDragDrop( event )"
+            dragOver="doDragOver( event )">
+
+        <mx:columns>
+            <fx:Array>
+                <mx:DataGridColumn dataField="name"
+                                   headerText="Name"
+                                   width="180"/>
+
+                <mx:DataGridColumn dataField="quantity"
+                                   headerText="Qty"
+                                   width="50"
+                                   textAlign="right"
+                                   paddingRight="4"/>
+
+                <mx:DataGridColumn dataField="price"
+                                   labelFunction="format"
+                                   headerText="Price"
+                                   width="60"
+                                   textAlign="right"
+                                   paddingRight="4"/>
+            </fx:Array>
+        </mx:columns>
+    </mx:DataGrid>
+
+    <mx:ControlBar id="cartControlBar" height="50">
+        <mx:Button
+                label="Delete" width="75"
+                click="deleteProductFromShoppingCart();"
+                enabled="{ dataGridComp.selectedItem != null }"/>
+
+        <mx:Button
+                label="Checkout" width="75"
+                click="model.workflowState = ShopModelLocator.VIEWING_CHECKOUT;"
+                enabled="{ shoppingCart.totalProductPrice != 0 }"/>
+
+        <mx:Label
+                text="Total: { currencyFormatter.format( shoppingCart.totalProductPrice ) }"
+                styleName="price"/>
+    </mx:ControlBar>
+
+</mx:Panel>

@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:ControlBar
+  xmlns:fx="http://ns.adobe.com/mxml/2009"
+  xmlns:mx="library://ns.adobe.com/flex/mx"
+  xmlns:view="view.*"
+  xmlns:chooser="view.productchooser.*"
+  height="50">
+
+  <fx:Script>
+  <![CDATA[
+    import com.adobe.cairngorm.control.CairngormEventDispatcher;
+    import com.adobe.cairngorm.control.CairngormEvent;
+
+    import event.ValidateOrderEvent;
+
+    import model.ShopModelLocator;
+
+    import mx.core.Container;
+    import mx.core.UIComponent;
+
+    [Bindable]
+    public var model : ShopModelLocator = ShopModelLocator.getInstance();
+
+    public function controlViewToShow( workflowState : Number ) : UIComponent
+    {
+      var model : ShopModelLocator = ShopModelLocator.getInstance();
+
+      if( model.workflowState == ShopModelLocator.VIEWING_PRODUCTS_IN_THUMBNAILS )
+      {
+        return filterCtrlComp;
+      }
+      else if( model.workflowState == ShopModelLocator.VIEWING_PRODUCTS_IN_GRID )
+      {
+        return gridCtrlComp;
+      }
+      else if( model.workflowState == ShopModelLocator.VIEWING_CHECKOUT )
+      {
+        return checkoutCtrlComp;
+      }
+
+      throw new Error( "Invalid workflow state" );
+    }
+
+    public function getProductGridButton( enforceBining : Number ) : Class
+    {
+      var model : ShopModelLocator = ShopModelLocator.getInstance();
+      var result : Class = model.assets.listOff;
+
+      if ( model.workflowState == ShopModelLocator.VIEWING_PRODUCTS_IN_GRID )
+      {
+        result = model.assets.listOn;
+      }
+
+      return result;
+    }
+
+    public function getProductThumbnailsButton( enforceBining : Number ) : Class
+    {
+      var model : ShopModelLocator = ShopModelLocator.getInstance();
+      var result : Class = model.assets.thumbOff;
+
+      if ( model.workflowState == ShopModelLocator.VIEWING_PRODUCTS_IN_THUMBNAILS )
+      {
+        result = model.assets.thumbOn;
+      }
+
+      return result;
+    }
+
+    public function getProductThumbnailsButtonMouseOut() : Class
+    {
+      var model : ShopModelLocator = ShopModelLocator.getInstance();
+      var result : Class = model.assets.thumbOff;
+
+      if ( model.workflowState == ShopModelLocator.VIEWING_PRODUCTS_IN_THUMBNAILS )
+      {
+        result = model.assets.thumbOn;
+      }
+
+      return result;
+    }
+
+    public function getProductGridButtonMouseOut() : Class
+    {
+      var model : ShopModelLocator = ShopModelLocator.getInstance();
+      var result : Class = model.assets.listOff;
+
+      if ( model.workflowState == ShopModelLocator.VIEWING_PRODUCTS_IN_GRID )
+      {
+        result = model.assets.listOn;
+      }
+
+      return result;
+    }
+
+    private function showProductThumbnails():void
+    {
+      ShopModelLocator.getInstance().workflowState = ShopModelLocator.VIEWING_PRODUCTS_IN_THUMBNAILS;
+    }
+
+    private function showProductGrid() : void
+    {
+      ShopModelLocator.getInstance().workflowState = ShopModelLocator.VIEWING_PRODUCTS_IN_GRID;
+    }
+
+    private function startCheckout() : void
+    {
+      CairngormEventDispatcher.getInstance().dispatchEvent( new CairngormEvent( ValidateOrderEvent.EVENT_VALIDATE_ORDER ) );
+    }
+  ]]>
+  </fx:Script>
+
+  <mx:ViewStack
+    id="controlStack"
+    selectedChild="{ Container( controlViewToShow( model.workflowState ) ) }">
+
+    <chooser:FilterControls id="filterCtrlComp" />
+
+    <mx:HBox id="gridCtrlComp" />
+
+    <mx:HBox id="checkoutCtrlComp">
+
+      <mx:Button
+        label="Complete Purchase"
+        click="startCheckout();" />
+
+    </mx:HBox>
+
+  </mx:ViewStack>
+
+  <mx:Spacer width="100%" />
+
+  <mx:HBox horizontalGap="0">
+
+        <mx:Image
+           source="{ getProductThumbnailsButton( model.workflowState ) }"
+           mouseDown="showProductThumbnails();"
+           mouseOver="event.target.source=model.assets.thumbRoll"
+           mouseOut="event.target.source=getProductThumbnailsButtonMouseOut();" />
+
+        <mx:Image
+           source="{ getProductGridButton( model.workflowState ) }"
+           mouseDown="showProductGrid();"
+           mouseOver="event.target.source=model.assets.listRoll"
+           mouseOut="event.target.source=getProductGridButtonMouseOut();" />
+
+  </mx:HBox>
+
+</mx:ControlBar>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:HBox xmlns:fx="http://ns.adobe.com/mxml/2009"
+         xmlns:mx="library://ns.adobe.com/flex/mx">
+
+  <fx:Script>
+  <![CDATA[
+    import model.ShoppingCart;
+    import mx.formatters.CurrencyFormatter;
+
+    [Bindable]
+    public var shoppingCart : ShoppingCart;
+
+    [Bindable]
+    public var currencyFormatter : CurrencyFormatter;
+  ]]>
+  </fx:Script>
+
+  <mx:VBox paddingTop="2" verticalGap="0">
+    <mx:Label text="Order Summary" styleName="title" />
+    <mx:Label text="Order Total:" />
+    <mx:Label text="Shipping and Handling:" />
+    <mx:Label text="Grand Total:" styleName="price" />
+  </mx:VBox>
+
+  <mx:VBox paddingTop="7" verticalGap="0" horizontalAlign="right">
+    <mx:Label text="" />
+    <mx:Label text="{ currencyFormatter.format( shoppingCart.totalProductPrice ) }" />
+    <mx:Label text="{ currencyFormatter.format( shoppingCart.shippingCost ) }" />
+    <mx:Label text="{ currencyFormatter.format( shoppingCart.totalProductPrice +
+                                                shoppingCart.shippingCost ) }"
+              styleName="price" />
+  </mx:VBox>
+</mx:HBox>

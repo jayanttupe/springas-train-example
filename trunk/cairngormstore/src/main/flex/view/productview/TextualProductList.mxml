@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Canvas xmlns:fx="http://ns.adobe.com/mxml/2009"
+           xmlns:mx="library://ns.adobe.com/flex/mx"
+           width="100%" height="100%">
+
+  <fx:Metadata>
+    [Event("select")]
+  </fx:Metadata>
+
+  <fx:Script>
+  <![CDATA[
+    import mx.controls.dataGridClasses.DataGridColumn;
+    import mx.collections.ICollectionView;
+    import mx.formatters.CurrencyFormatter;
+    import com.adobe.cairngorm.control.CairngormEventDispatcher;
+    import com.adobe.cairngorm.control.CairngormEvent;
+    import vo.ProductVO;
+
+    [Bindable]
+    public var products : ICollectionView;
+
+    public var selectedItem : ProductVO;
+    public var currencyFormatter : CurrencyFormatter;
+
+    public static var SELECT_EVENT : String = "select";
+
+    private function format( item : Object, column : DataGridColumn ) : String
+    {
+      return currencyFormatter.format( item.price );
+    }
+
+    public function updateSelectedProduct( event : Object ) : void
+    {
+      selectedItem = event.target.selectedItem;
+      CairngormEventDispatcher.getInstance().dispatchEvent( new CairngormEvent( SELECT_EVENT ) );
+    }
+   ]]>
+  </fx:Script>
+
+  <mx:DataGrid id="dataGridComp"
+    dataProvider="{ products }"
+    change="updateSelectedProduct( event );"
+    dragEnabled="true"
+    width="100%" height="100%">
+
+    <mx:columns>
+      <fx:Array>
+        <mx:DataGridColumn dataField="name"
+                           headerText="Name"
+                           width="300" />
+
+        <mx:DataGridColumn dataField="price"
+                           labelFunction="format"
+                           headerText="Price"
+                           textAlign="right" />
+      </fx:Array>
+    </mx:columns>
+  </mx:DataGrid>
+
+</mx:Canvas>
