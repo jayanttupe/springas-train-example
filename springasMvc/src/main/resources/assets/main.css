@@ -1,0 +1,32 @@
+.foodTitle {
+	font-weight: bold; text-align: center
+}
+
+mx:Panel {
+   cornerRadius: 4;
+
+   borderStyle: undefined;
+   highlightAlphas: 0.67, 0;
+   headerColors: #000000, #993333;
+   font-weight: bold;
+   borderAlpha: 1;
+   text-align: center;
+   titleStyleName: "myPanelStyle";
+    roundedBottomCorners: true;
+}
+
+mx:Alert {
+	background-color: #FFFFFF;
+	color: #000000;
+}
+/*
+Form, Label, TextInput {
+	   color: #000000;
+	   font-weight: normal;
+}
+
+FormItem, List {
+	   font-weight: bold;
+	    text-align: left;
+}*/
+

@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<mx:VBox xmlns:fx="http://ns.adobe.com/mxml/2009" xmlns:s="library://ns.adobe.com/flex/spark"
+    xmlns:mx="library://ns.adobe.com/flex/mx">
+
+
+    <mx:Panel title="Employee List"
+              horizontalCenter="0">
+        <mx:HBox paddingTop="25">
+            <mx:Button label="Add New Employee"/>
+                       <!--click="addNewEmployee()"-->
+
+            <mx:Spacer width="100%"/>
+            <mx:Button label="Logout"/>
+                       <!--click="logout()"-->
+            <mx:Spacer width="100%"
+                       height="20"/>
+        </mx:HBox>
+        <!-- data provider for the list is an ArrayCollection stored in the centralized modelpkg locator -->
+        <mx:List id="employees_li"
+                 width="100%"
+                 verticalScrollPolicy="auto"/>
+                <!--dataProvider="{model.employeeListDP}"-->
+                 <!--labelFunction="properName"-->
+                 <!--change="updateEmployee()"-->
+    </mx:Panel>
+
+</mx:VBox>
