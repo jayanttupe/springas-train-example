@@ -1,4 +1,4 @@
-package model {
+package modelpkg {
 import flash.events.EventDispatcher;
 import mx.collections.ArrayCollection;
 

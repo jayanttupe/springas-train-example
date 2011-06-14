@@ -4,30 +4,31 @@
          xsi:schemaLocation="http://www.springactionscript.org/schema/objects
 					http://www.springactionscript.org/schema/objects/spring-actionscript-objects-1.0.xsd">
 
-	<object id="autowiringStageProcessor" class="org.springextensions.actionscript.stage.DefaultAutowiringStageProcessor"/>
-	
-	<object id="mvcFactory" class="org.springextensions.actionscript.core.mvc.MVCControllerObjectFactoryPostProcessor"/>
+    <object id="autowiringStageProcessor"
+            class="org.springextensions.actionscript.stage.DefaultAutowiringStageProcessor"/>
 
-	<object id="model" class="model.AppModelLocator" factory-method="getInstance"/>
-	
-	<interface id="modelAware" class="model.IApplicationModelAware">
-		<property name="model" ref="model"/>
-	</interface>
-	
-	<object id="command1" class="command.AddNewEmployeeCommand" scope="prototype"/>
-	
-	<object id="command2" class="command.CancelEmployeeEditsCommand" scope="prototype"/>
-	
-	<object id="command3" class="command.DeleteEmployeeCommand" scope="prototype"/>
-	
-	<object id="command4" class="command.LoadEmployeesCommand" scope="prototype"/>
-	
-	<object id="command5" class="command.LoginEmployeeCommand" scope="prototype"/>
-	
-	<object id="command6" class="command.LogoutCommand"/>
-	
-	<object id="command7" class="command.SaveEmployeeEditsCommand"/>
-	
-	<object id="command8" class="command.UpdateEmployeeCommand"/>
+    <object id="mvcFactory" class="org.springextensions.actionscript.core.mvc.MVCControllerObjectFactoryPostProcessor"/>
+
+    <object id="model" class="modelpkg.AppModelLocator" factory-method="getInstance"/>
+
+    <interface class="modelpkg.IApplicationModelAware">
+        <property name="model" ref="model"/>
+    </interface>
+
+    <object id="command1" class="command.AddNewEmployeeCommand" scope="prototype"/>
+
+    <object id="command2" class="command.CancelEmployeeEditsCommand" scope="prototype"/>
+
+    <object id="command3" class="command.DeleteEmployeeCommand" scope="prototype"/>
+
+    <object id="command4" class="command.LoadEmployeesCommand" scope="prototype"/>
+
+    <object id="command5" class="command.LoginEmployeeCommand" scope="prototype"/>
+
+    <object id="command6" class="command.LogoutCommand"/>
+
+    <object id="command7" class="command.SaveEmployeeEditsCommand"/>
+
+    <object id="command8" class="command.UpdateEmployeeCommand"/>
 
 </objects>

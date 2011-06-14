@@ -26,30 +26,31 @@
 
         import event.GetProductsEvent;
 
-        import model.ShopModelLocator;
+        import modelpkg.ShopModelLocator;
 
         import mx.rpc.remoting.mxml.RemoteObject;
-			import org.springextensions.actionscript.context.support.FlexXMLApplicationContext;
 
-			[Bindable]
-			public var model:ShopModelLocator = ShopModelLocator.getInstance();
+        import org.springextensions.actionscript.context.support.FlexXMLApplicationContext;
 
-//			private static var compiledClasses:Array = [ShopController, CairngormServiceLocator, CreditCardDelegate, CreditCardDelegateMock, ProductDelegate, ProductDelegateMock, RemoteObject];
-			private static var compiledClasses:Array = [ShopController, CreditCardDelegate, CreditCardDelegateMock, ProductDelegate, ProductDelegateMock, RemoteObject];
+        [Bindable]
+modelpkg   public var model:ShopModelLocator = ShopModelLocator.getInstance();
 
-			private var _applicationContext:FlexXMLApplicationContext;
+        //			private static var compiledClasses:Array = [ShopController, CairngormServiceLocator, CreditCardDelegate, CreditCardDelegateMock, ProductDelegate, ProductDelegateMock, RemoteObject];
+        private static var compiledClasses:Array = [ShopController, CreditCardDelegate, CreditCardDelegateMock, ProductDelegate, ProductDelegateMock, RemoteObject];
 
-			private function onCreationComplete():void {
-				_applicationContext = new FlexXMLApplicationContext("application-context.xml");
-				_applicationContext.addEventListener(Event.COMPLETE, onApplicationContextComplete);
-				_applicationContext.load();
-			}
+        private var _applicationContext:FlexXMLApplicationContext;
 
-			private function onApplicationContextComplete(event:Event):void {
-				var getProductsEvent:GetProductsEvent = new GetProductsEvent();
-				getProductsEvent.dispatch();
-			}
-		]]>
+        private function onCreationComplete():void {
+            _applicationContext = new FlexXMLApplicationContext("application-context.xml");
+            _applicationContext.addEventListener(Event.COMPLETE, onApplicationContextComplete);
+            _applicationContext.load();
+        }
+
+        private function onApplicationContextComplete(event:Event):void {
+            var getProductsEvent:GetProductsEvent = new GetProductsEvent();
+            getProductsEvent.dispatch();
+        }
+        ]]>
 	</fx:Script>
 
 	<!-- ========================================================================== -->

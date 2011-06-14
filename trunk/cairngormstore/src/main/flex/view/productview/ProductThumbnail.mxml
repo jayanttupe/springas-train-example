@@ -8,12 +8,12 @@
 
     <fx:Script>
   <![CDATA[
-        import model.ShopModelLocator;
+        import modelpkg.ShopModelLocator;
 
         import util.Comparable;
 
         [Bindable]
-        public var model:ShopModelLocator = ShopModelLocator.getInstance();
+        public vmodelpkgdel:ShopModelLocator = ShopModelLocator.getInstance();
 
         private function addComparable(event:Event):void {
             ShopModelLocator.getInstance().productComparator.addComparable(

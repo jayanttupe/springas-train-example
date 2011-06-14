@@ -1,4 +1,4 @@
-package model {
+package modelpkg {
 import mx.collections.ArrayCollection;
 
 import vo.Employee;
@@ -36,13 +36,17 @@ public class AppModelLocator {
     // this gets copied into or added onto the main employee list
     public var employeeTemp:Employee = new Employee(0,"","","",null);
 
-    // singleton: constructor only allows one model locator
+    // singleton: constructor only allows one modelpkg locator
     public function AppLocator():void {
         if (AppModelLocator.model != null)
             throw new Error("Only one ModelLocator instance should be instantiated");
     }
 
-    // singleton: always returns the one existing static instance to itself
+
+    function AppModelLocator() {
+    }
+
+// singleton: always returns the one existing static instance to itself
     public static function getInstance():AppModelLocator {
         if (model == null)
             model = new AppModelLocator();

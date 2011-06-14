@@ -1,5 +1,5 @@
 package processor {
-import model.ApplicationModel;
+import modelpkg.ApplicationModel;
 import org.as3commons.reflect.IMetaDataContainer;
 import org.springextensions.actionscript.metadata.AbstractMetadataProcessor;
 

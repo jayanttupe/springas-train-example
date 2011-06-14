@@ -15,8 +15,8 @@
 
         import event.UpdateShoppingCartEvent;
 
-        import model.ShopModelLocator;
-        import model.ShoppingCart;
+        import modelpkg.ShopModelLocator;
+        import modelpkg.ShoppingCart;
 
         import mx.core.IUIComponent;
         import mx.events.DragEvent;
@@ -33,7 +33,7 @@
 
         public var selectedItem:ProductVO;
 
-        public var model:ShopModelLocator = ShopModelLocator.getInstance();
+        publimodelpkg model:ShopModelLocator = ShopModelLocator.getInstance();
 
         public static var SELECT_EVENT:String = "select";
 

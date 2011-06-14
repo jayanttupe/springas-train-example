@@ -38,6 +38,11 @@
         </dependency>
         <dependency>
             <groupId>com.adobe.flex.framework</groupId>
+            <artifactId>flex-framework</artifactId>
+            <type>pom</type>
+        </dependency>
+        <dependency>
+            <groupId>com.adobe.flex.framework</groupId>
             <artifactId>framework</artifactId>
             <type>swc</type>
         </dependency>
@@ -80,7 +85,7 @@
             <type>swc</type>
         </dependency>
 
-        <!--skins-->
+        <!--skins     -->
         <dependency>
             <groupId>com.adobe.flex.sdkcore</groupId>
             <artifactId>spark</artifactId>

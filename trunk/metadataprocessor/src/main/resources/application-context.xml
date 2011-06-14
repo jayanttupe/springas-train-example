@@ -21,6 +21,6 @@
 				  ref="applicationModel"/>
 	</object>
 
-	<object id="applicationModel" class="model.ApplicationModel"/>
+	<object id="applicationModel" class="modelpkg.ApplicationModel"/>
 
 </objects>

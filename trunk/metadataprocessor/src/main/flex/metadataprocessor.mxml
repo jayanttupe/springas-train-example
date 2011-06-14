@@ -8,13 +8,17 @@
                 creationComplete="initApp(event)">
     <fx:Script>
 		<![CDATA[
-        import model.ApplicationModel;
+        import modelpkg.ApplicationModel;
+
         import mx.binding.utils.BindingUtils;
         import mx.events.FlexEvent;
+
         import org.springextensions.actionscript.context.support.FlexXMLApplicationContext;
         import org.springextensions.actionscript.stage.DefaultAutowiringStageProcessor;
         import org.springextensions.actionscript.utils.ApplicationUtils;
+
         import processor.EventMetadataProcessor;
+
         import stage.SimpleObjectSelector;
 
         {

@@ -1,6 +1,6 @@
 package command {
-import model.AppModelLocator;
-import model.IApplicationModelAware;
+import modelpkg.AppModelLocator;
+import modelpkg.IApplicationModelAware;
 
 public class CommandBase implements IApplicationModelAware {
 		

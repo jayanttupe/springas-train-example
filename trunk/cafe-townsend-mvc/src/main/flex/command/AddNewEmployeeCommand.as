@@ -16,7 +16,7 @@
 package command {
 import control.AddNewEmployeeEvent;
 
-import model.AppModelLocator;
+import modelpkg.AppModelLocator;
 
 import vo.Employee;
 
@@ -27,7 +27,7 @@ import vo.Employee;
 			// add new employee instantiates a new employee object, which has default blank values in the constructor
 			model.employeeTemp = new Employee();
 			
-			// main viewstack selectedIndex is bound to this model locator value
+			// main viewstack selectedIndex is bound to this modelpkg locator value
 			// so this now switches the view from the employee list to the detail screen
 			// so we can populate the new blank employee values
 			model.viewing = AppModelLocator.EMPLOYEE_DETAIL;

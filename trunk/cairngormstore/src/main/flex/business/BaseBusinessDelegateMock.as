@@ -2,13 +2,10 @@ package business {
 
 	import flash.events.TimerEvent;
 	import flash.utils.Timer;
-
 	import mx.rpc.IResponder;
 	import mx.rpc.events.FaultEvent;
 	import mx.rpc.events.ResultEvent;
-
 	import org.as3commons.lang.Assert;
-
 	/**
 	 *  This class is a base class for all business delegate mockups
 	 *  extend this class to get asynchronous respond.

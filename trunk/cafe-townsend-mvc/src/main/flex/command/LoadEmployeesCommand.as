@@ -20,13 +20,13 @@ import mx.collections.ArrayCollection;
 
 		// this is called when the delegate receives a result from the service
 		public function result(rpcEvent:Object):void {
-			// populate the employee list in the model locator with the results from the service call
+			// populate the employee list in the modelpkg locator with the results from the service call
 			model.employeeListDP = ArrayCollection(rpcEvent.result);
 		}
 
 		// this is called when the delegate receives a fault from the service
 		public function fault(rpcEvent:Object):void {
-			// store an error message in the model locator
+			// store an error message in the modelpkg locator
 			// labels, alerts, etc can bind to this to notify the user of errors
 			model.errorStatus = "Fault occured in LoadEmployeesCommand.";
 		}

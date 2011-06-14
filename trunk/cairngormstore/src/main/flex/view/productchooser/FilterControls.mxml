@@ -7,38 +7,35 @@
 
   <fx:Script>
     <![CDATA[
-    import com.adobe.cairngorm.control.CairngormEventDispatcher;
+      import com.adobe.cairngorm.control.CairngormEventDispatcher;
 
-    import event.FilterProductsEvent;
-    import event.SortProductsEvent;
+      import event.FilterProductsEvent;
+      import event.SortProductsEvent;
 
-    import model.ShopModelLocator;
+      import modelpkg.ShopModelLocator;
 
-    public function onSliderChange( event : Event ) : void
-    {
-      var filterEvent : FilterProductsEvent = new FilterProductsEvent();
+      public function onSliderChange(event:Event):void {
+          var filterEvent:FilterProductsEvent = new FilterProductsEvent();
 
-      filterEvent.filterOn = "price";
-      filterEvent.min = event.target.values[ 0 ];
-      filterEvent.max = event.target.values[ 1 ];
+          filterEvent.filterOn = "price";
+          filterEvent.min = event.target.values[ 0 ];
+          filterEvent.max = event.target.values[ 1 ];
 
-      CairngormEventDispatcher.getInstance().dispatchEvent( filterEvent );
-    }
+          CairngormEventDispatcher.getInstance().dispatchEvent(filterEvent);
+      }
 
-    public function sortProducts( event : Object ) : void
-    {
-      var sortEvent : SortProductsEvent = new SortProductsEvent();
+      public function sortProducts(event:Object):void {
+          var sortEvent:SortProductsEvent = new SortProductsEvent();
 
-      sortEvent.sortBy = String( event.target.selectedItem.data );
+          sortEvent.sortBy = String(event.target.selectedItem.data);
 
-      CairngormEventDispatcher.getInstance().dispatchEvent( sortEvent );
-    }
+          CairngormEventDispatcher.getInstance().dispatchEvent(sortEvent);
+      }
 
-    public function unselectProduct() : void
-    {
-      ShopModelLocator.getInstance().selectedItem = undefined;
-    }
-    ]]>
+      public function unselectProduct():void {
+          ShopModelLocator.getInstance().selectedItem = undefined;
+      }
+      ]]>
   </fx:Script>
 
   <mx:Label text="Price range" />

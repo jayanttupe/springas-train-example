@@ -1,4 +1,4 @@
-package model
+package modelpkg
 {
   import mx.collections.ArrayCollection;
   import mx.events.CollectionEvent;
