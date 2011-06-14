@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.ncs</groupId>
+        <artifactId>springas-train-examples</artifactId>
+        <version>1.1</version>
+    </parent>
+
+    <groupId>com.ncs</groupId>
+    <artifactId>springasMvc</artifactId>
+    <version>1.1</version>
+    <packaging>swc</packaging>
+    <name>springasMvc</name>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springextensions.actionscript</groupId>
+            <artifactId>spring-actionscript-core</artifactId>
+            <type>swc</type>
+        </dependency>
+        <dependency>
+            <groupId>com.adobe.flexunit</groupId>
+            <artifactId>flexunit</artifactId>
+            <type>swc</type>
+        </dependency>
+        <dependency>
+            <groupId>com.adobe.cairngorm</groupId>
+            <artifactId>cairngorm</artifactId>
+            <type>swc</type>
+        </dependency>
+        <dependency>
+            <groupId>com.adobe.flex.framework</groupId>
+            <artifactId>flex</artifactId>
+            <type>swc</type>
+        </dependency>
+        <dependency>
+            <groupId>com.adobe.flex.framework</groupId>
+            <artifactId>framework</artifactId>
+            <type>swc</type>
+        </dependency>
+        <dependency>
+            <groupId>com.adobe.flex.framework</groupId>
+            <artifactId>rpc</artifactId>
+            <type>swc</type>
+        </dependency>
+        <dependency>
+            <groupId>com.adobe.flex.framework</groupId>
+            <artifactId>utilities</artifactId>
+            <type>swc</type>
+        </dependency>
+        <dependency>
+            <groupId>com.adobe.flex.framework</groupId>
+            <artifactId>playerglobal</artifactId>
+            <type>swc</type>
+            <classifier>10.0</classifier>
+        </dependency>
+
+        <!--as3commons-->
+        <dependency>
+            <groupId>org.as3commons</groupId>
+            <artifactId>as3commons-bytecode</artifactId>
+            <type>swc</type>
+        </dependency>
+        <dependency>
+            <groupId>org.as3commons</groupId>
+            <artifactId>as3commons-lang</artifactId>
+            <type>swc</type>
+        </dependency>
+        <dependency>
+            <groupId>org.as3commons</groupId>
+            <artifactId>as3commons-reflect</artifactId>
+            <type>swc</type>
+        </dependency>
+        <dependency>
+            <groupId>org.as3commons</groupId>
+            <artifactId>as3commons-logging</artifactId>
+            <type>swc</type>
+        </dependency>
+
+        <!--skins-->
+        <dependency>
+            <groupId>com.adobe.flex.sdkcore</groupId>
+            <artifactId>spark</artifactId>
+            <type>swc</type>
+        </dependency>
+        <dependency>
+            <groupId>com.adobe.flex.sdkcore</groupId>
+            <artifactId>sparkskins</artifactId>
+            <type>swc</type>
+        </dependency>
+        <dependency>
+            <groupId>com.adobe.flex.sdkcore</groupId>
+            <artifactId>textLayout</artifactId>
+            <type>swc</type>
+        </dependency>
+        <dependency>
+            <groupId>com.adobe.flex.locales.en_US</groupId>
+            <artifactId>spark_rb</artifactId>
+            <type>swc</type>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <sourceDirectory>src/main/flex</sourceDirectory>
+        <!--<testSourceDirectory>src/test/flex</testSourceDirectory>-->
+        <plugins>
+
+            <plugin>
+                <groupId>org.sonatype.flexmojos</groupId>
+                <artifactId>flexmojos-maven-plugin</artifactId>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-antrun-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
