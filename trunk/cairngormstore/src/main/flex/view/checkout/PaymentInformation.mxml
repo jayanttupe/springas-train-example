@@ -25,7 +25,7 @@
     ]]>
   </fx:Script>
 
-  <mx:Array id="months">
+  <!--<fx:Array id="months">
     <mx:Number>1</mx:Number>
     <mx:Number>2</mx:Number>
     <mx:Number>3</mx:Number>
@@ -38,16 +38,16 @@
     <mx:Number>10</mx:Number>
     <mx:Number>11</mx:Number>
     <mx:Number>12</mx:Number>
-  </mx:Array>
+  </mx:Array>-->
 
-  <mx:Array id="years">
+  <!--<mx:Array id="years">
     <mx:Number>2005</mx:Number>
     <mx:Number>2006</mx:Number>
     <mx:Number>2007</mx:Number>
     <mx:Number>2008</mx:Number>
     <mx:Number>2009</mx:Number>
     <mx:Number>2010</mx:Number>
-  </mx:Array>
+  </mx:Array>-->
 
   <checkout:PaymentInformationModel id="paymentInformationModel">
     <checkout:cardType>{ cardType.cardTypeCombo.selectedItem }</checkout:cardType>
@@ -58,7 +58,6 @@
   </checkout:PaymentInformationModel>
 
   <mx:Validator id="cardHolderValidator" source="{ cardHolder }" property="text" />
-
   <mx:Binding source="paymentInformationModel" destination="ShopModelLocator.getInstance().paymentInfo" />
   <mx:Binding destination="ShopModelLocator.getInstance().paymentValidators" source="validators" />
 

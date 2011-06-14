@@ -44,13 +44,13 @@
     ]]>
   </fx:Script>
 
-  <mx:Model id="shippingModel" source="/data/shipping.xml" />
+  <!--<mx:Model id="shippingModel" source="/data/shipping.xml" />-->
 
   <mx:Form>
     <mx:FormItem>
       <mx:Repeater
-        id="shippingListComp"
-        dataProvider="{ shippingModel.company }">
+        id="shippingListComp">
+          <!--dataProvider="{ shippingModel.company }"-->
 
         <mx:RadioButton
           id="shippingChoiceComp"

@@ -13,7 +13,7 @@
         import util.Comparable;
 
         [Bindable]
-        public vmodelpkgdel:ShopModelLocator = ShopModelLocator.getInstance();
+        public var model:ShopModelLocator = ShopModelLocator.getInstance();
 
         private function addComparable(event:Event):void {
             ShopModelLocator.getInstance().productComparator.addComparable(

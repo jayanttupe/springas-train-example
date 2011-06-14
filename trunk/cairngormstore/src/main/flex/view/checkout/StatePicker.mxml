@@ -4,9 +4,9 @@
   xmlns:mx="library://ns.adobe.com/flex/mx"
   xmlns:fx="http://ns.adobe.com/mxml/2009"
   width="100%"
-  dataProvider="{ statesModel.state }"
   labelField="name" >
+     <!--dataProvider="{ statesModel.state }"-->
 
-  <fx:Model id="statesModel" source="/data/states.xml" />
+  <!--<fx:Model id="statesModel" source="/data/states.xml" />-->
 
 </mx:ComboBox>
