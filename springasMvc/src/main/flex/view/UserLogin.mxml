@@ -1,6 +1,50 @@
 <?xml version="1.0"?>
 <mx:Canvas xmlns:fx="http://ns.adobe.com/mxml/2009" xmlns:s="library://ns.adobe.com/flex/spark"
-    xmlns:mx="library://ns.adobe.com/flex/mx">
+           xmlns:mx="library://ns.adobe.com/flex/mx">
+
+    <fx:Metadata>
+        [RouteMVCEvents(events="userLogin")]
+        [Event(name="userLogin",type="event.UserLoginEvent")]
+    </fx:Metadata>
+    <fx:Declarations>
+        <mx:StringValidator id="vUsername"
+                            source="{ username }"
+                            property="text"
+                            required="true"/>
+        <mx:StringValidator id="vPassword"
+                            source="{ password }"
+                            property="text"
+                            required="true"/>
+    </fx:Declarations>
+    <fx:Script>
+        <![CDATA[
+        import event.UserLoginEvent;
+        import model.AppModelLocator;
+        import mx.controls.Alert;
+        import mx.events.ValidationResultEvent;
+
+        [Autowired]
+        [Bindable]
+        public var model:AppModelLocator;
+        private function loginHandler():void {
+            var noUsername:Boolean = vUsername.validate().type == ValidationResultEvent.INVALID;
+            var noPassword:Boolean = vPassword.validate().type == ValidationResultEvent.INVALID;
+            if (noUsername || noPassword) {
+                Alert.show("error");
+                return;
+            } else {
+                var event:UserLoginEvent = new UserLoginEvent(username.text, password.text);
+                dispatchEvent(event);
+                vUsername.enabled = false;
+                username.text = "";
+                vUsername.enabled = true;
+                vPassword.enabled = false;
+                password.text = "";
+                vPassword.enabled = true;
+            }
+        }
+        ]]>
+    </fx:Script>
 
     <mx:Panel title="User Login"
               horizontalCenter="0">
@@ -20,7 +64,7 @@
                          paddingTop="20">
                 <mx:Button id="loginBtn"
                            label="Login"
-                            click="loginHandler()"/>
+                           click="loginHandler()"/>
             </mx:FormItem>
         </mx:Form>
         <mx:Label htmlText="Username: user   Password: password"
@@ -28,48 +72,4 @@
                   horizontalCenter="0"/>
     </mx:Panel>
 
-
-    <fx:Declarations>
-        <mx:StringValidator id="vUsername"
-                            source="{ username }"
-                            property="text"
-                            required="true"/>
-        <mx:StringValidator id="vPassword"
-                            source="{ password }"
-                            property="text"
-                            required="true"/>
-    </fx:Declarations>
-
-
-    <fx:Script><![CDATA[
-        import event.UserLoginEvent;
-        import model.AppModelLocator;
-        import mx.controls.Alert;
-        import mx.events.ValidationResultEvent;
-
-        [Autowired]
-        [Bindable]
-        public var model:AppModelLocator;
-
-        private function loginHandler():void {
-            var noUsername:Boolean = vUsername.validate().type == ValidationResultEvent.INVALID;
-            var noPassword:Boolean = vPassword.validate().type == ValidationResultEvent.INVALID;
-            if (noUsername || noPassword) {
-                Alert.show("error");
-                return;
-            } else {
-                var event:UserLoginEvent = new UserLoginEvent(username.text, password.text);
-                dispatchEvent(event);
-
-                vUsername.enabled = false;
-                username.text = "";
-                vUsername.enabled = true;
-                vPassword.enabled = false;
-                password.text = "";
-                vPassword.enabled = true;
-            }
-
-
-        }
-        ]]></fx:Script>
 </mx:Canvas>

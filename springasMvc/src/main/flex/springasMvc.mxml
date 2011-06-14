@@ -13,8 +13,8 @@
 
         {
             DefaultAutowiringStageProcessor,
-                    MVCControllerObjectFactoryPostProcessor,
-                    command.UserLoginCommand
+            MVCControllerObjectFactoryPostProcessor,
+            command.UserLoginCommand
         }
 
         [Autowired]

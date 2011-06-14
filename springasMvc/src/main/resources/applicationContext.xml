@@ -4,16 +4,16 @@
          xsi:schemaLocation="http://www.springactionscript.org/schema/objects
 					http://www.springactionscript.org/schema/objects/spring-actionscript-objects-1.0.xsd">
 
-   <object id="autowiringStageProcessor"
+    <object id="autowiringStageProcessor"
             class="org.springextensions.actionscript.stage.DefaultAutowiringStageProcessor"/>
 
-   <object id="mvcFactory"
-           class="org.springextensions.actionscript.core.mvc.MVCControllerObjectFactoryPostProcessor"/>
+    <object id="mvcFactory"
+            class="org.springextensions.actionscript.core.mvc.MVCControllerObjectFactoryPostProcessor"/>
 
     <object id="appModel" class="model.AppModelLocator" factory-method="getInstance"/>
 
     <interface class="model.IApplicationModelAware">
-        <property name="model" ref="model"/>
+        <property name="appModel" ref="appModel"/>
     </interface>
 
     <object id="command1" class="command.UserLoginCommand" scope="prototype"/>

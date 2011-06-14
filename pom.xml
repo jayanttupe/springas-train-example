@@ -38,11 +38,10 @@
 
     <modules>
         <module>helloWorld</module>
-
         <module>springasMvc</module>
         <module>metadataprocessor</module>
         <module>cafe-townsend-mvc</module>
-        <!--<module>cairngormstore</module>-->
+        <module>cairngormstore</module>
         <!--<module>localization</module>-->
         <!--<module>movie-app</module>-->
         <!--<module>movie-app-mxml</module>-->
@@ -324,19 +323,18 @@
                         </dependency>
                     </dependencies>
                     <configuration>
-                        <configurationReport>true</configurationReport>
+                        <!--<configurationReport>true</configurationReport>-->
                         <!--<reportOutputDirectory>${project.basedir}/target/report</reportOutputDirectory>-->
                         <targetPlayer>${flashplayer.version}</targetPlayer>
                         <storepass></storepass>
-                        <sourcePaths>
+                        <!--<sourcePaths>
                             <path>${project.basedir}/src/main/flex</path>
-                        </sourcePaths>
-
+                        </sourcePaths>-->
                         <sourceFile>${project.name}.mxml</sourceFile>
                         <htmlName>${project.name}</htmlName>
-                        <locales>
+                        <localesCompiled>
                             <locale>en_US</locale>
-                        </locales>
+                        </localesCompiled>
                         <parameters>
                             <bgcolor>#FFFFFF</bgcolor>
                         </parameters>

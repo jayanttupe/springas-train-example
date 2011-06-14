@@ -33,7 +33,7 @@
 
         public var selectedItem:ProductVO;
 
-        publimodelpkg model:ShopModelLocator = ShopModelLocator.getInstance();
+        public var model:ShopModelLocator = ShopModelLocator.getInstance();
 
         public static var SELECT_EVENT:String = "select";
 

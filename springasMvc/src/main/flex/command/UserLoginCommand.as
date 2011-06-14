@@ -5,10 +5,9 @@ import model.AppModelLocator;
 
 import mx.controls.Alert;
 
-[Command(eventType="userLoginEvent")]
+[Command(eventType="userLogin")]
+//[Command(eventClass="event.UserLoginEvent"]
 public class UserLoginCommand extends CommandBase {
-    public function UserLoginCommand() {
-    }
 
     private function execute(e:UserLoginEvent):void {
         Alert.show("execute...");

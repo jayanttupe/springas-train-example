@@ -3,7 +3,7 @@ import flash.events.Event;
 
 public class UserLoginEvent extends Event{
 
-    public static const USER_LOGIN_EVENT:String = "userLoginEvent";
+    public static const USER_LOGIN_EVENT:String = "userLogin";
 
     public var username:String;
     public var password:String;
