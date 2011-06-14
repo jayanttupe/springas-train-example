@@ -9,6 +9,7 @@ public class CommandBase implements IApplicationModelAware {
 		}
 
 		private var _model:AppModelLocator;
+
 		public function get model():AppModelLocator {
 			return _model;
 		}

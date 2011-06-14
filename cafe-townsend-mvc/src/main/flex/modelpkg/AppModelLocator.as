@@ -34,7 +34,7 @@ public class AppModelLocator {
 
     // temp holding space for employees we're creating or editing
     // this gets copied into or added onto the main employee list
-    public var employeeTemp:Employee = new Employee(0,"","","",null);
+    public var employeeTemp:Employee = new Employee(0, "", "", "", null);
 
     // singleton: constructor only allows one modelpkg locator
     public function AppLocator():void {
