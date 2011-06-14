@@ -3,7 +3,6 @@
                 xmlns:mx="library://ns.adobe.com/flex/mx"
                 xmlns:view="view.*"
                 layout="vertical"
-                viewSourceURL="srcview/index.html"
                 creationComplete="init()">
     <fx:Metadata>
         [RouteMVCEvents]

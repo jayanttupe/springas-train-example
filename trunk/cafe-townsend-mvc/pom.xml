@@ -16,7 +16,7 @@
     <packaging>swf</packaging>
     <name>cafeTownsendMvc</name>
 
-     <dependencies>
+    <dependencies>
         <dependency>
             <groupId>org.springextensions.actionscript</groupId>
             <artifactId>spring-actionscript-core</artifactId>
