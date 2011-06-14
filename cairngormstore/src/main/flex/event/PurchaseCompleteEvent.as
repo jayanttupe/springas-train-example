@@ -3,7 +3,7 @@ import com.adobe.cairngorm.control.CairngormEvent;
 
 import flash.events.Event;
 
-import model.ShoppingCart;
+import modelpkg.ShoppingCart;
 
 import view.checkout.GeneralInformationModel;
 import view.checkout.PaymentInformationModel;

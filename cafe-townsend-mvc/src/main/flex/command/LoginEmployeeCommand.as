@@ -1,7 +1,7 @@
 package command {
 import control.LoginEmployeeEvent;
 
-import model.AppModelLocator;
+import modelpkg.AppModelLocator;
 
 import mx.controls.Alert;
 
@@ -17,10 +17,10 @@ public class LoginEmployeeCommand extends CommandBase {
 
         // if the auth info is correct
         if (username == "Flex" && password == "SpringMVC") {
-            // store the user info in a new user object in the model locator
+            // store the user info in a new user object in the modelpkg locator
             model.user = new User(username, password);
 
-            // main viewstack selectedIndex is bound to this model locator value
+            // main viewstack selectedIndex is bound to this modelpkg locator value
             // so this now switches the view from the login screen to the employee list
             model.viewing = AppModelLocator.EMPLOYEE_LIST;
         } else {

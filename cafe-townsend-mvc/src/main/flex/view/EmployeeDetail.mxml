@@ -4,12 +4,12 @@
 		 xmlns="*"
 		 width="100%"
 		 horizontalAlign="center">
-	<mx:Metadata>
+	<fx:Metadata>
 		[RouteMVCEvents(events="cancelEmployeeEdits,deleteEmployee,saveEmployeeEdits")]
 		[Event(name="cancelEmployeeEdits",type="control.CancelEmployeeEditsEvent")]
 		[Event(name="deleteEmployee",type="control.DeleteEmployeeEvent")]
 		[Event(name="saveEmployeeEdits",type="control.SaveEmployeeEditsEvent")]
-	</mx:Metadata>
+	</fx:Metadata>
 	<fx:Script>
 		<![CDATA[
         import control.CancelEmployeeEditsEvent;
@@ -18,65 +18,69 @@
 
         import control.SaveEmployeeEditsEvent;
 
-        import model.AppModelLocator;
+        import modelpkg.AppModelLocator;
 
         import mx.controls.Alert;
-			import mx.events.CloseEvent;
-			import mx.events.ValidationResultEvent;
+        import mx.events.CloseEvent;
+        import mx.events.ValidationResultEvent;
 
-			[Autowired]
-			[Bindable]
-			public var model:AppModelLocator;
+        [Autowired]
+        [Bindable]
+        public var model:AppModelLocator;
 
-			// mutate the back button's click event
-			private function cancelEmployeeEdits():void {
-				var cgEvent:CancelEmployeeEditsEvent = new CancelEmployeeEditsEvent();
-				dispatchEvent(cgEvent);
-			}
+        // mutate the back button's click event
+        private function cancelEmployeeEdits():void {
+            var cgEvent:CancelEmployeeEditsEvent = new CancelEmployeeEditsEvent();
+            dispatchEvent(cgEvent);
+        }
 
-			// the delete button's click event is an Alert asking them to verify the delete
-			// the Alert's closeHandler is directed here to be mutated into a cairngorm event if the answer was OK
-			private function deleteEmployee(cEvent:CloseEvent):void {
-				// was the Alert event an OK
-				if (cEvent.detail == Alert.OK) {
-					// broadcast the cairngorm event
-					var cgEvent:DeleteEmployeeEvent = new DeleteEmployeeEvent();
-					dispatchEvent(cgEvent);
-				}
-			}
+        // the delete button's click event is an Alert asking them to verify the delete
+        // the Alert's closeHandler is directed here to be mutated into a cairngorm event if the answer was OK
+        private function deleteEmployee(cEvent:CloseEvent):void {
+            // was the Alert event an OK
+            if (cEvent.detail == Alert.OK) {
+                // broadcast the cairngorm event
+                var cgEvent:DeleteEmployeeEvent = new DeleteEmployeeEvent();
+                dispatchEvent(cgEvent);
+            }
+        }
 
-			// mutate the submit button's click event
-			private function saveEmployeeEdits():void {
-				// first, validate the fields
-				var noFirstName:Boolean = vFirstname.validate().type == ValidationResultEvent.INVALID;
-				var noLastName:Boolean = vLastName.validate().type == ValidationResultEvent.INVALID;
-				var noEmail:Boolean = vEmail.validate().type == ValidationResultEvent.INVALID;
-				// if any of the fields were not valid
-				if (noFirstName || noLastName || noEmail) {
-					// return focus to the firstname field and do nothing else
-					firstname.setFocus();
-					return;
-				}
-				// to make it here the fields must have been valid
-				// create and broadcast a new cairngorm event with a payload containing the edited fields
-				var cgEvent:SaveEmployeeEditsEvent = new SaveEmployeeEditsEvent(model.employeeTemp.emp_id, firstname.text, lastname.text, startdate.selectedDate, email.text);
-				dispatchEvent(cgEvent);
-			}
-		]]>
+        // mutate the submit button's click event
+        private function saveEmployeeEdits():void {
+            // first, validate the fields
+            var noFirstName:Boolean = vFirstname.validate().type == ValidationResultEvent.INVALID;
+            var noLastName:Boolean = vLastName.validate().type == ValidationResultEvent.INVALID;
+            var noEmail:Boolean = vEmail.validate().type == ValidationResultEvent.INVALID;
+            // if any of the fields were not valid
+            if (noFirstName || noLastName || noEmail) {
+                // return focus to the firstname field and do nothing else
+                firstname.setFocus();
+                return;
+            }
+            // to make it here the fields must have been valid
+            // create and broadcast a new cairngorm event with a payload containing the edited fields
+            var cgEvent:SaveEmployeeEditsEvent = new SaveEmployeeEditsEvent(model.employeeTemp.emp_id, firstname.text, lastname.text, startdate.selectedDate, email.text);
+            dispatchEvent(cgEvent);
+        }
+        ]]>
 	</fx:Script>
 
-	<mx:StringValidator id="vFirstname"
+    <fx:Declarations>
+        <mx:StringValidator id="vFirstname"
 						source="{firstname}"
 						property="text"
 						required="true"/>
-	<mx:StringValidator id="vLastName"
+	    <mx:StringValidator id="vLastName"
 						source="{lastname}"
 						property="text"
 						required="true"/>
-	<mx:StringValidator id="vEmail"
+	    <mx:StringValidator id="vEmail"
 						source="{email}"
 						property="text"
 						required="true"/>
+    </fx:Declarations>
+
+
 
 	<mx:Panel title="Employee Details"
 			  horizontalCenter="0">

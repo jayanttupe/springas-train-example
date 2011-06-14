@@ -5,8 +5,8 @@ package command
 
 import event.PurchaseCompleteEvent;
 
-import model.ShopModelLocator;
-import model.ShoppingCart;
+import modelpkg.ShopModelLocator;
+import modelpkg.ShoppingCart;
 
 import view.checkout.GeneralInformationModel;
 import view.checkout.PaymentInformationModel;

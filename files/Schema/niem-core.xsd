@@ -14079,7 +14079,7 @@
   </xsd:element>
   <xsd:element name="VehicleVINAText" type="nc:TextType" nillable="true">
     <xsd:annotation>
-      <xsd:documentation>A Vehicle Identification Number Analysis; a combination of a vehicle make and model information.</xsd:documentation>
+      <xsd:documentation>A Vehicle Identification Number Analysis; a combination of a vehicle make and modelpkg information.</xsd:documentation>
     </xsd:annotation>
   </xsd:element>
 

@@ -11,8 +11,8 @@
         import event.NewScreenEvent;
         import event.UpdateShippingCostEvent;
 
-        import model.ShopModelLocator;
-        import model.ShoppingCart;
+        import modelpkg.ShopModelLocator;
+        import modelpkg.ShoppingCart;
 
         import mx.controls.Alert;
         import mx.formatters.CurrencyFormatter;
@@ -24,7 +24,7 @@
         public var currencyFormatter:CurrencyFormatter;
 
         [Bindable]
-        public var model:ShopModelLocator = ShopModelLocator.getInstance();
+        publimodelpkg model:ShopModelLocator = ShopModelLocator.getInstance();
 
         public function newScreenListener(event:NewScreenEvent):void {
             accordionComp.selectedIndex = event.position;

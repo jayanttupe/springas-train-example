@@ -12,48 +12,51 @@
 		<![CDATA[
         import control.LoginEmployeeEvent;
 
-        import model.AppModelLocator;
+        import modelpkg.AppModelLocator;
 
         import mx.events.ValidationResultEvent;
 
-			[Autowired]
-			[Bindable]
-			public var model:AppModelLocator;
+        [Autowired]
+        [Bindable]
+        public var model:AppModelLocator;
 
-			// mutate the loginBtn's click event into a cairngorm event			
-			private function loginEmployee():void {
-				// validate the fields
-				var noUsername:Boolean = vUsername.validate().type == ValidationResultEvent.INVALID;
-				var noPassword:Boolean = vPassword.validate().type == ValidationResultEvent.INVALID;
-				if (noUsername || noPassword) {
-					return;
-				} else {
-					// if everything validates, broadcast an event containing the username & password
-					var cgEvent:LoginEmployeeEvent = new LoginEmployeeEvent(username.text, password.text);
-					dispatchEvent(cgEvent);
+        // mutate the loginBtn's click event into a cairngorm event
+        private function loginEmployee():void {
+            // validate the fields
+            var noUsername:Boolean = vUsername.validate().type == ValidationResultEvent.INVALID;
+            var noPassword:Boolean = vPassword.validate().type == ValidationResultEvent.INVALID;
+            if (noUsername || noPassword) {
+                return;
+            } else {
+                // if everything validates, broadcast an event containing the username & password
+                var cgEvent:LoginEmployeeEvent = new LoginEmployeeEvent(username.text, password.text);
+                dispatchEvent(cgEvent);
 
-					// now that the fields are sent in the event, blank out the login form fields
-					// otherwise they'll still be populated whenever the user returns here
-					// (if the user does not get the uid/passwd correct or when the user logs out)
-					vUsername.enabled = false;
-					username.text = "";
-					vUsername.enabled = true;
-					vPassword.enabled = false;
-					password.text = "";
-					vPassword.enabled = true;
-				}
-			}
-		]]>
+                // now that the fields are sent in the event, blank out the login form fields
+                // otherwise they'll still be populated whenever the user returns here
+                // (if the user does not get the uid/passwd correct or when the user logs out)
+                vUsername.enabled = false;
+                username.text = "";
+                vUsername.enabled = true;
+                vPassword.enabled = false;
+                password.text = "";
+                vPassword.enabled = true;
+            }
+        }
+        ]]>
 	</fx:Script>
 
-	<mx:StringValidator id="vUsername"
+    <fx:Declarations>
+        <mx:StringValidator id="vUsername"
 						source="{ username }"
 						property="text"
 						required="true"/>
-	<mx:StringValidator id="vPassword"
+	    <mx:StringValidator id="vPassword"
 						source="{ password }"
 						property="text"
 						required="true"/>
+    </fx:Declarations>
+
 
 	<mx:Panel title="Employee Login"
 			  horizontalCenter="0">

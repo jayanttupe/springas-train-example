@@ -4,7 +4,7 @@ import business.IProductDelegate;
 import com.adobe.cairngorm.commands.ICommand;
 import com.adobe.cairngorm.control.CairngormEvent;
 
-import model.ShopModelLocator;
+import modelpkg.ShopModelLocator;
 
 import mx.collections.ArrayCollection;
 import mx.collections.ICollectionView;
@@ -50,7 +50,7 @@ public class GetProductsCommand implements ICommand, IResponder {
         products.sort = sort;
         products.refresh();
 
-        // set the products on the model
+        // set the products on the modelpkg
         model.selectedItem = products[0];
         model.products = products;
         model.workflowState = ShopModelLocator.VIEWING_PRODUCTS_IN_THUMBNAILS;

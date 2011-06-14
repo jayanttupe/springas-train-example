@@ -9,33 +9,29 @@
 
   <fx:Script>
   <![CDATA[
-      import model.ShopModelLocator;
+      import modelpkg.ShopModelLocator;
 
       import mx.core.UIComponent;
 
-    [Bindable]
-    public var model : ShopModelLocator = ShopModelLocator.getInstance();
+      [Bindable]
+      public var model:ShopModelLocator = ShopModelLocator.getInstance();
 
-    public function bodyViewToShow( workflowState : Number ) : UIComponent
-    {
-      var model : ShopModelLocator = ShopModelLocator.getInstance();
-      var selectedChild : UIComponent;
+      public function bodyViewToShow(workflowState:Number):UIComponent {
+          var model:ShopModelLocator = ShopModelLocator.getInstance();
+          var selectedChild:UIComponent;
 
-      if( model.workflowState == ShopModelLocator.VIEWING_PRODUCTS_IN_THUMBNAILS )
-      {
-        selectedChild = graphicalProductList;
+          if (model.workflowState == ShopModelLocator.VIEWING_PRODUCTS_IN_THUMBNAILS) {
+              selectedChild = graphicalProductList;
+          }
+          else if (model.workflowState == ShopModelLocator.VIEWING_PRODUCTS_IN_GRID) {
+              selectedChild = textualProductList;
+          }
+          else if (model.workflowState == ShopModelLocator.VIEWING_CHECKOUT) {
+              selectedChild = checkout;
+          }
+          return selectedChild;
       }
-      else if( model.workflowState == ShopModelLocator.VIEWING_PRODUCTS_IN_GRID )
-      {
-        selectedChild = textualProductList;
-      }
-      else if( model.workflowState == ShopModelLocator.VIEWING_CHECKOUT )
-      {
-        selectedChild = checkout;
-      }
-      return selectedChild;
-    }
-  ]]>
+      ]]>
   </fx:Script>
 
   <productview:GraphicalProductList

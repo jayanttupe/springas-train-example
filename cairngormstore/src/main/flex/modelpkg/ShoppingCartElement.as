@@ -1,4 +1,4 @@
-package model {
+package modelpkg {
 import vo.ProductVO;
 
 /**

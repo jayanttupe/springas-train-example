@@ -1,4 +1,4 @@
-package model {
+package modelpkg {
 
 public interface IApplicationModelAware {
     function get model():AppModelLocator;

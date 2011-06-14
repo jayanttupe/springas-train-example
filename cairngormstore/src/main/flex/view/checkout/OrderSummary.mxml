@@ -4,15 +4,16 @@
 
   <fx:Script>
   <![CDATA[
-    import model.ShoppingCart;
-    import mx.formatters.CurrencyFormatter;
+      import modelpkg.ShoppingCart;
 
-    [Bindable]
-    public var shoppingCart : ShoppingCart;
+      import mx.formatters.CurrencyFormatter;
 
-    [Bindable]
-    public var currencyFormatter : CurrencyFormatter;
-  ]]>
+      [Bindable]
+      public var shoppingCart:ShoppingCart;
+
+      [Bindable]
+      public var currencyFormatter:CurrencyFormatter;
+      ]]>
   </fx:Script>
 
   <mx:VBox paddingTop="2" verticalGap="0">

@@ -8,106 +8,91 @@
 
   <fx:Script>
   <![CDATA[
-    import com.adobe.cairngorm.control.CairngormEventDispatcher;
-    import com.adobe.cairngorm.control.CairngormEvent;
+      import com.adobe.cairngorm.control.CairngormEventDispatcher;
+      import com.adobe.cairngorm.control.CairngormEvent;
 
-    import event.ValidateOrderEvent;
+      import event.ValidateOrderEvent;
 
-    import model.ShopModelLocator;
+      import modelpkg.ShopModelLocator;
 
-    import mx.core.Container;
-    import mx.core.UIComponent;
+      import mx.core.Container;
+      import mx.core.UIComponent;
 
-    [Bindable]
-    public var model : ShopModelLocator = ShopModelLocator.getInstance();
+      [Bindable]
+      public var model:ShopModelLocator = ShopModelLocator.getInstance();
 
-    public function controlViewToShow( workflowState : Number ) : UIComponent
-    {
-      var model : ShopModelLocator = ShopModelLocator.getInstance();
+      public function controlViewToShow(workflowState:Number):UIComponent {
+          var model:ShopModelLocator = ShopModelLocator.getInstance();
 
-      if( model.workflowState == ShopModelLocator.VIEWING_PRODUCTS_IN_THUMBNAILS )
-      {
-        return filterCtrlComp;
-      }
-      else if( model.workflowState == ShopModelLocator.VIEWING_PRODUCTS_IN_GRID )
-      {
-        return gridCtrlComp;
-      }
-      else if( model.workflowState == ShopModelLocator.VIEWING_CHECKOUT )
-      {
-        return checkoutCtrlComp;
-      }
+          if (model.workflowState == ShopModelLocator.VIEWING_PRODUCTS_IN_THUMBNAILS) {
+              return filterCtrlComp;
+          }
+          else if (model.workflowState == ShopModelLocator.VIEWING_PRODUCTS_IN_GRID) {
+              return gridCtrlComp;
+          }
+          else if (model.workflowState == ShopModelLocator.VIEWING_CHECKOUT) {
+              return checkoutCtrlComp;
+          }
 
-      throw new Error( "Invalid workflow state" );
-    }
-
-    public function getProductGridButton( enforceBining : Number ) : Class
-    {
-      var model : ShopModelLocator = ShopModelLocator.getInstance();
-      var result : Class = model.assets.listOff;
-
-      if ( model.workflowState == ShopModelLocator.VIEWING_PRODUCTS_IN_GRID )
-      {
-        result = model.assets.listOn;
+          throw new Error("Invalid workflow state");
       }
 
-      return result;
-    }
+      public function getProductGridButton(enforceBining:Number):Class {
+          var model:ShopModelLocator = ShopModelLocator.getInstance();
+          var result:Class = model.assets.listOff;
 
-    public function getProductThumbnailsButton( enforceBining : Number ) : Class
-    {
-      var model : ShopModelLocator = ShopModelLocator.getInstance();
-      var result : Class = model.assets.thumbOff;
+          if (model.workflowState == ShopModelLocator.VIEWING_PRODUCTS_IN_GRID) {
+              result = model.assets.listOn;
+          }
 
-      if ( model.workflowState == ShopModelLocator.VIEWING_PRODUCTS_IN_THUMBNAILS )
-      {
-        result = model.assets.thumbOn;
+          return result;
       }
 
-      return result;
-    }
+      public function getProductThumbnailsButton(enforceBining:Number):Class {
+          var model:ShopModelLocator = ShopModelLocator.getInstance();
+          var result:Class = model.assets.thumbOff;
 
-    public function getProductThumbnailsButtonMouseOut() : Class
-    {
-      var model : ShopModelLocator = ShopModelLocator.getInstance();
-      var result : Class = model.assets.thumbOff;
+          if (model.workflowState == ShopModelLocator.VIEWING_PRODUCTS_IN_THUMBNAILS) {
+              result = model.assets.thumbOn;
+          }
 
-      if ( model.workflowState == ShopModelLocator.VIEWING_PRODUCTS_IN_THUMBNAILS )
-      {
-        result = model.assets.thumbOn;
+          return result;
       }
 
-      return result;
-    }
+      public function getProductThumbnailsButtonMouseOut():Class {
+          var model:ShopModelLocator = ShopModelLocator.getInstance();
+          var result:Class = model.assets.thumbOff;
 
-    public function getProductGridButtonMouseOut() : Class
-    {
-      var model : ShopModelLocator = ShopModelLocator.getInstance();
-      var result : Class = model.assets.listOff;
+          if (model.workflowState == ShopModelLocator.VIEWING_PRODUCTS_IN_THUMBNAILS) {
+              result = model.assets.thumbOn;
+          }
 
-      if ( model.workflowState == ShopModelLocator.VIEWING_PRODUCTS_IN_GRID )
-      {
-        result = model.assets.listOn;
+          return result;
       }
 
-      return result;
-    }
+      public function getProductGridButtonMouseOut():Class {
+          var model:ShopModelLocator = ShopModelLocator.getInstance();
+          var result:Class = model.assets.listOff;
 
-    private function showProductThumbnails():void
-    {
-      ShopModelLocator.getInstance().workflowState = ShopModelLocator.VIEWING_PRODUCTS_IN_THUMBNAILS;
-    }
+          if (model.workflowState == ShopModelLocator.VIEWING_PRODUCTS_IN_GRID) {
+              result = model.assets.listOn;
+          }
 
-    private function showProductGrid() : void
-    {
-      ShopModelLocator.getInstance().workflowState = ShopModelLocator.VIEWING_PRODUCTS_IN_GRID;
-    }
+          return result;
+      }
 
-    private function startCheckout() : void
-    {
-      CairngormEventDispatcher.getInstance().dispatchEvent( new CairngormEvent( ValidateOrderEvent.EVENT_VALIDATE_ORDER ) );
-    }
-  ]]>
+      private function showProductThumbnails():void {
+          ShopModelLocator.getInstance().workflowState = ShopModelLocator.VIEWING_PRODUCTS_IN_THUMBNAILS;
+      }
+
+      private function showProductGrid():void {
+          ShopModelLocator.getInstance().workflowState = ShopModelLocator.VIEWING_PRODUCTS_IN_GRID;
+      }
+
+      private function startCheckout():void {
+          CairngormEventDispatcher.getInstance().dispatchEvent(new CairngormEvent(ValidateOrderEvent.EVENT_VALIDATE_ORDER));
+      }
+      ]]>
   </fx:Script>
 
   <mx:ViewStack

@@ -17,47 +17,47 @@
         import control.LogoutEvent;
         import control.UpdateEmployeeEvent;
 
-        import model.AppModelLocator;
+        import modelpkg.AppModelLocator;
 
         [Autowired]
-			[Bindable]
-			public var model:AppModelLocator;
+        [Bindable]
+         public var model:AppModelLocator;
 
-			// mutate the add new employee button's click event
-			public function addNewEmployee():void {
-				// broadcast a cairngorm event
-				var cgEvent:AddNewEmployeeEvent = new AddNewEmployeeEvent();
-				dispatchEvent(cgEvent);
-				// de-select the list item (it may not exist next time we're on this view)
-				clearSelectedEmployee();
-			}
+        // mutate the add new employee button's click event
+        public function addNewEmployee():void {
+            // broadcast a cairngorm event
+            var cgEvent:AddNewEmployeeEvent = new AddNewEmployeeEvent();
+            dispatchEvent(cgEvent);
+            // de-select the list item (it may not exist next time we're on this view)
+            clearSelectedEmployee();
+        }
 
-			// mutate the List's change event
-			public function updateEmployee():void {
-				// boardcast a cairngorm event that contains the selectedItem from the List
-				var cgEvent:UpdateEmployeeEvent = new UpdateEmployeeEvent(employees_li.selectedItem);
-				dispatchEvent(cgEvent);
-				// de-select the list item (it may not exist next time we're on this view)
-				clearSelectedEmployee();
-			}
+        // mutate the List's change event
+        public function updateEmployee():void {
+            // boardcast a cairngorm event that contains the selectedItem from the List
+            var cgEvent:UpdateEmployeeEvent = new UpdateEmployeeEvent(employees_li.selectedItem);
+            dispatchEvent(cgEvent);
+            // de-select the list item (it may not exist next time we're on this view)
+            clearSelectedEmployee();
+        }
 
-			// mutate the logout button's click event
-			private function logout():void {
-				// broadcast a cairngorm event
-				var cgEvent:LogoutEvent = new LogoutEvent();
-				dispatchEvent(cgEvent);
-			}
+        // mutate the logout button's click event
+        private function logout():void {
+            // broadcast a cairngorm event
+            var cgEvent:LogoutEvent = new LogoutEvent();
+            dispatchEvent(cgEvent);
+        }
 
-			// format the names that are displayed in the List
-			public function properName(dpItem:Object):String {
-				return dpItem.lastname + ", " + dpItem.firstname;
-			}
+        // format the names that are displayed in the List
+        public function properName(dpItem:Object):String {
+            return dpItem.lastname + ", " + dpItem.firstname;
+        }
 
-			// de-select any selected List items
-			private function clearSelectedEmployee():void {
-				employees_li.selectedIndex = -1;
-			}
-		]]>
+        // de-select any selected List items
+        private function clearSelectedEmployee():void {
+            employees_li.selectedIndex = -1;
+        }
+        ]]>
 	</fx:Script>
 
 	<mx:Panel title="Employee List"
@@ -71,7 +71,7 @@
 			<mx:Spacer width="100%"
 					   height="20"/>
 		</mx:HBox>
-		<!-- data provider for the list is an ArrayCollection stored in the centralized model locator -->
+		<!-- data provider for the list is an ArrayCollection stored in the centralized modelpkg locator -->
 		<mx:List id="employees_li"
 				 dataProvider="{model.employeeListDP}"
 				 labelFunction="properName"

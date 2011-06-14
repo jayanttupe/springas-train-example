@@ -1,7 +1,7 @@
 package command {
 import control.SaveEmployeeEditsEvent;
 
-import model.AppModelLocator;
+import modelpkg.AppModelLocator;
 
 
 [Command(eventType="saveEmployeeEdits")]
@@ -42,7 +42,7 @@ import model.AppModelLocator;
 			// now that we've trasferred the temp employee to the array we can clear out the temp employee
 			model.employeeTemp = null;
 
-			// main viewstack selectedIndex is bound to this model locator value
+			// main viewstack selectedIndex is bound to this modelpkg locator value
 			// so this now switches the view from the detail screen back to the employee list
 			// the employee list should now contain one more item
 			model.viewing = AppModelLocator.EMPLOYEE_LIST;

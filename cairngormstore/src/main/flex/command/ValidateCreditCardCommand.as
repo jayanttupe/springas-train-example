@@ -11,7 +11,7 @@ import com.adobe.cairngorm.commands.SequenceCommand;
 import event.PurchaseCompleteEvent;
 import event.ValidateCreditCardEvent;
 
-import model.ShopModelLocator;
+import modelpkg.ShopModelLocator;
 
 import mx.rpc.IResponder;
 
