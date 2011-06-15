@@ -9,6 +9,7 @@ import mx.rpc.IResponder;
 
 [Command(eventType="userQuery")]
 public class UserQueryCommand extends CommandBase implements IResponder {
+
     public function UserQueryCommand() {
     }
 
