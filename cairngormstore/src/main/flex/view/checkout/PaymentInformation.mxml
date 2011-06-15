@@ -12,8 +12,6 @@
     <![CDATA[
       import mx.collections.ArrayCollection;
 
-      import com.adobe.cairngorm.samples.store.model.ShopModelLocator;
-
       [Bindable]
       public var validators : ArrayCollection = new ArrayCollection();
 

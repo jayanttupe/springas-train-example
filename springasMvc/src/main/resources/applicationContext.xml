@@ -16,7 +16,13 @@
         <property name="appModel" ref="appModel"/>
     </interface>
 
-    <object id="command1" class="command.UserLoginCommand" scope="prototype"/>
+    <object id="userDelegate" class="business.UserDelegateMock"/>
+
+    <object id="command1" class="command.UserLoginCommand" scope="prototype">
+        <property name="userDelegate" ref="userDelegate"/>
+    </object>
     <object id="command2" class="command.UserQueryCommand" scope="prototype"/>
+    <object id="command3" class="command.UserLogoutCommand" scope="prototype"/>
+
 
 </objects>

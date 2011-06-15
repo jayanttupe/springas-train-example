@@ -9,7 +9,7 @@ public class AppModelLocator {
     public static const USER_LOGIN:Number = 0;
     public static const USER_LIST:Number = 1;
     public static const USER_DETAIL:Number = 2;
-    public var viewing:Number = USER_LIST;
+    public var viewing:Number = USER_LOGIN;
 
     public var userList:ArrayCollection=new ArrayCollection();
 

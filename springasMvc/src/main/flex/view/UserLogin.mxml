@@ -19,7 +19,9 @@
     <fx:Script>
         <![CDATA[
         import event.UserLoginEvent;
+
         import model.AppModelLocator;
+
         import mx.controls.Alert;
         import mx.events.ValidationResultEvent;
 
@@ -35,13 +37,13 @@
                 return;
             } else {
                 var event:UserLoginEvent = new UserLoginEvent(username.text, password.text);
-                dispatchEvent(event);
                 vUsername.enabled = false;
                 username.text = "";
                 vUsername.enabled = true;
                 vPassword.enabled = false;
                 password.text = "";
                 vPassword.enabled = true;
+                dispatchEvent(event);
             }
         }
         ]]>

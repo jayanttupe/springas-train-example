@@ -39,6 +39,7 @@
     <modules>
         <module>helloWorld</module>
         <module>springasMvc</module>
+        <module>cairngorm</module>
         <module>cafe-townsend-mvc</module>
         <module>cairngormstore</module>
         <!--<module>localization</module>-->
@@ -310,7 +311,7 @@
                                 <!--<goal>generate</goal>-->
                                 <goal>compile-swf</goal>
                                 <!--<goal>copy-flex-resources</goal>-->
-                                <!--<goal>wrapper</goal>-->
+                                <goal>wrapper</goal>
                             </goals>
                         </execution>
                     </executions>
@@ -327,9 +328,6 @@
                         <!--<reportOutputDirectory>${project.basedir}/target/report</reportOutputDirectory>-->
                         <targetPlayer>${flashplayer.version}</targetPlayer>
                         <storepass></storepass>
-                        <!--<sourcePaths>
-                            <path>${project.basedir}/src/main/flex</path>
-                        </sourcePaths>-->
                         <sourceFile>${project.name}.mxml</sourceFile>
                         <htmlName>${project.name}</htmlName>
                         <localesCompiled>
@@ -342,9 +340,6 @@
                         <output>${project.basedir}/target/${project.build.finalName}.swf</output>
                         <webappDirectory>${project.basedir}/target</webappDirectory>
                         <!--<coverageViewerPath/>-->
-                        <!--<themes>
-                            <theme>${project.build.directory}/themes/spark-theme.css</theme>
-                        </themes>-->
                     </configuration>
                 </plugin>
 
