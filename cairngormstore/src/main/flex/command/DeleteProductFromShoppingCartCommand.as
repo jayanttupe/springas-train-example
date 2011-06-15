@@ -7,7 +7,7 @@ package command
 
 import event.UpdateShoppingCartEvent;
 
-import modelpkg.ShopModelLocator;
+import model.ShopModelLocator;
 
 /**
    * @version  $Revision: $

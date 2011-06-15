@@ -4,7 +4,7 @@
 
   <fx:Script>
   <![CDATA[
-      import modelpkg.ShoppingCart;
+      import model.ShoppingCart;
 
       import mx.formatters.CurrencyFormatter;
 

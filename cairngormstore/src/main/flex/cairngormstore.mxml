@@ -26,14 +26,14 @@
 
         import event.GetProductsEvent;
 
-        import modelpkg.ShopModelLocator;
+        import model.ShopModelLocator;
 
         import mx.rpc.remoting.mxml.RemoteObject;
 
         import org.springextensions.actionscript.context.support.FlexXMLApplicationContext;
 
         [Bindable]
-       public var model:ShopModelLocator = ShopModelLocator.getInstance();
+        public var model:ShopModelLocator = ShopModelLocator.getInstance();
 
         //			private static var compiledClasses:Array = [ShopController, CairngormServiceLocator, CreditCardDelegate, CreditCardDelegateMock, ProductDelegate, ProductDelegateMock, RemoteObject];
         private static var compiledClasses:Array = [ShopController, CreditCardDelegate, CreditCardDelegateMock, ProductDelegate, ProductDelegateMock, RemoteObject];

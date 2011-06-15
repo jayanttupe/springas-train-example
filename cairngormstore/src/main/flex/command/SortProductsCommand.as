@@ -5,7 +5,7 @@ package command
 
 import event.SortProductsEvent;
 
-import modelpkg.ShopModelLocator;
+import model.ShopModelLocator;
 
 import mx.collections.Sort;
   import mx.collections.SortField;
