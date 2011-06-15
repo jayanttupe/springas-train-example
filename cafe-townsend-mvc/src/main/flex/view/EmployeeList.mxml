@@ -16,11 +16,11 @@
         import control.LogoutEvent;
         import control.UpdateEmployeeEvent;
 
-        import modelpkg.AppModelLocator;
+        import model.AppModelLocator;
 
         [Autowired]
         [Bindable]
-        public var model:AppModelLocator;
+        public var appModel:AppModelLocator;
 
         // mutate the add new employee button's click event
         public function addNewEmployee():void {
@@ -72,7 +72,7 @@
         </mx:HBox>
         <!-- data provider for the list is an ArrayCollection stored in the centralized modelpkg locator -->
         <mx:List id="employees_li"
-                 dataProvider="{model.employeeListDP}"
+                 dataProvider="{appModel.employeeListDP}"
                  labelFunction="properName"
                  change="updateEmployee()"
                  width="100%"

@@ -1,6 +1,6 @@
 package command {
-import modelpkg.AppModelLocator;
-import modelpkg.IApplicationModelAware;
+import model.AppModelLocator;
+import model.IApplicationModelAware;
 
 public class CommandBase implements IApplicationModelAware {
 		
@@ -10,10 +10,10 @@ public class CommandBase implements IApplicationModelAware {
 
 		private var _model:AppModelLocator;
 
-		public function get model():AppModelLocator {
+		public function get appModel():AppModelLocator {
 			return _model;
 		}
-		public function set model(value:AppModelLocator):void {
+		public function set appModel(value:AppModelLocator):void {
 			_model = value;
 		}
 	}

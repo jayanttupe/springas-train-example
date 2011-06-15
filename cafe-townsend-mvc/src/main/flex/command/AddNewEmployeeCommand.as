@@ -16,7 +16,7 @@
 package command {
 import control.AddNewEmployeeEvent;
 
-import modelpkg.AppModelLocator;
+import model.AppModelLocator;
 
 import vo.Employee;
 
@@ -25,12 +25,12 @@ import vo.Employee;
 
 		public function execute( cgEvent : AddNewEmployeeEvent ) : void {
 			// add new employee instantiates a new employee object, which has default blank values in the constructor
-			model.employeeTemp = new Employee();
+			appModel.employeeTemp = new Employee();
 			
 			// main viewstack selectedIndex is bound to this modelpkg locator value
 			// so this now switches the view from the employee list to the detail screen
 			// so we can populate the new blank employee values
-			model.viewing = AppModelLocator.EMPLOYEE_DETAIL;
+			appModel.viewing = AppModelLocator.EMPLOYEE_DETAIL;
 			}
 		}
 	}

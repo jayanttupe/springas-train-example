@@ -1,4 +1,4 @@
-package modelpkg {
+package model {
 import mx.collections.ArrayCollection;
 
 import vo.Employee;
@@ -8,7 +8,7 @@ import vo.User;
 public class AppModelLocator {
 
     // this instance stores a static reference to itself
-    private static var model:AppModelLocator;
+    private static var appModel:AppModelLocator;
 
     // available values for the main viewstack
     // defined as contants to help uncover errors at compile time instead of run time
@@ -38,7 +38,7 @@ public class AppModelLocator {
 
     // singleton: constructor only allows one modelpkg locator
     public function AppLocator():void {
-        if (AppModelLocator.model != null)
+        if (AppModelLocator.appModel != null)
             throw new Error("Only one ModelLocator instance should be instantiated");
     }
 
@@ -48,9 +48,9 @@ public class AppModelLocator {
 
 // singleton: always returns the one existing static instance to itself
     public static function getInstance():AppModelLocator {
-        if (model == null)
-            model = new AppModelLocator();
-        return model;
+        if (appModel == null)
+            appModel = new AppModelLocator();
+        return appModel;
     }
 }
 }

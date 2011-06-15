@@ -1,7 +1,7 @@
 package command {
 import control.UpdateEmployeeEvent;
 
-import modelpkg.AppModelLocator;
+import model.AppModelLocator;
 
 import vo.Employee;
 
@@ -13,7 +13,7 @@ public class UpdateEmployeeCommand extends CommandBase {
         var selectedItem:Object = cgEvent.selectedItem;
 
         // populate a temp employee in the modelpkg locator with the details from the selectedItem
-        model.employeeTemp = new Employee(selectedItem.emp_id,
+        appModel.employeeTemp = new Employee(selectedItem.emp_id,
                 selectedItem.firstname,
                 selectedItem.lastname,
                 selectedItem.email,
@@ -21,7 +21,7 @@ public class UpdateEmployeeCommand extends CommandBase {
 
         // main viewstack selectedIndex is bound to this modelpkg locator value
         // so this now switches the view from the employee list to the detail screen
-        model.viewing = AppModelLocator.EMPLOYEE_DETAIL;
+        appModel.viewing = AppModelLocator.EMPLOYEE_DETAIL;
     }
 }
 }
