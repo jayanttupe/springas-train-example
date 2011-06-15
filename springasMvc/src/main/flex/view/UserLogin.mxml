@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<mx:Canvas xmlns:fx="http://ns.adobe.com/mxml/2009" xmlns:s="library://ns.adobe.com/flex/spark"
+<mx:Canvas xmlns:fx="http://ns.adobe.com/mxml/2009"
            xmlns:mx="library://ns.adobe.com/flex/mx">
 
     <fx:Metadata>
@@ -25,7 +25,8 @@
 
         [Autowired]
         [Bindable]
-        public var model:AppModelLocator;
+        public var appModel:AppModelLocator;
+
         private function loginHandler():void {
             var noUsername:Boolean = vUsername.validate().type == ValidationResultEvent.INVALID;
             var noPassword:Boolean = vPassword.validate().type == ValidationResultEvent.INVALID;

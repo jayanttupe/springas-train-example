@@ -17,5 +17,6 @@
     </interface>
 
     <object id="command1" class="command.UserLoginCommand" scope="prototype"/>
+    <object id="command2" class="command.UserQueryCommand" scope="prototype"/>
 
 </objects>
