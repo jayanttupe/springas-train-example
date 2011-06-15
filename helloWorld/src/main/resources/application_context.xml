@@ -3,17 +3,22 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://www.springactionscript.org/schema/objects
 					http://www.springactionscript.org/schema/objects/spring-actionscript-objects-1.0.xsd">
-	<property file="global.prop"/>
-	<import file="data.xml"/>
-	<object id="container" class="mx.containers.Panel">
-		<property name="title" value="${siteName}" />
-		<method-invocation name="addChild">
-			<arg ref="myList" />
-		</method-invocation>
-	</object>
-	<object id="myList" class="mx.controls.List">
-		<property name="width" value="500" />
-		<property name="height" value="500" />
-		<property name="dataProvider" ref="myData" />
-	</object>
+
+    <property file="global.prop"/>
+
+    <import file="data.xml"/>
+
+    <object id="container" class="mx.containers.Panel">
+        <property name="title" value="${siteName}"/>
+        <method-invocation name="addChild">
+            <arg ref="myList"/>
+        </method-invocation>
+    </object>
+
+    <object id="myList" class="mx.controls.List">
+        <property name="width" value="500"/>
+        <property name="height" value="500"/>
+        <property name="dataProvider" ref="myData"/>
+    </object>
+
 </objects>
