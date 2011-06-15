@@ -39,7 +39,6 @@
     <modules>
         <module>helloWorld</module>
         <module>springasMvc</module>
-        <module>metadataprocessor</module>
         <module>cafe-townsend-mvc</module>
         <module>cairngormstore</module>
         <!--<module>localization</module>-->
@@ -260,6 +259,7 @@
                 <artifactId>sparkskins</artifactId>
                 <type>swc</type>
                 <version>${flex.skins}</version>
+                <scope>theme</scope>
             </dependency>
             <dependency>
                 <groupId>com.adobe.flex.sdkcore</groupId>
