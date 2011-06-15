@@ -1,27 +1,49 @@
 <?xml version="1.0"?>
 <mx:VBox xmlns:fx="http://ns.adobe.com/mxml/2009" xmlns:s="library://ns.adobe.com/flex/spark"
-    xmlns:mx="library://ns.adobe.com/flex/mx">
+         xmlns:mx="library://ns.adobe.com/flex/mx">
 
+    <fx:Metadata>
+        [RouteMVCEvents(events="userQuery")]
+        [Event(name="userQuery",type="event.UserQueryEvent")]
+    </fx:Metadata>
 
-    <mx:Panel title="Employee List"
+    <fx:Script><![CDATA[
+        import event.UserQueryEvent;
+        import model.AppModelLocator;
+
+        [Autowired]
+        [Bindable]
+        public var appModel:AppModelLocator;
+
+        private function queryUserListHandler():void {
+            var event:UserQueryEvent = new UserQueryEvent();
+            dispatchEvent(event);
+        }
+        ]]></fx:Script>
+
+    <mx:Panel title="User List"
               horizontalCenter="0">
         <mx:HBox paddingTop="25">
-            <mx:Button label="Add New Employee"/>
-                       <!--click="addNewEmployee()"-->
+            <mx:Button label="Load Data"
+                click="queryUserListHandler()"/>
 
             <mx:Spacer width="100%"/>
             <mx:Button label="Logout"/>
-                       <!--click="logout()"-->
+            <!--click="logout()"-->
             <mx:Spacer width="100%"
                        height="20"/>
         </mx:HBox>
-        <!-- data provider for the list is an ArrayCollection stored in the centralized modelpkg locator -->
-        <mx:List id="employees_li"
-                 width="100%"
-                 verticalScrollPolicy="auto"/>
-                <!--dataProvider="{model.employeeListDP}"-->
-                 <!--labelFunction="properName"-->
-                 <!--change="updateEmployee()"-->
+
+        <mx:DataGrid id="userDataGrid" width="100%" height="100%" dataProvider="{appModel.userList}">
+            <mx:columns>
+                <mx:DataGridColumn dataField="username" headerText="User Name"/>
+                <mx:DataGridColumn dataField="password" headerText="Password"/>
+                <mx:DataGridColumn dataField="email" headerText="Email"/>
+            </mx:columns>
+        </mx:DataGrid>
+
+        <!--labelFunction="properName"-->
+        <!--change="updateEmployee()"-->
     </mx:Panel>
 
 </mx:VBox>

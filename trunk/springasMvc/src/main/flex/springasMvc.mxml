@@ -6,6 +6,8 @@
     <fx:Script>
         <![CDATA[
         import command.UserLoginCommand;
+        import command.UserQueryCommand;
+        import event.UserQueryEvent;
         import model.AppModelLocator;
         import org.springextensions.actionscript.context.support.FlexXMLApplicationContext;
         import org.springextensions.actionscript.core.mvc.MVCControllerObjectFactoryPostProcessor;
@@ -14,7 +16,8 @@
         {
             DefaultAutowiringStageProcessor,
             MVCControllerObjectFactoryPostProcessor,
-            command.UserLoginCommand
+            UserLoginCommand,
+            UserQueryCommand
         }
 
         [Autowired]
@@ -30,11 +33,10 @@
 
         private function onIocLoadCompeletHandler(event:Event):void {
             context.removeEventListener(Event.COMPLETE , onIocLoadCompeletHandler);
-            //...
         }
         ]]>
     </fx:Script>
-   <fx:Style source="../resources/assets/main.css"/>
+   <fx:Style source="main.css"/>
    <mx:HBox paddingBottom="10"
              paddingLeft="10"
              paddingRight="10"

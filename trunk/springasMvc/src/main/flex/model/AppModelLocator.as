@@ -1,4 +1,5 @@
 package model {
+import mx.collections.ArrayCollection;
 
 [Bindable]
 public class AppModelLocator {
@@ -8,10 +9,13 @@ public class AppModelLocator {
     public static const USER_LOGIN:Number = 0;
     public static const USER_LIST:Number = 1;
     public static const USER_DETAIL:Number = 2;
-    public var viewing:Number = USER_LOGIN;
+    public var viewing:Number = USER_LIST;
 
-    function AppModelLocator(){
+    public var userList:ArrayCollection=new ArrayCollection();
 
+    public function AppLocator():void {
+        if (AppModelLocator.appModel != null)
+            throw new Error("Only one ModelLocator instance should be instantiated");
     }
 
     public static function getInstance():AppModelLocator {
