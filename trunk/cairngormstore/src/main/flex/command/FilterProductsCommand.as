@@ -5,7 +5,7 @@ package command
 
 import event.FilterProductsEvent;
 
-import modelpkg.ShopModelLocator;
+import model.ShopModelLocator;
 
 /**
    * @version $Revision: $

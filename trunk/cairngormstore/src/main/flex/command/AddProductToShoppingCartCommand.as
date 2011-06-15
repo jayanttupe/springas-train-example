@@ -4,7 +4,7 @@ import com.adobe.cairngorm.control.CairngormEvent;
 
 import event.UpdateShoppingCartEvent;
 
-import modelpkg.ShopModelLocator;
+import model.ShopModelLocator;
 
 /**
  * @version  $Revision: $

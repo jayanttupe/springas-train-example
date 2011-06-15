@@ -1,4 +1,4 @@
-package modelpkg {
+package model {
 
 	import com.adobe.cairngorm.model.ModelLocator;
 	import mx.collections.ArrayCollection;

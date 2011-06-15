@@ -13,7 +13,7 @@
 
       import event.ValidateOrderEvent;
 
-      import modelpkg.ShopModelLocator;
+      import model.ShopModelLocator;
 
       import mx.core.Container;
       import mx.core.UIComponent;

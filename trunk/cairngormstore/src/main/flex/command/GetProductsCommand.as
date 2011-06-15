@@ -4,7 +4,7 @@ import business.IProductDelegate;
 import com.adobe.cairngorm.commands.ICommand;
 import com.adobe.cairngorm.control.CairngormEvent;
 
-import modelpkg.ShopModelLocator;
+import model.ShopModelLocator;
 
 import mx.collections.ArrayCollection;
 import mx.collections.ICollectionView;

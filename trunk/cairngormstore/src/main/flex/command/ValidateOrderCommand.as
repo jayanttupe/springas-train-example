@@ -5,7 +5,7 @@ package command {
 
 import event.ValidateCreditCardEvent;
 
-import modelpkg.ShopModelLocator;
+import model.ShopModelLocator;
 
 import mx.collections.ArrayCollection;
 	import mx.events.ValidationResultEvent;
