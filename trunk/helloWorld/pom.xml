@@ -95,6 +95,7 @@
             <groupId>com.adobe.flex.sdkcore</groupId>
             <artifactId>sparkskins</artifactId>
             <type>swc</type>
+            <scope>theme</scope>
         </dependency>
         <dependency>
             <groupId>com.adobe.flex.sdkcore</groupId>
