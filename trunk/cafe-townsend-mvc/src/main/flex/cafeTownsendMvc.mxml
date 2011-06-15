@@ -8,6 +8,7 @@
         [RouteMVCEvents]
         [Event(name="loadEmployees",type="control.LoadEmployeesEvent")]
     </fx:Metadata>
+    <fx:Style source="main.css"/>
     <fx:Script>
 		<![CDATA[
         import command.AddNewEmployeeCommand;
@@ -21,7 +22,7 @@
 
         import control.LoadEmployeesEvent;
 
-        import modelpkg.AppModelLocator;
+        import model.AppModelLocator;
 
         import org.springextensions.actionscript.context.support.FlexXMLApplicationContext;
         import org.springextensions.actionscript.core.mvc.MVCControllerObjectFactoryPostProcessor;
@@ -44,7 +45,7 @@
 
         [Autowired]
         [Bindable]
-        public var model:AppModelLocator;
+        public var appModel:AppModelLocator;
 
         private function init():void {
             _applicationContext = new FlexXMLApplicationContext("application-context.xml");
@@ -76,7 +77,7 @@
                           paddingBottom="10"
                           paddingTop="10"
                           resizeToContent="true"
-                          selectedIndex="{model.viewing}">
+                          selectedIndex="{appModel.viewing}">
                 <view:EmployeeLogin/>
                 <view:EmployeeList/>
                 <view:EmployeeDetail/>

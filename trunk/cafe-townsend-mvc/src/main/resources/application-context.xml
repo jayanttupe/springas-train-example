@@ -9,10 +9,10 @@
 
     <object id="mvcFactory" class="org.springextensions.actionscript.core.mvc.MVCControllerObjectFactoryPostProcessor"/>
 
-    <object id="model" class="modelpkg.AppModelLocator" factory-method="getInstance"/>
+    <object id="appModel" class="model.AppModelLocator" factory-method="getInstance"/>
 
-    <interface class="modelpkg.IApplicationModelAware">
-        <property name="model" ref="model"/>
+    <interface class="model.IApplicationModelAware">
+        <property name="appModel" ref="appModel"/>
     </interface>
 
     <object id="command1" class="command.AddNewEmployeeCommand" scope="prototype"/>

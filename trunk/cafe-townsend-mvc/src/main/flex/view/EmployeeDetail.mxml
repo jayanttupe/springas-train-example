@@ -16,7 +16,7 @@
         import control.DeleteEmployeeEvent;
         import control.SaveEmployeeEditsEvent;
 
-        import modelpkg.AppModelLocator;
+        import model.AppModelLocator;
 
         import mx.controls.Alert;
         import mx.events.CloseEvent;
@@ -24,7 +24,7 @@
 
         [Autowired]
         [Bindable]
-        public var model:AppModelLocator;
+        public var appModel:AppModelLocator;
 
         // mutate the back button's click event
         private function cancelEmployeeEdits():void {
@@ -57,7 +57,7 @@
             }
             // to make it here the fields must have been valid
             // create and broadcast a new cairngorm event with a payload containing the edited fields
-            var cgEvent:SaveEmployeeEditsEvent = new SaveEmployeeEditsEvent(model.employeeTemp.emp_id, firstname.text, lastname.text, startdate.selectedDate, email.text);
+            var cgEvent:SaveEmployeeEditsEvent = new SaveEmployeeEditsEvent(appModel.employeeTemp.emp_id, firstname.text, lastname.text, startdate.selectedDate, email.text);
             dispatchEvent(cgEvent);
         }
         ]]>
@@ -90,21 +90,21 @@
             <mx:FormItem label="First Name:"
                          required="true">
                 <mx:TextInput id="firstname"
-                              text="{model.employeeTemp.firstname}"/>
+                              text="{appModel.employeeTemp.firstname}"/>
             </mx:FormItem>
             <mx:FormItem label="Last Name:"
                          required="true">
                 <mx:TextInput id="lastname"
-                              text="{model.employeeTemp.lastname}"/>
+                              text="{appModel.employeeTemp.lastname}"/>
             </mx:FormItem>
             <mx:FormItem label="Start Date:">
                 <mx:DateField id="startdate"
-                              selectedDate="{model.employeeTemp.startdate}"/>
+                              selectedDate="{appModel.employeeTemp.startdate}"/>
             </mx:FormItem>
             <mx:FormItem label="Email:"
                          required="true">
                 <mx:TextInput id="email"
-                              text="{model.employeeTemp.email}"/>
+                              text="{appModel.employeeTemp.email}"/>
             </mx:FormItem>
             <mx:FormItem direction="horizontal">
                 <mx:Button label="Submit"
