@@ -2,8 +2,6 @@ package command
 {
   import com.adobe.cairngorm.commands.ICommand;
   import com.adobe.cairngorm.control.CairngormEvent;
-  import com.adobe.cairngorm.samples.store.model.ShopModelLocator;
-  import com.adobe.cairngorm.samples.store.event.UpdateShoppingCartEvent;
 
 import event.UpdateShoppingCartEvent;
 
