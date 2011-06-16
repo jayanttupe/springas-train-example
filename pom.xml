@@ -103,6 +103,20 @@
                 <version>${sas.version}</version>
             </dependency>
             <dependency>
+                <groupId>org.springextensions.actionscript</groupId>
+                <artifactId>spring-actionscript-cairngorm</artifactId>
+                <type>swc</type>
+                <scope>compile</scope>
+                <version>${sas.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springextensions.actionscript</groupId>
+                <artifactId>spring-actionscript-test</artifactId>
+                <type>swc</type>
+                <scope>compile</scope>
+                <version>${sas.version}</version>
+            </dependency>
+            <dependency>
                 <groupId>com.adobe.cairngorm</groupId>
                 <artifactId>cairngorm</artifactId>
                 <type>swc</type>
