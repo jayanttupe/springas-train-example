@@ -6,6 +6,7 @@
     <fx:Script>
         <![CDATA[
         import business.IUserDelegate;
+        import business.UserDelegate;
         import business.UserDelegateMock;
 
         import command.UserLoginCommand;
@@ -22,6 +23,7 @@
             UserQueryCommand,
             UserLogoutCommand,
             IUserDelegate,
+            UserDelegate,
             UserDelegateMock
         }
 

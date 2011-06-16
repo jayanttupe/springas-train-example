@@ -1,4 +1,5 @@
 package command {
+import business.IUserDelegate;
 import business.UserDelegate;
 
 import event.UserQueryEvent;
@@ -10,12 +11,11 @@ import mx.rpc.IResponder;
 [Command(eventType="userQuery")]
 public class UserQueryCommand extends CommandBase implements IResponder {
 
-    public function UserQueryCommand() {
-    }
+    public var userDelegate:IUserDelegate;
 
     public function execute(event:UserQueryEvent):void{
-        var delegate:UserDelegate = new UserDelegate(this);
-        delegate.getUserList();
+        userDelegate.setCommand(this);
+        userDelegate.getAll();
     }
 
     public function result(data:Object):void {
