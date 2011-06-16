@@ -24,15 +24,14 @@
         public var currencyFormatter:CurrencyFormatter;
 
         [Bindable]
-        publimodelpkg
-        model:ShopModelLocator = ShopModelLocator.getInstance();
+        public var appModel:ShopModelLocator = ShopModelLocator.getInstance();
 
         public function newScreenListener(event:NewScreenEvent):void {
             accordionComp.selectedIndex = event.position;
         }
 
         public function shippingCostChangeListener(event:UpdateShippingCostEvent):void {
-            model.shoppingCart.shippingCost = event.cost
+            appModel.shoppingCart.shippingCost = event.cost
         }
 
         private function confirmOrder():void {

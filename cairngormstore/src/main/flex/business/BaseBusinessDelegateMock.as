@@ -6,7 +6,9 @@ package business {
 	import mx.rpc.events.FaultEvent;
 	import mx.rpc.events.ResultEvent;
 	import org.as3commons.lang.Assert;
-	/**
+import org.springextensions.actionscript.cairngorm.IResponderAware;
+
+/**
 	 *  This class is a base class for all business delegate mockups
 	 *  extend this class to get asynchronous respond.
 	 *  You must call the super(responder) in your business delegate constructor

@@ -3,10 +3,6 @@ import business.ICreditCardDelegate;
 
 import com.adobe.cairngorm.commands.SequenceCommand;
 	import com.adobe.cairngorm.control.CairngormEvent;
-	import com.adobe.cairngorm.samples.store.business.ICreditCardDelegate;
-	import com.adobe.cairngorm.samples.store.event.PurchaseCompleteEvent;
-	import com.adobe.cairngorm.samples.store.event.ValidateCreditCardEvent;
-	import com.adobe.cairngorm.samples.store.model.ShopModelLocator;
 
 import event.PurchaseCompleteEvent;
 import event.ValidateCreditCardEvent;
