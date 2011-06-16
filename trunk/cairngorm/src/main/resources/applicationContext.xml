@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<objects xmlns="http://www.springactionscript.org/schema/objects"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://www.springactionscript.org/schema/objects
+					http://www.springactionscript.org/schema/objects/spring-actionscript-objects-1.0.xsd">
+
+    <!-- Front Controller -->
+	<object id="frontController" class="control.UserController"/>
+
+    <!-- 1. Mock Delegates -->
+	<object id="userDelegate" class="business.UserDelegateMock" scope="prototype"/>
+
+    <!--2. Remote Object Delegates-->
+    <!--<object id="endPoint" class="String">
+		<constructor-arg value="http://www.herrodius.com/amfphp/gateway.php" />
+	</object>
+
+	<object id="serviceLocator" class="org.springextensions.actionscript.cairngorm.business.CairngormServiceLocator"
+		factory-method="getInstance">
+		<property name="productService" ref="productService" />
+	</object>
+
+    <object id="productService" class="mx.rpc.remoting.mxml.RemoteObject">
+		<property name="destination" value="GenericDestination" />
+		<property name="endpoint" ref="endPoint" />
+		<property name="source" value="com.adobe.cairngorm.samples.store.business.ProductService" />
+	</object>
+
+    <object id="productDelegate" class="business.UserDelegateRemote" scope="prototype">
+		<constructor-arg ref="productService"/>
+	</object>-->
+
+
+</objects>

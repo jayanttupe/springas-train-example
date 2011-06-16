@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<mx:Application xmlns:fx="http://ns.adobe.com/mxml/2009"
+                xmlns:mx="library://ns.adobe.com/flex/mx" xmlns:view="view.*"
+                creationComplete="creationCompleteHandler()" layout="vertical">
+
+    <fx:Script>
+        <![CDATA[
+        import business.IUserDelegate;
+        import business.UserDelegateMock;
+        import business.UserDelegateRemote;
+
+        import control.UserController;
+
+        import model.AppModelLocator;
+
+        import mx.rpc.remoting.RemoteObject;
+
+        import org.springextensions.actionscript.context.support.FlexXMLApplicationContext;
+
+        {
+            UserController,
+                    UserDelegateMock,
+                    IUserDelegate,
+                    RemoteObject,
+                    UserDelegateRemote
+        }
+
+        [Bindable]
+        public var appModel:AppModelLocator = AppModelLocator.getInstance();
+        private var context:FlexXMLApplicationContext;
+
+        private function creationCompleteHandler():void {
+            context = new FlexXMLApplicationContext("applicationContext.xml");
+            context.addEventListener(Event.COMPLETE, onIocLoadCompeletHandler);
+            context.load();
+        }
+
+        private function onIocLoadCompeletHandler(event:Event):void {
+            context.removeEventListener(Event.COMPLETE, onIocLoadCompeletHandler);
+        }
+        ]]>
+    </fx:Script>
+    <fx:Style source="main.css"/>
+    <mx:HBox paddingBottom="10"
+             paddingLeft="10"
+             paddingRight="10"
+             paddingTop="10"
+             width="700">
+        <mx:VBox width="100%"
+                 verticalScrollPolicy="off"
+                 paddingRight="10">
+            <mx:ViewStack width="100%"
+                          paddingBottom="10"
+                          paddingTop="10"
+                          resizeToContent="true"
+                          selectedIndex="{appModel.viewing}">
+                <view:UserLogin/>
+                <view:UserList/>
+            </mx:ViewStack>
+        </mx:VBox>
+    </mx:HBox>
+
+</mx:Application>

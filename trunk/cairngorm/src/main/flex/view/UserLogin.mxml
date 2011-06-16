@@ -1,0 +1,82 @@
+<?xml version="1.0"?>
+<mx:Canvas xmlns:fx="http://ns.adobe.com/mxml/2009"
+           xmlns:mx="library://ns.adobe.com/flex/mx">
+
+    <!--<fx:Metadata>-->
+        <!--[RouteMVCEvents(events="userLogin")]-->
+        <!--[Event(name="userLogin",type="event.UserLoginEvent")]-->
+    <!--</fx:Metadata>-->
+    <fx:Declarations>
+        <mx:StringValidator id="vUsername"
+                            source="{ usernameItem }"
+                            property="text"
+                            required="true"/>
+        <mx:StringValidator id="vPassword"
+                            source="{ passwordItem }"
+                            property="text"
+                            required="true"/>
+    </fx:Declarations>
+    <fx:Script>
+        <![CDATA[
+        import com.adobe.cairngorm.control.CairngormEventDispatcher;
+
+        import event.UserLoginEvent;
+
+        import model.AppModelLocator;
+        import mx.controls.Alert;
+        import mx.events.ValidationResultEvent;
+
+        [Bindable]
+        public var appModel:AppModelLocator;
+
+        private function loginHandler():void {
+            var noUsername:Boolean = vUsername.validate().type == ValidationResultEvent.INVALID;
+            var noPassword:Boolean = vPassword.validate().type == ValidationResultEvent.INVALID;
+            if (noUsername || noPassword) {
+                Alert.show("error");
+                return;
+            } else {
+                var ulEvent:UserLoginEvent = new UserLoginEvent();
+                ulEvent.username = usernameItem.text;
+                ulEvent.password = passwordItem.text;
+
+                vUsername.enabled = false;
+                usernameItem.text = "";
+                vUsername.enabled = true;
+                vPassword.enabled = false;
+                passwordItem.text = "";
+                vPassword.enabled = true;
+
+                CairngormEventDispatcher.getInstance().dispatchEvent(ulEvent);
+            }
+        }
+        ]]>
+    </fx:Script>
+
+    <mx:Panel title="User Login"
+              horizontalCenter="0">
+        <mx:Form id="loginForm"
+                 defaultButton="{ loginBtn }">
+            <mx:FormItem label="Username:"
+                         required="true">
+                <mx:TextInput id="usernameItem"/>
+            </mx:FormItem>
+            <mx:FormItem label="Password:"
+                         required="true">
+                <mx:TextInput id="passwordItem"
+                              displayAsPassword="true"/>
+            </mx:FormItem>
+            <mx:FormItem direction="horizontal"
+                         verticalGap="15"
+                         paddingTop="20">
+                <mx:Button id="loginBtn"
+                           label="Login"
+                           click="loginHandler()"/>
+            </mx:FormItem>
+        </mx:Form>
+        <mx:Label htmlText="Username: user   Password: password"
+                  width="100%"
+                  horizontalCenter="0"/>
+    </mx:Panel>
+
+</mx:Canvas>
