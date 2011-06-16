@@ -3,8 +3,7 @@
                 xmlns:mx="library://ns.adobe.com/flex/mx"
                 layout="vertical"
                 creationComplete="initApp()"
-                horizontalAlign="left"
-                viewSourceURL="srcview/index.html">
+                horizontalAlign="left">
 
     <fx:Script>
 		<![CDATA[
@@ -27,22 +26,6 @@
         private var _moduleInfoList:Dictionary = new Dictionary();
 
         private function initApp():void {
-            var customMenuItem1:ContextMenuItem = new ContextMenuItem("Open application-context.xml");
-            customMenuItem1.addEventListener(ContextMenuEvent.MENU_ITEM_SELECT, function():void {
-                navigateToURL(new URLRequest('application-context.xml'));
-            });
-            var customMenuItem2:ContextMenuItem = new ContextMenuItem("Open module1-context.xml");
-            customMenuItem2.addEventListener(ContextMenuEvent.MENU_ITEM_SELECT, function():void {
-                navigateToURL(new URLRequest('module1-context.xml'));
-            });
-            var customMenuItem3:ContextMenuItem = new ContextMenuItem("Open module2-context.xml");
-            customMenuItem3.addEventListener(ContextMenuEvent.MENU_ITEM_SELECT, function():void {
-                navigateToURL(new URLRequest('module2-context.xml'));
-            });
-            ApplicationUtils.application.contextMenu.customItems.push(customMenuItem1);
-            ApplicationUtils.application.contextMenu.customItems.push(customMenuItem2);
-            ApplicationUtils.application.contextMenu.customItems.push(customMenuItem3);
-
             _applicationContext = new FlexXMLApplicationContext("application-context.xml");
             _applicationContext.addEventListener(Event.COMPLETE, complete_handler);
             _applicationContext.load();
