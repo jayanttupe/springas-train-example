@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<BasicSASModule xmlns="org.springextensions.actionscript.module.*"
+                xmlns:mx="http://www.adobe.com/2006/mxml" xmlns:code="*"
+                creationComplete="initModule()"
+                layout="vertical"
+                horizontalAlign="left">
+	<mx:Script>
+		<![CDATA[
+        import com.ncs.swc.ModuleClass;
+
+        import org.springextensions.actionscript.stage.DefaultAutowiringStageProcessor;
+
+            {
+                ModuleClass
+            }
+
+			private function initModule():void {
+				moduleApplicationContext.addConfigLocation("module2-context.xml");
+				moduleApplicationContext.addEventListener(Event.COMPLETE, complete_handler);
+				moduleApplicationContext.load();
+				var ap:DefaultAutowiringStageProcessor;
+			}
+
+			private function complete_handler(event:Event):void {
+				moduleApplicationContext.removeEventListener(Event.COMPLETE, complete_handler);
+			}
+		]]>
+	</mx:Script>
+	<mx:Label fontSize="20"
+			  text="MODULE #2"/>
+	<mx:HBox>
+		<code:InjectedTextLabel/>
+	</mx:HBox>
+</BasicSASModule>
