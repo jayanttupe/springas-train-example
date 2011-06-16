@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml">
+	<mx:Script>
+		<![CDATA[
+
+			[Bindable]
+			[Autowired(name="injectedText")]
+			public var titleText:String;
+
+			[Bindable]
+			[Autowired(name="injectedText2")]
+			public var titleText2:String;
+		]]>
+	</mx:Script>
+	<mx:VBox>
+		<mx:Label id="lblTitle"
+				  text="{titleText}"/>
+		<mx:Label id="lblTitle2"
+				  text="{titleText2}"/>
+	</mx:VBox>
+</mx:Canvas>
