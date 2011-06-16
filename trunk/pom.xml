@@ -13,7 +13,6 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <test.apps.dir>test-apps</test.apps.dir>
         <sas.version>1.1</sas.version>
         <!--<flexmojos.version>3.8</flexmojos.version>-->
         <flexmojos.version>4.0-alpha-5</flexmojos.version>
@@ -41,14 +40,11 @@
         <module>springasMvc</module>
         <module>springasMvc-scan</module>
         <module>cairngorm</module>
+        <module>generateAS</module>
         <module>cairngormstore</module>
-        <!--<module>localization</module>-->
-        <!--<module>movie-app</module>-->
-        <!--<module>movie-app-mxml</module>-->
-        <!--<module>movie-app-metadata</module>-->
-        <!--<module>multiple-modules</module>-->
+        <module>localization</module>
+        <module>multiModule</module>
         <!--<module>security</module>-->
-        <!--<module>stagewiring</module>-->
     </modules>
 
     <repositories>
@@ -342,7 +338,7 @@
                         <!--<reportOutputDirectory>${project.basedir}/target/report</reportOutputDirectory>-->
                         <targetPlayer>${flashplayer.version}</targetPlayer>
                         <storepass></storepass>
-                        <sourceFile>${project.name}.mxml</sourceFile>
+                        <sourceFile>${project.basedir}/src/main/flex/${project.name}.mxml</sourceFile>
                         <htmlName>${project.name}</htmlName>
                         <localesCompiled>
                             <locale>en_US</locale>
@@ -351,9 +347,10 @@
                             <bgcolor>#FFFFFF</bgcolor>
                         </parameters>
                         <!--<output>${project.build.finalName}.swf</output>-->
-                        <output>${project.basedir}/target/${project.build.finalName}.swf</output>
+                        <!--<output>${project.basedir}/target/${project.build.finalName}.swf</output>-->
                         <webappDirectory>${project.basedir}/target</webappDirectory>
                         <!--<coverageViewerPath/>-->
+                        <warnings></warnings>
                     </configuration>
                 </plugin>
 
