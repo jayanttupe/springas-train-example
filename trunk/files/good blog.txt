@@ -5,3 +5,7 @@ http://www.riameeting.com/node/450
 
 http://dev.c-ware.de/confluence/display/PUBLIC/Flexmojos+generated+AS3+model+with+Enum+support+using+BlazeDS
 http://stackoverflow.com/questions/3014288/is-there-a-maven-plugin-to-generate-as3-classes-from-java-for-blazeds
+
+http://www.graniteds.org/confluence/display/DOC/3.+Gas3+Code+Generator
+
+http://www.learnosity.com/techblog/index.cfm/2010/3/21/Flex-3-to-Flex-4-Migration-Howto
