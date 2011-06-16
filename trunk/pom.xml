@@ -40,7 +40,6 @@
         <module>helloWorld</module>
         <module>springasMvc</module>
         <module>cairngorm</module>
-        <module>cafe-townsend-mvc</module>
         <module>cairngormstore</module>
         <!--<module>localization</module>-->
         <!--<module>movie-app</module>-->
@@ -311,7 +310,7 @@
                                 <!--<goal>generate</goal>-->
                                 <goal>compile-swf</goal>
                                 <!--<goal>copy-flex-resources</goal>-->
-                                <goal>wrapper</goal>
+                                <!--<goal>wrapper</goal>-->
                             </goals>
                         </execution>
                     </executions>
