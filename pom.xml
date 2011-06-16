@@ -39,6 +39,7 @@
     <modules>
         <module>helloWorld</module>
         <module>springasMvc</module>
+        <module>springasMvc-scan</module>
         <module>cairngorm</module>
         <module>cairngormstore</module>
         <!--<module>localization</module>-->
