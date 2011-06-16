@@ -13,7 +13,7 @@ public class AppModelLocator {
 
     public var userList:ArrayCollection=new ArrayCollection();
 
-    public function AppLocator():void {
+    public function AppModelLocator():void {
         if (AppModelLocator.appModel != null)
             throw new Error("Only one ModelLocator instance should be instantiated");
     }
