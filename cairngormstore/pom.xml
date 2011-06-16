@@ -22,6 +22,11 @@
             <type>swc</type>
         </dependency>
         <dependency>
+            <groupId>org.springextensions.actionscript</groupId>
+            <artifactId>spring-actionscript-cairngorm</artifactId>
+            <type>swc</type>
+        </dependency>
+        <dependency>
             <groupId>com.adobe.flexunit</groupId>
             <artifactId>flexunit</artifactId>
             <type>swc</type>
