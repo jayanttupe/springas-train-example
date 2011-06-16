@@ -1,3 +1,7 @@
 http://www.cnblogs.com/blueheart104/archive/2010/04/16/1713783.html
 
 http://www.riameeting.com/node/450
+
+
+http://dev.c-ware.de/confluence/display/PUBLIC/Flexmojos+generated+AS3+model+with+Enum+support+using+BlazeDS
+http://stackoverflow.com/questions/3014288/is-there-a-maven-plugin-to-generate-as3-classes-from-java-for-blazeds
