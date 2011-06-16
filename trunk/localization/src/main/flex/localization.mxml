@@ -1,0 +1,86 @@
+<?xml version="1.0"?>
+<mx:Application xmlns:fx="http://ns.adobe.com/mxml/2009"
+                xmlns:mx="library://ns.adobe.com/flex/mx"
+                layout="vertical" creationComplete="init()" preinitialize="createResourceBundles()"
+                horizontalAlign="left" currentState="en">
+
+    <mx:states>
+        <mx:State name="en"/>
+        <mx:State name="zh"/>
+    </mx:states>
+
+    <fx:Script>
+		<![CDATA[
+        import mx.resources.IResourceManager;
+        import mx.resources.ResourceBundle;
+        import mx.resources.ResourceManager;
+
+        import org.springextensions.actionscript.context.support.FlexXMLApplicationContext;
+        import org.springextensions.actionscript.localization.LocalizationStageProcessor;
+
+        [Bindable]
+        private var locales:Array = ['en','zh'];
+
+        private var _applicationContext:FlexXMLApplicationContext;
+
+        private function createResourceBundles():void {
+            var resourceBundle:ResourceBundle = new ResourceBundle("en", "myResources");
+            resourceBundle.content['myLabel_text'] = 'This is an english label';
+            resourceBundle.content['myCb_prompt'] = 'This is an english prompt';
+            resourceBundle.content['myCb_dataProvider'] = ['english 1','english 2','english 3'];
+            var resourceManager:IResourceManager = ResourceManager.getInstance();
+            resourceManager.addResourceBundle(resourceBundle);
+            resourceManager.update();
+
+            resourceBundle = new ResourceBundle("zh", "myResources");
+            resourceBundle.content['myLabel_text'] = "这是中文标签";
+            resourceBundle.content['myCb_prompt'] = "中文提示信息";
+            resourceBundle.content['myCb_dataProvider'] = ['中文 一','中文 二','中文 三'];
+            resourceBundle.content['chineseOnlyLabel_text'] = "仅供中文展示";
+
+            resourceManager.addResourceBundle(resourceBundle);
+            resourceManager.update();
+        }
+
+        private function init():void {
+            _applicationContext = new FlexXMLApplicationContext("application-context.xml");
+            _applicationContext.addEventListener(Event.COMPLETE, complete_handler);
+            _applicationContext.load();
+        }
+
+        private function complete_handler(event:Event):void {
+            _applicationContext.removeEventListener(Event.COMPLETE, complete_handler);
+            handleLocaleChange();
+        }
+
+        private function handleLocaleChange():void {
+            changeState();
+            var resourceManager:IResourceManager = ResourceManager.getInstance();
+            resourceManager.localeChain = [ localeComboBox.selectedItem ];
+        }
+
+        private function changeState():void {
+            switch (localeComboBox.selectedIndex) {
+                case 0:
+                    currentState = "en";
+                    break;
+                case 1:
+                    currentState = "zh";
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        {
+            LocalizationStageProcessor;
+        }
+        ]]>
+	</fx:Script>
+    <mx:ComboBox dataProvider="{locales}" change="handleLocaleChange()" id="localeComboBox"/>
+    <mx:HRule width="100%" />
+    <mx:Label id="myLabel"/>
+    <mx:ComboBox id="myCb"/>
+    <mx:Label id="chineseOnlyLabel" includeIn="zh"/>
+
+</mx:Application>
