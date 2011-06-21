@@ -69,7 +69,6 @@
             <id>servebox.org</id>
             <url>http://maven.servebox.org/repository</url>
         </repository>
-
     </repositories>
 
     <pluginRepositories>
@@ -284,15 +283,6 @@
                 <type>swc</type>
                 <version>${flex.skins}</version>
             </dependency>
-            <!-- Themes -->
-            <!--<dependency>
-               <groupId>com.adobe.flex.framework</groupId>
-               <artifactId>halo</artifactId>
-               <version>${flex.sdk.version}</version>
-               <classifier>theme</classifier>
-               <type>swc</type>
-               <scope>theme</scope>
-            </dependency>-->
             <dependency>
                <groupId>com.adobe.flex.framework</groupId>
                <artifactId>spark</artifactId>

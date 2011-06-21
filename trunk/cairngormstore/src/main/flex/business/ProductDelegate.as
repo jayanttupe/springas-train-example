@@ -3,7 +3,6 @@ package business {
 	import mx.rpc.remoting.RemoteObject;
 
 	import org.springextensions.actionscript.cairngorm.business.AbstractBusinessDelegate;
-	import org.springextensions.actionscript.cairngorm.business.CairngormServiceLocator;
 
 	/**
 	 * @version  $Revision: $
