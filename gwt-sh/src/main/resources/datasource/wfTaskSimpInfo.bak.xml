@@ -1,0 +1,37 @@
+<DataSource    ID="wfTaskSimpInfo"  serverType="generic"  >
+    <fields>
+        <field name="taskID"      type="sequence" hidden="true"       primaryKey="true"/>
+        <field name="procInstID" type="text" hidden="true" />
+        <field name="businessKey" type="text" hidden="true" />
+        <field name="priority"    type="enum"     title="${mock.Item}"        length="150"    >
+        	<valueMap>
+        		<value ID="all" >All</value>
+        		<value ID="Serious"><span style='color:#FF0000;'>Serious</span></value>
+        		<value ID="High" ><span style='color:#ff8020;'>High</span></value>
+        		<value ID="Medium" ><span style='color:#ffc040;'>Medium</span></value>
+        		<value ID="Low" ><span style='color:#200000;'>Low</span></value>	
+        	</valueMap>
+        </field>
+        <field name="flowType" type="enum" title="${}" >
+        		<valueMap>
+        			<value ID="all" >所有</value>
+        			<value ID="Contract" >合同</value>
+        			<value ID="Order" >订单</value>
+        			<value ID="Command" >指令</value>
+        		</valueMap>		        
+		</field>	 
+        <field name="taskName"  type="text"     title="taskName"  length="10"     />
+        <field name="flowName" type="text" title="flowName" length="20" />
+        <field name="status" type="text" title="status" length="20" />        
+        <field name="taken" type="text" title="taken" length="20" />
+        <field name="outList" type="any" hidden="true" />
+        <field name="historyOutcoming" type="text" hidden="true" />           
+        <field name="formInfo" type="any" hidden="true" length="20" />        
+        <field name="createTime" type="date" title="createTime" length="20" />
+        <field name="commitTime" type="date" title="commitTime" length="20" />
+        <field name="takenTime" type="date" title="takenTime" length="20" />     
+     </fields> 
+          
+     <serverObject lookupStyle="spring" bean="simpleDataSourceService"/>
+ 
+</DataSource>

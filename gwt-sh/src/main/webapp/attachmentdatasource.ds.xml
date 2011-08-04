@@ -1,0 +1,30 @@
+  <DataSource  
+      ID="attachmentdatasource"  
+      serverType="generic"
+       tableName="SPMS_ATTACHMENT"  
+      beanClassName="com.skynet.spms.persistence.entity.base.Attachment"   
+  > 
+    <fields>
+       <field name="id"      type="text" hidden="true"       primaryKey="true"/>  
+       <field name="fileName"    type="text"     title="fileName"  required="true"/>  
+     <field name="fileType"    type="text"     title="fileType"  required="true"/>  
+     <field name="description"    type="text"     title="description"  required="true"/>  
+     <field name="fileSize"    type="integer"     title="fileSize"  required="true"/>  
+     <field name="modifyDate"    type="date"     title="modifyDate"  required="true"/>  
+     <field name="operator"    type="text"     title="operator"  required="true"/>  
+     
+     <field name="relatedBussinessId"  type="text" title="relatedBussinessId"  required="true"/>
+    
+    </fields>
+  
+  </DataSource>
+
+
+<!-- 	private String title;
+	private String fileName;
+	private String fileType;
+	private String description;
+	private int fileSize;
+	private Date modifyDate;
+	private String operator;
+	private String relatedBussinessId; -->

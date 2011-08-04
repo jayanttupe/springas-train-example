@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<process key="quote" name="提交报价单" xmlns="http://jbpm.org/4.4/jpdl">
+
+	<variable init-expr="quoteForm" name="formName" type="string"/>
+	
+	<description>提交报价单</description>
+
+	<start g="128,16,80,40">
+		<transition name="开始" to="newQuote" g="-35,-20"/>
+	</start>
+
+	<task assignee="#{creator}" description="新建报价单" name="newQuote" g="106,92,80,40"
+	form="test1">
+		<transition name="deploy" to="checkQuote" g="-53,-20"/>
+	</task>
+	
+	<decision description="审查报价单" expr="${decisionQuoteFlow}" name="checkQuote" g="124,195,80,40"
+	form="test2,test3">
+    	<transition name="aog" to="aogSale" g="-29,-20"/>
+    	<transition name="outstock" to="outOfStockRecord" g="-69,-20"/>
+    	<transition name="commSales" to="newCommSale" g="-77,-20"/> 
+  	</decision>
+  	
+  	<task assignee="#{sale}" description="AOG采购流程" name="aogSale" g="129,310,80,40"
+  	form="test1,test2">
+  		<transition name="aogApproval" to="approval" g="-93,-20"/>  		
+  	</task>
+  	
+  	<task assignee="#{business}" description="库房缺货流程" name="outOfStockRecord" g="6,310,80,40"
+  	form="test1">
+  		<transition name="outOfStockAlarm" to="outOfStockEnd" g="-125,-20">
+  			<event-listener expr="#{wfMsgService}">
+				<property name="alarm">
+					<string value="库房缺货警告"/>
+				</property>
+			</event-listener>
+  		</transition>
+  	</task>
+  	  	  	
+  	<task description="新建采购流程" name="newCommSale" g="291,320,80,40">
+  		<transition name="commApproval" to="approval" g="-101,-20">  
+  			<event-listener expr="#{wfMsgService}">
+				<property name="msg">
+					<string value="新采购信息"/>
+				</property>
+			</event-listener>
+		</transition>
+  	</task>
+  	
+  	<end description="库房缺货" name="outOfStockEnd" g="15,452,80,40"/>
+  	
+  	<end description="审计" name="approval" g="193,450,80,40"/>
+
+</process>

@@ -1,0 +1,61 @@
+  <DataSource  
+      ID="payapplydatasource"  
+      serverType="generic"
+       tableName="SPMS_PAY_APPLY"  
+      beanClassName="com.skynet.spms.persistence.entity.financeService.buySettleAccounts.PayApplyTable"   
+  >  
+      <fields>  
+          <field name="id"      type="text" hidden="true"       primaryKey="true"/>  
+          <field name="applyDate"    type="date"     title="applyDate"  required="true"/>  
+          <field name="applyDepartment"         type="text"     title="applyDepartment"         length="20"        required="true"/>  
+          <field name="applyNumber" type="text"     title="applyNumber" length="20"/>  
+          <field name="cashierName" type="text"     title="cashierName" length="20"/>  
+          <field name="orderNumber" type="text"     title="orderNumber" length="20"/>  
+          <field name="applyUser" type="text"     title="applyUser" length="20"/>  
+          <field name="check" type="text"     title="check" length="20"/> 
+          <field name="checkUser" type="text"     title="checkUser" length="20"/>
+           <field name="countersignResult" type="text"     title="countersignResult" length="20"/>  
+          <field name="payAmount" type="float"    title="payAmount length="20">
+           <validators>  
+                  <validator type="floatLimit" precision="2" min="0" errorMessage="Please enter a valid cost"/>  
+              </validators>  
+          </field> 
+          
+           <field name="accountName" type="text"     title="accountName" length="20"/>  
+           
+           <field name="accountAddress" type="text"     title="accountAddress" length="100"/>  
+           <field name="account" type="text"     title="account" length="30"/>  
+           
+             <field name="m_Payment"       type="enum"      title="m_Payment"       length="5" >
+                 <valueMap>
+                 
+                 </valueMap>
+             </field>
+             
+              <field name="m_InternationalCurrencyCode"       type="enum"      title="m_InternationalCurrencyCode"       length="8"/>
+              
+              <field name="m_PayActionType"       type="enum"      title="m_PayActionType"       length="8"/>
+              
+              <field name="m_Attachment"  title= "Attachment" multiple="true"  
+                
+                type="attachmentdatasource"   
+                javaClass="com.skynet.spms.persistence.entity.base.Attachment"/>
+          
+      </fields>  
+    
+      <serverObject lookupStyle="spring" bean="payApplyDao"/>  
+    
+    <!--1-->
+      <!-- You can define an operationBindings section to bind operation names to server method  
+           (potentially additionally discriminated by the operationId).  
+           In the absense of this section, the server will look for a server method named after  
+           the operationType.    
+      -->  
+       
+<!--       <operationBindings>  
+          <binding operationType="fetch" serverMethod="fetch">  
+          <serverObject  lookupStyle="spring" bean="payApplyManagerImpl"/>  
+          </binding>  
+      </operationBindings>   -->
+       
+  </DataSource> 

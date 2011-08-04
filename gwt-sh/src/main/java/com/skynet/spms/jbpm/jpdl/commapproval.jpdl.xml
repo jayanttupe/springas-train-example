@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<process key="common_approval" name="普通审批流程" xmlns="http://jbpm.org/4.4/jpdl">
+	
+	<variable init-expr="routine" name="priorityType" type="string" history="true"/>
+	
+	<variable init-expr="Contract" name="flowType" type="string" history="true"/>
+	
+	<description>普通审批流程</description>
+
+	<start g="254,28,80,40">
+		<transition to="startApproval"/>
+		<event-listener expr="#{wfNotifyService}">
+       		<property name="msg">
+       			<string value="请求审批合同"/>
+       		</property>
+      	</event-listener>  
+	</start>
+	
+	<sub-process name="startApproval" sub-process-key="approval_subflow">	
+        <description>启动审批流程</description>
+        <parameter-in var="param" subvar="param" />
+        <parameter-in var="businessKey" subvar="businessKey" />
+	    <transition name="agree" to="deploy" />
+    	<transition name="refuse" to="refuse" />
+  	</sub-process>
+  	
+  	<end name="deploy" g="568,704,80,40">
+  		<on event="start" >
+  		<event-listener expr="#{flowStateListener}">
+       		<property name="state">
+       			<string value="发布合同"/>
+       		</property>
+      	</event-listener>
+      	</on>
+  	</end>
+  	
+	<end name="refuse" g="89,713,80,40" >
+		<on event="start" >
+  		<event-listener expr="#{flowStateListener}">
+       		<property name="state">
+       			<string value="取消合同"/>
+       		</property>
+      	</event-listener>
+      	</on>
+	</end>
+</process>

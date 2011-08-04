@@ -1,0 +1,6 @@
+imp spms/spms file='path name' full=y
+
+-Xms256m
+-Xmx512m
+-XX:PermSize=256m
+-XX:MaxPermSize=512m

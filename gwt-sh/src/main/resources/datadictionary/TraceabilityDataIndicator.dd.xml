@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<datadict name="TraceDataIndicator" type="line" displayName="desc" >
+<key type="str" >NAP,NAV,YES</key>
+<vals>
+<val type="zh_cn-str" name="desc" >追溯不适用,追溯不可用,追溯可请求</val>
+<val type="en-str" name="desc" >NAP,NAV,YES</val>
+</vals>
+</datadict>
+</root>

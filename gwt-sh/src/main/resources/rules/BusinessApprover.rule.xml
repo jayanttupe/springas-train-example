@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 业务审批工作流角色-->
+<config name="BusinessApprover" >
+<moduleFilter default="all">
+	
+</moduleFilter>	
+
+</config>

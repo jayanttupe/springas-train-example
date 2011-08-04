@@ -1,0 +1,16 @@
+<table>
+	<tr><td>task</td></tr>
+	<tr><td>任务类型</td><td>$taskType$</td></tr>
+	<tr>
+		<td>任务编号</td><td>$taskNo$</td></tr>
+	<tr>
+		<td>任务状态</td><td>$taskStatus$</td></tr>
+	<tr>
+		<td>任务创建人</td><td>$taskBy$</td></tr>
+	<tr>
+		<td>任务创建日期</td><td>$taskDate$</td></tr>
+	<tr>
+		<td>任务执行人</td><td>$actionBy$</td></tr>
+	<tr>
+		<td>任务执行日期</td><td>$actionDate$</td></tr>	
+</table>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	<!-- 合同管理 -->
+	<module name="contractManagement" >
+		<submodules>
+			<!-- 合同条款模板 -->
+			<module name="template" icon="contract_01" >
+				<feature>
+					ADD,DELETE,MODIFY,PUBLISH,CANCELPUBLISH,ADDSALESQUOTATION,MESSAGE,LOG,PRINT,EXPORT,SENIORSEARCH
+				</feature>
+			</module>
+		</submodules>
+	</module>
+</config>

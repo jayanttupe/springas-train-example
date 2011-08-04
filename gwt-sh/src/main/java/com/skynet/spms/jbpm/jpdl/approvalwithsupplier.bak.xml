@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<process key="approval_withsupplier" name="含供应商的审批流程" xmlns="http://jbpm.org/4.4/jpdl">
+
+	<variable init-expr="quoteForm" name="formName" type="string" />
+
+	<description>审批流程(包含供应商)</description>
+
+	<start g="254,28,80,40">
+		<transition to="startApproval" />
+		<event-listener expr="#{wfNotifySupplierService}">
+			<property name="msg">
+				<string value="请求供应商审批合同" />
+			</property>
+		</event-listener>
+	</start>
+
+	<sub-process name="startApproval" sub-process-key="approval_subflow">
+	   	<parameter-in var="param" subvar="param" />
+	   	<parameter-in var="businessKey" subvar="businessKey" />	   	
+		<transition name="agree" to="agree" />
+		<transition name="refuse" to="refuse" />
+	</sub-process>
+
+	<task name="agree" candidate-groups="oper" >
+		<description>等待供应商发布合同</description>
+		<on event="start">
+			<event-listener expr="#{wfNotifySupplierService}">
+				<property name="msg">
+					<string value="请求供应商发布合同" />
+				</property>
+			</event-listener>
+		</on>
+		<transition name="deploy" to="deploy">
+			<description>合同发布</description>
+		</transition>
+	</task>
+
+	<task name="refuse" candidate-groups="oper" >
+		<description>审批未通过</description>
+		<transition name="modifydirect" to="modify">
+			<description>直接修改合同</description>
+		</transition>
+		<transition name="modifywithsupplier" to="waitsuppliermodify">
+			<description>请求供应商修改合同</description>
+			<event-listener expr="#{wfNotifySupplierService}">
+				<property name="msg">
+					<string value="请求供应商修改合同" />
+				</property>
+			</event-listener>
+		</transition>
+		<transition name="cancel" to="waitsuppliercancel">
+			<description>合同取消</description>
+			<event-listener expr="#{wfNotifySupplierService}">
+				<property name="msg">
+					<string value="请求供应商取消合同" />
+				</property>
+			</event-listener>
+		</transition>
+	</task>
+
+	<task name="waitsuppliermodify" candidate-groups="oper" >
+		<description>等待供应商修改合同</description>
+		<transition name="modify" to="modify">
+			<description>合同修改</description>
+		</transition>
+	</task>
+
+	<task name="modify" candidate-groups="oper" >
+		<description>修改合同</description>
+		<transition name="modify" to="startApproval">
+			<description>直接修改合同</description>
+		</transition>
+		<on event="end">
+			<event-listener expr="#{wfNotifyService}">
+				<property name="msg">
+					<string value="合同修改" />
+				</property>
+			</event-listener>
+		</on>
+	</task>
+
+	<task name="waitsuppliercancel" candidate-groups="oper" >
+		<description>等待供应商取消合同</description>
+		<transition name="cancel" to="cancel">
+			<description>合同发布</description>
+		</transition>
+	</task>
+
+	<end name="deploy" g="568,704,80,40">
+		<on event="end">
+			<event-listener expr="#{wfNotifyService}">
+				<property name="msg">
+					<string value="发布合同" />
+				</property>
+			</event-listener>
+		</on>
+	</end>
+
+	<end name="cancel" g="89,713,80,40">
+		<on event="end">
+			<event-listener expr="#{wfNotifyService}">
+				<property name="msg">
+					<string value="取消合同" />
+				</property>
+			</event-listener>
+		</on>
+	</end>
+</process>

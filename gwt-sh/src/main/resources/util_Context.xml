@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+
+	xsi:schemaLocation="
+       http://www.springframework.org/schema/beans 
+       http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+       http://www.springframework.org/schema/aop 
+       http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+       http://www.springframework.org/schema/context
+         http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+
+	<context:property-placeholder location="classpath:application.properties" />
+
+	<context:annotation-config />
+
+	<context:component-scan base-package="com.skynet.common" />
+
+	<!-- aop -->
+	<aop:aspectj-autoproxy/>
+	
+	<!-- cache -->
+	<bean id="cacheAdmin"
+		class="com.opensymphony.oscache.general.GeneralCacheAdministrator">
+		<constructor-arg>
+			<props>
+				<prop key="cache.blocking">true</prop>
+				<prop key="cache.persistence.overflow.only">true</prop>
+			</props>
+		</constructor-arg>
+	</bean>
+	
+	<!-- mail -->
+	<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+		<property name="port" value="${mail.port}" />
+		<property name="host" value="${mail.host}" />		
+	</bean>   
+
+
+</beans>

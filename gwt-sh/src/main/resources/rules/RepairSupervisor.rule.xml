@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 送修业务主管 -->
+<config name="RepairSender" >
+<moduleFilter default="none">
+	<!-- 客户管理-送修服务 (customerService.module.xml) -->
+	<!-- 送修申请单管理，送修合同管理，送修送检指令管理 -->		
+	<include prefix="customerService.repairService">
+		repairRequisitionSheet,repaireContract,customerRepairInsOrder
+	</include>
+	
+	<!-- 供应商管理-修理检验 (supplierSupport.module.xml) -->
+	<!-- 送修送检指令,修理检验合同,修理发货指令,修理提货指令   -->	
+	<include prefix="supplierSupport.repairClaim">
+		customerRepairInsOrder,repairInspectClaimContractTemplate,repairDeliveryOrder,repairPickOrder
+	</include>
+	
+	<!-- 组织管理 (organization.module.xml)-->
+	<!-- 用户管理 -->
+	<include prefix="organization">
+		userinfo
+	</include>
+	
+	<!-- 组织管理-企业管理-->
+	<!-- 上客服，客户企业，供应商，制造商，报送代理商，运代商，承修商，部门管理 -->
+	<include prefix="organization.enterprise">
+		COMACSC,customer,supplier,manufacturer,clearanceAgency,carrier,repairAgency,department
+	</include>
+	
+	<!-- 备件目录 (partCatalog.module.xml) -->
+	<!-- 备件技术目录，备件销售目录，供应商价格目录，飞机构型,维修能力 -->
+	<include prefix="partCatalog">
+		technical,sales,supplierPrice,aircraftConfig,repairable
+	</include>
+	
+	<!-- 财务管理-申请管理 (account.module.xml) -->
+	<!-- 付款申请,发票申请  -->	
+	<include prefix="account.applyManager">
+		payApplyManager,invoiceApplyManager
+	</include>
+</moduleFilter>
+
+<modules>
+	
+	<!-- 备件目录 -->
+	<module name="partCatalog.technical">
+	</module>
+	<module name="partCatalog.sales">
+	</module>
+	<module name="partCatalog.supplierPrice">
+	</module>
+	<module name="partCatalog.aircraftConfig">
+	</module>
+	
+	<!-- 用户 -->
+	<module name="organization.userinfo">
+	</module>
+	
+	<!-- 组织机构 -->
+	<module name="organization.enterprise.COMACSC">
+	</module>
+	<module name="organization.enterprise.customer">
+	</module>
+	<module name="organization.enterprise.supplier">
+	</module>
+	<module name="organization.enterprise.manufacturer">
+	</module>
+	<module name="organization.enterprise.clearanceAgency">
+	</module>
+	<module name="organization.enterprise.carrier">
+	</module>
+	<module name="organization.enterprise.department">
+	</module>
+</modules>
+</config>

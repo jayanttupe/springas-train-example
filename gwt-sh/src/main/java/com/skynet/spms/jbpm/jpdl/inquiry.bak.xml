@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<process key="inquiry" name="询价流程" xmlns="http://jbpm.org/4.4/jpdl">
+
+	<variable init-expr="inquiryForm" name="formName" type="string"/>
+	
+	<description>客户询价流程</description>
+
+	<start g="466,23,80,40">
+		<transition g="22,41" name="choice oper" to="choice"/>
+	</start>
+
+	<decision desciption="按初始化参数选择新建/发布询价单" g="467,132,80,40" name="choice">
+		<transition g="-29,-20" name="new" to="newInquiry">
+			<condition expr="#{oper==&quot;new&quot;}"/>
+		</transition>
+		<transition g="-53,-20" name="deploy" to="deployInquiry">
+			<condition expr="#{oper==&quot;deploy&quot;}"/>
+		</transition>
+	</decision>
+
+	<task assignee="#{creator}" description="新建询价单" g="620,248,80,40" name="newInquiry">
+		<transition g="-53,-20" name="deploy" to="deployInquiry"/>
+	</task>
+
+	<task assignee="#{creator}" desciption="发布询价单" g="433,353,80,40" name="deployInquiry">
+		<transition g="-53,-20" name="deploy" to="newQuote">
+			<!-- sys msg -->
+			<event-listener expr="#{wfMsgService}">
+				<property name="transition">
+					<string value="deploy"/>
+				</property>
+			</event-listener>
+		</transition>
+	</task>
+
+	<task description="新建报价单" g="208,524,80,40" name="newQuote">
+		<on event="end">
+			<!-- sys msg -->
+			<event-listener expr="#{wfMsgService}">
+				<property name="transition">
+					<string value="end newQuote"/>
+				</property>
+			</event-listener>
+		</on>
+		<on event="timeout">
+      <timer duedate="5 minutes" repeat="1 minutes"/>
+			<event-listener expr="#{wfLogService}"/>
+		</on>
+		<assignment-handler expr="#{inquiryAssign}">			
+		</assignment-handler>
+		<transition g="-61,-20" name="confirm" to="confirmQuote"/>
+	</task>
+
+	<task assignee="#{creator}" description="确认报价/重新询价" g="426,667,80,40" name="confirmQuote">
+		<transition g="-53,-20" name="modify" to="deployInquiry"/>
+		<transition g="196,429" name="confirm" to="endQuote"/>      
+	</task>
+	
+   <end g="424,763,48,48" name="endQuote"/>
+   
+</process>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 合同类别配置 -->
+<templates>
+	<!-- 供应商送修合同 -->
+	<template>
+		<id>RepairInspectClaimContractTemplate</id>
+		<name>RepairInspectClaimContractTemplate</name>
+		<typeAlias_zh>供应商送修合同</typeAlias_zh>
+		<typeAlias_en>RepairInspectClaimContractTemplate</typeAlias_en>
+		<fileName>RepairInspectClaimContractTemplate.xml</fileName>
+	</template>
+	<!-- 供应商租赁合同 -->
+	<template>
+		<id>SupplierLeaseContractTemplate</id>
+		<name>SupplierLeaseContractTemplate</name>
+		<typeAlias_zh>供应商租赁合同 </typeAlias_zh>
+		<typeAlias_en>SupplierLeaseContractTemplate</typeAlias_en>
+		<fileName>SupplierLeaseContractTemplate.xml</fileName>
+	</template>
+	<!-- 供应商采购合同 -->
+	<template>
+		<id>ProcurementContractTemplate</id>
+		<name>ProcurementContractTemplate</name>
+		<typeAlias_zh>供应商采购合同 </typeAlias_zh>
+		<typeAlias_en>ProcurementContractTemplate</typeAlias_en>
+		<fileName>ProcurementContractTemplate.xml</fileName>
+	</template>
+	<!-- (客户)销售合同 -->
+	<template>
+		<id>SalesContractTemplate</id>
+		<name>SalesContractTemplate</name>
+		<typeAlias_zh>客户销售合同 </typeAlias_zh>
+		<typeAlias_en>SalesContractTemplate</typeAlias_en>
+		<fileName>SalesContractTemplate.xml</fileName>
+	</template>
+	<!-- 客户租赁合同 -->
+	<template>
+		<id>LeaseContractTemplate</id>
+		<name>LeaseContractTemplate</name>
+		<typeAlias_zh>客户租赁合同 </typeAlias_zh>
+		<typeAlias_en>LeaseContractTemplate</typeAlias_en>
+		<fileName>LeaseContractTemplate.xml</fileName>
+	</template>
+	<!-- 客户回购合同 -->
+	<template>
+		<id>BuybackContractTemplate</id>
+		<name>BuybackContractTemplate</name>
+		<typeAlias_zh>客户回购合同 </typeAlias_zh>
+		<typeAlias_en>BuybackContractTemplate</typeAlias_en>
+		<fileName>BuybackContractTemplate.xml</fileName>
+	</template>
+	<!-- 寄售协议 -->
+	<template>
+		<id>ConsignProtocolContract</id>
+		<name>ConsignProtocolContract</name>
+		<typeAlias_zh>寄售协议 </typeAlias_zh>
+		<typeAlias_en>ConsignProtocolContract</typeAlias_en>
+		<fileName>ConsignProtocolContract.xml</fileName>
+	</template>
+</templates>

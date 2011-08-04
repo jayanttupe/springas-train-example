@@ -1,0 +1,21 @@
+<DataSource    ID="mockTestPage"  serverType="generic" >
+    <fields>
+        <field name="itemID"      type="sequence" hidden="true"       primaryKey="true"/>
+        <field name="itemName"    type="text"     title="Item"        length="128"       required="true"/>
+        <field name="m_SKU"         type="text"     title="SKU"         length="10"        required="true"/>
+        <field name="description" type="text"     title="Description" length="2000"/>
+        <field name="category"    type="text"     title="Category"    length="128"       required="true"
+               foreignKey="supplyCategory.categoryName"/>       
+        <field name="unit.unitCost"    type="float"    title="Unit Cost"   required="true">
+            <validators>
+                <validator type="floatRange" min="0" errorMessage="Please enter a valid (positive) cost"/>
+                <validator type="floatPrecision" precision="2" errorMessage="The maximum allowed precision is 2"/>
+            </validators>
+        </field>
+        <field name="unit.inStock"   type="boolean"  title="In Stock"/>
+        <field name="unit.nextShipment"  type="date" title="Next Shipment"/>
+    </fields>
+    
+     <serverObject lookupStyle="spring" bean="simpleDataSourceService"/>
+     
+</DataSource>

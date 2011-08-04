@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 采购业务主管 -->
+<config name="PartPlanDemandDealer" >
+<moduleFilter default="none">
+	
+	<!-- 供应商管理-采购业务 (supplierSupport.module.xml) -->
+	<!-- 备件计划需求,采购计划,采购指令,执行采购,采购询价单,采购合同,采购提货,调拨单 -->	
+	<include prefix="supplierSupport.procurementOrder">
+		PartRequirement,ProcurementPlan,ProcurementOrder,doProcurementOrder,procurementInquirySheet,procurementContract,procurementPickupOrder,transferSheet
+	</include>
+	
+	<!-- 备件目录 (partCatalog.module.xml) -->
+	<!-- 备件技术目录，备件销售目录，供应商价格目录，飞机构型 -->
+	<include prefix="partCatalog">
+		technical,sales,supplierPrice,aircraftConfig
+	</include>
+	
+	<!-- 组织管理 (organization.module.xml)-->
+	<!-- 用户管理 -->
+	<include prefix="organization">
+		userinfo
+	</include>
+	
+	<!-- 组织管理-企业管理-->
+	<!-- 上客服，客户企业，供应商，制造商，报送代理商，运代商，承修商，部门管理 -->
+	<include prefix="organization.enterprise">
+		COMACSC,customer,supplier,manufacturer,clearanceAgency,carrier,repairAgency,department
+	</include>
+	
+	<!-- 物流管理 (logistics.module.xml) -->
+	<!-- 单证记录管理,费用记录管理 -->	
+	<include prefix="logisticsCustomsDeclaration">
+		documentRecords,logisticsOutlayRecordManage
+	</include>
+	
+	<!-- 物流管理-提发货业务 (logistics.module.xml) -->
+	<!-- 处理提货指令,处理发货指令  -->	
+	<include prefix="logisticsCustomsDeclaration.pickupDeliveryBusiness">
+		pickupOrder,deliveryOrder
+	</include>
+	
+	<!-- 物流管理-物流任务分派 (logistics.module.xml) -->
+	<!-- 提货任务分派管理,发货任务分派管理,订舱工作,取货工作,起运工作,到达工作,交货工作  -->	
+	<include prefix="logisticsCustomsDeclaration.dispatchLogisticsTask">
+		pickupDispatchTask,deliveryDispatchTask,bookingJob,takeDeliveryOfJob,shippingJob,arrivalOfGoodsJob,deliverTheGoodsJob
+	</include>
+	
+	<!-- 物流管理-物流任务分派-清关工作-进口报关单记录 (logistics.module.xml) -->
+	<!-- 进口报关单记录,进口报关保证金记录,进口报关关税记录  -->	
+	<include prefix="logisticsCustomsDeclaration.dispatchLogisticsTask.customsClearanceJob.importCustomsDeclaration">
+		importCustomsDeclaration,importSecurityDeposit,importCustomsTariffRecord
+	</include>
+	
+	<!-- 物流管理-物流任务分派-清关工作-出口报关单记录 (logistics.module.xml) -->
+	<!-- 出口报关单记录,出口报关保证金记录 ,出口报关关税记录  -->	
+	<include prefix="logisticsCustomsDeclaration.dispatchLogisticsTask.customsClearanceJob.exportCustomsDeclaration">
+		exportCustomsDeclaration,exportSecurityDeposit,exportCustomsTariffRecord
+	</include>
+	
+	<!-- 仓储管理-航材收料入库 (stock.module.xml) -->
+	<!-- 待收料航材,航材收料单,合格待入库,入库记录管理,送修件登记    -->	
+	<include prefix="stockServiceBusiness.inStockRoomBusiness">
+		waitReceivingSheet,receivingSheet,inStockRecord,inStockRecordManage,reparePartRegister
+	</include>
+	
+	<!-- 仓储管理-航材检验管理(stock.module.xml) -->
+	<!-- 待检验航材,航材检验单,不合格品登记记录,航材证书管理,证书存档位置管理 -->	
+	<include prefix="stockServiceBusiness.checkAndAcceptBusiness">
+		waitCheckAndAcceptSheet,checkAndAcceptSheet,nonconformingReport,credentialsRecord,credentials
+	</include>
+	
+	<!-- 财务管理-申请管理 (account.module.xml) -->
+	<!-- 付款申请,发票申请  -->	
+	<include prefix="account.applyManager">
+		*
+	</include>
+	
+</moduleFilter>
+
+<modules>
+	
+	<!-- 备件目录 -->
+	<module name="partCatalog.sales">
+	</module>
+	<module name="partCatalog.aircraftConfig">
+	</module>
+	
+	<!-- 用户 -->
+	<module name="organization.userinfo">
+	</module>
+	
+	<!-- 组织机构 -->
+	<module name="organization.enterprise.COMACSC">
+	</module>
+	<module name="organization.enterprise.customer">
+	</module>
+	<module name="organization.enterprise.clearanceAgency">
+	</module>
+	<module name="organization.enterprise.carrier">
+	</module>
+	<module name="organization.enterprise.repairAgency">
+	</module>
+	<module name="organization.enterprise.department">
+	</module>
+	
+	<!-- 物流 -->
+	<module name="logisticsCustomsDeclaration.documentRecords">
+	</module>
+	<module name="logisticsCustomsDeclaration.logisticsOutlayRecordManage">
+	</module>
+	<module name="logisticsCustomsDeclaration.pickupDeliveryBusiness.pickupOrder">
+	</module>
+	<module name="logisticsCustomsDeclaration.pickupDeliveryBusiness.deliveryOrder">
+	</module>
+	<module name="logisticsCustomsDeclaration.dispatchLogisticsTask.pickupDispatchTask">
+	</module>
+	<module name="logisticsCustomsDeclaration.dispatchLogisticsTask.deliveryDispatchTask">
+	</module>
+	<module name="logisticsCustomsDeclaration.dispatchLogisticsTask.bookingJob">
+	</module>
+	<module name="logisticsCustomsDeclaration.dispatchLogisticsTask.takeDeliveryOfJob">
+	</module>
+	<module name="logisticsCustomsDeclaration.dispatchLogisticsTask.shippingJob">
+	</module>
+	<module name="logisticsCustomsDeclaration.dispatchLogisticsTask.arrivalOfGoodsJob">
+	</module>
+	<module name="logisticsCustomsDeclaration.dispatchLogisticsTask.deliverTheGoodsJob">
+	</module>
+	<module name="logisticsCustomsDeclaration.dispatchLogisticsTask.customsClearanceJob.importCustomsDeclaration.importCustomsDeclaration">
+	</module>
+	<module name="logisticsCustomsDeclaration.dispatchLogisticsTask.customsClearanceJob.importCustomsDeclaration.importSecurityDeposit">
+	</module>
+	<module name="logisticsCustomsDeclaration.dispatchLogisticsTask.customsClearanceJob.importCustomsDeclaration.importCustomsTariffRecord">
+	</module>
+	<module name="logisticsCustomsDeclaration.dispatchLogisticsTask.deliverTheGoodsJob">
+	</module>
+	<module name="logisticsCustomsDeclaration.dispatchLogisticsTask.customsClearanceJob.exportCustomsDeclaration.exportCustomsDeclaration">
+	</module>
+	<module name="logisticsCustomsDeclaration.dispatchLogisticsTask.customsClearanceJob.exportCustomsDeclaration.exportSecurityDeposit">
+	</module>
+	<module name="logisticsCustomsDeclaration.dispatchLogisticsTask.customsClearanceJob.exportCustomsDeclaration.exportCustomsTariffRecord">
+	</module>
+	
+	<!-- 仓库收料入库 -->
+	<module name="stockServiceBusiness.inStockRoomBusiness.waitReceivingSheet">
+	</module>
+	<module name="stockServiceBusiness.inStockRoomBusiness.receivingSheet">
+	</module>
+	<module name="stockServiceBusiness.inStockRoomBusiness.inStockRecord">
+	</module>
+	<module name="stockServiceBusiness.inStockRoomBusiness.inStockRecordManage">
+	</module>
+	<module name="stockServiceBusiness.inStockRoomBusiness.reparePartRegister">
+	</module>
+	
+	<!-- 仓库检验 -->
+	<module name="stockServiceBusiness.checkAndAcceptBusiness.waitCheckAndAcceptSheet">
+	</module>
+	<module name="stockServiceBusiness.checkAndAcceptBusiness.checkAndAcceptSheet">
+	</module>
+	<module name="stockServiceBusiness.checkAndAcceptBusiness.inStockRecord">
+	</module>
+	<module name="stockServiceBusiness.checkAndAcceptBusiness.credentialsRecord">
+	</module>
+	<module name="stockServiceBusiness.checkAndAcceptBusiness.credentials">
+	</module>
+	
+</modules>
+</config>

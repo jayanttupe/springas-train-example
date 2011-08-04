@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	<module name="account">
+		<submodules>
+		<!-- 申请管理 -->
+			   <module name="applyManager"  icon="account_01"  >
+				<submodules>
+				<!--付款申请-->
+					<module name="payApplyManager" icon="account_01_01" >
+					<feature>
+							ADD,DELETE,MODIFY,COMMITCHECK,CHECK,PRINT
+					</feature>
+						<data default="finance_payApply_dataSource">
+							<dataSource name="finance_payApply_dataSource"
+								className="com.skynet.spms.persistence.entity.financeService.buySettleAccounts.PayApplyTable">
+								<viewfilter>
+								</viewfilter>
+								<editfilter>
+								</editfilter>
+							</dataSource>
+							
+							<dataSource name="attachments_dataSource"
+								className="com.skynet.spms.persistence.entity.base.Attachment">
+								<viewfilter>
+								</viewfilter>
+								<editfilter>
+								</editfilter>
+							</dataSource>
+						</data>
+					</module>
+			<!--发票申请-->
+					<module name="invoiceApplyManager"  icon="account_01_02">
+						<feature>
+							ADD,DELETE,MODIFY,COMMITCHECK,CHECK,PRINT
+					</feature>
+						<data default="user_dataSource">
+							<dataSource name="finance_invoiceApply_dataSource"
+								className="com.skynet.spms.persistence.entity.financeService.salesSettleAccounts.InvoiceApplyTable">
+								<viewfilter>
+								</viewfilter>
+								<editfilter>
+								</editfilter>
+							</dataSource>
+						</data>
+					</module>
+				</submodules>
+				
+		</module>
+<!-- 发票管理 -->
+			<module name="invoiceManager" icon="account_02">
+				<submodules>
+				<!--付款发票管理-->
+					<module name="payInvoiceManager"  icon="account_02_01">
+					    <feature>
+							ADD,DELETE,MODIFY,COMMITCHECK,CHECK,PRINT
+					</feature>
+					<data default="finance_purchaseInvoice_dataSource">
+							<dataSource name="finance_purchaseInvoice_dataSource"
+								className="com.skynet.spms.persistence.entity.financeService.buySettleAccounts.PurchaseInvoice">
+								<viewfilter>
+								</viewfilter>
+								<editfilter>
+								</editfilter>
+							</dataSource>
+						</data>
+					
+					</module>
+				<!--收款发票管理-->
+					<module name="collectionInvoiceManager"  icon="account_02_02">
+				     <feature>
+							ADD,DELETE,MODIFY,COMMITCHECK,CHECK,PRINT
+					</feature>
+					<data default="finance_saleInvoice_dataSource">
+							<dataSource name="finance_saleInvoice_dataSource"
+								className="com.skynet.spms.persistence.entity.financeService.salesSettleAccounts.SaleInvoice">
+								<viewfilter>
+								</viewfilter>
+								<editfilter>
+								</editfilter>
+							</dataSource>
+						</data>
+					</module>
+				</submodules>
+			</module>
+<!-- 凭证管理 -->
+			<module name="certificateManager"  icon="account_03">
+				<data>
+					<dataSource name="finance_subjects_dataSource" className="com.skynet.spms.persistence.entity.financeService.purposeVoucher.Subjects">
+						<viewfilter>
+						</viewfilter>
+						<editfilter>
+						</editfilter>
+					</dataSource>
+				</data>
+				<submodules>
+				<!-- 应付凭证管理 -->
+					<module name="payCertificateManager"  icon="account_03_01">
+     				<feature>
+							ADD,DELETE,MODIFY,VIEW,PRINT
+					</feature>
+					<data default="finance_purposeVoucher_dataSource">
+							<dataSource name="finance_purposeVoucher_dataSource"
+								className="com.skynet.spms.persistence.entity.financeService.purposeVoucher.PurposeVoucher">
+								<viewfilter>
+								</viewfilter>
+								<editfilter>
+								</editfilter>
+							</dataSource>
+							<dataSource name="finance_classificationItem_dataSource"
+								className="com.skynet.spms.persistence.entity.financeService.purposeVoucher.ClassificationItem">
+								<viewfilter>
+								</viewfilter>
+								<editfilter>
+								</editfilter>
+							</dataSource>
+						</data>
+						
+		
+					</module>
+					<!-- 应收凭证管理 -->
+					<module name="collectionCertificateManager"  icon="account_03_02">
+							<feature>
+							ADD,DELETE,MODIFY,VIEW,PRINT
+					</feature>
+					<data default="finance_payVoucher_dataSource">
+							<dataSource name="finance_payVoucher_dataSource"
+								className="com.skynet.spms.persistence.entity.financeService.purposeVoucher.PurposeVoucher">
+								<viewfilter>
+								</viewfilter>
+								<editfilter>
+								</editfilter>
+							</dataSource>
+						</data>
+					</module>
+				</submodules>
+			</module>
+		<!--配置管理
+			<module name="configurationManager"  icon="account_04">
+				<submodules>
+					<module name="subjectManager" icon="account_04_01">
+
+					</module>
+				</submodules>
+			</module>-->
+		</submodules>
+	</module>
+</config>

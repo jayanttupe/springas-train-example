@@ -1,0 +1,100 @@
+<List>
+    <user>
+        
+		<username>zhangsan</username>
+		<realname>张三</realname>
+		<password>12345678</password>
+		
+		<email>zhangsan@163.com</email>
+		<fax>52896402</fax>
+		<mobile>18621187881</mobile>
+
+		<remark>测试</remark>
+		<sex>男</sex>
+		<tel>52896404</tel>
+		<approvalQuota>5000</approvalQuota>
+		<state>可用</state>
+		<accessLevel>一级</accessLevel>
+
+		<cookie>qqqq</cookie>
+		<lastLogin>2011-03-02 12:00:00</lastLogin>
+		<loginFailCount>10</loginFailCount>
+		<lostPasswordRequestCount>3</lostPasswordRequestCount>
+		<loginCount>5</loginCount>
+             <departmentId>3</departmentId>
+	</user>
+	<user>
+
+		<username>lisi</username>
+		<realname>李四</realname>
+		<password>12345678</password>
+		
+		<email>lisi@163.com</email>
+		<fax>52896402</fax>
+		<mobile>18621187881</mobile>
+
+		<remark>测试</remark>
+		<sex>男</sex>
+		<tel>52896404</tel>
+		<approvalQuota>5000</approvalQuota>
+		<state>可用</state>
+		<accessLevel>一级</accessLevel>
+
+		<cookie>qqqq</cookie>
+		<lastLogin>2011-03-02 12:00:00</lastLogin>
+		<loginFailCount>10</loginFailCount>
+		<lostPasswordRequestCount>3</lostPasswordRequestCount>
+		<loginCount>5</loginCount>
+             <departmentId>3</departmentId>
+
+	</user>
+	<user>
+
+
+		<username>wangwu</username>
+		<realname>王五</realname>
+		<password>12345678</password>
+		
+		<email>wangwu@163.com</email>
+		<fax>52896402</fax>
+		<mobile>18621187881</mobile>
+
+		<remark>测试</remark>
+		<sex>男</sex>
+		<tel>52896404</tel>
+		<approvalQuota>5000</approvalQuota>
+		<state>可用</state>
+		<accessLevel>一级</accessLevel>
+
+		<cookie>qqqq</cookie>
+		<lastLogin>2011-03-02 12:00:00</lastLogin>
+		<loginFailCount>10</loginFailCount>
+		<lostPasswordRequestCount>3</lostPasswordRequestCount>
+		<loginCount>5</loginCount>
+             <departmentId>3</departmentId>
+
+	</user>
+	<user>
+		<username>maliu</username>
+		<realname>马六</realname>
+		<password>12345678</password>
+		
+		<email>maliu@163.com</email>
+		<fax>52896402</fax>
+		<mobile>18621187881</mobile>
+
+		<remark>测试</remark>
+		<sex>男</sex>
+		<tel>52896404</tel>
+		<approvalQuota>5000</approvalQuota>
+		<state>可用</state>
+		<accessLevel>一级</accessLevel>
+
+		<cookie>qqqq</cookie>
+		<lastLogin>2011-03-02 12:00:00</lastLogin>
+		<loginFailCount>10</loginFailCount>
+		<lostPasswordRequestCount>3</lostPasswordRequestCount>
+		<loginCount>5</loginCount>
+             <departmentId>3</departmentId>
+	</user>
+	</List>

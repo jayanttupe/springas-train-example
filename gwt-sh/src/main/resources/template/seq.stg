@@ -1,0 +1,15 @@
+group sequence;
+
+
+seq(createDate,type,seq)::= <<
+<type>-<createDate;format="yyMM">-<seq;format="00000">
+>>
+
+
+wfTest(createDate,type,seq)::= <<
+<createDate;format="ddHHss">_<type>_<seq>
+>>
+
+printSeq(seq)::= <<
+<seq;format="000000000000">
+>>

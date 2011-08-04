@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<jbpm-configuration xmlns="http://jbpm.org/xsd/cfg">
+
+	<import resource="jbpm.default.cfg.xml" />
+	<import resource="jbpm.tx.spring.cfg.xml" />
+	<import resource="jbpm.jpdl.cfg.xml" />
+	<import resource="jbpm.businesscalendar.cfg.xml" />
+	<!-- import resource="jbpm.jobexecutor.cfg.xml" /-->
+
+	<process-engine-context>
+		<command-service>
+			<spring-transaction-interceptor/>
+		</command-service>
+		<business-calendar>
+			<monday hours="9:00-18:00" />
+			<tuesday hours="9:00-18:00" />
+			<wednesday hours="9:00-18:00" />
+			<thursday hours="9:00-18:00" />
+			<friday hours="9:00-18:00" />
+		</business-calendar>
+
+	</process-engine-context>
+
+    
+	<!--  hibernate-configuration>
+		<cfg resource="jbpm.hibernate.cfg.xml" />
+	</hibernate-configuration 
+	-->
+	
+	<transaction-context>
+ 		<object class="com.skynet.spms.jbpm.manager.impl.SpmsIdentitySessionImpl" /> 		
+	</transaction-context>
+	
+</jbpm-configuration>

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<provisions>
+
+
+
+
+	<provision>
+		<id>cb1a90e7870c4c41890a4192a02b9d6a</id>
+		<parentId>root</parentId>
+		<createBy>vp_1</createBy>
+		<createDate>2011年6月24日 星期五 15:53:15</createDate>
+		<keyword>key</keyword>
+		<version>1111111111</version>
+		<deleted>false</deleted>
+		<itemNumber>1</itemNumber>
+		<title_en>code-1</title_en>
+		<title_zh>合同条款标题</title_zh>
+		<content_en>附件结构特征 不论何类附件，在结构的形成上均有三个特点。与正文的呼应性，内容的翔实性和描述的准确性：
+			{contractNumber} {m_Priority}
+		</content_en>
+		<content_zh>附件结构特征 不论何类附件，在结构的形成上均有三个特点。与正文的呼应性，内容的翔实性和描述的准确性：
+			{contractNumber} {m_Priority} </content_zh>
+	</provision>
+	<provision>
+		<id>f31418994b1440f196d3c5695d21b9e4</id>
+		<parentId>cb1a90e7870c4c41890a4192a02b9d6a</parentId>
+		<createBy>vp_1</createBy>
+		<createDate>2011年6月24日 星期五 15:54:16</createDate>
+		<keyword>key</keyword>
+		<version>11111</version>
+		<deleted>false</deleted>
+		<itemNumber>1</itemNumber>
+		<title_en>code-1-1</title_en>
+		<title_zh>正文的呼应性</title_zh>
+		<content_en>与正文的呼应性。是指所有的附件均由正文命名而生。也同正文的条款相应配合，以对合同条款所描述的有关权利和义务进行补充。例如，标的条款中有“技术指标详见附件”时，就必定会产生“技术指标附件”。当条款中有“具体程序和技术条件要求见附件”的说法时，就必然会产生“验收条件附件”。
+			{contractNumber} {m_Priority} </content_en>
+		<content_zh>与正文的呼应性。是指所有的附件均由正文命名而生。也同正文的条款相应配合，以对合同条款所描述的有关权利和义务进行补充。例如，标的条款中有“技术指标详见附件”时，就必定会产生“技术指标附件”。当条款中有“具体程序和技术条件要求见附件”的说法时，就必然会产生“验收条件附件”。
+			{contractNumber} {m_Priority} </content_zh>
+	</provision>
+	<provision>
+		<id>577f08a091644852b6d18c7c8f4b1ff8</id>
+		<parentId>root</parentId>
+		<createBy>vp_1</createBy>
+		<createDate>2011年6月24日 星期五 15:55:17</createDate>
+		<keyword>key</keyword>
+		<version>11</version>
+		<deleted>false</deleted>
+		<itemNumber>1</itemNumber>
+		<title_en>code-2</title_en>
+		<title_zh>内容的翔实性。</title_zh>
+		<content_en>内容的翔实性。由于撰稿人为了将合同正文写得简明扼要，往往在正文中确定原则或目标。而具体的解释与措施则由附件来描述。这样合同中的某个条款就会扩展成一个独立的附件，附件的篇幅长短不限，只要求说清楚问题。这样，补充性的附件就显得更加具体、更加详细。
+			{m_Priority} </content_en>
+		<content_zh>内容的翔实性。由于撰稿人为了将合同正文写得简明扼要，往往在正文中确定原则或目标。而具体的解释与措施则由附件来描述。这样合同中的某个条款就会扩展成一个独立的附件，附件的篇幅长短不限，只要求说清楚问题。这样，补充性的附件就显得更加具体、更加详细。
+			{contractNumber} </content_zh>
+	</provision>
+	<provision>
+		<id>f053a81fce6d489295044c0a6e577943</id>
+		<parentId>577f08a091644852b6d18c7c8f4b1ff8</parentId>
+		<createBy>vp_1</createBy>
+		<createDate>2011年6月24日 星期五 15:56:04</createDate>
+		<keyword>key</keyword>
+		<version>11</version>
+		<deleted>false</deleted>
+		<itemNumber>1</itemNumber>
+		<title_en>code-2-1</title_en>
+		<title_zh>描述的准确性</title_zh>
+		<content_en>描述的准确性。鉴于附件的技术性、政策性和金融性。当有文辞类附件对合同中的术语进行定义时，对附件内容描述的准确性有严格的要求。所以合同附件的准确性是必须充分予以重视的，有时比合同正文的准确性还重要。因为当合同的条款引证附件时，合同条款“正文”的准确性是依附于附件的准确性的。没有附件的准确性，合同正文的准确性也不复存在。
+		</content_en>
+		<content_zh>描述的准确性。鉴于附件的技术性、政策性和金融性。当有文辞类附件对合同中的
+			术语进行定义时，对附件内容描述的准确性有严格的要求。所以合同附件的准确性是必须充分予以重视的，有时比合同正文的准确性还重要。因为当合同的条款引证附件时，合同条款“正文”的准确性是依附于附件的准确性的。没有附件的准确性，合同正文的准确性也不复存在。
+		</content_zh>
+	</provision>
+</provisions>

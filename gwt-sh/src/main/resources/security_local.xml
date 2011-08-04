@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+	xmlns:beans="http://www.springframework.org/schema/beans" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+       http://www.springframework.org/schema/beans 
+       http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+       http://www.springframework.org/schema/security
+       http://www.springframework.org/schema/security/spring-security-3.0.xsd">
+
+<!--有关本配置文件的使用
+          请参考 http://static.springsource.org/spring-security/site/docs/3.0.x/reference/ns-config.html#ns-auth-manager  -->
+	<http use-expressions="true">
+		<!--定义访问url的权限分配 -->
+		<!--有关 use-expresssions 的使用请参考
+		http://static.springsource.org/spring-security/site/docs/3.0.x/reference/el-access.html  -->
+		<intercept-url pattern="/style/**" filters="none" />
+		<intercept-url pattern="/images/**" filters="none" />
+		<intercept-url pattern="/ds/**" filters="none" />
+		<intercept-url pattern="/rss/**" filters="none" />
+		<intercept-url pattern="/login.html" filters="none" />
+        <!-- url 必须用户密码认证通过 -->
+        <intercept-url pattern="/spms*" access="isAuthenticated()" />
+
+		<!--定义系统登录的url com.skynet.spms.web.helper.LoginSuccessHandler 实现登录成功之后的操作 -->
+		<form-login login-page="/login.html" authentication-success-handler-ref="loginSuccessHandler" />
+		<!--自动用户认证设定 -->
+		<remember-me key="myLoginKey" />		
+		<!-- 定义系统退出的处理器 -->
+		<logout success-handler-ref="logoutHandler" />
+		<!-- 定义session过期的url转向 -->
+		<session-management invalid-session-url="/login.html" >
+		</session-management>
+		<custom-filter ref="protalUnLoginFilter" before="FORM_LOGIN_FILTER"   />
+	</http>
+	
+	<beans:bean id="protalUnLoginFilter" 
+		class="com.skynet.spms.web.helper.PortalLoginFilter" >
+			<beans:property name="authenticationManager" ref="authenticationManager" />
+			<beans:property name="authenticationSuccessHandler" ref="loginSuccessHandler" />
+	</beans:bean>
+	
+	
+
+	<beans:bean id="userDetailService"
+		class="com.skynet.spms.manager.imp.AuthentManagerImp" />
+		
+	<beans:bean id="portalLoginProvider" 
+		class="com.skynet.spms.web.helper.PortalLoginAuthProvider" />
+		<!-- <beans:bean id="userDetailService"
+		class="com.skynet.spms.manager.imp.MockAuthentManagerImp" /> -->
+	<!--定义认证管理器，是Spring Security的主要接口  -->
+	<authentication-manager alias="authenticationManager">
+		<!--定义认证提供接口  -->
+		<authentication-provider user-service-ref="userDetailService">
+			  <!--定义密码加密算法  -->
+			  <password-encoder ref="passwordEncoder">
+    			<!--定义密码字元，增加密码的安全性  -->
+    			<salt-source ref="saltSource"/>
+  			 </password-encoder>    
+		</authentication-provider>
+		<authentication-provider ref="portalLoginProvider" />
+	</authentication-manager>
+	
+
+</beans:beans>

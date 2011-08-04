@@ -1,0 +1,20 @@
+<!--<?xml version="1.0" encoding="UTF-8"?>-->
+
+<!--<module rename-to="framework">-->
+    <!--<inherits name='com.google.gwt.user.User'/>-->
+    <!--<inherits name="com.smartgwtee.SmartGwtEENoScript" />-->
+     	<!---->
+  	<!--&lt;!&ndash; gwt upload &ndash;&gt;-->
+    <!--<inherits name="gwtupload.GWTUpload"/>-->
+    <!--<stylesheet src="Upload.css"/>-->
+  <!---->
+  	<!--<source path='client'/>-->
+  	<!---->
+  	<!--&lt;!&ndash; theme &ndash;&gt;-->
+  	<!---->
+    <!--&lt;!&ndash; i18n &ndash;&gt;-->
+    <!--<extend-property name="locale" values="zh_CN"/>-->
+	<!--<extend-property name="locale" values="en"/>-->
+	<!--<set-property-fallback name="locale" value="zh_CN"/>-->
+    <!---->
+<!--</module>-->

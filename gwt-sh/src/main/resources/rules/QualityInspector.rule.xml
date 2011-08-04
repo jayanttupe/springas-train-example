@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 质量检验员 -->
+<config name="QualityInspector" >
+<moduleFilter default="none">
+	<!-- 仓储管理-航材检验管理(stock.module.xml) -->
+	<!-- 待检验航材,航材检验单,不合格品登记记录,航材证书管理,证书存档位置管理 -->	
+	<include prefix="stockServiceBusiness.checkAndAcceptBusiness">
+		waitCheckAndAcceptSheet,checkAndAcceptSheet,nonconformingReport,credentialsRecord,credentials
+	</include>
+	
+	<!-- 供应商管理-采购业务 (supplierSupport.module.xml) -->
+	<!-- 采购合同-->	
+	<include prefix="supplierSupport.procurementOrder">
+		procurementContract
+	</include>
+	
+	<!-- 仓储管理-航材收料入库 (stock.module.xml) -->
+	<!-- 待收料航材,航材收料单,合格待入库,入库记录管理,送修件登记    -->	
+	<include prefix="stockServiceBusiness.inStockRoomBusiness">
+		waitReceivingSheet,receivingSheet,inStockRecord,inStockRecordManage,reparePartRegister
+	</include>
+	
+	<!-- 仓储管理-航材库存日常业务(stock.module.xml) -->
+	<!-- 备件库存查询 -->	
+	<include prefix="stockServiceBusiness.partsInventory">
+		partsInventoryRecord
+	</include>
+</moduleFilter>
+
+<modules>
+	<!-- 供应商管理-采购业务-采购合同-->
+	<module name="supplierSupport.procurementOrder.procurementContract">
+	</module>
+	
+	<!-- 仓储管理-航材收料入库-->
+	<module name="stockServiceBusiness.inStockRoomBusiness.waitReceivingSheet">
+	</module>
+	<module name="stockServiceBusiness.inStockRoomBusiness.receivingSheet">
+	</module>
+	<module name="stockServiceBusiness.inStockRoomBusiness.inStockRecord">
+	</module>
+	<module name="stockServiceBusiness.inStockRoomBusiness.inStockRecordManage">
+	</module>
+	<module name="stockServiceBusiness.inStockRoomBusiness.reparePartRegister">
+	</module>
+	
+	<!-- 仓储管理-航材库存日常业务-备件库存查询 -->
+	<module name="stockServiceBusiness.partsInventory.partsInventoryRecord">
+	</module>
+	
+</modules> 
+
+</config>

@@ -1,0 +1,1095 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions name="RFIDWSDLFile"
+	xmlns:tns="http://www.skynetsoft.org/RFIDwsdl" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<wsdl:types>
+		<xs:schema targetNamespace="http://www.skynetsoft.org/RFIDwsdl"
+			xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:RFIDTypes="http://www.skynetsoft.org/RFIDwsdl">
+			<xs:element name="UserIDOutResult" type="RFIDTypes:ResultOutParameter" />
+			<xs:element name="TaskDetailOutResult" type="RFIDTypes:ResultOutParameter" />
+			<xs:element name="Check4DoorOutResult" type="RFIDTypes:ResultOutParameter" />
+			<xs:simpleType name="ResultOutParameter">
+				<xs:restriction base="xs:boolean" />
+			</xs:simpleType>
+			<xs:element name="QueryLocationOutParameters" type="RFIDTypes:QueryLocationOutParameters" />
+			<xs:complexType name="QueryLocationOutParameters">
+				<xs:annotation>
+					<xs:documentation>货位编码输出参数组</xs:documentation>
+				</xs:annotation>
+				<xs:sequence>
+					<xs:element name="LocationInfo" type="RFIDTypes:LocationInfo"
+						minOccurs="0" maxOccurs="unbounded" />
+				</xs:sequence>
+			</xs:complexType>
+			<xs:element name="GetTaskDetailsOutputParameters"
+				type="RFIDTypes:GetTaskDetailsOutputParameters" />
+			<xs:complexType name="GetTaskDetailsOutputParameters">
+				<xs:complexContent>
+					<xs:extension base="RFIDTypes:TaskDetails">
+						<xs:sequence>
+							<xs:element name="euid" type="xs:string" minOccurs="1"
+								maxOccurs="1" />
+							<xs:element name="password" type="xs:string"
+								minOccurs="1" maxOccurs="1" />
+							<xs:element name="opeartor" type="xs:string"
+								minOccurs="1" maxOccurs="1" />
+						</xs:sequence>
+					</xs:extension>
+				</xs:complexContent>
+			</xs:complexType>
+			<xs:element name="BasePartTaskItem" type="RFIDTypes:BasePartTaskItem" />
+			<xs:complexType name="BasePartTaskItem" abstract="true">
+				<xs:sequence>
+					<xs:element name="partNumber" type="xs:string"
+						minOccurs="1" maxOccurs="1" />
+					<xs:element name="partSerialNumber" type="xs:string"
+						minOccurs="1" maxOccurs="1" />
+					<xs:element name="lotNumber" type="xs:string" minOccurs="1"
+						maxOccurs="1" />
+					<xs:element name="quantity" type="xs:double" minOccurs="1"
+						maxOccurs="1" />
+					<xs:element name="unitOfMeasureCode" type="xs:string"
+						minOccurs="1" maxOccurs="1" />
+					<xs:element name="barcodeTagUUID" type="xs:string"
+						minOccurs="1" maxOccurs="1" />
+					<xs:element name="RFIDTagUUID" type="xs:string"
+						minOccurs="1" maxOccurs="1" />
+					<xs:element name="operationStatus" type="RFIDTypes:TaskItemStatus"
+						minOccurs="1" maxOccurs="1" />
+					<xs:element name="remarkText" type="xs:string"
+						minOccurs="1" maxOccurs="1" />
+				</xs:sequence>
+			</xs:complexType>
+			<xs:element name="Tasklist" type="RFIDTypes:Tasklist" />
+			<xs:complexType name="Tasklist">
+				<xs:sequence>
+					<xs:element name="taskNumber" type="xs:string"
+						minOccurs="1" maxOccurs="1" />
+					<xs:element name="tasktype" type="RFIDTypes:TaskType"
+						minOccurs="1" maxOccurs="1" />
+					<xs:element name="description" type="xs:string"
+						minOccurs="1" maxOccurs="1" />
+					<xs:element name="taskDate" type="xs:date" minOccurs="1"
+						maxOccurs="1" />
+					<xs:element name="taskRefNumber" type="xs:string"
+						minOccurs="1" maxOccurs="1" />
+					<xs:element name="taskSource" type="xs:string"
+						minOccurs="1" maxOccurs="1" />
+					<xs:element name="taskStatus" type="RFIDTypes:TaskStatus"
+						minOccurs="1" maxOccurs="1" />
+					<xs:element name="creatBy" type="xs:string" minOccurs="1"
+						maxOccurs="1" />
+					<xs:element name="actionBy" type="xs:string" minOccurs="1"
+						maxOccurs="1" />
+					<xs:element name="actionDate" type="xs:string"
+						minOccurs="1" maxOccurs="1" />
+					<xs:element name="actionDevice" type="xs:string"
+						minOccurs="1" maxOccurs="1" />
+				</xs:sequence>
+			</xs:complexType>
+			<xs:element name="StockCountExeItem" type="RFIDTypes:StockCountExeItem" />
+			<xs:complexType name="StockCountExeItem">
+				<xs:complexContent>
+					<xs:extension base="RFIDTypes:BasePartTaskItem">
+						<xs:sequence>
+							<xs:element name="stockRoomNumber" type="xs:string"
+								minOccurs="1" maxOccurs="1" />
+							<xs:element name="locationNumber" type="xs:string"
+								minOccurs="1" maxOccurs="1" />
+							<xs:element name="partStatusCode" type="xs:string"
+								minOccurs="1" maxOccurs="1" />
+						</xs:sequence>
+					</xs:extension>
+				</xs:complexContent>
+			</xs:complexType>
+			<xs:element name="PickingTaskExeItem" type="RFIDTypes:PickingTaskExeItem" />
+			<xs:complexType name="PickingTaskExeItem">
+				<xs:complexContent>
+					<xs:extension base="RFIDTypes:BasePartTaskItem">
+						<xs:sequence>
+							<xs:element name="locationNumber" type="xs:string"
+								minOccurs="1" maxOccurs="1" />
+							<xs:element name="stockRoomNumber" type="xs:string"
+								minOccurs="1" maxOccurs="1" />
+							<xs:element name="partStatusCode" type="xs:string"
+								minOccurs="1" maxOccurs="1" />
+						</xs:sequence>
+					</xs:extension>
+				</xs:complexContent>
+			</xs:complexType>
+			<xs:simpleType name="TaskStatus">
+				<xs:restriction base="xs:string">
+					<xs:enumeration value="open" />
+					<xs:enumeration value="received" />
+					<xs:enumeration value="dispatched" />
+					<xs:enumeration value="workInProcess" />
+					<xs:enumeration value="cancel" />
+					<xs:enumeration value="closed" />
+				</xs:restriction>
+			</xs:simpleType>
+			<xs:element name="PackingTaskExeItem" type="RFIDTypes:PackingTaskExeItem" />
+			<xs:complexType name="PackingTaskExeItem">
+				<xs:complexContent>
+					<xs:extension base="RFIDTypes:BasePartTaskItem">
+						<xs:sequence>
+							<xs:element name="packingNumber" type="xs:string"
+								minOccurs="1" maxOccurs="1" />
+							<xs:element name="packingBarcodeTagUUID" type="xs:string"
+								minOccurs="1" maxOccurs="1" />
+							<xs:element name="packingRFIDTagUUID" type="xs:string"
+								minOccurs="1" maxOccurs="1" />
+							<xs:element name="partStatusCode" type="xs:string"
+								minOccurs="1" maxOccurs="1" />
+						</xs:sequence>
+					</xs:extension>
+				</xs:complexContent>
+			</xs:complexType>
+			<xs:simpleType name="TaskItemStatus">
+				<xs:restriction base="xs:string">
+					<xs:enumeration value="waiting " />
+					<xs:enumeration value="succee" />
+					<xs:enumeration value="failure" />
+				</xs:restriction>
+			</xs:simpleType>
+			<xs:simpleType name="TaskType">
+				<xs:restriction base="xs:string">
+					<xs:enumeration value="Checking" />
+					<xs:enumeration value="Shelving" />
+					<xs:enumeration value="Transferring" />
+					<xs:enumeration value="ComplementCode" />
+					<xs:enumeration value="StockCount" />
+					<xs:enumeration value="Packing" />
+					<xs:enumeration value="Picking" />
+					<xs:enumeration value="Delivering" />
+					<xs:enumeration value="SpareBoxing" />
+				</xs:restriction>
+			</xs:simpleType>
+			<xs:element name="ComplementCodeTaskExeItem" type="RFIDTypes:ComplementCodeTaskExeItem" />
+			<xs:complexType name="ComplementCodeTaskExeItem">
+				<xs:complexContent>
+					<xs:extension base="RFIDTypes:BasePartTaskItem">
+						<xs:sequence />
+					</xs:extension>
+				</xs:complexContent>
+			</xs:complexType>
+			<xs:element name="PickingTaskItem" type="RFIDTypes:PickingTaskItem" />
+			<xs:complexType name="PickingTaskItem">
+				<xs:complexContent>
+					<xs:extension base="RFIDTypes:BasePartTaskItem">
+						<xs:sequence>
+							<xs:element name="internationalCommodityCode" type="xs:string"
+								minOccurs="1" maxOccurs="1" />
+							<xs:element name="supplierCode" type="xs:string"
+								minOccurs="1" maxOccurs="1" />
+							<xs:element name="manufacturDate" type="xs:date"
+								minOccurs="1" maxOccurs="1" />
+							<xs:element name="manufacturerCode" type="xs:string"
+								minOccurs="1" maxOccurs="1" />
+							<xs:element name="partDescription" type="xs:string"
+								minOccurs="1" maxOccurs="1" />
+							<xs:element name="locationNumber" type="xs:string"
+								minOccurs="1" maxOccurs="1" />
+							<xs:element name="stockRoomNumber" type="xs:string"
+								minOccurs="1" maxOccurs="1" />
+							<xs:element name="expireDate" type="xs:string"
+								minOccurs="1" maxOccurs="1">
+								<xs:annotation>
+									<xs:documentation>标识当前的件需要进行时寿时控处理的下一个日期</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="cerificateBarcode" type="xs:string"
+								minOccurs="1" maxOccurs="1">
+								<xs:annotation>
+									<xs:documentation>在SPMS备件管理中，备件的证书由统一的证书条码来进行管理，通过唯一的证书条码可与指定的件号+序号/批次号的件进行关联绑定。
+									</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="partStatusCode" type="xs:string"
+								minOccurs="1" maxOccurs="1" />
+						</xs:sequence>
+					</xs:extension>
+				</xs:complexContent>
+			</xs:complexType>
+			<xs:element name="LocationPartItem" type="RFIDTypes:LocationPartItem" />
+			<xs:complexType name="LocationPartItem">
+				<xs:complexContent>
+					<xs:extension base="RFIDTypes:BasePartTaskItem">
+						<xs:sequence>
+							<xs:element name="internationalCommodityCode" type="xs:string"
+								minOccurs="1" maxOccurs="1" />
+							<xs:element name="supplierCode" type="xs:string"
+								minOccurs="1" maxOccurs="1" />
+							<xs:element name="manufacturDate" type="xs:date"
+								minOccurs="1" maxOccurs="1" />
+							<xs:element name="manufacturerCode" type="xs:string"
+								minOccurs="1" maxOccurs="1" />
+							<xs:element name="partDescription" type="xs:string"
+								minOccurs="1" maxOccurs="1" />
+							<xs:element name="recommendLocationNumber" type="xs:string"
+								minOccurs="1" maxOccurs="1" />
+							<xs:element name="stockRoomNumber" type="xs:string"
+								minOccurs="1" maxOccurs="1" />
+							<xs:element name="expireDate" type="xs:string"
+								minOccurs="1" maxOccurs="1">
+								<xs:annotation>
+									<xs:documentation>标识当前的件需要进行时寿时控处理的下一个日期</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="cerificateBarcode" type="xs:string"
+								minOccurs="1" maxOccurs="1">
+								<xs:annotation>
+									<xs:documentation>在SPMS备件管理中，备件的证书由统一的证书条码来进行管理，通过唯一的证书条码可与指定的件号+序号/批次号的件进行关联绑定。
+									</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="partStatusCode" type="xs:string"
+								minOccurs="1" maxOccurs="1" />
+						</xs:sequence>
+					</xs:extension>
+				</xs:complexContent>
+			</xs:complexType>
+			<xs:element name="TransferTaskExeItem" type="RFIDTypes:TransferTaskExeItem" />
+			<xs:complexType name="TransferTaskExeItem">
+				<xs:complexContent>
+					<xs:extension base="RFIDTypes:BasePartTaskItem">
+						<xs:sequence>
+							<xs:element name="toStockRoomNumber" type="xs:string"
+								minOccurs="1" maxOccurs="1" />
+							<xs:element name="toLocaitonNumber" type="xs:string"
+								minOccurs="1" maxOccurs="1" />
+							<xs:element name="partStatusCode" type="xs:string"
+								minOccurs="1" maxOccurs="1" />
+						</xs:sequence>
+					</xs:extension>
+				</xs:complexContent>
+			</xs:complexType>
+			<xs:element name="GetRFIDSerialOutputParameters" type="RFIDTypes:GetRFIDSerialOutputParameters" />
+			<xs:complexType name="GetRFIDSerialOutputParameters">
+				<xs:annotation>
+					<xs:documentation>获取RFID序列号输出参数组</xs:documentation>
+				</xs:annotation>
+				<xs:sequence>
+					<xs:element name="tagIdentifierCode" type="xs:string"
+						minOccurs="1" maxOccurs="1">
+						<xs:annotation>
+							<xs:documentation>标签唯一流水号</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:element name="UserIDCardInputParameters" type="RFIDTypes:UserIDCardInputParameters" />
+			<xs:complexType name="UserIDCardInputParameters">
+				<xs:sequence>
+					<xs:element name="username" type="xs:string" minOccurs="1"
+						maxOccurs="1" />
+					<xs:element name="realname" type="xs:string" minOccurs="1"
+						maxOccurs="1" />
+					<xs:element name="expiryDate" type="xs:date" minOccurs="1"
+						maxOccurs="1" />
+					<xs:element name="stockAccessCode" type="xs:string"
+						minOccurs="1" maxOccurs="1" />
+					<xs:element name="accessLevel" type="xs:string"
+						minOccurs="1" maxOccurs="1" />
+				</xs:sequence>
+			</xs:complexType>
+			<xs:element name="DeliveryTaskExeItem" type="RFIDTypes:DeliveryTaskExeItem" />
+			<xs:complexType name="DeliveryTaskExeItem">
+				<xs:complexContent>
+					<xs:extension base="RFIDTypes:BasePartTaskItem">
+						<xs:sequence>
+							<xs:element name="packingNumber" type="xs:string"
+								minOccurs="1" maxOccurs="1" />
+							<xs:element name="packingBarcodeTagUUID" type="xs:string"
+								minOccurs="1" maxOccurs="1" />
+							<xs:element name="packingRFIDTagUUID" type="xs:string"
+								minOccurs="1" maxOccurs="1" />
+						</xs:sequence>
+					</xs:extension>
+				</xs:complexContent>
+			</xs:complexType>
+			<xs:element name="RFIDTagUUID" type="RFIDTypes:RFIDTagUUID" />
+			<xs:complexType name="RFIDTagUUID">
+				<xs:sequence>
+					<xs:element name="RFIDTagUUID" type="xs:string"
+						minOccurs="1" maxOccurs="1" />
+				</xs:sequence>
+			</xs:complexType>
+			<xs:element name="UserInfoInputParameters" type="RFIDTypes:UserInfoInputParameters" />
+			<xs:complexType name="UserInfoInputParameters">
+				<xs:sequence>
+					<xs:element name="euid" type="xs:string" minOccurs="1"
+						maxOccurs="1" />
+					<xs:element name="password" type="xs:string" minOccurs="1"
+						maxOccurs="1" />
+					<xs:element name="opeartor" type="xs:string" minOccurs="1"
+						maxOccurs="1" />
+					<xs:element name="username" type="xs:string" minOccurs="1"
+						maxOccurs="1" />
+				</xs:sequence>
+			</xs:complexType>
+			<xs:element name="VisualLocationOutputParameters"
+				type="RFIDTypes:VisualLocationOutputParameters" />
+			<xs:complexType name="VisualLocationOutputParameters">
+				<xs:sequence>
+					<xs:element name="LocationPartItem" type="RFIDTypes:LocationPartItem"
+						minOccurs="0" maxOccurs="unbounded" />
+				</xs:sequence>
+			</xs:complexType>
+			<xs:element name="TaskDetails" type="RFIDTypes:TaskDetails" />
+			<xs:complexType name="TaskDetails">
+				<xs:sequence>
+					<xs:element name="taskNumber" type="xs:string"
+						minOccurs="1" maxOccurs="1" />
+					<xs:element name="taskSource" type="xs:string"
+						minOccurs="1" maxOccurs="1" />
+					<xs:element name="tasktype" type="RFIDTypes:TaskType"
+						minOccurs="1" maxOccurs="1" />
+					<xs:element name="taskRefNumber" type="xs:string"
+						minOccurs="1" maxOccurs="1" />
+					<xs:element name="taskDate" type="xs:dateTime"
+						minOccurs="1" maxOccurs="1">
+						<xs:annotation>
+							<xs:documentation>指任务下达的日期</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="createBy" type="xs:string" minOccurs="1"
+						maxOccurs="1">
+						<xs:annotation>
+							<xs:documentation>是指出当前手持终端任务源自的库单编号、合同编号或者检验单编号等业务编号
+							</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="TransferTaskItem" type="RFIDTypes:TransferTaskItem"
+						minOccurs="0" maxOccurs="unbounded" />
+					<xs:element name="ShelvingTaskItem" type="RFIDTypes:ShelvingTaskItem"
+						minOccurs="0" maxOccurs="unbounded" />
+					<xs:element name="ComplementCodeTaskItem" type="RFIDTypes:ComplementCodeTaskItem"
+						minOccurs="0" maxOccurs="unbounded" />
+					<xs:element name="StockCountTaskItem" type="RFIDTypes:StockCountTaskItem"
+						minOccurs="0" maxOccurs="unbounded" />
+					<xs:element name="PickingTaskItem" type="RFIDTypes:PickingTaskItem"
+						minOccurs="0" maxOccurs="unbounded" />
+				</xs:sequence>
+			</xs:complexType>
+			<xs:element name="QueryTasklistInputParameters" type="RFIDTypes:QueryTasklistInputParameters" />
+			<xs:complexType name="QueryTasklistInputParameters">
+				<xs:sequence>
+					<xs:element name="euid" type="xs:string" minOccurs="1"
+						maxOccurs="1" />
+					<xs:element name="password" type="xs:string" minOccurs="1"
+						maxOccurs="1" />
+					<xs:element name="opeartor" type="xs:string" minOccurs="1"
+						maxOccurs="1" />
+					<xs:element name="stockRoomNumber" type="xs:string"
+						minOccurs="1" maxOccurs="1" />
+				</xs:sequence>
+			</xs:complexType>
+			<xs:element name="UserIDCardOutParameters" type="RFIDTypes:UserIDCardOutParameters" />
+			<xs:complexType name="UserIDCardOutParameters">
+				<xs:sequence>
+					<xs:element name="username" type="xs:string" minOccurs="1"
+						maxOccurs="1" />
+					<xs:element name="realname" type="xs:string" minOccurs="1"
+						maxOccurs="1" />
+					<xs:element name="expiryDate" type="xs:date" minOccurs="1"
+						maxOccurs="1" />
+					<xs:element name="stockAccessCode" type="xs:string"
+						minOccurs="1" maxOccurs="1" />
+					<xs:element name="accessLevel" type="xs:string"
+						minOccurs="1" maxOccurs="1" />
+				</xs:sequence>
+			</xs:complexType>
+			<xs:element name="QueryLocationParameters" type="RFIDTypes:QueryLocationParameters" />
+			<xs:complexType name="QueryLocationParameters">
+				<xs:sequence>
+					<xs:element name="euid" type="xs:string" minOccurs="1"
+						maxOccurs="1" />
+					<xs:element name="password" type="xs:string" minOccurs="1"
+						maxOccurs="1" />
+					<xs:element name="opeartor" type="xs:string" minOccurs="1"
+						maxOccurs="1" />
+				</xs:sequence>
+			</xs:complexType>
+			<xs:element name="StockCountTaskItem" type="RFIDTypes:StockCountTaskItem" />
+			<xs:complexType name="StockCountTaskItem">
+				<xs:complexContent>
+					<xs:extension base="RFIDTypes:BasePartTaskItem">
+						<xs:sequence>
+							<xs:element name="stockRoomNumber" type="xs:string"
+								minOccurs="1" maxOccurs="1" />
+							<xs:element name="locationNumber" type="xs:string"
+								minOccurs="1" maxOccurs="1" />
+							<xs:element name="manufacturerCode" type="xs:string"
+								minOccurs="1" maxOccurs="1" />
+							<xs:element name="manufacturDate" type="xs:date"
+								minOccurs="1" maxOccurs="1" />
+							<xs:element name="partStatusCode" type="xs:string"
+								minOccurs="1" maxOccurs="1" />
+						</xs:sequence>
+					</xs:extension>
+				</xs:complexContent>
+			</xs:complexType>
+			<xs:element name="VisualLocationInputParameters" type="RFIDTypes:VisualLocationInputParameters" />
+			<xs:complexType name="VisualLocationInputParameters">
+				<xs:sequence>
+					<xs:element name="euid" type="xs:string" minOccurs="1"
+						maxOccurs="1" />
+					<xs:element name="password" type="xs:string" minOccurs="1"
+						maxOccurs="1" />
+					<xs:element name="opeartor" type="xs:string" minOccurs="1"
+						maxOccurs="1" />
+					<xs:element name="stockRoomNumber" type="xs:string"
+						minOccurs="1" maxOccurs="1" />
+					<xs:element name="locationNumber" type="xs:string"
+						minOccurs="1" maxOccurs="1" />
+				</xs:sequence>
+			</xs:complexType>
+			<xs:element name="SetTaskDetailsExeInputParameters"
+				type="RFIDTypes:SetTaskDetailsExeInputParameters" />
+			<xs:complexType name="SetTaskDetailsExeInputParameters">
+				<xs:complexContent>
+					<xs:extension base="RFIDTypes:TaskExecutive">
+						<xs:sequence>
+							<xs:element name="euid" type="xs:string" minOccurs="1"
+								maxOccurs="1" />
+							<xs:element name="password" type="xs:string"
+								minOccurs="1" maxOccurs="1" />
+							<xs:element name="opeartor" type="xs:string"
+								minOccurs="1" maxOccurs="1" />
+						</xs:sequence>
+					</xs:extension>
+				</xs:complexContent>
+			</xs:complexType>
+			<xs:element name="User" type="RFIDTypes:User" />
+			<xs:complexType name="User">
+				<xs:sequence minOccurs="1" maxOccurs="1">
+					<xs:element name="username" type="xs:string" minOccurs="1"
+						maxOccurs="1" />
+					<xs:element name="realname" type="xs:string" minOccurs="1"
+						maxOccurs="1" />
+					<xs:element name="email" type="xs:string" minOccurs="1"
+						maxOccurs="1" />
+					<xs:element name="accessLevel" type="xs:string"
+						minOccurs="1" maxOccurs="1" />
+					<xs:element name="expiryDate" type="xs:string"
+						minOccurs="1" maxOccurs="1" />
+					<xs:element name="IDCardNumber" type="xs:string"
+						minOccurs="1" maxOccurs="1" />
+					<xs:element name="enable" type="xs:boolean" minOccurs="1"
+						maxOccurs="1" />
+				</xs:sequence>
+			</xs:complexType>
+			<xs:element name="AllUsersInputParameters" type="RFIDTypes:AllUsersInputParameters" />
+			<xs:complexType name="AllUsersInputParameters">
+				<xs:sequence>
+					<xs:element name="euid" type="xs:string" minOccurs="1"
+						maxOccurs="1" />
+					<xs:element name="password" type="xs:string" minOccurs="1"
+						maxOccurs="1" />
+					<xs:element name="opeartor" type="xs:string" minOccurs="1"
+						maxOccurs="1" />
+				</xs:sequence>
+			</xs:complexType>
+			<xs:element name="UserInfoOutputParameters" type="RFIDTypes:UserInfoOutputParameters" />
+			<xs:complexType name="UserInfoOutputParameters">
+				<xs:complexContent>
+					<xs:extension base="RFIDTypes:User">
+						<xs:sequence />
+					</xs:extension>
+				</xs:complexContent>
+			</xs:complexType>
+			<xs:element name="LocationInfo" type="RFIDTypes:LocationInfo" />
+			<xs:complexType name="LocationInfo">
+				<xs:annotation>
+					<xs:documentation>货位信息</xs:documentation>
+				</xs:annotation>
+				<xs:sequence>
+					<xs:element name="barcodeTagUUID" type="xs:string"
+						minOccurs="1" maxOccurs="1" />
+					<xs:element name="RFIDTagUUID" type="xs:string"
+						minOccurs="1" maxOccurs="1" />
+					<xs:element name="fullLocationNumber" type="xs:string"
+						minOccurs="1" maxOccurs="1">
+						<xs:annotation>
+							<xs:documentation>13位长的货架货位编码，例如 SH A 2 C 01 A 01 A 01
+							</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:element name="ShelvingTaskExeItem" type="RFIDTypes:ShelvingTaskExeItem" />
+			<xs:complexType name="ShelvingTaskExeItem">
+				<xs:complexContent>
+					<xs:extension base="RFIDTypes:BasePartTaskItem">
+						<xs:sequence>
+							<xs:element name="locationNumber" type="xs:string"
+								minOccurs="1" maxOccurs="1" />
+							<xs:element name="partStatusCode" type="xs:string"
+								minOccurs="1" maxOccurs="1" />
+						</xs:sequence>
+					</xs:extension>
+				</xs:complexContent>
+			</xs:complexType>
+			<xs:element name="FaultOutParameter" type="RFIDTypes:FaultOutParameter" />
+			<xs:simpleType name="FaultOutParameter">
+				<xs:annotation>
+					<xs:documentation>出错参数</xs:documentation>
+				</xs:annotation>
+				<xs:restriction base="xs:string" />
+			</xs:simpleType>
+			<xs:element name="QueryUserInputParameters" type="RFIDTypes:QueryUserInputParameters" />
+			<xs:element name="QueryUserIDInputParameters" type="RFIDTypes:QueryUserInputParameters" />
+			
+			<xs:complexType name="QueryUserInputParameters">
+				<xs:sequence>
+					<xs:element name="euid" type="xs:string" minOccurs="1"
+						maxOccurs="1" />
+					<xs:element name="password" type="xs:string" minOccurs="1"
+						maxOccurs="1" />
+					<xs:element name="opeartor" type="xs:string" minOccurs="1"
+						maxOccurs="1" />
+					<xs:element name="username" type="xs:string" minOccurs="1"
+						maxOccurs="1" />
+				</xs:sequence>
+			</xs:complexType>
+			<xs:element name="TasklistReocrdsOutputParameters"
+				type="RFIDTypes:TasklistReocrdsOutputParameters" />
+			<xs:complexType name="TasklistReocrdsOutputParameters">
+				<xs:sequence>
+					<xs:element name="Tasklist" type="RFIDTypes:Tasklist"
+						minOccurs="0" maxOccurs="unbounded" />
+				</xs:sequence>
+			</xs:complexType>
+			<xs:element name="TransferTaskItem" type="RFIDTypes:TransferTaskItem" />
+			<xs:complexType name="TransferTaskItem">
+				<xs:complexContent>
+					<xs:extension base="RFIDTypes:BasePartTaskItem">
+						<xs:sequence>
+							<xs:element name="manufacturerCode" type="xs:string"
+								minOccurs="1" maxOccurs="1" />
+							<xs:element name="fromStockRoomNumber" type="xs:string"
+								minOccurs="1" maxOccurs="1" />
+							<xs:element name="fromLocaitonNumber" type="xs:string"
+								minOccurs="1" maxOccurs="1" />
+							<xs:element name="toStockRoomNumber" type="xs:string"
+								minOccurs="1" maxOccurs="1" />
+							<xs:element name="toLocaitonNumber" type="xs:string"
+								minOccurs="1" maxOccurs="1" />
+							<xs:element name="partStatusCode" type="xs:string"
+								minOccurs="1" maxOccurs="1" />
+						</xs:sequence>
+					</xs:extension>
+				</xs:complexContent>
+			</xs:complexType>
+			<xs:element name="Check4DoorControlInputParameters"
+				type="RFIDTypes:Check4DoorControlInputParameters" />
+			<xs:complexType name="Check4DoorControlInputParameters">
+				<xs:sequence>
+					<xs:element name="euid" type="xs:string" minOccurs="1"
+						maxOccurs="1" />
+					<xs:element name="password" type="xs:string" minOccurs="1"
+						maxOccurs="1" />
+					<xs:element name="deviceNumber" type="xs:string"
+						minOccurs="1" maxOccurs="1" />
+					<xs:element name="antennaNumber" type="xs:string"
+						minOccurs="1" maxOccurs="1" />
+					<xs:element name="captureTime" type="xs:dateTime"
+						minOccurs="1" maxOccurs="1" />
+					<xs:element name="RFIDTagUUID" type="RFIDTypes:RFIDTagUUID"
+						minOccurs="1" maxOccurs="unbounded" />
+				</xs:sequence>
+			</xs:complexType>
+			<xs:element name="ShelvingTaskItem" type="RFIDTypes:ShelvingTaskItem" />
+			<xs:complexType name="ShelvingTaskItem">
+				<xs:complexContent>
+					<xs:extension base="RFIDTypes:BasePartTaskItem">
+						<xs:sequence>
+							<xs:element name="internationalCommodityCode" type="xs:string"
+								minOccurs="1" maxOccurs="1" />
+							<xs:element name="supplierCode" type="xs:string"
+								minOccurs="1" maxOccurs="1" />
+							<xs:element name="manufacturDate" type="xs:date"
+								minOccurs="1" maxOccurs="1" />
+							<xs:element name="manufacturerCode" type="xs:string"
+								minOccurs="1" maxOccurs="1" />
+							<xs:element name="partDescription" type="xs:string"
+								minOccurs="1" maxOccurs="1" />
+							<xs:element name="recommendLocationNumber" type="xs:string"
+								minOccurs="1" maxOccurs="1" />
+							<xs:element name="stockRoomNumber" type="xs:string"
+								minOccurs="1" maxOccurs="1" />
+							<xs:element name="expireDate" type="xs:string"
+								minOccurs="1" maxOccurs="1">
+								<xs:annotation>
+									<xs:documentation>标识当前的件需要进行时寿时控处理的下一个日期</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="cerificateBarcode" type="xs:string"
+								minOccurs="1" maxOccurs="1">
+								<xs:annotation>
+									<xs:documentation>在SPMS备件管理中，备件的证书由统一的证书条码来进行管理，通过唯一的证书条码可与指定的件号+序号/批次号的件进行关联绑定。
+									</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="partStatusCode" type="xs:string"
+								minOccurs="1" maxOccurs="1" />
+						</xs:sequence>
+					</xs:extension>
+				</xs:complexContent>
+			</xs:complexType>
+			<xs:element name="ComplementCodeTaskItem" type="RFIDTypes:ComplementCodeTaskItem" />
+			<xs:complexType name="ComplementCodeTaskItem">
+				<xs:complexContent>
+					<xs:extension base="RFIDTypes:BasePartTaskItem">
+						<xs:sequence>
+							<xs:element name="internationalCommodityCode" type="xs:string"
+								minOccurs="1" maxOccurs="1" />
+							<xs:element name="supplierCode" type="xs:string"
+								minOccurs="1" maxOccurs="1" />
+							<xs:element name="manufacturDate" type="xs:date"
+								minOccurs="1" maxOccurs="1" />
+							<xs:element name="manufacturerCode" type="xs:string"
+								minOccurs="1" maxOccurs="1" />
+							<xs:element name="partDescription" type="xs:string"
+								minOccurs="1" maxOccurs="1" />
+							<xs:element name="locationNumber" type="xs:string"
+								minOccurs="1" maxOccurs="1" />
+							<xs:element name="stockRoomNumber" type="xs:string"
+								minOccurs="1" maxOccurs="1" />
+							<xs:element name="expireDate" type="xs:string"
+								minOccurs="1" maxOccurs="1">
+								<xs:annotation>
+									<xs:documentation>标识当前的件需要进行时寿时控处理的下一个日期</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="cerificateBarcode" type="xs:string"
+								minOccurs="1" maxOccurs="1">
+								<xs:annotation>
+									<xs:documentation>在SPMS备件管理中，备件的证书由统一的证书条码来进行管理，通过唯一的证书条码可与指定的件号+序号/批次号的件进行关联绑定。
+									</xs:documentation>
+								</xs:annotation>
+							</xs:element>
+							<xs:element name="partStatusCode" type="xs:string"
+								minOccurs="1" maxOccurs="1" />
+						</xs:sequence>
+					</xs:extension>
+				</xs:complexContent>
+			</xs:complexType>
+			<xs:element name="IsEnableOutParameter" type="RFIDTypes:IsEnableOutParameter" />
+			<xs:simpleType name="IsEnableOutParameter">
+				<xs:annotation>
+					<xs:documentation>是否有效</xs:documentation>
+				</xs:annotation>
+				<xs:restriction base="xs:boolean" />
+			</xs:simpleType>
+			<xs:element name="GetRFIDSerialInputParameters" type="RFIDTypes:GetRFIDSerialInputParameters" />
+			<xs:complexType name="GetRFIDSerialInputParameters">
+				<xs:annotation>
+					<xs:documentation>获取RFID序列号输入参数组</xs:documentation>
+				</xs:annotation>
+				<xs:sequence>
+					<xs:element name="euid" type="xs:string" minOccurs="1"
+						maxOccurs="1" />
+					<xs:element name="password" type="xs:string" minOccurs="1"
+						maxOccurs="1" />
+					<xs:element name="opeartor" type="xs:string" minOccurs="1"
+						maxOccurs="1" />
+					<xs:element name="tag_category" type="xs:string"
+						minOccurs="1" maxOccurs="1">
+						<xs:annotation>
+							<xs:documentation>标签一级类别</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="tag_class" type="xs:string" minOccurs="1"
+						maxOccurs="1">
+						<xs:annotation>
+							<xs:documentation>标签二级类别</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="tag_strategy" type="xs:string"
+						minOccurs="1" maxOccurs="1">
+						<xs:annotation>
+							<xs:documentation>标签策略</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:complexType>
+			<xs:element name="GetTaskDetailsInputParameters" type="RFIDTypes:GetTaskDetailsInputParameters" />
+			<xs:complexType name="GetTaskDetailsInputParameters">
+				<xs:sequence>
+					<xs:element name="euid" type="xs:string" minOccurs="1"
+						maxOccurs="1" />
+					<xs:element name="password" type="xs:string" minOccurs="1"
+						maxOccurs="1" />
+					<xs:element name="opeartor" type="xs:string" minOccurs="1"
+						maxOccurs="1" />
+					<xs:element name="taskNumber" type="xs:string"
+						minOccurs="1" maxOccurs="1" />
+				</xs:sequence>
+			</xs:complexType>
+			<xs:element name="TaskExecutive" type="RFIDTypes:TaskExecutive" />
+			<xs:complexType name="TaskExecutive">
+				<xs:sequence>
+					<xs:element name="taskNumber" type="xs:string"
+						minOccurs="1" maxOccurs="1" />
+					<xs:element name="taskSource" type="xs:string"
+						minOccurs="1" maxOccurs="1" />
+					<xs:element name="tasktype" type="RFIDTypes:TaskType"
+						minOccurs="1" maxOccurs="1" />
+					<xs:element name="taskRefNumber" type="xs:string"
+						minOccurs="1" maxOccurs="1" />
+					<xs:element name="taskDate" type="xs:dateTime"
+						minOccurs="1" maxOccurs="1">
+						<xs:annotation>
+							<xs:documentation>指任务下达的日期</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="actionBy" type="xs:string" minOccurs="1"
+						maxOccurs="1" />
+					<xs:element name="actionDeviceNumber" type="xs:string"
+						minOccurs="1" maxOccurs="1" />
+					<xs:element name="ShelvingTaskExeItem" type="RFIDTypes:ShelvingTaskExeItem"
+						minOccurs="0" maxOccurs="unbounded" />
+					<xs:element name="DeliveryTaskExeItem" type="RFIDTypes:DeliveryTaskExeItem"
+						minOccurs="0" maxOccurs="unbounded" />
+					<xs:element name="TransferTaskExeItem" type="RFIDTypes:TransferTaskExeItem"
+						minOccurs="0" maxOccurs="unbounded" />
+					<xs:element name="ComplementCodeTaskExeItem" type="RFIDTypes:ComplementCodeTaskExeItem"
+						minOccurs="0" maxOccurs="unbounded" />
+					<xs:element name="PackingTaskExeItem" type="RFIDTypes:PackingTaskExeItem"
+						minOccurs="0" maxOccurs="unbounded" />
+					<xs:element name="PickingTaskExeItem" type="RFIDTypes:PickingTaskExeItem"
+						minOccurs="0" maxOccurs="unbounded" />
+					<xs:element name="StockCountExeItem" type="RFIDTypes:StockCountExeItem"
+						minOccurs="0" maxOccurs="unbounded" />
+				</xs:sequence>
+			</xs:complexType>
+			<xs:element name="AllUsersOutParameters" type="RFIDTypes:AllUsersOutParameters" />
+			<xs:complexType name="AllUsersOutParameters">
+				<xs:sequence>
+					<xs:element name="User" type="RFIDTypes:User" minOccurs="0"
+						maxOccurs="unbounded" />
+				</xs:sequence>
+			</xs:complexType>
+		</xs:schema>
+	</wsdl:types>
+	<wsdl:message name="GetTaskDetailsResponse">
+		<wsdl:part name="response" element="tns:GetTaskDetailsOutputParameters" />
+	</wsdl:message>
+	<wsdl:message name="AllUserResponse">
+		<wsdl:part name="response" element="tns:AllUsersOutParameters" />
+	</wsdl:message>
+	<wsdl:message name="GetRFIDSerialRequest">
+		<wsdl:documentation>获取RFID标签序列号请求</wsdl:documentation>
+		<wsdl:part name="request" element="tns:GetRFIDSerialInputParameters" />
+	</wsdl:message>
+	<wsdl:message name="SetTaskDetailsExe">
+		<wsdl:part name="request" element="tns:SetTaskDetailsExeInputParameters" />
+	</wsdl:message>
+	<wsdl:message name="UserInfoResponse">
+		<wsdl:documentation>用户信息返回参数</wsdl:documentation>
+		<wsdl:part name="response" element="tns:UserInfoOutputParameters" />
+	</wsdl:message>
+	<wsdl:message name="Check4DoorResult">
+		<wsdl:documentation>操作结果返回</wsdl:documentation>
+		<wsdl:part name="response" element="tns:Check4DoorOutResult" />
+	</wsdl:message>
+	<wsdl:message name="UserIDResult" >
+		<wsdl:documentation>操作结果返回</wsdl:documentation>
+		<wsdl:part name="response" element="tns:UserIDOutResult" />
+	</wsdl:message>
+	<wsdl:message name="TaskDetailResult">
+		<wsdl:documentation>操作结果返回</wsdl:documentation>
+		<wsdl:part name="response" element="tns:TaskDetailOutResult" />
+	</wsdl:message>
+	<wsdl:message name="TasklistResponse">
+		<wsdl:part name="response" element="tns:TasklistReocrdsOutputParameters" />
+	</wsdl:message>
+	<wsdl:message name="FaultResponse">
+		<wsdl:documentation>故障信息返回</wsdl:documentation>
+		<wsdl:part name="return" element="tns:FaultOutParameter" />
+	</wsdl:message>
+	<wsdl:message name="QueryTasklistRequest">
+		<wsdl:part name="request" element="tns:QueryTasklistInputParameters" />
+	</wsdl:message>
+	<wsdl:message name="QueryLocationResponse">
+		<wsdl:documentation>货位信息</wsdl:documentation>
+		<wsdl:part name="response" element="tns:QueryLocationOutParameters" />
+	</wsdl:message>	
+	<wsdl:message name="UserInfoRequest">
+		<wsdl:documentation>用信信息请求参数</wsdl:documentation>
+		<wsdl:part name="request" element="tns:UserInfoInputParameters" />
+	</wsdl:message>
+	<wsdl:message name="QueryLocationRequest">
+		<wsdl:documentation>查询库存货位请求</wsdl:documentation>
+		<wsdl:part name="request" element="tns:QueryLocationParameters" />
+	</wsdl:message>
+	<wsdl:message name="GetTaskDetailsRequest">
+		<wsdl:part name="request" element="tns:GetTaskDetailsInputParameters" />
+	</wsdl:message>
+	<wsdl:message name="SetUserIDCardRequest">
+		<wsdl:part name="request" element="tns:UserIDCardInputParameters" />
+	</wsdl:message>
+	<wsdl:message name="AllUsersRequest">
+		<wsdl:part name="request" element="tns:AllUsersInputParameters" />
+	</wsdl:message>
+	<wsdl:message name="QueryUserRequest">
+		<wsdl:part name="request" element="tns:QueryUserInputParameters" />
+	</wsdl:message>
+	<wsdl:message name="QueryUserIDRequest">
+		<wsdl:part name="request" element="tns:QueryUserIDInputParameters" />
+	</wsdl:message>
+	<wsdl:message name="VisualLocaltionResponse">
+		<wsdl:part name="response" element="tns:VisualLocationOutputParameters" />
+	</wsdl:message>
+	<wsdl:message name="Check4DoorControlRequest">
+		<wsdl:part name="request" element="tns:Check4DoorControlInputParameters" />
+	</wsdl:message>
+	<wsdl:message name="IsUserEnableResponse">
+		<wsdl:part name="response" element="tns:IsEnableOutParameter" />
+	</wsdl:message>
+	<wsdl:message name="VisualLocationRequest">
+		<wsdl:part name="request" element="tns:VisualLocationInputParameters" />
+	</wsdl:message>
+	<wsdl:message name="GetRFIDSerialResponse">
+		<wsdl:documentation>获取RFID序列号返回信息</wsdl:documentation>
+		<wsdl:part name="response" element="tns:GetRFIDSerialOutputParameters" />
+	</wsdl:message>
+	<wsdl:portType name="RFIDPortTypeSOAP">
+		<wsdl:operation name="getUserInfo">
+			<wsdl:documentation>获取用户信息</wsdl:documentation>
+			<wsdl:input name="Request0" message="UserInfoRequest">
+				<wsdl:documentation>请求用户信息</wsdl:documentation>
+			</wsdl:input>
+			<wsdl:output name="Response0" message="UserInfoResponse">
+				<wsdl:documentation>返回用户信息</wsdl:documentation>
+			</wsdl:output>
+			<wsdl:fault name="Fault1" message="FaultResponse" />
+		</wsdl:operation>
+		<wsdl:operation name="getAllUsers">
+			<wsdl:documentation>获取所有用户的基本信息</wsdl:documentation>
+			<wsdl:input name="request1" message="AllUsersRequest" />
+			<wsdl:output name="response1" message="AllUserResponse" />
+			<wsdl:fault name="Fault1" message="FaultResponse" />
+		</wsdl:operation>
+		<wsdl:operation name="getUserIDCard">
+			<wsdl:documentation>设置用户身份卡信息</wsdl:documentation>
+			<wsdl:input name="Request2" message="QueryUserIDRequest" />
+			<wsdl:output name="Response2" message="AllUserResponse" />
+			<wsdl:fault name="Fault1" message="FaultResponse" />
+		</wsdl:operation>
+		<wsdl:operation name="isUserEnable">
+			<wsdl:documentation>获取用户是否可用的信息</wsdl:documentation>
+			<wsdl:output name="response3" message="IsUserEnableResponse" />
+			<wsdl:input name="request3" message="QueryUserRequest" />
+			<wsdl:fault name="Fault1" message="FaultResponse" />
+		</wsdl:operation>
+		<wsdl:operation name="setUserIDCard">
+			<wsdl:documentation>设置用户身份卡信息</wsdl:documentation>
+			<wsdl:input name="Request4" message="SetUserIDCardRequest" />
+			<wsdl:output name="Response4" message="UserIDResult" />
+			<wsdl:fault name="Fault1" message="FaultResponse" />
+		</wsdl:operation>
+		<wsdl:operation name="getTasklist">
+			<wsdl:documentation>获取任务列表信息</wsdl:documentation>
+			<wsdl:input name="Request5" message="QueryTasklistRequest" />
+			<wsdl:output name="Response5" message="TasklistResponse" />
+			<wsdl:fault name="Fault1" message="FaultResponse" />
+		</wsdl:operation>
+		<wsdl:operation name="getTaskDetails">
+			<wsdl:documentation>获取任务详细执行信息</wsdl:documentation>
+			<wsdl:output name="response6" message="GetTaskDetailsResponse" />
+			<wsdl:input name="request6" message="GetTaskDetailsRequest" />
+			<wsdl:fault name="Fault1" message="FaultResponse" />
+		</wsdl:operation>
+		<wsdl:operation name="setTaskDetailsExe">
+			<wsdl:documentation>设置任务执行的详细信息</wsdl:documentation>
+			<wsdl:input name="Request7" message="SetTaskDetailsExe" />
+			<wsdl:output name="Response7" message="TaskDetailResult" />
+			<wsdl:fault name="Fault1" message="FaultResponse" />
+		</wsdl:operation>
+		<wsdl:operation name="check4DoorControl">
+			<wsdl:documentation>门禁设备的检查信息</wsdl:documentation>
+			<wsdl:input name="Request8" message="Check4DoorControlRequest" />
+			<wsdl:output name="Response8" message="Check4DoorResult" />
+			<wsdl:fault name="Fault1" message="FaultResponse" />
+		</wsdl:operation>
+		<wsdl:operation name="getVirtualLocaltion">
+			<wsdl:documentation>可视化定位货位信息</wsdl:documentation>
+			<wsdl:input name="request9" message="VisualLocationRequest" />
+			<wsdl:output name="response9" message="VisualLocaltionResponse" />
+			<wsdl:fault name="Fault1" message="FaultResponse" />
+		</wsdl:operation>
+		<wsdl:operation name="getLocationInfo">
+			<wsdl:documentation>获取所有货位结构及编号信息</wsdl:documentation>
+			<wsdl:input name="Request10" message="QueryLocationRequest" />
+			<wsdl:output name="Response10" message="QueryLocationResponse" />
+			<wsdl:fault name="Fault1" message="FaultResponse" />
+		</wsdl:operation>
+		<wsdl:operation name="getRFIDSerial">
+			<wsdl:documentation>获取RFID序列号</wsdl:documentation>
+			<wsdl:input name="Request11" message="GetRFIDSerialRequest" />
+			<wsdl:output name="Response11" message="GetRFIDSerialResponse" />
+			<wsdl:fault name="Fault1" message="FaultResponse" />
+		</wsdl:operation>
+	</wsdl:portType>
+	<wsdl:binding name="BindingRFIDSOAP" type="RFIDPortTypeSOAP">
+		<soap:binding style="document"
+			transport="http://schemas.xmlsoap.org/soap/http" />
+		<wsdl:operation name="getUserInfo">
+			<wsdl:documentation>获取用户信息</wsdl:documentation>
+			<soap:operation style="document" />
+			<wsdl:input name="Request0">
+				<wsdl:documentation>请求用户信息</wsdl:documentation>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="Response0">
+				<wsdl:documentation>返回用户信息</wsdl:documentation>
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="Fault1">
+				<soap:fault name="Fault1" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="getAllUsers">
+			<soap:operation style="document" />
+			<wsdl:input name="request1">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="response1">
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="Fault1">
+				<soap:fault name="Fault1" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="getUserIDCard">
+			<soap:operation style="document" />
+			<wsdl:input name="Request2">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="Response2">
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="Fault1">
+				<soap:fault name="Fault1" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="isUserEnable">
+			<soap:operation style="document" />
+			<wsdl:input name="request3">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="response3">
+				<soap:body use="literal" />
+			</wsdl:output>	
+			<wsdl:fault name="Fault1">
+				<soap:fault name="Fault1" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="setUserIDCard">
+			<soap:operation style="document" />
+			<wsdl:input name="Request4">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="Response4">
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="Fault1">
+				<soap:fault name="Fault1" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="getTasklist">
+			<soap:operation style="document" />
+			<wsdl:input name="Request5">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="Response5">
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="Fault1">
+				<soap:fault name="Fault1" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="getTaskDetails">
+			<soap:operation style="document" />
+			<wsdl:input name="request6">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="response6">
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="Fault1">
+				<soap:fault name="Fault1" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="setTaskDetailsExe">
+			<soap:operation style="document" />
+			<wsdl:input name="Request7">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="Response7">
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="Fault1">
+				<soap:fault name="Fault1" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="check4DoorControl">
+			<soap:operation style="document" />
+			<wsdl:input name="Request8">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="Response8">
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="Fault1">
+				<soap:fault name="Fault1" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="getVirtualLocaltion">
+			<soap:operation style="document" />
+			<wsdl:input name="request9">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="response9">
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="Fault1">
+				<soap:fault name="Fault1" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="getLocationInfo">
+			<wsdl:documentation>获取货位详细信息</wsdl:documentation>
+			<soap:operation style="document" />
+			<wsdl:input name="Request10">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="Response10">
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="Fault1">
+				<soap:fault name="Fault1" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="getRFIDSerial">
+			<wsdl:documentation>获取RFID序列号</wsdl:documentation>
+			<soap:operation style="document" />
+			<wsdl:input name="Request11">
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output name="Response11">
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="Fault1">
+				<soap:fault name="Fault1" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+	</wsdl:binding>
+	<wsdl:service name="ServiceRFID">
+		<wsdl:port name="PortRFID" binding="BindingRFIDSOAP">
+			<soap:address location="http://spms.comac.org/PortRFID" />
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>

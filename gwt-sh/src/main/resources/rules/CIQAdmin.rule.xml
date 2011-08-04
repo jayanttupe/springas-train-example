@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 海关管理员 -->
+<config name="CIQAdmin" >
+<moduleFilter default="all">
+	
+</moduleFilter>	
+</config>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<provisions>
+	
+	
+	
+<provision><id>e7b28f9df62b47e9ba2455a7f35937fe</id><parentId>root</parentId><createBy>bobo</createBy><createDate>2011-04-30 10:54:18</createDate><keyword>key</keyword><version>1</version><deleted>false</deleted><itemNumber>1</itemNumber><title_en>1</title_en><title_zh>1</title_zh><content_en>1</content_en><content_zh>1</content_zh></provision><provision><id>caff7cd202104fa29c305d50e5b75ed8</id><parentId>e7b28f9df62b47e9ba2455a7f35937fe</parentId><createBy>bobo</createBy><createDate>2011-04-30 10:54:25</createDate><keyword>key</keyword><version>1</version><deleted>false</deleted><itemNumber>1</itemNumber><title_en>2</title_en><title_zh>2</title_zh><content_en>2</content_en><content_zh>2</content_zh></provision><provision><id>794590309f814115adbf83ee32d133b5</id><parentId>caff7cd202104fa29c305d50e5b75ed8</parentId><createBy>bobo</createBy><createDate>2011-04-30 10:54:32</createDate><keyword>key</keyword><version>1</version><deleted>false</deleted><itemNumber>1</itemNumber><title_en>3</title_en><title_zh>3</title_zh><content_en>3</content_en><content_zh>3</content_zh></provision></provisions>

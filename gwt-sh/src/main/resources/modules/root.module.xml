@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config name="modules">
+	<modules>
+		<module reference="organization.module.xml" />
+		<module reference="partCatalog.module.xml" />
+		<module reference="customerService.module.xml" />
+		<module reference="supplierSupport.module.xml" />
+		<module reference="contractManagement.module.xml" />
+		<module reference="stock.module.xml" /> 
+		<module reference="logistics.module.xml" />
+		<module reference="account.module.xml" />
+		<module reference="customerplat.module.xml"></module>
+	</modules>
+</config>

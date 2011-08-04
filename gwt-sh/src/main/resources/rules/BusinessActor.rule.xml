@@ -1,0 +1,348 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 市场与客户支援部主管-->
+<config name="BusinessActor" >
+<moduleFilter default="all">
+	
+</moduleFilter>	
+<modules>
+	<!-- 用户管理 -->
+	<module name="organization.userinfo">
+	</module>
+	<module name="organization.userGroup">
+	</module>
+	
+	<!-- 企业管理 -->
+	<module name="organization.enterprise.COMACSC">
+	</module>
+	<module name="organization.enterprise.customer">
+	</module>
+	<module name="organization.enterprise.supplier">
+	</module>
+	<module name="organization.enterprise.manufacturer">
+	</module>
+	<module name="organization.enterprise.clearanceAgency">
+	</module>
+	<module name="organization.enterprise.carrier">
+	</module>
+	<module name="organization.enterprise.repairAgency">
+	</module>
+	<module name="organization.enterprise.department">
+	</module>
+	
+	<!-- 备件目录 -->
+	<module name="partCatalog.technical">
+	</module>
+	<module name="partCatalog.sales">
+	</module>
+	<module name="partCatalog.supplierPrice">
+	</module>
+	<module name="partCatalog.aircraftConfig">
+	</module>
+	<module name="partCatalog.repairable">
+	</module>
+	<module name="partCatalog.technicalDocuments">
+	</module>
+	
+	<!-- 客户管理-销售服务 -->
+	<module name="customerService.salesService.doQuotation">
+	</module>
+	<module name="customerService.salesService.salesQuotationSheet">
+	</module>
+	<module name="customerService.salesService.salesRequisitionSheet">
+	</module>
+	<module name="customerService.salesService.salesContract">
+	</module>
+	<module name="customerService.salesService.salesDeliveryOrder">
+	</module>
+	
+	<!-- 客户管理-送修服务 -->
+	<module name="customerService.repairService.repairRequisitionSheet">
+	</module>
+	<module name="customerService.repairService.repaireContract">
+	</module>
+	<module name="customerService.repairService.customerRepairInsOrder">
+	</module>
+	
+	<!-- 客户管理-租赁服务 -->
+	<module name="customerService.leaseService.leaseRequisitionSheet">
+	</module>
+	<module name="customerService.leaseService.leaseContract">
+	</module>
+	<module name="customerService.leaseService.LeaseInstruct">
+	</module>
+	<module name="customerService.leaseService.LeaseDeliveryOrder">
+	</module>
+	
+	<!-- 客户管理-回购服务 -->
+	<module name="customerService.buyBackService.buyBackSheet">
+	</module>
+	<module name="customerService.buyBackService.buyBackPact">
+	</module>
+	<module name="customerService.buyBackService.buyBackPickOrder">
+	</module>
+	
+	<!-- 客户管理-担保索赔 -->
+	<module name="customerService.guaranteeClaimService.guaranteeSheet">
+	</module>
+	
+	<!-- 客户管理-交换 -->
+	<module name="customerService.exchangeRequisition.exchangeRequisition">
+	</module>
+	
+	<!-- 供应商管理-采购业务 -->
+	<module name="supplierSupport.procurementOrder.PartRequirement">
+	</module>
+	<module name="supplierSupport.procurementOrder.ProcurementPlan">
+	</module>
+	<module name="supplierSupport.procurementOrder.ProcurementOrder">
+	</module>
+	<module name="supplierSupport.procurementOrder.doProcurementOrder">
+	</module>
+	<module name="supplierSupport.procurementOrder.procurementInquirySheet">
+	</module>
+	<module name="supplierSupport.procurementOrder.procurementContract">
+	</module>
+	<module name="supplierSupport.procurementOrder.procurementPickupOrder">
+	</module>
+	<module name="supplierSupport.procurementOrder.transferSheet">
+	</module>
+	
+	<!-- 供应商管理-修理检验 -->
+	<module name="supplierSupport.repairClaim.customerRepairInsOrder">
+	</module>
+	<module name="supplierSupport.repairClaim.repairInspectClaimContractTemplate">
+	</module>
+	<module name="supplierSupport.repairClaim.repairDeliveryOrder">
+	</module>
+	<module name="supplierSupport.repairClaim.repairPickOrder">
+	</module>
+	
+	<!-- 供应商管理-租赁业务 -->
+	<module name="supplierSupport.LeaseService.LeaseInstruct">
+	</module>
+	<module name="supplierSupport.LeaseService.LeaseContract">
+	</module>
+	<module name="supplierSupport.LeaseService.LeasePickOrder">
+	</module>
+	<module name="supplierSupport.LeaseService.LeaseDeliveryOrder">
+	</module>
+	
+	<!-- 供应商管理-寄售业务 -->
+	<module name="supplierSupport.consignment.consignProtocol">
+	</module>
+	<module name="supplierSupport.consignment.consignRenew">
+	</module>
+	<module name="supplierSupport.consignment.consignOrder">
+	</module>
+	
+	<!-- 仓储管理-基础数据管理-->
+	<module name="stockServiceBusiness.basicData.stockRoom">
+	</module>
+	<module name="stockServiceBusiness.basicData.cargoSpace">
+	</module>
+	<module name="stockServiceBusiness.basicData.container">
+	</module>
+	<module name="stockServiceBusiness.basicData.repairCode">
+	</module>
+	
+	<!-- 仓储管理-航材收料入库-->
+	<module name="stockServiceBusiness.inStockRoomBusiness.waitReceivingSheet">
+	</module>
+	<module name="stockServiceBusiness.inStockRoomBusiness.receivingSheet">
+	</module>
+	<module name="stockServiceBusiness.inStockRoomBusiness.inStockRecord">
+	</module>
+	<module name="stockServiceBusiness.inStockRoomBusiness.inStockRecordManage">
+	</module>
+	<module name="stockServiceBusiness.inStockRoomBusiness.reparePartRegister">
+	</module>
+	
+	<!-- 仓储管理-航材检验管理-->
+	<module name="stockServiceBusiness.checkAndAcceptBusiness.waitCheckAndAcceptSheet">
+	</module>
+	<module name="stockServiceBusiness.checkAndAcceptBusiness.checkAndAcceptSheet">
+	</module>
+	<module name="stockServiceBusiness.checkAndAcceptBusiness.nonconformingReport">
+	</module>
+	<module name="stockServiceBusiness.checkAndAcceptBusiness.credentialsRecord">
+	</module>
+	<module name="stockServiceBusiness.checkAndAcceptBusiness.credentials">
+	</module>
+	
+	<!-- 仓储管理-航材发料出库-->
+	<module name="stockServiceBusiness.outStockRoomBusiness.waitDeliveryOrder">
+	</module>
+	<module name="stockServiceBusiness.outStockRoomBusiness.pickingList">
+	</module>
+	<module name="stockServiceBusiness.outStockRoomBusiness.pickingRecord">
+	</module>
+	<module name="stockServiceBusiness.outStockRoomBusiness.packingList">
+	</module>
+	<module name="stockServiceBusiness.outStockRoomBusiness.utStockRoomRecord">
+	</module>
+	
+	<!-- 仓储管理-航材库存日常业务-->
+	<module name="stockServiceBusiness.partsInventory.partsInventoryRecord">
+	</module>
+	<module name="stockServiceBusiness.partsInventory.freezeRecord">
+	</module>
+	<module name="stockServiceBusiness.partsInventory.timeControlPartBusiness">
+	</module>
+	<module name="stockServiceBusiness.partsInventory.partLifetimeInformation">
+	</module>
+	<module name="stockServiceBusiness.partsInventory.discardServiceBusiness">
+	</module>
+	<module name="stockServiceBusiness.partsInventory.allocationBillBusiness">
+	</module>
+	
+	<!-- 仓储管理-航材库存日常业务-库存盘点管理-->
+	<module name="stockServiceBusiness.partsInventory.stockCheckBusiness.stockCheckManager">
+	</module>
+	<module name="stockServiceBusiness.partsInventory.stockCheckBusiness.stockCheckResultManage">
+	</module>
+	<module name="stockServiceBusiness.partsInventory.stockCheckBusiness.stockCheckResultTrack">
+	</module>
+	
+	<!-- 仓储管理-航材库存日常业务-航材移库管理-->
+	<module name="stockServiceBusiness.partsInventory.stockMoveBusiness.stockMoveApply">
+	</module>
+	<module name="stockServiceBusiness.partsInventory.stockMoveBusiness.stockMoveApproval">
+	</module>
+	<module name="stockServiceBusiness.partsInventory.stockMoveBusiness.stockMoveOutRecord">
+	</module>
+	<module name="stockServiceBusiness.partsInventory.stockMoveBusiness.stockMoveInRecord">
+	</module>
+	
+	<!-- 仓储管理-航材库存日常业务-任务管理-->
+	<module name="stockServiceBusiness.stockTask.sendCardTask">
+	</module>
+	<module name="stockServiceBusiness.stockTask.shelvingTask">
+	</module>
+	<module name="stockServiceBusiness.stockTask.pickingTask">
+	</module>
+	<module name="stockServiceBusiness.stockTask.packingTask">
+	</module>
+	<module name="stockServiceBusiness.stockTask.stockMoveTask">
+	</module>
+	<module name="stockServiceBusiness.stockTask.stockCheckTask">
+	</module>
+	<module name="stockServiceBusiness.stockTask.repairCodeTask">
+	</module>
+	
+	<!-- 仓储管理-保税库业务-->
+	<module name="stockServiceBusiness.bondedWarehouseBusiness.businessScopeAccountBook">
+	</module>
+	<module name="stockServiceBusiness.bondedWarehouseBusiness.clearanceAccountBook">
+	</module>
+	<module name="stockServiceBusiness.bondedWarehouseBusiness.bondedWarehouseInStock">
+	</module>
+	<module name="stockServiceBusiness.bondedWarehouseBusiness.bondedWarehouseOutStock">
+	</module>
+	<module name="stockServiceBusiness.bondedWarehouseBusiness.bondedWarehouseInventoryStock">
+	</module>
+	
+	<!-- 仓储管理-保税库业务-海关监管-->
+	<module name="stockServiceBusiness.bondedWarehouseBusiness.customsSupervision.bondedWarehouseInStockByIsCustoms">
+	</module>
+	<module name="stockServiceBusiness.bondedWarehouseBusiness.customsSupervision.bondedWarehouseOutStockByIsCustoms">
+	</module>
+	<module name="stockServiceBusiness.bondedWarehouseBusiness.customsSupervision.bondedWarehouseInventoryStockByIsCustoms">
+	</module>
+	
+	<!-- 物流管理 -->
+	<module name="logisticsCustomsDeclaration.documentRecords">
+	</module>
+	<module name="logisticsCustomsDeclaration.logisticsOutlayRecordManage">
+	</module>
+	
+	<!-- 物流管理-提发货业务 -->
+	<module name="logisticsCustomsDeclaration.pickupDeliveryBusiness.pickupOrder">
+	</module>
+	<module name="logisticsCustomsDeclaration.pickupDeliveryBusiness.deliveryOrder">
+	</module>
+	
+	<!-- 物流管理-物流任务分派 -->
+	<module name="logisticsCustomsDeclaration.dispatchLogisticsTask.pickupDispatchTask">
+	</module>
+	<module name="logisticsCustomsDeclaration.dispatchLogisticsTask.deliveryDispatchTask">
+	</module>
+	<module name="logisticsCustomsDeclaration.dispatchLogisticsTask.bookingJob">
+	</module>
+	<module name="logisticsCustomsDeclaration.dispatchLogisticsTask.takeDeliveryOfJob">
+	</module>
+	<module name="logisticsCustomsDeclaration.dispatchLogisticsTask.shippingJob">
+	</module>
+	<module name="logisticsCustomsDeclaration.dispatchLogisticsTask.arrivalOfGoodsJob">
+	</module>
+	<module name="logisticsCustomsDeclaration.dispatchLogisticsTask.deliverTheGoodsJob">
+	</module>
+	
+	<!-- 物流管理-物流任务分派-清关工作-进口报关单记录-->
+	<module name="logisticsCustomsDeclaration.dispatchLogisticsTask.customsClearanceJob.importCustomsDeclaration.importCustomsDeclaration">
+	</module>
+	<module name="logisticsCustomsDeclaration.dispatchLogisticsTask.customsClearanceJob.importCustomsDeclaration.importSecurityDeposit">
+	</module>
+	<module name="logisticsCustomsDeclaration.dispatchLogisticsTask.customsClearanceJob.importCustomsDeclaration.importCustomsTariffRecord">
+	</module>
+	
+	<!-- 物流管理-物流任务分派-清关工作-出口报关单记录-->
+	<module name="logisticsCustomsDeclaration.dispatchLogisticsTask.customsClearanceJob.exportCustomsDeclaration.exportCustomsDeclaration">
+	</module>
+	<module name="logisticsCustomsDeclaration.dispatchLogisticsTask.customsClearanceJob.exportCustomsDeclaration.exportSecurityDeposit">
+	</module>
+	<module name="logisticsCustomsDeclaration.dispatchLogisticsTask.customsClearanceJob.exportCustomsDeclaration.exportCustomsTariffRecord">
+	</module>
+	
+	<!-- 财务管理-申请管理-->
+	<module name="account.applyManager.payApplyManager">
+	</module>
+	<module name="account.applyManager.invoiceApplyManager">
+	</module>
+	
+	<!-- 财务管理-发票管理-->
+	<module name="account.invoiceManager.payInvoiceManager">
+	</module>
+	<module name="account.invoiceManager.collectionInvoiceManager">
+	</module>
+	
+	<!-- 财务管理-凭证管理-->
+	<module name="account.certificateManager.payCertificateManager">
+	</module>
+	<module name="account.certificateManager.collectionCertificateManager">
+	</module>
+	
+	<!-- 客户平台-->
+	<module name="customerplat.singleSpareQuery">
+	</module>
+	<module name="customerplat.buybackSheetService">
+	</module>
+	<module name="customerplat.guaranteeForm">
+	</module>
+	<module name="customerplat.repairSheet">
+	</module>
+	
+	<!-- 客户平台-询价 -->
+	<module name="customerplat.queryPrice.contact">
+	</module>
+	<module name="customerplat.queryPrice.contactDetail">
+	</module>
+	
+	<!-- 客户平台-下采购订单 -->
+	<module name="customerplat.takeProcurementOrder.orderTrack">
+	</module>
+	
+	<!-- 客户平台-担保索赔 -->
+	<module name="customerplat.warrantClaim.warrantClaimApplyQuery">
+	</module>
+	
+	<!-- 客户平台-交换 -->
+	<module name="customerplat.exchangeRequisition.exchangeRequisition">
+	</module>
+	
+	<!-- 客户平台-客户资料 -->
+	<module name="customerplat.customerData.accountInfo">
+	</module>
+	<module name="customerplat.customerData.customerInfo">
+	</module>
+</modules>
+</config>
