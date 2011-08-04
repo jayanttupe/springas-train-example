@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 客户管理员 -->
+<config name="CustomerAdmin" >
+<moduleFilter default="none">
+	<include prefix="customerplat.">
+			*
+	</include>
+</moduleFilter>
+
+<modules>
+	<!-- 客户平台 -->
+	<module name="customerplat.customerData.customerInfo">
+		<feature>MODIFY</feature>
+	</module>
+	<!-- 用户 -->
+	<module name="customerplat.customerData.accountInfo">
+		<feature>MODIFY</feature>
+	</module>
+	
+</modules>	
+</config>

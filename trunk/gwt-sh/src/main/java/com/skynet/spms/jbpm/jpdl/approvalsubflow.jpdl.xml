@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<process key="approval_subflow" name="审批子流程" xmlns="http://jbpm.org/4.4/jpdl">
+
+	<variable init-expr="routine" name="priorityType" type="string" history="true"/>
+	
+	<variable init-expr="Contract" name="flowType" type="string" history="true"/>
+
+	<description>审批流程</description>
+
+	<start g="254,28,80,40">
+		<transition to="checkApproval" />
+		<on event="end">
+			<event-listener expr="#{wfNotifyService}">
+				<property name="msg">
+					<string value="开始审批" />
+				</property>
+			</event-listener>
+		</on>
+	</start>
+
+	<decision name="checkApproval" >
+		<description>判断审批额度</description>
+		<handler expr="#{approveChoiceHandler}" >
+			<property name="groupName">
+				<string value="Salesman" />
+			</property>
+		</handler>
+		<transition name="locale" to="businessApproval" g="-80,-21" >
+		</transition>
+		<transition name="upperGroup" to="managerApproval" g="-125,-20" >
+		</transition>
+	</decision>
+
+	<task name="businessApproval" assignee="#{param.businessUser}" form="approvalForm">
+		<description>业务人员审批</description>
+		<on event="timeout">
+			<timer duedate="30 minutes" repeat="1 minutes" />
+			<event-listener expr="#{wfNotifyService}">
+				<property name="msg">
+					<string value="提醒：有项目待审批" />
+				</property>
+			</event-listener>
+		</on>
+		<transition name="agree" to="agree" g="-11,165" />
+		<transition name="refuse" to="refuse" g="-53,-20" />		
+	</task>
+
+
+	<task name="managerApproval" form="approvalForm">
+	  	<assignment-handler expr="#{singleUserAssign}">
+      		<property name="groupName">
+        		<string value="SectionHeadApprover" />
+      		</property>
+    	</assignment-handler>
+		<description>领导审批</description>
+		<transition name="agree" to="checkManagerRight" g="-45,-20">
+			<event-listener expr="#{aogFlowService}" />
+		</transition>
+		<transition name="refuse" to="refuse" g="-53,-20" />
+	</task>
+
+	<decision name="checkManagerRight" g="82,298,80,40">
+		<description>判断领导审批额度</description>
+		<handler expr="#{approveChoiceHandler}" >
+			<property name="groupName">
+				<string value="SectionHeadApprover" />
+			</property>		
+		</handler>
+		<transition name="locale" to="agree" g="-77,-20" >					
+		</transition>
+		<transition name="upperGroup" to="upperGroupApproval" g="-61,-20">			
+		</transition>
+		<transition name="vp" to="vpApproval" >
+		</transition>
+	</decision>
+
+	<foreach var="depart" in="#{param.managerArray}" name="upperGroupApproval">
+		<transition to="standardApproval" />
+	</foreach>
+	
+	<task name="standardApproval" candidate-groups="#{depart}" form="approvalForm">
+	    <!--
+	    <assignment-handler expr="#{singleUserAssign}">
+      		<property name="groupName">
+        		<string value="#{depart}" />
+      		</property>
+    	</assignment-handler>
+    	
+    	
+		<on event="start">
+			<event-listener expr="#{wfNotifyService}">
+				<property name="msg">
+					<string value="会签审批:#{depart}" />
+				</property>
+			</event-listener>
+		</on>
+		-->
+		<transition name="refuse" to="joinEnd" />
+		<transition name="agree" to="joinEnd" />
+	</task>
+
+	<join multiplicity="#{param.managerNumber}" name="joinEnd">
+		<transition to="vpApproval" />
+	</join>
+	
+
+	<task name="vpApproval" g="76,537,80,40" form="approvalForm">
+    	<assignment-handler expr="#{singleUserAssign}">
+      		<property name="groupName">
+        		<string value="ViceGeneralApprover" />
+      		</property>
+    	</assignment-handler>
+		<description>副总审批</description>
+		<transition name="agree" to="agree" g="-45,-20" />
+		<transition name="refuse" to="refuse" g="-53,-20" />
+	</task>
+
+	<end name="agree" g="568,704,80,40" />
+	<end name="refuse" g="89,713,80,40" />
+</process>

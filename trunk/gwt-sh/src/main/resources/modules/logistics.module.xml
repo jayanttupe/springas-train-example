@@ -1,0 +1,387 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	<!-- 物流管理 -->
+	<module name="logisticsCustomsDeclaration" >
+		<submodules>
+			<!-- 提发货业务 -->
+			<module name="pickupDeliveryBusiness"  icon="logistics_01" >
+				<submodules>
+					<!-- 处理提货指令 -->
+					<module name="pickupOrder" icon="logistics_01_01">
+						<feature>PICKUP_ORDER</feature>
+						<data default="pickupDeliveryOrder_dataSource">
+							<dataSource name="pickupDeliveryOrder_dataSource"
+								className="com.skynet.spms.persistence.entity.logisticsCustomsDeclaration.pickupDeliveryOrder.PickupDeliveryOrder">
+								<viewfilter>
+								</viewfilter>
+								<editfilter>
+								</editfilter>
+							</dataSource>
+							<dataSource name="pickupDeliveryVanning_dataSource"
+								className="com.skynet.spms.persistence.entity.logisticsCustomsDeclaration.pickupDeliveryOrder.PickupDeliveryVanning">
+								<viewfilter>
+								</viewfilter>
+								<editfilter>
+								</editfilter>
+							</dataSource>
+							<dataSource name="pickupDeliveryVanningItems_dataSource"
+								className="com.skynet.spms.persistence.entity.logisticsCustomsDeclaration.pickupDeliveryOrder.PickupDeliveryVanningItems">
+								<viewfilter>
+								</viewfilter>
+								<editfilter>
+								</editfilter>
+							</dataSource>
+							<dataSource name="pickupDeliveryTaskAssign_dataSource"
+								className="com.skynet.spms.persistence.entity.logisticsCustomsDeclaration.pickupDeliveryOrder.PickupDeliveryTaskAssign">
+								<viewfilter>
+								</viewfilter>
+								<editfilter>
+								</editfilter>
+							</dataSource>
+						</data>
+					</module>
+					<!-- 处理发货指令 -->
+					<module name="deliveryOrder"  icon="logistics_01_02">
+						<feature>DELIVERY_ORDER</feature>
+						<data default="pickupDeliveryOrder_dataSource">
+							<dataSource name="pickupDeliveryOrder_dataSource"
+								className="com.skynet.spms.persistence.entity.logisticsCustomsDeclaration.pickupDeliveryOrder.PickupDeliveryOrder">
+								<viewfilter>
+								</viewfilter>
+								<editfilter>
+								</editfilter>
+							</dataSource>
+							<dataSource name="pickupDeliveryVanning_dataSource"
+								className="com.skynet.spms.persistence.entity.logisticsCustomsDeclaration.pickupDeliveryOrder.PickupDeliveryVanning">
+								<viewfilter>
+								</viewfilter>
+								<editfilter>
+								</editfilter>
+							</dataSource>
+							<dataSource name="pickupDeliveryVanningItems_dataSource"
+								className="com.skynet.spms.persistence.entity.logisticsCustomsDeclaration.pickupDeliveryOrder.PickupDeliveryVanningItems">
+								<viewfilter>
+								</viewfilter>
+								<editfilter>
+								</editfilter>
+							</dataSource>
+							<dataSource name="pickupDeliveryTaskAssign_dataSource"
+								className="com.skynet.spms.persistence.entity.logisticsCustomsDeclaration.pickupDeliveryOrder.PickupDeliveryTaskAssign">
+								<viewfilter>
+								</viewfilter>
+								<editfilter>
+								</editfilter>
+							</dataSource>
+						</data>
+					</module>
+				</submodules>
+			</module>
+			<!-- 物流任务分派 -->
+			<module name="dispatchLogisticsTask" icon="logistics_02">
+				<submodules>
+					<!-- 提货任务分派管理 -->
+					<module name="pickupDispatchTask"  icon="logistics_02_01">
+						<feature>MODIFY,VIEW,FINISH_TASK</feature>
+						<data default="dispatchTask_dataSource">
+							<dataSource name="dispatchTask_dataSource"
+								className="com.skynet.spms.persistence.entity.logisticsCustomsDeclaration.pickupDeliveryOrder.PickupDeliveryOrder">
+								<viewfilter>
+								</viewfilter>
+								<editfilter>
+								</editfilter>
+							</dataSource>
+							<dataSource name="dispatchTaskAssign_dataSource"
+								className="com.skynet.spms.persistence.entity.logisticsCustomsDeclaration.pickupDeliveryOrder.PickupDeliveryTaskAssign">
+								<viewfilter>
+								</viewfilter>
+								<editfilter>
+								</editfilter>
+							</dataSource>
+						</data>
+					</module>
+					<!-- 发货任务分派管理 -->
+					<module name="deliveryDispatchTask" icon="logistics_02_02">
+						<feature>MODIFY,VIEW,FINISH_TASK</feature>
+						<data default="dispatchTask_dataSource">
+							<dataSource name="dispatchTask_dataSource"
+								className="com.skynet.spms.persistence.entity.logisticsCustomsDeclaration.pickupDeliveryOrder.PickupDeliveryOrder">
+								<viewfilter>
+								</viewfilter>
+								<editfilter>
+								</editfilter>
+							</dataSource>
+							<dataSource name="dispatchTaskAssign_dataSource"
+								className="com.skynet.spms.persistence.entity.logisticsCustomsDeclaration.pickupDeliveryOrder.PickupDeliveryTaskAssign">
+								<viewfilter>
+								</viewfilter>
+								<editfilter>
+								</editfilter>
+							</dataSource>
+						</data>
+					</module>
+					<!-- 订舱工作 -->
+					<module name="bookingJob" icon="logistics_02_03">
+						<feature>EDIT_FREIGHT_ATTORNEY,VIEW,FINISH_WORK</feature>
+						<data default="bookingJob_dataSource">
+							<dataSource name="bookingJob_dataSource"
+								className="com.skynet.spms.persistence.entity.logisticsCustomsDeclaration.dispatchLogisticsTask.bookingJob.BookingJob">
+								<viewfilter>
+								</viewfilter>
+								<editfilter>
+								</editfilter>
+							</dataSource>
+							<dataSource name="bookingJobDetails_dataSource"
+								className="com.skynet.spms.persistence.entity.logisticsCustomsDeclaration.dispatchLogisticsTask.bookingJob.BookingJobDetails">
+								<viewfilter>
+								</viewfilter>
+								<editfilter>
+								</editfilter>
+							</dataSource>
+						</data>
+					</module>
+					<!-- 取货工作 -->
+					<module name="takeDeliveryOfJob"  icon="logistics_02_04">
+						<feature>EDITDELIVERY,VIEW,FINISH_WORK</feature>
+						<data default="takeDeliveryOfJob_dataSource">
+							<dataSource name="takeDeliveryOfJob_dataSource"
+								className="com.skynet.spms.persistence.entity.logisticsCustomsDeclaration.dispatchLogisticsTask.takeDeliveryOfJob.TakeDeliveryOfJob">
+								<viewfilter>
+								</viewfilter>
+								<editfilter>
+								</editfilter>
+							</dataSource>
+						</data>
+					</module>
+					<!-- 起运工作 -->
+					<module name="shippingJob"  icon="logistics_02_05">
+						<feature>EDITSHIPPING,VIEW,FINISH_WORK</feature>
+						<data default="shippingJob_dataSource">
+							<dataSource name="shippingJob_dataSource"
+								className="com.skynet.spms.persistence.entity.logisticsCustomsDeclaration.dispatchLogisticsTask.shippingJob.ShippingJob">
+								<viewfilter>
+								</viewfilter>
+								<editfilter>
+								</editfilter>
+							</dataSource>
+							<dataSource name="shippingJobDetails_dataSource"
+								className="com.skynet.spms.persistence.entity.logisticsCustomsDeclaration.dispatchLogisticsTask.shippingJob.ShippingJobDetails">
+								<viewfilter>
+								</viewfilter>
+								<editfilter>
+								</editfilter>
+							</dataSource>
+						</data>
+					</module>
+					<!-- 到达工作 -->
+					<module name="arrivalOfGoodsJob"  icon="logistics_02_06">
+						<feature>EDITARRIVE,VIEW,FINISH_WORK</feature>
+						<data default="arrivalOfGoodsJob_dataSource">
+							<dataSource name="arrivalOfGoodsJob_dataSource"
+								className="com.skynet.spms.persistence.entity.logisticsCustomsDeclaration.dispatchLogisticsTask.arrivalOfGoodsJob.ArrivalOfGoodsJob">
+								<viewfilter>
+								</viewfilter>
+								<editfilter>
+								</editfilter>
+							</dataSource>
+						</data>
+					</module>
+					<!-- 清关工作 -->
+					<module name="customsClearanceJob"  icon="logistics_02_07">
+						<submodules>
+							<!-- 进口报关单记录 -->
+							<module name="importCustomsDeclaration"  icon="logistics_02_07_10" >
+								<submodules>
+									<!--进口报关单记录 -->
+									<module name="importCustomsDeclaration" icon="logistics_02_07_11" >
+										<feature>EDITCUSTOMS,ADD_SECURITY_DEPOSIT,ADD_CUSTOMS_TARIFF,VIEW,FINISH_WORK</feature>
+										<data default="importCustomsDeclaration_dataSource">
+											<dataSource name="importCustomsDeclaration_dataSource"
+												className="com.skynet.spms.persistence.entity.logisticsCustomsDeclaration.customsDeclaration.importCustomsDeclaration.importCustomsDeclaration.ImportCustomsDeclaration">
+												<viewfilter>
+												</viewfilter>
+												<editfilter>
+												</editfilter>
+											</dataSource>
+											<dataSource name="importCustomsDeclarationItems_dataSource"
+												className="com.skynet.spms.persistence.entity.logisticsCustomsDeclaration.customsDeclaration.importCustomsDeclaration.importCustomsDeclaration.ImportCustomsDeclarationItems">
+												<viewfilter>
+												</viewfilter>
+												<editfilter>
+												</editfilter>
+											</dataSource>
+										</data>
+									</module>
+									<!--进口报关保证金记录 -->
+									<module name="importSecurityDeposit"  icon="logistics_02_07_12">
+										<feature>EDIT,VIEW</feature>
+										<data default="importSecurityDeposit_dataSource">
+											<dataSource name="importSecurityDeposit_dataSource"
+												className="com.skynet.spms.persistence.entity.logisticsCustomsDeclaration.customsDeclaration.importCustomsDeclaration.importSecurityDeposit.ImportSecurityDeposit">
+												<viewfilter>
+												</viewfilter>
+												<editfilter>
+												</editfilter>
+											</dataSource>
+											<dataSource name="importCustomsDeclarationItems_dataSource"
+												className="com.skynet.spms.persistence.entity.logisticsCustomsDeclaration.customsDeclaration.importCustomsDeclaration.importCustomsDeclaration.ImportCustomsDeclarationItems">
+												<viewfilter>
+												</viewfilter>
+												<editfilter>
+												</editfilter>
+											</dataSource>
+										</data>
+									</module>
+									<!--进口报关关税记录 -->
+									<module name="importCustomsTariffRecord" icon="logistics_02_07_13">
+										<feature>EDIT,VIEW</feature>
+										<data default="importCustomsTariffRecord_dataSource">
+											<dataSource name="importCustomsTariffRecord_dataSource"
+												className="com.skynet.spms.persistence.entity.logisticsCustomsDeclaration.customsDeclaration.importCustomsDeclaration.importCustomsTariffRecord.ImportCustomsTariffRecord">
+												<viewfilter>
+												</viewfilter>
+												<editfilter>
+												</editfilter>
+											</dataSource>
+											<dataSource name="importCustomsDeclarationItems_dataSource"
+												className="com.skynet.spms.persistence.entity.logisticsCustomsDeclaration.customsDeclaration.importCustomsDeclaration.importCustomsDeclaration.ImportCustomsDeclarationItems">
+												<viewfilter>
+												</viewfilter>
+												<editfilter>
+												</editfilter>
+											</dataSource>
+										</data>
+									</module>
+								</submodules>
+							</module>
+							<!-- 出口报关单记录 -->
+							<module name="exportCustomsDeclaration"  icon="logistics_02_07_20">
+								<submodules>
+									<!--出口报关单记录 -->
+									<module name="exportCustomsDeclaration" icon="logistics_02_07_21">
+										<feature>EDITCUSTOMS,ADD_SECURITY_DEPOSIT,ADD_CUSTOMS_TARIFF,VIEW,FINISH_WORK</feature>
+										<data default="exportCustomsDeclaration_dataSource">
+											<dataSource name="exportCustomsDeclaration_dataSource"
+												className="com.skynet.spms.persistence.entity.logisticsCustomsDeclaration.customsDeclaration.exportCustomsDeclaration.exportCustomsDeclaration.ExportCustomsDeclaration">
+												<viewfilter>
+												</viewfilter>
+												<editfilter>
+												</editfilter>
+											</dataSource>
+											<dataSource name="exportCustomsDeclarationItems_dataSource"
+												className="com.skynet.spms.persistence.entity.logisticsCustomsDeclaration.customsDeclaration.exportCustomsDeclaration.exportCustomsDeclaration.ExportCustomsDeclarationItems">
+												<viewfilter>
+												</viewfilter>
+												<editfilter>
+												</editfilter>
+											</dataSource>
+										</data>
+									</module>
+									<!--出口报关保证金记录 -->
+									<module name="exportSecurityDeposit"  icon="logistics_02_07_22">
+										<feature>EDIT,VIEW</feature>
+										<data default="exportSecurityDeposit_dataSource">
+											<dataSource name="exportSecurityDeposit_dataSource"
+												className="com.skynet.spms.persistence.entity.logisticsCustomsDeclaration.customsDeclaration.exportCustomsDeclaration.exportSecurityDeposit.ExportSecurityDeposit">
+												<viewfilter>
+												</viewfilter>
+												<editfilter>
+												</editfilter>
+											</dataSource>
+											<dataSource name="exportCustomsDeclarationItems_dataSource"
+												className="com.skynet.spms.persistence.entity.logisticsCustomsDeclaration.customsDeclaration.exportCustomsDeclaration.exportCustomsDeclaration.ExportCustomsDeclarationItems">
+												<viewfilter>
+												</viewfilter>
+												<editfilter>
+												</editfilter>
+											</dataSource>
+										</data>
+									</module>
+									<!--出口报关关税记录 -->
+									<module name="exportCustomsTariffRecord" icon="logistics_02_07_23">
+										<feature>EDIT,VIEW</feature>
+										<data default="exportCustomsTariffRecord_dataSource">
+											<dataSource name="exportCustomsTariffRecord_dataSource"
+												className="com.skynet.spms.persistence.entity.logisticsCustomsDeclaration.customsDeclaration.exportCustomsDeclaration.exportCustomsTariffRecord.ExportCustomsTariffRecord">
+												<viewfilter>
+												</viewfilter>
+												<editfilter>
+												</editfilter>
+											</dataSource>
+											<dataSource name="exportCustomsDeclarationItems_dataSource"
+												className="com.skynet.spms.persistence.entity.logisticsCustomsDeclaration.customsDeclaration.exportCustomsDeclaration.exportCustomsDeclaration.ExportCustomsDeclarationItems">
+												<viewfilter>
+												</viewfilter>
+												<editfilter>
+												</editfilter>
+											</dataSource>
+										</data>
+									</module>
+								</submodules>
+							</module>
+						</submodules>
+					</module>
+					<!-- 交货工作 -->
+					<module name="deliverTheGoodsJob" icon="logistics_02_08">
+						<feature>EDITTAKE,VIEW,FINISH_WORK</feature>
+						<data default="deliverTheGoodsJob_dataSource">
+							<dataSource name="deliverTheGoodsJob_dataSource"
+								className="com.skynet.spms.persistence.entity.logisticsCustomsDeclaration.dispatchLogisticsTask.deliverTheGoodsJob.DeliverTheGoodsJob">
+								<viewfilter>
+								</viewfilter>
+								<editfilter>
+								</editfilter>
+							</dataSource>
+						</data>
+					</module>
+				</submodules>
+			</module>
+			<!-- 单证记录管理 -->
+			<module name="documentRecords"  icon="logistics_03" >
+				<feature>EDIT_DOCUMENT_RECORDS,VIEW</feature>
+				<data default="documentRecords_dataSource">
+					<dataSource name="documentRecords_dataSource"
+						className="com.skynet.spms.persistence.entity.logisticsCustomsDeclaration.documentRecords.DocumentRecords">
+						<viewfilter>
+						</viewfilter>
+						<editfilter>
+						</editfilter>
+					</dataSource>
+					<dataSource name="transprotationDocument_dataSource"
+						className="com.skynet.spms.persistence.entity.logisticsCustomsDeclaration.documentRecords.TransprotationDocument">
+						<viewfilter>
+						</viewfilter>
+						<editfilter>
+						</editfilter>
+					</dataSource>
+					<dataSource name="cIQDocument_dataSource"
+						className="com.skynet.spms.persistence.entity.logisticsCustomsDeclaration.documentRecords.CIQDocument">
+						<viewfilter>
+						</viewfilter>
+						<editfilter>
+						</editfilter>
+					</dataSource>
+				</data>
+			</module>
+			<!-- 费用记录管理 -->
+			<module name="logisticsOutlayRecordManage"  icon="logistics_04" >
+				<feature>EDITOUTLAY,VIEW</feature>
+				<data default="logisticsOutlayRecordManage_dataSource">
+					<dataSource name="logisticsOutlayRecordManage_dataSource"
+						className="com.skynet.spms.persistence.entity.logisticsCustomsDeclaration.logisticsOutlayRecordManage.LogisticsOutlayRecord">
+						<viewfilter>
+						</viewfilter>
+						<editfilter>
+						</editfilter>
+					</dataSource>
+					<dataSource name="logisticsOutlayItem_dataSource"
+						className="com.skynet.spms.persistence.entity.logisticsCustomsDeclaration.logisticsOutlayRecordManage.logisticsOutlayItem.LogisticsOutlayItem">
+						<viewfilter>
+						</viewfilter>
+						<editfilter>
+						</editfilter>
+					</dataSource>
+				</data>
+			</module>
+		</submodules>
+	</module>
+</config>

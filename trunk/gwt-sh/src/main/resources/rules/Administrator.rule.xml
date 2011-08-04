@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 系统管理员 -->
+<config name="Administrator" >
+<moduleFilter default="all">
+	
+</moduleFilter>	
+</config>
+

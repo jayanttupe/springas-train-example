@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 库存管理主管 -->
+<config name="WarehouseSupervisor" >
+<moduleFilter default="none">
+	<!-- 仓储管理-基础数据管理 (stock.module.xml) -->
+	<!-- 库房管理,货位管理,容器管理,补码管理    -->	
+	<include prefix="stockServiceBusiness.basicData">
+		stockRoom,cargoSpace,container,repairCode
+	</include>
+	
+	<!-- 仓储管理-航材收料入库 (stock.module.xml) -->
+	<!-- 待收料航材,航材收料单,合格待入库,入库记录管理,送修件登记    -->	
+	<include prefix="stockServiceBusiness.inStockRoomBusiness">
+		waitReceivingSheet,receivingSheet,inStockRecord,inStockRecordManage,reparePartRegister
+	</include>
+	
+	<!-- 仓储管理-航材检验管理(stock.module.xml) -->
+	<!-- 待检验航材,航材检验单,不合格品登记记录,航材证书管理,证书存档位置管理 -->	
+	<include prefix="stockServiceBusiness.checkAndAcceptBusiness">
+		waitCheckAndAcceptSheet,checkAndAcceptSheet,nonconformingReport,credentialsRecord,credentials
+	</include>
+	
+	<!-- 仓储管理-航材发料出库(stock.module.xml) -->
+	<!-- 待发料指令,航材发料单,拣货记录管理,装箱管理,出库记录管理 -->	
+	<include prefix="stockServiceBusiness.outStockRoomBusiness">
+		waitDeliveryOrder,pickingList,pickingRecord,packingList,outStockRoomRecord
+	</include>
+	
+	<!-- 仓储管理-航材库存日常业务(stock.module.xml) -->
+	<!-- 备件库存查询,库存冻结管理,库存时控件管理,库存寿命件管理,航材报废管理,航材调拨管理 -->	
+	<include prefix="stockServiceBusiness.partsInventory">
+		partsInventoryRecord,freezeRecord,timeControlPartBusiness,partLifetimeInformation,discardServiceBusiness,allocationBillBusiness
+	</include>
+	
+	<!-- 仓储管理-航材库存日常业务-库存盘点管理 (stock.module.xml) -->
+	<!-- 备盘点项目管理,盘点结果管理,盘点结果跟踪 -->	
+	<include prefix="stockServiceBusiness.partsInventory.stockCheckBusiness">
+		stockCheckManager,stockCheckResultManage,stockCheckResultTrack
+	</include>
+	
+	<!-- 仓储管理-航材库存日常业务-航材移库管理 (stock.module.xml) -->
+	<!-- 移库申请,移库审批,航材移出记录管理,航材移入记录管理  -->	
+	<include prefix="stockServiceBusiness.partsInventory.stockMoveBusiness">
+		stockMoveApply,stockMoveApproval,stockMoveOutRecord,stockMoveInRecord
+	</include>
+	
+	<!-- 仓储管理-任务管理 (stock.module.xml) -->
+	<!-- 发卡任务管理,上架任务管理,拣货任务管理,移库任务管理,盘点任务管理   -->	
+	<include prefix="stockServiceBusiness.stockTask">
+		sendCardTask,shelvingTask,pickingTask,stockMoveTask,stockCheckTask
+	</include>
+	
+	<!-- 仓储管理-保税库业务 (stock.module.xml) -->
+	<!-- 经营范围电子账册,通关电子账册,保税库入库,保税库出库,保税库在库    -->	
+	<include prefix="stockServiceBusiness.bondedWarehouseBusiness">
+		businessScopeAccountBook,clearanceAccountBook,bondedWarehouseInStock,bondedWarehouseOutStock,bondedWarehouseInventoryStock
+	</include>
+	
+	<!-- 仓储管理-保税库业务-海关监管 (stock.module.xml) -->
+	<!-- 保税库入库,保税库出库,保税库在库    -->	
+	<include prefix="stockServiceBusiness.bondedWarehouseBusiness.customsSupervision">
+		bondedWarehouseInStockByIsCustoms,bondedWarehouseOutStockByIsCustoms,bondedWarehouseInventoryStockByIsCustoms
+	</include>
+	
+	<!-- 客户管理-销售服务 (customerService.module.xml) -->
+	<!-- 销售合同 -->
+	<include prefix="customerService.salesService">
+		salesContract
+	</include>
+	
+	<!-- 供应商管理-采购业务 (supplierSupport.module.xml) -->
+	<!-- 采购合同 -->	
+	<include prefix="supplierSupport.procurementOrder">
+		procurementContract
+	</include>
+	
+</moduleFilter>	
+<modules>
+	<!-- 库存管理-检验 -->
+	<module name="stockServiceBusiness.checkAndAcceptBusiness.waitCheckAndAcceptSheet">
+	</module>
+	<module name="stockServiceBusiness.checkAndAcceptBusiness.checkAndAcceptSheet">
+	</module>
+	<module name="stockServiceBusiness.checkAndAcceptBusiness.nonconformingReport">
+	</module>
+	<module name="stockServiceBusiness.checkAndAcceptBusiness.credentialsRecord">
+	</module>
+	<module name="stockServiceBusiness.checkAndAcceptBusiness.credentials">
+	</module>
+	
+	<!-- 采购合同 -->
+	<module name="supplierSupport.procurementOrder.procurementContract">
+	</module>
+	
+	<!-- 销售合同 -->
+	<module name="customerService.salesService.salesContract">
+	</module>
+	
+</modules>
+
+</config>

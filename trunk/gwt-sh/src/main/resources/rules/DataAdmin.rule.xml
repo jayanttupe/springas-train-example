@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 基础数据管理员 -->
+<config name="DataAdmin" >
+<moduleFilter default="none">
+	
+	<!-- 备件目录 (partCatalog.module.xml) -->
+	<!-- 备件技术目录，备件销售目录，供应商价格目录，飞机构型，备件修理能力,技术文件 -->
+	<include prefix="partCatalog">
+		technical,sales,supplierPrice,aircraftConfig,repairable,technicalDocuments
+	</include>
+	
+	<!-- 合同管理 (contractManagement.module.xml) -->
+	<!-- 合同条款模板   -->	
+	<include prefix="contractManagement">
+		template
+	</include>
+	
+</moduleFilter>	
+</config>
+

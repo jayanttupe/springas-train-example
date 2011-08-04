@@ -1,0 +1,539 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	<!-- 供应商服务管理 -->
+	<module name="supplierSupport">
+		<submodules>
+
+			<!--采购业务 -->
+			<module name="procurementOrder" icon="supplier_01">
+				<submodules>
+					<!-- 库存安全策略 -->
+					<!-- <module name="SafetyStockStrategy"> -->
+					<!-- <feature> -->
+					<!--
+						ADD,DELETE,MODIFY,VIEW,PRINT,PUBLISH,CANCELPUBLISH,MESSAGE,LOG,EXPORT,SENIORSEARCH
+					-->
+					<!-- </feature> -->
+					<!-- <data default="SafetyStockStrategy_datasource"> -->
+					<!--					数据源-->
+					<!-- <dataSource name="SafetyStockStrategy_datasource" -->
+					<!--
+						className="com.skynet.spms.persistence.entity.supplierSupport.procurement.SafetyStockStrategy.SafetyStockStrategy">
+					-->
+					<!-- <viewfilter></viewfilter> -->
+					<!-- <editfilter></editfilter> -->
+					<!-- </dataSource> -->
+					<!-- </data> -->
+					<!-- </module> -->
+
+					<!-- 备件计划需求 -->
+					<module name="PartRequirement" icon="supplier_01_01">
+						<feature>
+							ADD,DELETE,MODIFY,VIEW,REFRESH,ADDPRO_PLAN,MESSAGE,LOG,PRINT,EXPORT,SENIORSEARCH
+						</feature>
+						<data default="PartRequirement_datasource">
+							<!-- 数据源 -->
+							<dataSource name="PartRequirement_datasource"
+								className="com.skynet.spms.persistence.entity.supplierSupport.procurement.partRequirement.PartRequirement">
+								<viewfilter></viewfilter>
+								<editfilter></editfilter>
+							</dataSource>
+							<!-- 附件数据源 -->
+							<dataSource name="PartRequirement_attachment_dataSource"
+								className="com.skynet.spms.persistence.entity.base.Attachment">
+								<viewfilter></viewfilter>
+								<editfilter></editfilter>
+							</dataSource>
+						</data>
+					</module>
+
+					<!-- 采购计划 -->
+					<module name="ProcurementPlan" icon="supplier_01_02">
+						<feature>
+							ADD,DELETE,MODIFY,VIEW,REFRESH,PUBLISH,CANCELPUBLISH,COMMITEXAMINE,ADDPROORDER,MESSAGE,LOG,PRINT,EXPORT,SENIORSEARCH
+						</feature>
+						<data default="ProcurementPlan_datasource">
+							<!-- 数据源 -->
+							<dataSource name="ProcurementPlan_datasource"
+								className="com.skynet.spms.persistence.entity.supplierSupport.procurement.ProcurementPlan.ProcurementPlan">
+								<viewfilter></viewfilter>
+								<editfilter></editfilter>
+							</dataSource>
+							<!-- 采购明细数据源 -->
+							<dataSource name="ProcurementPlanItem_datasource"
+								className="com.skynet.spms.persistence.entity.supplierSupport.procurement.ProcurementPlan.procurementPlanItem.ProcurementPlanItem">
+								<viewfilter></viewfilter>
+								<editfilter></editfilter>
+							</dataSource>
+							<!-- 附件数据源 -->
+							<dataSource name="ProcurementPlan_attachment_dataSource"
+								className="com.skynet.spms.persistence.entity.base.Attachment">
+								<viewfilter></viewfilter>
+								<editfilter></editfilter>
+							</dataSource>
+						</data>
+					</module>
+
+					<!-- 采购指令 -->
+					<module name="ProcurementOrder" icon="supplier_01_03">
+						<feature>
+							DELETE,MODIFY,VIEW,REFRESH,PUBLISH,CANCELPUBLISH,MESSAGE,LOG,PRINT,EXPORT,SENIORSEARCH
+						</feature>
+						<data default="ProcurementOrder_datasource">
+							<!-- 采购指令数据源 -->
+							<dataSource name="ProcurementOrder_datasource"
+								className="com.skynet.spms.persistence.entity.supplierSupport.supplierOrder.procurementOrder.procurementOrder.ProcurementOrder">
+								<viewfilter></viewfilter>
+								<editfilter></editfilter>
+							</dataSource>
+							<!-- 采购指令项数据源 -->
+							<dataSource name="ProcurementOrderItem_datasource"
+								className="com.skynet.spms.persistence.entity.supplierSupport.supplierOrder.procurementOrder.procurementOrder.ProcurementOrderItem">
+								<viewfilter></viewfilter>
+								<editfilter></editfilter>
+							</dataSource>
+						</data>
+					</module>
+
+
+					<!-- 执行采购 -->
+					<module name="doProcurementOrder" icon="supplier_01_04">
+
+						<feature>VIEW,REFRESH,ADDCONTRACT,ADDINQUIRY,ADDTRANSFER,MESSAGE,LOG,PRINT,EXPORT,SENIORSEARCH
+						</feature>
+						<data default="ProcurementOrder_datasource">
+							<!-- 主表数据源 -->
+							<dataSource name="ProcurementOrder_datasource"
+								className="com.skynet.spms.persistence.entity.supplierSupport.supplierOrder.procurementOrder.procurementOrder.ProcurementOrder">
+								<viewfilter>
+									<!--
+										<exclude prefix="m_BuybackContractTemplate.">
+										specialProvision,m_ShippingAddress,m_RecipeInvoiceAddress,m_ConsigneeAddress,m_BankInformation,seller,buyer
+										</exclude>
+									-->
+									<!--
+										<exclude prefix="m_BuybackContractTemplate.">
+										specialProvision,m_ShippingAddress,m_RecipeInvoiceAddress,m_ConsigneeAddress,m_BankInformation,seller,buyer
+										</exclude>
+									-->
+								</viewfilter>
+								<editfilter></editfilter>
+							</dataSource>
+							<!-- 明细数据源 -->
+							<dataSource name="ProcurementOrderItem_datasource"
+								className="com.skynet.spms.persistence.entity.supplierSupport.supplierOrder.procurementOrder.procurementOrder.ProcurementOrderItem">
+								<viewfilter>
+									<exclude prefix="sheet.">*</exclude>
+								</viewfilter>
+								<editfilter></editfilter>
+							</dataSource>
+						</data>
+					</module>
+
+					<!-- 采购询价单 -->
+					<module name="procurementInquirySheet" icon="supplier_01_05">
+						<feature>
+							DELETE,MODIFY,VIEW,REFRESH,PUBLISH,CANCELPUBLISH,ADDPROCUREMENTQUOTATION,MESSAGE,LOG,PRINT,EXPORT,SENIORSEARCH
+						</feature>
+						<data default="procurementInquirySheet_datasource">
+							<!-- 数据源 -->
+							<dataSource name="procurementInquirySheet_datasource"
+								className="com.skynet.spms.persistence.entity.supplierSupport.procurement.procurementInquirySheet.ProcurementInquirySheet">
+								<viewfilter></viewfilter>
+								<editfilter></editfilter>
+							</dataSource>
+							<!-- 采购明细数据源 -->
+							<dataSource name="procurementInquirySheetItem_datasource"
+								className="com.skynet.spms.persistence.entity.supplierSupport.procurement.procurementInquirySheet.ProcurementInquirySheetItem">
+								<viewfilter></viewfilter>
+								<editfilter></editfilter>
+							</dataSource>
+							<!-- 采购报价单 -->
+							<dataSource name="procurementQuotationSheet_datasource"
+								className="com.skynet.spms.persistence.entity.supplierSupport.procurement.procurementQuotationSheetRecord.ProcurementQuotationSheetRecord">
+								<viewfilter></viewfilter>
+								<editfilter></editfilter>
+							</dataSource>
+							<!-- 采购报价单明细 -->
+							<dataSource name="procurementQuotationSheetItem_datasource"
+								className="com.skynet.spms.persistence.entity.supplierSupport.procurement.procurementQuotationSheetRecord.ProcurementQuotationSheetRecordItem">
+								<viewfilter></viewfilter>
+								<editfilter></editfilter>
+							</dataSource>
+
+							<!-- 采购分段报价 -->
+							<dataSource name="ProcurementPiecewiseQuotationItem_datasource"
+								className="com.skynet.spms.persistence.entity.supplierSupport.procurement.procurementPiecewiseQuotationItem.ProcurementPiecewiseQuotationItem">
+								<viewfilter></viewfilter>
+								<editfilter></editfilter>
+							</dataSource>
+
+							<!-- 采购比价但 -->
+							<dataSource name="PriceComparisonsSheetReport_datasource"
+								className="com.skynet.spms.persistence.entity.supplierSupport.procurement.priceComparisonsReport.PriceComparisonsSheetReport">
+								<viewfilter></viewfilter>
+								<editfilter></editfilter>
+							</dataSource>
+							<dataSource name="supplierCode_dataSource"
+								className="com.skynet.spms.persistence.entity.csdd.s.SupplierCode">
+								<viewfilter>
+								</viewfilter>
+								<editfilter>
+								</editfilter>
+							</dataSource>
+						</data>
+					</module>
+
+
+					<!-- 采购合同 -->
+					<module name="procurementContract" icon="supplier_01_06">
+						<feature>
+							DELETE,MODIFY,VIEW,REFRESH,PUBLISH,CANCELPUBLISH,COMMITEXAMINE,MESSAGE,LOG,PRINT,EXPORT,SENIORSEARCH
+						</feature>
+						<data default="ProcurementContract_datasource">
+							<!-- 主表数据源 -->
+							<dataSource name="ProcurementContract_datasource"
+								className="com.skynet.spms.persistence.entity.contractManagement.template.supplierContactTemplate.procurementContractTemplate.ProcurementContractTemplate">
+								<viewfilter>
+									<exclude prefix="m_ConsigneeAddress.">
+										*
+									</exclude>
+									<exclude prefix="m_RecipeInvoiceAddress.">
+										*
+									</exclude>
+									<exclude prefix="m_BankInformation.">
+										*
+									</exclude>
+									<exclude prefix="m_ShippingAddress.">
+										*
+									</exclude>
+								</viewfilter>
+								<editfilter></editfilter>
+							</dataSource>
+							<!-- 采购合同明细数据源 -->
+							<dataSource name="ProcurementContractItem_datasource"
+								className="com.skynet.spms.persistence.entity.supplierSupport.procurement.ProcurementContract.ProcurementContractItem">
+								<viewfilter>
+									<exclude prefix="template.">*</exclude>
+								</viewfilter>
+								<editfilter></editfilter>
+							</dataSource>
+							<!-- address数据源 -->
+							<dataSource name="procurement_address_dataSource"
+								className="com.skynet.spms.persistence.entity.base.AddressInfo">
+								<viewfilter></viewfilter>
+								<editfilter></editfilter>
+							</dataSource>
+							<!-- 附件数据源 -->
+							<dataSource name="procurement_attachment_op_dataSource"
+								className="com.skynet.spms.persistence.entity.base.Attachment">
+								<viewfilter></viewfilter>
+								<editfilter></editfilter>
+							</dataSource>
+						</data>
+					</module>
+
+					<!--
+						采购发货 <module name="procurementDeliveryOrder"
+						icon="supplier_01_07"></module>
+					-->
+
+					<!-- 采购提货 -->
+					<module name="procurementPickupOrder" icon="supplier_01_08">
+						<feature>
+							DELETE,MODIFY,VIEW,REFRESH,PRINT,PUBLISH,CANCELPUBLISH,MESSAGE,LOG,EXPORT,SENIORSEARCH
+						</feature>
+					</module>
+
+					<!-- 调拨单 -->
+					<module name="transferSheet" icon="supplier_01_09">
+						<feature>
+							DELETE,MODIFY,VIEW,REFRESH,PUBLISH,CANCELPUBLISH,COMMITEXAMINE,MESSAGE,LOG,PRINT,EXPORT,SENIORSEARCH
+						</feature>
+						<data default="transferSheet_datasource">
+							<!-- 调拨单数据源 -->
+							<dataSource name="transferSheet_datasource"
+								className="com.skynet.spms.persistence.entity.supplierSupport.procurement.procurementTransferSheet.ProcurementTransferSheet">
+								<viewfilter></viewfilter>
+								<editfilter></editfilter>
+							</dataSource>
+							<!-- 调拨单明细数据源 -->
+							<dataSource name="transferSheetItem_datasource"
+								className="com.skynet.spms.persistence.entity.supplierSupport.procurement.procurementTransferSheet.ProcurementTransferSheetItem">
+								<viewfilter></viewfilter>
+								<editfilter></editfilter>
+							</dataSource>
+							<!--
+								GTA <dataSource name="GTA_datasource"
+								className="com.skynet.spms.persistence.entity.organization.enterpriseInformation.GTAManage.EnterpriseGTA">
+								<viewfilter></viewfilter> <editfilter></editfilter>
+								</dataSource>
+							-->
+						</data>
+
+					</module>
+				</submodules>
+			</module>
+
+			<!-- 供应商修理检验 -->
+			<module name="repairClaim" icon="supplier_02">
+				<submodules>
+					<!--送修送检指令管理 -->
+					<module name="customerRepairInsOrder" icon="supplier_02_01">
+						<feature>
+							VIEW,REFRESH,ADDCONTRACT,PRINT,MESSAGE,LOG,EXPORT,SENIORSEARCH
+						</feature>
+						<data default="customerRepairInsOrder_datasource">
+							<!-- 数据源 -->
+							<dataSource name="customerRepairInsOrder_datasource"
+								className="com.skynet.spms.persistence.entity.customerService.CustomerOrder.customerRepairInspectionOrder.CustomerRepairInspectionOrder">
+								<viewfilter></viewfilter>
+								<editfilter></editfilter>
+							</dataSource>
+						</data>
+					</module>
+
+					<!--修理检验合同管理 -->
+					<module name="repairInspectClaimContractTemplate" icon="supplier_02_02">
+						<feature>
+							DELETE,MODIFY,VIEW,REFRESH,PRINT,PUBLISH,CANCELPUBLISH,MESSAGE,LOG,EXPORT,SENIORSEARCH
+						</feature>
+						<data default="repairInspectClaimContractTemplate_datasource">
+							<!-- 数据源 -->
+							<dataSource name="repairInspectClaimContractTemplate_datasource"
+								className="com.skynet.spms.persistence.entity.contractManagement.template.supplierContactTemplate.repairInspectClaimContractTemplate.RepairInspectClaimContractTemplate">
+								<viewfilter>
+									<exclude prefix="recipeInvoiceAddress.">
+										*
+									</exclude>
+									<exclude prefix="bankInformation.">
+										*
+									</exclude>
+								</viewfilter>
+								<editfilter></editfilter>
+							</dataSource>
+							<!-- 送修记录数据源 -->
+							<dataSource name="supplierInspectOutlayRecord_datasource"
+								className="com.skynet.spms.persistence.entity.supplierSupport.repairClaim.InspectOutlayRecord.InspectOutlayRecord">
+								<viewfilter></viewfilter>
+								<editfilter></editfilter>
+							</dataSource>
+							<!-- 送修记录明细数据源 -->
+							<dataSource name="supplierInspectOutlayRecordItem_datasource"
+								className="com.skynet.spms.persistence.entity.supplierSupport.repairClaim.InspectOutlayRecord.InspectOutlayRecordItem">
+								<viewfilter></viewfilter>
+								<editfilter></editfilter>
+							</dataSource>
+
+							<!-- 报价数据源 -->
+							<dataSource name="supplierRepairQuteRecord_datasource"
+								className="com.skynet.spms.persistence.entity.supplierSupport.repairClaim.RepairQuoteRecord.RepairQuoteRecord">
+								<viewfilter></viewfilter>
+								<editfilter></editfilter>
+							</dataSource>
+							<!-- 报价明细数据源 -->
+							<dataSource name="supplierRepairQuteRecordItem_datasource"
+								className="com.skynet.spms.persistence.entity.supplierSupport.repairClaim.RepairQuoteRecord.RepairQuoteRecordItem.RepairQuoteRecordItem">
+								<viewfilter></viewfilter>
+								<editfilter></editfilter>
+							</dataSource>
+						</data>
+					</module>
+
+					<!-- 修理发货指令 (通用)-->
+					<module name="repairDeliveryOrder" icon="supplier_02_03">
+						<feature>
+							DELETE,MODIFY,VIEW,REFRESH,PRINT,PUBLISH,CANCELPUBLISH,MESSAGE,LOG,EXPORT,SENIORSEARCH
+						</feature>
+						<data default="PickupDeliveryOrder_datasource">
+							<!-- 指令数据源 -->
+							<dataSource name="PickupDeliveryOrder_datasource"
+								className="com.skynet.spms.persistence.entity.logisticsCustomsDeclaration.pickupDeliveryOrder.PickupDeliveryOrder">
+								<viewfilter></viewfilter>
+								<editfilter></editfilter>
+							</dataSource>
+							<!-- 指令明细数据源 -->
+							<dataSource name="PickupDeliveryVanningItems_datasource"
+								className="com.skynet.spms.persistence.entity.logisticsCustomsDeclaration.pickupDeliveryOrder.PickupDeliveryVanningItems">
+								<viewfilter></viewfilter>
+								<editfilter></editfilter>
+							</dataSource>
+							<!-- 提货装箱 -->
+							<dataSource name="PickupDeliveryVanning_datasource"
+								className="com.skynet.spms.persistence.entity.logisticsCustomsDeclaration.pickupDeliveryOrder.PickupDeliveryVanning">
+								<viewfilter></viewfilter>
+								<editfilter></editfilter>
+							</dataSource>
+						</data>
+					</module>
+					<!-- 修理提货指令 (通用) -->
+					<module name="repairPickOrder" icon="supplier_02_04">
+						<feature>
+							DELETE,MODIFY,VIEW,REFRESH,PRINT,PUBLISH,CANCELPUBLISH,MESSAGE,LOG,EXPORT,SENIORSEARCH
+						</feature>
+						<data default="customerRepairInsOrder_datasource">
+							<!-- 数据源 -->
+							<dataSource name="PickupDeliveryOrder_datasource"
+								className="com.skynet.spms.persistence.entity.logisticsCustomsDeclaration.pickupDeliveryOrder.PickupDeliveryOrder">
+								<viewfilter></viewfilter>
+								<editfilter></editfilter>
+							</dataSource>
+						</data>
+					</module>
+				</submodules>
+			</module>
+
+
+			<!-- 租赁业务 -->
+			<module name="LeaseService" icon="supplier_03">
+				<submodules>
+					<!-- 申请租赁指令 -->
+					<module name="LeaseInstruct" icon="supplier_03_04">
+						<feature>
+							VIEW,REFRESH,ADDCONTRACT,MESSAGE,LOG,PRINT,EXPORT,SENIORSEARCH
+						</feature>
+						<data default="LeaseInstruct_dataSource">
+							<!-- 主表数据源 -->
+							<dataSource name="LeaseInstruct_dataSource"
+								className="com.skynet.spms.persistence.entity.customerService.order.requisitionSupplierLeaseOrder.CustomerRequisitionSupplierLeaseOrder">
+								<viewfilter></viewfilter>
+								<editfilter></editfilter>
+							</dataSource>
+						</data>
+					</module>
+					<!--供应商租赁合同 -->
+					<module name="LeaseContract" icon="supplier_03_01">
+						<feature>
+							DELETE,MODIFY,VIEW,REFRESH,PUBLISH,CANCELPUBLISH,COMMITEXAMINE,MESSAGE,LOG,PRINT,EXPORT,SENIORSEARCH
+						</feature>
+						<data default="SSLeaseContract_datasource">
+							<!-- 供应商租赁合同数据源 -->
+							<dataSource name="SSLeaseContract_datasource"
+								className="com.skynet.spms.persistence.entity.contractManagement.template.supplierContactTemplate.leaseContractTemplate.SSLeaseContractTemplate">
+								<viewfilter></viewfilter>
+								<editfilter></editfilter>
+							</dataSource>
+							<!-- 供应商租赁合同明细数据源 -->
+							<dataSource name="SSLeaseContractItem_datasource"
+								className="com.skynet.spms.persistence.entity.supplierSupport.lease.leaseContract.SSLeaseContractItem">
+								<viewfilter>
+								</viewfilter>
+								<editfilter>
+								</editfilter>
+							</dataSource>
+							<!-- address数据源 -->
+							<dataSource name="SSlease_address_dataSource"
+								className="com.skynet.spms.persistence.entity.base.AddressInfo">
+								<viewfilter></viewfilter>
+								<editfilter></editfilter>
+							</dataSource>
+							<!-- 附件数据源 -->
+							<dataSource name="SSlease_attachment_op_dataSource"
+								className="com.skynet.spms.persistence.entity.base.Attachment">
+								<viewfilter></viewfilter>
+								<editfilter></editfilter>
+							</dataSource>
+						</data>
+					</module>
+					<!-- 租赁提货指令 -->
+					<module name="LeasePickOrder" icon="supplier_03_02">
+						<feature>
+							DELETE,MODIFY,VIEW,REFRESH,PRINT,PUBLISH,CANCELPUBLISH,MESSAGE,LOG,EXPORT,SENIORSEARCH
+						</feature>
+					</module>
+					<!-- 租赁发货指令 -->
+					<module name="LeaseDeliveryOrder" icon="supplier_03_03">
+						<feature>
+							DELETE,MODIFY,VIEW,REFRESH,PRINT,PUBLISH,CANCELPUBLISH,MESSAGE,LOG,EXPORT,SENIORSEARCH
+						</feature>
+					</module>
+				</submodules>
+			</module>
+
+			<!-- 寄售业务 -->
+			<module name="consignment" icon="supplier_04">
+				<submodules>
+					<!-- 寄售协议 -->
+					<module name="consignProtocol" icon="supplier_04_01">
+						<feature>
+							ADD,DELETE,MODIFY,VIEW,REFRESH,PUBLISH,CANCELPUBLISH,ADDCONSIGNRENEW,MESSAGE,LOG,PRINT,EXPORT,SENIORSEARCH
+						</feature>
+						<data default="consignProtocol_dataSource">
+							<!--寄售协议 主表数据源 -->
+							<dataSource name="consignProtocol_dataSource"
+								className="com.skynet.spms.persistence.entity.contractManagement.template.supplierContactTemplate.consignmentAgreementTemplate.ConsignmentAgreementTemplate">
+								<viewfilter></viewfilter>
+								<editfilter></editfilter>
+							</dataSource>
+							<!-- 寄售协议 明细数据源 -->
+							<dataSource name="consignProtocolItem_dataSource"
+								className="com.skynet.spms.persistence.entity.supplierSupport.consignment.consignProtocol.ConsignmentAgreementItem">
+								<viewfilter></viewfilter>
+								<editfilter></editfilter>
+							</dataSource>
+							<!-- 寄售协议附件数据源 -->
+							<dataSource name="consignProtocolAttach_dataSource"
+								className="com.skynet.spms.persistence.entity.base.Attachment">
+								<viewfilter></viewfilter>
+								<editfilter></editfilter>
+							</dataSource>
+						</data>
+					</module>
+
+					<!-- 寄售补库 -->
+					<module name="consignRenew" icon="supplier_04_02">
+						<feature>
+							DELETE,MODIFY,VIEW,REFRESH,PUBLISH,CANCELPUBLISH,COMMITEXAMINE,MESSAGE,LOG,PRINT,EXPORT,SENIORSEARCH
+						</feature>
+						<data default="consignRenew_dataSource">
+							<!--寄售补库主表数据源 -->
+							<dataSource name="consignRenew_dataSource"
+								className="com.skynet.spms.persistence.entity.supplierSupport.consignment.consignRenew.ConsignRenew">
+								<viewfilter></viewfilter>
+								<editfilter></editfilter>
+							</dataSource>
+							<!-- 寄售补库明细数据源 -->
+							<dataSource name="consignRenewItem_dataSource"
+								className="com.skynet.spms.persistence.entity.supplierSupport.consignment.consignRenew.ConsignRenewItem">
+								<viewfilter></viewfilter>
+								<editfilter></editfilter>
+							</dataSource>
+							<!-- address数据源 -->
+							<dataSource name="consignRenew_address_dataSource"
+								className="com.skynet.spms.persistence.entity.base.AddressInfo">
+								<viewfilter></viewfilter>
+								<editfilter></editfilter>
+							</dataSource>
+							<dataSource name="consignRenew_SockRoom"
+								className="com.skynet.spms.persistence.entity.stockServiceBusiness.warehouseManageBusiness.stockRoomManage.StockRoom">
+								<viewfilter></viewfilter>
+								<editfilter></editfilter>
+							</dataSource>
+						</data>
+					</module>
+
+					<!-- 寄售提货指令 -->
+					<module name="consignOrder" icon="supplier_04_03">
+						<feature>
+							ADD,DELETE,MODIFY,VIEW,REFRESH,PRINT,PUBLISH,CANCELPUBLISH,MESSAGE,LOG,EXPORT,SENIORSEARCH,REFRESH
+						</feature>
+						<data default="consignOrder_dataSource">
+							<!--寄售提货指令主表数据源 -->
+							<dataSource name="consignOrder_dataSource"
+								className="com.skynet.spms.persistence.entity.supplierSupport.consignment.consignOrder_old.ConsignOrder">
+								<viewfilter></viewfilter>
+								<editfilter></editfilter>
+							</dataSource>
+							<!-- 寄售提货指令明细数据源 -->
+							<dataSource name="consignOrderItem_dataSource"
+								className="com.skynet.spms.persistence.entity.supplierSupport.consignment.consignOrder_old.ConsignOrderItem">
+								<viewfilter></viewfilter>
+								<editfilter></editfilter>
+							</dataSource>
+						</data>
+					</module>
+				</submodules>
+			</module>
+		</submodules>
+	</module>
+</config>

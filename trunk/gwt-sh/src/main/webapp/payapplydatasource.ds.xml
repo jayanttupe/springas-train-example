@@ -1,0 +1,32 @@
+<DataSource ID="payapplydatasource" serverType="generic"
+	tableName="SPMS_PAY_APPLY"
+	beanClassName="com.skynet.spms.persistence.entity.financeService.buySettleAccounts.PayApplyTable">
+	<fields>
+		<field name="id" type="text" hidden="true" primaryKey="true" />
+		<field name="applyDate" type="date" title="applyDate" required="true" />
+		<field name="applyDepartment" type="text" title="applyDepartment"
+			length="20" required="true" />
+		<field name="applyNumber" type="text" title="applyNumber"
+			length="20" />
+		<field name="cashierName" type="text" title="cashierName"
+			length="20" />
+		<field name="orderNumber" type="text" title="orderNumber"
+			length="20" />
+		<field name="applyUser" type="text" title="applyUser" length="20" />
+		<field name="check" type="text" title="check" length="20" />
+		<field name="checkUser" type="text" title="checkUser" length="20" />
+		<field name="countersignResult" type="text" title="countersignResult"
+			length="20" />
+		<field name="payAmount" type="float" title="payAmount" length="8" />
+		<field name="accountName" type="text" title="accountName"
+			length="20" />
+		<field name="accountAddress" type="text" title="accountAddress"
+			length="100" />
+		<field name="account" type="text" title="account" length="30" />
+	</fields>
+	<operationBindings>
+		<binding operationType="fetch" serverMethod="fetch">
+			<serverObject lookupStyle="spring" bean="payApplyDao" />
+		</binding>
+	</operationBindings>
+</DataSource> 

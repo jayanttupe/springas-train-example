@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<List>
+<record>  
+    <itemNumber>HC0001</itemNumber>  
+    <partNumber>1</partNumber>  
+    <id>1</id>  
+</record>  
+<record>  
+    <itemNumber>HC0002</itemNumber>  
+    <partNumber>2</partNumber>  
+    <id>2</id>  
+</record>  
+<record>  
+    <itemNumber>HC0003</itemNumber>  
+    <partNumber>3</partNumber>  
+    <id>3</id>  
+</record>  
+</List>

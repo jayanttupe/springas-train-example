@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+	<datadict name="CountryCode" type="flat" displayName="name">
+		<fields>
+			<field type="en-str" name="name" />
+			<field type="zh_cn-str" name="name" />
+		</fields>
+		<entrys>
+			<entry key="US">
+				United States,美国
+	</entry>
+			<entry key="CH">
+				China,中国 
+	</entry>	
+		</entrys>
+	</datadict>
+</root>

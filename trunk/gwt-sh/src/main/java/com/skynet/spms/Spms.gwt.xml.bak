@@ -1,0 +1,26 @@
+<!--<?xml version="1.0" encoding="UTF-8"?>-->
+<!--&lt;!&ndash; 设置项目模块输出名为spms &ndash;&gt;-->
+<!--<module rename-to="spms">-->
+    <!--&lt;!&ndash; 声明模块继承 &ndash;&gt;-->
+    <!--<inherits name='com.google.gwt.user.User'/>-->
+    <!--<inherits name="com.smartgwtee.SmartGwtEENoScript" />-->
+    <!--<inherits name="gwtupload.GWTUpload"/>-->
+    <!--<stylesheet src="Upload.css"/>-->
+    <!--&lt;!&ndash; inherits name='com.skynet.spms.Framework' /&ndash;&gt;-->
+    <!---->
+    <!--&lt;!&ndash; 定义浏览器属性  set-property name="user.agent" value="gecko1_8,ie6,ie8"/&ndash;&gt;-->
+    <!---->
+    <!--&lt;!&ndash; 定义应用外观效果 &ndash;&gt;-->
+    <!--<inherits name="com.smartclient.theme.enterpriseblue.EnterpriseBlueResources"/>-->
+    <!---->
+    <!--&lt;!&ndash; 定义模块入口点 &ndash;&gt;-->
+    <!--<entry-point class='com.skynet.spms.client.SpmsMain'/>-->
+    <!---->
+    <!--&lt;!&ndash; 定义样式表     <stylesheet src="../XX" /> &ndash;&gt;-->
+    <!---->
+    <!--&lt;!&ndash; 定义国际化支持的语种  注意支持的语种越多则GWT编译的速度会越慢&ndash;&gt;-->
+    <!--<extend-property name="locale" values="zh_CN"/>-->
+	<!--<extend-property name="locale" values="en"/>-->
+	<!--<set-property-fallback name="locale" value="zh_CN"/>-->
+    <!---->
+<!--</module>-->

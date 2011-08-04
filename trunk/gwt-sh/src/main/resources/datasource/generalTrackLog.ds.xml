@@ -1,0 +1,14 @@
+<DataSource    ID="generalTrackLog"   >
+    <fields>
+        <field name="id"      type="sequence" hidden="true"       primaryKey="true"/>
+        <field name="operator"    type="text"     title="${generalLog.operName}"             />
+        <field name="recordName"         type="text"     title="${generalLog.tableName}"          />
+        <field name="actionDescription" type="text"     title="${generalLog.detail}" />
+        <field name="m_GeneralOperateLogStatus"       type="enumClass"     title="${generalLog.operType}"    >
+        	<enum class="com.skynet.spms.persistence.entity.spmsdd.GeneralOperateLogStatus" />
+        </field>
+        <field name="actionDate" type="date" title="${generalLog.actionDate}" />
+        <field name="recordId" type="text" hidden="true" />
+    </fields>    
+       
+</DataSource>

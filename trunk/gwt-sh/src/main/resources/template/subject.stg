@@ -1,0 +1,16 @@
+group subject;
+
+demo(name) ::= "the task <name> notify."
+
+demo_ii(param1,param2,param3) ::= <<
+this is a mui line subject demo,
+you can write anything at here and ref the params
+for example :
+param1=><param1>; 
+param2=><param2>;
+param3=><param3>;
+
+>>
+
+
+

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+	<datadict name="CurrencyCode" type="flat" displayName="name">
+		<fields>
+			<field type="en-str" name="name" />
+			<field type="zh_cn-str" name="name" />
+			<field type="int" name="unit" default="1" />
+		</fields>
+		<entrys>
+			<entry key="USD">
+				United States Dollar,美元,1
+	</entry>
+			<entry key="CAD">
+				Canadian Dollar,加元, 
+	</entry>
+			<entry key="GBP">
+				United Kingdom Pound,英镑
+	</entry>
+			<entry key="FRF">
+				French Franc,法国法郎
+	</entry>
+			<entry key="DEM">
+				German Mark,德国马克
+	</entry>
+			<entry key="ITL">
+				Italian Lira,意大利里拉,1000
+	</entry>
+			<entry key="ESP">
+				Spanish Peseta,西班牙比索,100
+	</entry>
+			<entry key="CHF">
+				Swiss Franc,瑞士克朗
+	</entry>
+			<entry key="NLG">
+				Netherlands Guilder,荷兰盾
+	</entry>
+			<entry key="BEF">
+				Belgian Franc,比利时法郎,10
+	</entry>
+			<entry key="AUD">
+				Australian Dollar,澳元,
+	</entry>
+			<entry key="NZD">
+				New Zealand Dollar,新西兰元
+	</entry>
+			<entry key="DKK">
+				Danish Krone,丹麦克朗
+	</entry>
+			<entry key="SEK">
+				Swedish Krona,瑞典克朗
+	</entry>
+			<entry key="HKD">
+				Hong Kong Dollar,港元,
+	</entry>
+			<entry key="JPY">
+				Japanese Yen|日元,100
+	</entry>
+			<entry key="NOK">
+				Norwegian Krone,挪威克朗
+	</entry>
+			<entry key="SGD">
+				Singapore Dollar,新加坡元
+	</entry>
+			<entry key="ECU">
+				European Currency Unit,欧洲货币单位,
+	</entry>		
+			<entry key="PTE">
+				Portuguese Escudo,葡萄牙埃斯库多,100
+	</entry>
+			<entry key="GRD">
+				Greek Drachma,希腊德拉克马,100
+	</entry>
+			<entry key="TRL">
+				Turkish Lira,土耳其里拉,100
+	</entry>
+			<entry key="FIM">
+				Finish Markka Unit,芬兰马克,
+	</entry>
+			<entry key="EUR">
+				Euro,欧元,
+	</entry>
+		</entrys>
+	</datadict>
+</root>

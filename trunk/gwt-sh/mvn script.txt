@@ -1,0 +1,15 @@
+#copy all jar files to D:\dev\
+
+mvn install:install-file -DgroupId=ojdbc -DartifactId=ojdbc -Dversion=6 -Dpackaging=jar -Dfile=D:\dev\ojdbc6.jar
+
+mvn install:install-file -DgroupId=org.jbpm -DartifactId=jbpm -Dversion=4.4 -Dpackaging=jar -Dfile=D:\dev\jbpm.jar
+
+mvn install:install-file -DgroupId=report4 -DartifactId=report4 -Dversion=1 -Dpackaging=jar -Dfile=D:\dev\report4.jar
+
+mvn install:install-file -DgroupId=report4 -DartifactId=report4StaticHtml -Dversion=1 -Dpackaging=jar -Dfile=D:\dev\report4StaticHtml.jar
+
+mvn install:install-file -DgroupId=itext2_rq -DartifactId=itext2_rq -Dversion=1 -Dpackaging=jar -Dfile=D:\dev\itext2_rq.jar
+
+
+
+

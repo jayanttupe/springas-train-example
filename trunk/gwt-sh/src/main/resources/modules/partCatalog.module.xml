@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	<!-- 备件技术模块 -->  
+	<module name="partCatalog" >
+		<!-- 备件技术目录模块的描述，会作为该模块树的根节点显示 -->
+		<submodules>
+			<!-- 备件技术目录模块的子节点 -->
+			<!--备件技术目录 -->
+			<module name="technical" icon="part_01">
+				<feature>
+					<!-- feature节点的信息作为用户管理主界面 按钮面板的按钮列表，增删改查打印按钮必须按此规则书写,其他特别按钮都需要按规则书写 -->
+					ADD,DELETE,MODIFY,VIEW,PUBLISH,CANCELPUBLISH,PRINT,EXPORT,IMPORT,SENIORSEARCH
+				</feature>
+				<!-- 数据源配置信息 -->
+				<data default="partIndex_dataSource">
+					<dataSource name="partIndex_dataSource"
+						className="com.skynet.spms.web.form.PartIndexForm">
+						<viewfilter>
+						</viewfilter>
+						<editfilter>
+						</editfilter>
+					</dataSource>
+					<dataSource name="manufacturerCodeForm_dataSource"
+						className="com.skynet.spms.web.form.ManufacturerCodeForm">
+						<viewfilter>
+						</viewfilter>
+						<editfilter>
+						</editfilter>
+					</dataSource>
+					<!-- 基本数据源 -->
+					<dataSource name="basicInfo_dataSource"
+						className="com.skynet.spms.persistence.entity.partCatalog.technicalCatalog.basicInformation.BasicInformation">
+						<viewfilter>
+						</viewfilter>
+						<editfilter>
+						</editfilter>
+					</dataSource>
+					<!-- 应用数据源 -->
+					<dataSource name="applicationData_dataSource"
+						className="com.skynet.spms.persistence.entity.partCatalog.technicalCatalog.applicationData.PartApplicationData">
+						<viewfilter>
+						</viewfilter>
+						<editfilter>
+						</editfilter>
+					</dataSource>
+					<!-- 报关数据源 -->
+					<dataSource name="customsClearance_dataSource"
+						className="com.skynet.spms.persistence.entity.partCatalog.technicalCatalog.customsData.CustomsClearanceData">
+						<viewfilter>
+						</viewfilter>
+						<editfilter>
+						</editfilter>
+					</dataSource>
+					<!-- 可互换备件数据源 -->
+					<dataSource name="optionalPart_dataSource"
+						className="com.skynet.spms.persistence.entity.partCatalog.technicalCatalog.optionalData.OptionalPart">
+						<viewfilter>
+						</viewfilter>
+						<editfilter>
+						</editfilter>
+					</dataSource>
+
+					<!-- 飞机构型数据源 -->
+					<dataSource name="aircraftConfiguration_dataSource"
+						className="com.skynet.spms.persistence.entity.partCatalog.aircraftConfigCatalog.AircraftRegistration">
+						<viewfilter>
+						</viewfilter>
+						<editfilter>
+						</editfilter>
+					</dataSource>
+
+					<!-- 技术数据 -->
+					<dataSource name="technicalData_dataSource"
+						className="com.skynet.spms.persistence.entity.partCatalog.technicalCatalog.technicalData.PartTechnicalData">
+						<viewfilter>
+						</viewfilter>
+						<editfilter>
+						</editfilter>
+					</dataSource>
+					<!-- 时控数据 -->
+					<dataSource name="timeCyclesData_dataSource"
+						className="com.skynet.spms.persistence.entity.partCatalog.technicalCatalog.timeCycleData.TimeCyclesData">
+						<viewfilter>
+						</viewfilter>
+						<editfilter>
+						</editfilter>
+					</dataSource>
+					<!-- 报关数据源 -->
+					<dataSource name="customsClearance_dataSource"
+						className="com.skynet.spms.persistence.entity.partCatalog.technicalCatalog.customsData.CustomsClearanceData">
+						<viewfilter>
+						</viewfilter>
+						<editfilter>
+						</editfilter>
+					</dataSource>
+
+					<dataSource name="customsAttachment_dataSource"
+						className="com.skynet.spms.persistence.entity.base.Attachment">
+						<viewfilter>
+						</viewfilter>
+						<editfilter>
+						</editfilter>
+					</dataSource>
+					
+					<!-- 航材包信息 -->
+					<dataSource name="partBagItem_dataSource"
+						className="com.skynet.spms.persistence.entity.partCatalog.technicalCatalog.partBagItem.PartBagItem">
+						<viewfilter>
+						</viewfilter>
+						<editfilter>
+						</editfilter>
+					</dataSource>
+					
+				</data>
+			</module>
+			
+			<!-- 备件销售 -->
+			<module name="sales"  icon="part_02">
+				<feature>
+					<!-- feature节点的信息作为用户管理主界面 按钮面板的按钮列表，增删改查打印按钮必须按此规则书写,其他特别按钮都需要按规则书写 -->
+					ADD,DELETE,MODIFY,VIEW,PUBLISH,CANCELPUBLISH,PRINT,EXPORT,IMPORT,SENIORSEARCH
+					</feature>
+				<!-- 数据源配置信息 -->
+				<data default="partSaleRelease_dataSource">
+					<dataSource name="partSaleRelease_dataSource"
+						className="com.skynet.spms.web.form.PartSaleReleaseForm">
+						<viewfilter>
+						</viewfilter>
+						<editfilter>
+						</editfilter>
+					</dataSource>
+					<!-- 销售折扣数据源 -->
+					<dataSource name="discountItem_dataSource"
+						className="com.skynet.spms.persistence.entity.partCatalog.salesCatalog.discountMatrix.DiscountItem">
+						<viewfilter>
+						</viewfilter>
+						<editfilter>
+						</editfilter>
+					</dataSource>
+					<!-- 版次信息数据源 -->
+					<dataSource name="editionsInfo_dataSource"
+						className="com.skynet.spms.persistence.entity.partCatalog.supplierPriceCatalog.editionsInfo.EditionsInformation">
+						<viewfilter>
+						</viewfilter>
+						<editfilter>
+						</editfilter>
+					</dataSource>
+
+					<!-- 历史版次信息本期不实现 -->
+					<!-- <dataSource name="editionsHistory_dataSource" className="com.skynet.spms.persistence.entity.partCatalog.supplierPriceCatalog.editionsInfo.EditionsInformation"> 
+						<viewfilter> </viewfilter> <editfilter> </editfilter> </dataSource> -->
+
+					<!-- 备件销售价格数据源 -->
+					<dataSource name="salesPrice_dataSource"
+						className="com.skynet.spms.persistence.entity.partCatalog.salesCatalog.salesPrice.SalesPrice">
+						<viewfilter>
+						</viewfilter>
+						<editfilter>
+						</editfilter>
+					</dataSource>
+					<!-- 历史销售数据源 -->
+					<!-- <dataSource name="salesHistory_dataSource" className="com.skynet.spms.persistence.entity.partCatalog.salesCatalog.salesPrice.salseHistoryInfo"> 
+						<viewfilter> </viewfilter> <editfilter> </editfilter> </dataSource> -->
+					<!-- 其他费用数据源 -->
+					<dataSource name="otherCharge_dataSource"
+						className="com.skynet.spms.persistence.entity.partCatalog.base.basePrice.OtherCharge">
+						<viewfilter>
+						</viewfilter>
+						<editfilter>
+						</editfilter>
+					</dataSource>
+
+					<!-- 基础数量分段价格数据源 -->
+					<dataSource name="priceBreak_dataSource"
+						className="com.skynet.spms.persistence.entity.partCatalog.base.basePrice.PriceBreak">
+						<viewfilter>
+						</viewfilter>
+						<editfilter>
+						</editfilter>
+					</dataSource>
+
+					<!-- 可选地址数据源 -->
+					<dataSource name="alternateSupplyLoc_dataSource"
+						className="com.skynet.spms.persistence.entity.partCatalog.base.basePrice.AlternateSupplyLocationText">
+						<viewfilter>
+						</viewfilter>
+						<editfilter>
+						</editfilter>
+					</dataSource>
+
+
+					<!-- 供应商价格索引 暂不实现 <dataSource name="subsectionprice_dataSource" className="com.skynet.spms.persistence.entity.partCatalog.salesCatalog."> 
+						<viewfilter> </viewfilter> <editfilter> </editfilter> </dataSource> -->
+				</data>
+			</module>
+			
+			<!-- 供应商价格 -->
+			<module name="supplierPrice"  icon="part_03">
+				<feature>
+					<!-- feature节点的信息作为用户管理主界面 按钮面板的按钮列表，增删改查打印按钮必须按此规则书写,其他特别按钮都需要按规则书写 -->
+					ADD,DELETE,MODIFY,VIEW,PUBLISH,CANCELPUBLISH,PRINT,EXPORT,IMPORT,SENIORSEARCH
+					</feature>
+				<!-- 数据源配置信息 -->
+				<data default="partSupplierPrice_dataSource">
+					<dataSource name="partSupplierPrice_dataSource"
+						className="com.skynet.spms.web.form.PartSupplierPriceForm">
+						<viewfilter>
+						</viewfilter>
+						<editfilter>
+						</editfilter>
+					</dataSource>
+
+					<dataSource name="supplierSalesPrice_dataSource"
+						className="com.skynet.spms.persistence.entity.partCatalog.supplierPriceCatalog.salesPrice.SupplierSalesPrice">
+						<viewfilter>
+						</viewfilter>
+						<editfilter>
+						</editfilter>
+					</dataSource>
+
+					<dataSource name="supplierCodeForm_dataSource"
+						className="com.skynet.spms.web.form.SupplierCodeForm">
+						<viewfilter>
+						</viewfilter>
+						<editfilter>
+						</editfilter>
+					</dataSource>
+				</data>
+			</module>
+			
+			<!-- 飞机构型目录 -->
+			<module name="aircraftConfig"   icon="part_04">
+				<feature>
+					<!-- feature节点的信息作为用户管理主界面 按钮面板的按钮列表，增删改查打印按钮必须按此规则书写,其他特别按钮都需要按规则书写 -->ADD,DELETE,MODIFY,VIEW,PRINT,EXPORT,IMPORT,SENIORSEARCH</feature>
+				<!-- 数据源配置信息 -->
+				<data default="aircraftConfig_dataSource">
+					<dataSource name="aircraftConfig_dataSource"
+						className="com.skynet.spms.persistence.entity.partCatalog.aircraftConfigCatalog.AircraftRegistration">
+						<viewfilter>
+						</viewfilter>
+						<editfilter>
+						</editfilter>
+					</dataSource>
+
+				</data>
+			</module>
+
+			<!-- 备件维修 -->
+			<module name="repairable"  icon="part_05">
+				<feature>
+					<!-- feature节点的信息作为用户管理主界面 按钮面板的按钮列表，增删改查打印按钮必须按此规则书写,其他特别按钮都需要按规则书写 -->
+					ADD,DELETE,MODIFY,VIEW,PUBLISH,CANCELPUBLISH,PRINT,EXPORT,IMPORT,SENIORSEARCH
+				</feature>
+				<!-- 数据源配置信息 -->
+				<data default="repairData_dataSource">
+					<dataSource name="repairData_dataSource"
+						className="com.skynet.spms.persistence.entity.partCatalog.repairableCatalog.RepairData">
+						<viewfilter>
+						</viewfilter>
+						<editfilter>
+						</editfilter>
+					</dataSource>
+					<dataSource name="repairShopCodeForm_dataSource"
+						className="com.skynet.spms.web.form.RepairShopCodeForm">
+						<viewfilter>
+						</viewfilter>
+						<editfilter>
+						</editfilter>
+					</dataSource>
+				</data>
+			</module>
+			
+			<!-- 备件技术文件目录 -->
+			<module name="technicalDocuments"  icon="part_06">
+				<feature>
+					<!-- feature节点的信息作为用户管理主界面 按钮面板的按钮列表，增删改查打印按钮必须按此规则书写,其他特别按钮都需要按规则书写 -->ADD,DELETE,MODIFY,VIEW,PRINT,EXPORT,IMPORT,SENIORSEARCH</feature>
+				<!-- 数据源配置信息 -->
+				<data default="technicalDocuments_dataSource">
+					<dataSource name="technicalDocuments_dataSource"
+						className="com.skynet.spms.persistence.entity.partCatalog.technicalDocumentsCatalog.TechnicalPublishDoc">
+						<viewfilter>
+						</viewfilter>
+						<editfilter>
+						</editfilter>
+					</dataSource>
+
+					<!-- 附件数据源 -->
+					<dataSource name="attachment_dataSource"
+						className="com.skynet.spms.persistence.entity.base.Attachment">
+						<viewfilter>
+						</viewfilter>
+						<editfilter>
+						</editfilter>
+					</dataSource>
+				</data>
+			</module>
+		</submodules>
+	</module>
+</config>

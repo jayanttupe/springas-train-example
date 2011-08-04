@@ -1,0 +1,32 @@
+<DataSource    ID="mockTestPage"  serverType="generic"  >
+    <fields>
+        <field name="itemID"      type="sequence" hidden="true"       primaryKey="true"/>
+        <field name="itemName"    type="text"     title="${mock.Item}"        length="128"       required="true"/>
+        <field name="SKU"         type="text"     title="${mock.SKU}"         length="10"        required="true" />
+        <field name="description" type="text"     title="${mock.Description}" length="2000"/>
+        <field name="category"    type="text"     title="${mock.Category}"    length="128"       required="true"
+               foreignKey="supplyCategory.categoryName"/>
+        <field name="item.units"       type="enum"     title="${mock.Units}"       length="5">
+            <valueMap>
+                <value ID="Roll" >${mock.Roll}</value>
+                <value ID="Ea">${mock.Ea}</value>
+                <value ID="Pkt">${mock.Pkt}</value>
+                <value ID="Set">${mock.Set}</value>
+            </valueMap>
+        </field>
+        <field name="item.unitCost"    type="float"    title="${mock.UnitCost}"   required="true">
+            <validators>
+                <validator type="floatRange" min="0" errorMessage="Please enter a valid (positive) cost"/>
+                <validator type="floatPrecision" precision="2" errorMessage="The maximum allowed precision is 2"/>
+            </validators>
+        </field>
+        <field name="item.inStock"   type="boolean"  title="${mock.InStock}"/>
+        <field name="item.nextShipment"  type="date" title="${mock.NextShipment}"/>
+        <field name="itemList" type="any" title="item list" /> 
+        <field name="subItem" type="any" title="single item" />
+    </fields>
+    
+     <serverObject lookupStyle="spring" bean="simpleDataSourceService"/>
+     
+  
+</DataSource>

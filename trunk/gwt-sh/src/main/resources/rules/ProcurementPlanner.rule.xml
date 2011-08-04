@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 采购计划人员 -->
+<config name="ProcurementPlanner" >
+<moduleFilter default="none">
+	
+	<!-- 供应商管理-采购业务 (supplierSupport.module.xml) -->
+	<!-- 备件计划需求,采购计划,采购指令,执行采购,采购询价单,采购合同,采购提货,调拨单 -->	
+	<include prefix="supplierSupport.procurementOrder">
+		PartRequirement,ProcurementPlan,ProcurementOrder,doProcurementOrder,procurementInquirySheet,procurementContract,procurementPickupOrder,transferSheet
+	</include>
+	
+	<!-- 备件目录 (partCatalog.module.xml) -->
+	<!-- 备件技术目录，备件销售目录，供应商价格目录，飞机构型 -->
+	<include prefix="partCatalog">
+		technical,sales,supplierPrice,aircraftConfig
+	</include>
+	
+	<!-- 组织管理 (organization.module.xml)-->
+	<!-- 用户管理 -->
+	<include prefix="organization">
+		userinfo
+	</include>
+	
+	<!-- 组织管理-企业管理-->
+	<!-- 上客服，客户企业，供应商，制造商，报送代理商，运代商，承修商，部门管理 -->
+	<include prefix="organization.enterprise">
+		COMACSC,customer,supplier,manufacturer,clearanceAgency,carrier,repairAgency,department
+	</include>
+	
+	<!-- 财务管理-申请管理 (account.module.xml) -->
+	<!-- 付款申请,发票申请  -->	
+	<include prefix="account.applyManager">
+		*
+	</include>
+	
+</moduleFilter>
+
+<modules>
+	<!-- 供应商管理 -->
+	<module name="supplierSupport.procurementOrder.doProcurementOrder">
+		<feature>VIEW</feature>
+	</module>
+	<module name="supplierSupport.procurementOrder.procurementInquirySheet">
+	</module>
+	<module name="supplierSupport.procurementOrder.procurementContract">
+	</module>
+	<module name="supplierSupport.procurementOrder.procurementPickupOrder">
+	</module>
+	<module name="supplierSupport.procurementOrder.transferSheet">
+	</module>
+	
+	<!-- 备件目录 -->
+	<module name="partCatalog.sales">
+	</module>
+	<module name="partCatalog.aircraftConfig">
+	</module>
+	
+	<!-- 用户 -->
+	<module name="organization.userinfo">
+	</module>
+	
+	<!-- 组织机构 -->
+	<module name="organization.enterprise.COMACSC">
+	</module>
+	<module name="organization.enterprise.customer">
+	</module>
+	<module name="organization.enterprise.clearanceAgency">
+	</module>
+	<module name="organization.enterprise.carrier">
+	</module>
+	<module name="organization.enterprise.repairAgency">
+	</module>
+	<module name="organization.enterprise.department">
+	</module>
+	
+</modules>
+</config>

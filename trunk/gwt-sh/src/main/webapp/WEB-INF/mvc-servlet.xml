@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="
+       http://www.springframework.org/schema/beans 
+       http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+   	<!-- 配置springmvc,springmvc相关的bean中使用注解来进行表示 -->
+	<context:annotation-config />  
+	<!-- 对com.skynet.spms.web 包中的所有类进行扫描，完成Bean创建和自动依赖注入的功能 -->  
+	<context:component-scan base-package="com.skynet.spms.web" />
+
+	<bean id="jspViewResolver"
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="viewClass"
+			value="org.springframework.web.servlet.view.JstlView" />
+		<property name="prefix" value="/WEB-INF/jsp/" />
+		<property name="suffix" value=".jsp" />
+	</bean>
+
+	<!--根据客户端的请求url映射绑定到服务器端相应的映射处理类上-->  
+	<bean
+		class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping" />
+		
+	<!-- 定义GWT的处理映射，将客户端RemoteServiceRelativePath定义的URL绑定到指定的服务端action上  -->
+	<bean id="gwtHandlerMapping" class="com.skynet.common.gwt.GwtAnnotationHandlerMapping" />
+
+      
+	<bean id="gwtDataSourceHandlerMapping" class="com.skynet.spms.datasource.DataSourceAnnotationHandlerMapping" >
+		<property name="prefix" value="/spms/ds" />
+	<!-- 	<property name="prefix" value="/homepage/ds" /> -->
+		<property name="suffix" value=".ds" />
+	</bean>
+
+    <!--根据请求映射的注释来适配相应的处理器 -->  
+	<bean
+		class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter" />
+		
+	<bean id="gwtHandlerAdapter" class="com.skynet.common.gwt.GwtRcpEndPointHandlerAdapter" />
+
+	<bean id="gwtDataSourceHandlerAdapter" class="com.skynet.spms.datasource.DataSourceAnnotationHandlerAdapter" autowire="byType" />
+
+</beans>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+           http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
+           http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-3.0.xsd">
+
+	<context:annotation-config />
+	
+	<context:component-scan base-package="com.skynet.spms.jbpm">
+	</context:component-scan>
+
+	<bean id="springHelper" class="org.jbpm.pvm.internal.processengine.SpringHelper">
+		<property name="jbpmCfg" value="jbpm.cfg.xml"></property>
+	</bean>
+
+	<bean id="processEngine" factory-bean="springHelper"
+		factory-method="createProcessEngine" />
+
+	<bean id="blobStrategyBlob" class="org.jbpm.pvm.internal.lob.HibernateBlobStrategy" />
+
+	<bean id="clobStrategyClob" class="org.jbpm.pvm.internal.lob.HibernateClobStrategy" />
+
+	
+	<!-- jbpm service  --> 
+
+	<bean id="jbpmRepositoryService" factory-bean="processEngine" factory-method="getRepositoryService" />
+	
+	<bean id="jbpmExecutionService" factory-bean="processEngine" factory-method="getExecutionService" />
+  
+  	<bean id="jbpmTaskService" factory-bean="processEngine" factory-method="getTaskService" />
+  	
+  	<bean id="jbpmHistoryService" factory-bean="processEngine" factory-method="getHistoryService" />
+  	
+  	<bean id="jbpmManagerService" factory-bean="processEngine" factory-method="getManagementService" />
+  	
+  	<bean id="jbpmIdentityService" factory-bean="processEngine" factory-method="getIdentityService" />
+	 <!-- jbpm proc service 
+	 <bean id="processInitTool" class="com.skynet.spms.jbpm.service.imp.ProcessInitTool" />
+	
+	
+    <bean id="demoProcess"
+		class="com.skynet.spms.jbpm.service.imp.JbpmProcessServiceImp">
+		<property name="resourceName" value="com/skynet/spms/jbpm/jpdl/demo.jpdl.xml" />
+	</bean>
+	
+	<bean id="demoProcess"
+		class="com.skynet.spms.jbpm.service.imp.JbpmProcessServiceImp">
+		<property name="resourceName" value="com/skynet/spms/jbpm/jpdl/demo.jpdl.xml" />
+	</bean>
+	 -->
+</beans>

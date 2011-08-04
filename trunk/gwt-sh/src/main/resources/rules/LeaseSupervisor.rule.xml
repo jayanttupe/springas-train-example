@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 租赁业务主管 -->
+<config name="LeaseSupervisor" >
+<moduleFilter default="none">
+
+	<!-- 客户管理-租赁服务 (customerService.module.xml) -->
+	<!-- 租赁申请单 ，租赁合同，申请供应商租赁指令,租赁发货指令 -->		
+	<include prefix="customerService.leaseService">
+		leaseRequisitionSheet,leaseContract,LeaseInstruct,LeaseDeliveryOrder
+	</include>
+	
+	<!-- 供应商管理-租赁业务 (supplierSupport.module.xml) -->
+	<!-- 申请租赁指令,供应商租赁合同,租赁提货指令,租赁发货指令   -->	
+	<include prefix="supplierSupport.LeaseService">
+		LeaseInstruct,LeaseContract,LeasePickOrder,LeaseDeliveryOrder
+	</include>
+	
+	<!-- 备件目录 (partCatalog.module.xml) -->
+	<!-- 备件技术目录，备件销售目录，供应商价格目录，飞机构型 -->
+	<include prefix="partCatalog">
+		technical,sales,supplierPrice,aircraftConfig
+	</include>
+	
+	<!-- 组织管理 (organization.module.xml)-->
+	<!-- 用户管理 -->
+	<include prefix="organization">
+		userinfo
+	</include>
+	
+	<!-- 组织管理-企业管理-->
+	<!-- 上客服，客户企业，供应商，制造商，报送代理商，运代商，承修商，部门管理 -->
+	<include prefix="organization.enterprise">
+		COMACSC,customer,supplier,manufacturer,clearanceAgency,carrier,repairAgency,department
+	</include>
+	
+	<!-- 仓储管理-航材收料入库 (stock.module.xml) -->
+	<!-- 待收料航材,航材收料单,合格待入库,入库记录管理,送修件登记    -->	
+	<include prefix="stockServiceBusiness.inStockRoomBusiness">
+		waitReceivingSheet,receivingSheet,inStockRecord,inStockRecordManage,reparePartRegister
+	</include>
+	
+	<!-- 仓储管理-航材检验管理(stock.module.xml) -->
+	<!-- 待检验航材,航材检验单,不合格品登记记录,航材证书管理,证书存档位置管理 -->	
+	<include prefix="stockServiceBusiness.checkAndAcceptBusiness">
+		waitCheckAndAcceptSheet,checkAndAcceptSheet,nonconformingReport,credentialsRecord,credentials
+	</include>
+	
+	<!-- 财务管理-申请管理 (account.module.xml) -->
+	<!-- 付款申请,发票申请  -->	
+	<include prefix="account.applyManager">
+		payApplyManager,invoiceApplyManager
+	</include>
+</moduleFilter>
+
+<modules>
+	
+	<!-- 备件目录 -->
+	<module name="partCatalog.technical">
+	</module>
+	<module name="partCatalog.aircraftConfig">
+	</module>
+	
+	<!-- 用户 -->
+	<module name="organization.userinfo">
+	</module>
+	
+	<!-- 组织机构 -->
+	<module name="organization.enterprise.COMACSC">
+	</module>
+	<module name="organization.enterprise.clearanceAgency">
+	</module>
+	<module name="organization.enterprise.carrier">
+	</module>
+	<module name="organization.enterprise.repairAgency">
+	</module>
+	<module name="organization.enterprise.department">
+	</module>
+	
+	<!-- 仓库收料入库 -->
+	<module name="stockServiceBusiness.inStockRoomBusiness.waitReceivingSheet">
+	</module>
+	<module name="stockServiceBusiness.inStockRoomBusiness.receivingSheet">
+	</module>
+	<module name="stockServiceBusiness.inStockRoomBusiness.inStockRecord">
+	</module>
+	<module name="stockServiceBusiness.inStockRoomBusiness.inStockRecordManage">
+	</module>
+	<module name="stockServiceBusiness.inStockRoomBusiness.reparePartRegister">
+	</module>
+	
+	<!-- 仓库检验 -->
+	<module name="stockServiceBusiness.checkAndAcceptBusiness.waitCheckAndAcceptSheet">
+	</module>
+	<module name="stockServiceBusiness.checkAndAcceptBusiness.checkAndAcceptSheet">
+	</module>
+	<module name="stockServiceBusiness.checkAndAcceptBusiness.inStockRecord">
+	</module>
+	<module name="stockServiceBusiness.checkAndAcceptBusiness.credentialsRecord">
+	</module>
+	<module name="stockServiceBusiness.checkAndAcceptBusiness.credentials">
+	</module>
+</modules>
+</config>

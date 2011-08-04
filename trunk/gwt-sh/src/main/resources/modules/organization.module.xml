@@ -1,0 +1,342 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	<!-- 组织机构模块 -->
+		<module name="organization" >
+		    <!-- 组织机构管理模块的描述，会作为该模块树的根节点显示 -->
+			<submodules><!-- 组织机构模块的子节点 -->
+				<!-- 用户管理 -->
+				<module name="userinfo" icon="organization_01">
+				  <!-- feature节点的信息作为用户管理主界面   按钮面板的按钮列表，增删改查打印按钮必须按此规则书写,其他特别按钮都需要按规则书写 -->
+					<feature>ADD,DELETE,MODIFY,VIEW,ROLETOGROUP,MODIFYROLEQUOTA,PRINTIDCARD,PRINT,EXPORT,IMPORT,SENIORSEARCH</feature>
+					<!-- 数据源配置信息 -->
+					<data default="user_dataSource">
+						<dataSource name="user_dataSource" className="com.skynet.spms.persistence.entity.organization.userInformation.User">
+								<viewfilter>
+								</viewfilter>
+								<editfilter>
+								</editfilter>	
+						</dataSource>
+						<dataSource name="userInformation_dataSource" className="com.skynet.spms.persistence.entity.organization.userInformation.UserInformation">
+								<viewfilter>
+								</viewfilter>
+								<editfilter>
+								</editfilter>	
+						</dataSource>
+						<dataSource name="idCard_dataSource" className="com.skynet.spms.persistence.entity.organization.userInformation.IDCard">
+								<viewfilter>
+								</viewfilter>
+								<editfilter>
+								</editfilter>	
+						</dataSource>
+					</data>
+	 			</module>
+	 			
+	 			<!-- 用户组管理 -->	
+				<module name="userGroup" icon="organization_02">
+					<feature>ADD,DELETE,MODIFY,VIEW,USERTOGROUP,ROLETOGROUP,PRINT,EXPORT,IMPORT,SENIORSEARCH</feature>
+					<data default="userGroup_dataSource">
+						<dataSource name="userGroup_dataSource" className="com.skynet.spms.persistence.entity.organization.userGroup.UserGroup">
+							<viewfilter>
+							</viewfilter>
+							<editfilter>
+							</editfilter>	
+						</dataSource>
+						<!-- 一个data元素中可以配置多个数据源 -->
+						<dataSource name="usergroupview_dataSource" className="com.skynet.spms.web.form.UserGroupForm">
+							<viewfilter>
+							</viewfilter>
+							<editfilter>
+							</editfilter>	
+						</dataSource>
+						<dataSource name="role_dataSource" className="com.skynet.spms.persistence.entity.organization.userRole.Role">
+							<viewfilter>
+							</viewfilter>
+							<editfilter>
+							</editfilter>	
+						</dataSource>	
+					</data>
+				</module>
+				
+				<!-- 企业管理 -->
+				<module name="enterprise" icon="organization_03">
+					<data default="baseEnterprise_dataSource">
+						<dataSource name="baseEnterprise_dataSource" className="com.skynet.spms.web.form.EnterpriseForm">
+							<viewfilter>
+								
+							</viewfilter>
+							<editfilter>
+								
+							</editfilter>	
+						</dataSource>
+						<dataSource name="shippingAddress_dataSource" className="com.skynet.spms.persistence.entity.organization.enterpriseInformation.baseEnterpriseInformation.ShippingAddress">
+							<viewfilter>
+										
+							</viewfilter>
+							<editfilter>
+										
+							</editfilter>	
+						</dataSource>
+						<dataSource name="consigneeAddress_dataSource" className="com.skynet.spms.persistence.entity.organization.enterpriseInformation.baseEnterpriseInformation.ConsigneeAddress">
+							<viewfilter>
+										
+							</viewfilter>
+							<editfilter>
+										
+							</editfilter>	
+						</dataSource>
+						<dataSource name="recipeInvoiceAddress_dataSource" className="com.skynet.spms.persistence.entity.organization.enterpriseInformation.baseEnterpriseInformation.RecipeInvoiceAddress">
+							<viewfilter>
+										
+							</viewfilter>
+							<editfilter>
+										
+							</editfilter>
+						</dataSource>
+						<dataSource name="bankInformation_dataSource" className="com.skynet.spms.persistence.entity.organization.enterpriseInformation.baseEnterpriseInformation.BankInformation">
+							<viewfilter>
+										
+							</viewfilter>
+							<editfilter>
+										
+							</editfilter>	
+						</dataSource>
+						<dataSource name="enterpriseGTA_dataSource" className="com.skynet.spms.persistence.entity.organization.enterpriseInformation.GTAManage.EnterpriseGTA">
+							<viewfilter>
+										
+							</viewfilter>
+							<editfilter>
+										
+							</editfilter>	
+						</dataSource>
+						<dataSource name="airworthinessInformation_dataSource" className="com.skynet.spms.persistence.entity.organization.enterpriseInformation.airworthinessInformation.AirworthinessInformationEntity">
+							<viewfilter>
+										
+							</viewfilter>
+							<editfilter>
+										
+							</editfilter>	
+						</dataSource>		
+						<dataSource name="customerCreditLine_dataSource" className="com.skynet.spms.persistence.entity.organization.enterpriseInformation.creditLine.customerCreditLine.CustomerCreditLine">
+							<viewfilter>
+								
+							</viewfilter>
+							<editfilter>
+								
+							</editfilter>	
+						</dataSource>
+						<dataSource name="customerCredit_dataSource" className="com.skynet.spms.persistence.entity.organization.enterpriseInformation.credit.customerCredit.CustomerCredit">
+							<viewfilter>
+								
+							</viewfilter>
+							<editfilter>
+								
+							</editfilter>	
+						</dataSource>
+						<dataSource name="supplierQA_dataSource" className="com.skynet.spms.persistence.entity.organization.enterpriseInformation.qualityAssurance.supplierQAManage.SupplierQAEntity">
+							<viewfilter>
+								
+							</viewfilter>
+							<editfilter>
+								
+							</editfilter>	
+						</dataSource>
+						<dataSource name="vat_dataSource" className="com.skynet.spms.persistence.entity.organization.enterpriseInformation.baseEnterpriseInformation.VAT">
+							<viewfilter>
+								
+							</viewfilter>
+							<editfilter>
+								
+							</editfilter>	
+						</dataSource>
+						<!-- <dataSource name="department_dataSource" className="com.skynet.spms.persistence.entity.organization.enterpriseInformation.baseEnterpriseInformation.DepartmentInformation">
+							<viewfilter>
+								
+							</viewfilter>
+							<editfilter>
+								
+							</editfilter>
+						</dataSource> -->
+					</data>
+					<submodules>
+						<module name="COMACSC"  icon="organization_03_01">
+							<feature>ADD,DELETE,MODIFY,VIEW,PRINT,EXPORT,IMPORT,SENIORSEARCH</feature>
+							<data default="COMACSC_dataSource">
+								<dataSource name="COMACSC_dataSource" className="com.skynet.spms.web.form.EnterpriseForm">
+									<viewfilter>
+										
+									</viewfilter>
+									<editfilter>
+										
+									</editfilter>	
+								</dataSource>
+							</data>
+						</module>
+						
+						<module name="customer" icon="organization_03_02">
+							<feature>ADD,DELETE,MODIFY,VIEW,PRINT,EXPORT,IMPORT,SENIORSEARCH</feature>
+							<data default="customer_dataSource">
+								<dataSource name="customer_dataSource" className="com.skynet.spms.web.form.EnterpriseForm">
+									<viewfilter>
+										
+									</viewfilter>
+									<editfilter>
+										
+									</editfilter>	
+								</dataSource>
+							</data>
+						</module>
+						
+						<module name="supplier" icon="organization_03_03">
+							<feature>ADD,DELETE,MODIFY,VIEW,PRINT,EXPORT,IMPORT,SENIORSEARCH</feature>
+							<data default="supplier_dataSource">
+								<dataSource name="supplier_dataSource" className="com.skynet.spms.web.form.EnterpriseForm">
+									<viewfilter>
+										
+									</viewfilter>
+									<editfilter>
+										
+									</editfilter>	
+								</dataSource>
+							</data>
+						</module>
+						
+						<module name="manufacturer" icon="organization_03_04">
+							<feature>ADD,DELETE,MODIFY,VIEW,PRINT,EXPORT,IMPORT,SENIORSEARCH</feature>
+							<data default="manufacturer_dataSource">
+								<dataSource name="manufacturer_dataSource" className="com.skynet.spms.web.form.EnterpriseForm">
+									<viewfilter>
+										
+									</viewfilter>
+									<editfilter>
+										
+									</editfilter>	
+								</dataSource>
+								<dataSource name="manufacturerCode_dataSource" className="com.skynet.spms.persistence.entity.csdd.m.ManufacturerCode">
+									<viewfilter>
+										
+									</viewfilter>
+									<editfilter>
+										
+									</editfilter>	
+								</dataSource>
+							</data>
+						</module>
+						
+						<module name="clearanceAgency" icon="organization_03_05">
+							<feature>ADD,DELETE,MODIFY,VIEW,PRINT,EXPORT,IMPORT,SENIORSEARCH</feature>
+							<data default="clearanceAgency_dataSource">
+								<dataSource name="clearanceAgency_dataSource" className="com.skynet.spms.web.form.EnterpriseForm">
+									<viewfilter>
+										
+									</viewfilter>
+									<editfilter>
+										
+									</editfilter>	
+								</dataSource>
+							</data>
+						</module>
+						
+						<module name="carrier" icon="organization_03_06">
+							<feature>ADD,DELETE,MODIFY,VIEW,PRINT,EXPORT,IMPORT,SENIORSEARCH</feature>
+							<data default="carrier_dataSource">
+								<dataSource name="carrier_dataSource" className="com.skynet.spms.web.form.EnterpriseForm">
+									<viewfilter>
+										
+									</viewfilter>
+									<editfilter>
+										
+									</editfilter>	
+								</dataSource>
+							</data>
+						</module>
+						
+						<module name="repairAgency" icon="organization_03_07">
+							<feature>ADD,DELETE,MODIFY,VIEW,PRINT,EXPORT,IMPORT,SENIORSEARCH</feature>
+							<data default="repairAgency_dataSource">
+								<dataSource name="repairAgency_dataSource" className="com.skynet.spms.web.form.EnterpriseForm">
+									<viewfilter>
+										
+									</viewfilter>
+									<editfilter>
+										
+									</editfilter>	
+								</dataSource>
+							</data>
+						</module>
+						
+						<module name="department" icon="organization_03_08">
+							<feature>ADD,DELETE,MODIFY,VIEW,PRINT,EXPORT,IMPORT,SENIORSEARCH</feature>
+							<data default="department_dataSource">
+								<dataSource name="department_dataSource" className="com.skynet.spms.persistence.entity.organization.enterpriseInformation.baseEnterpriseInformation.DepartmentInformation">
+									<viewfilter>
+										
+									</viewfilter>
+									<editfilter>
+										
+									</editfilter>	
+								</dataSource>
+								<dataSource name="duty_dataSource" className="com.skynet.spms.persistence.entity.organization.enterpriseInformation.baseEnterpriseInformation.Duty">
+									<viewfilter>
+										
+									</viewfilter>
+									<editfilter>
+										
+									</editfilter>	
+								</dataSource>
+							</data>
+						</module>
+						
+						<!-- <module name="supplierQA">
+							<feature>
+								ADD,DELETE,MODIFY,VIEW
+							</feature>
+							<data default="supplierQA_dataSource">
+								<dataSource name="supplierQA_dataSource" className="com.skynet.spms.persistence.entity.organization.enterpriseInformation.qualityAssurance.supplierQAManage.SupplierQAEntity">
+									<viewfilter>
+										
+									</viewfilter>
+									<editfilter>
+										
+									</editfilter>	
+								</dataSource>
+							</data>
+						</module>
+						
+						<module name="customerCreditLine">
+							<feature>
+								ADD,DELETE,MODIFY,VIEW
+							</feature>
+							<data default="customerCreditLine_dataSource">
+								<dataSource name="customerCreditLine_dataSource" className="com.skynet.spms.persistence.entity.organization.enterpriseInformation.creditLine.customerCreditLine.CustomerCreditLine">
+									<viewfilter>
+										
+									</viewfilter>
+									<editfilter>
+										
+									</editfilter>	
+								</dataSource>
+							</data>
+						</module>
+						
+						<module name="customerCredit">
+							<feature>
+								ADD,DELETE,MODIFY,VIEW
+							</feature>
+							<data default="customerCredit_dataSource">
+								<dataSource name="customerCredit_dataSource" className="com.skynet.spms.persistence.entity.organization.enterpriseInformation.credit.customerCredit.CustomerCredit">
+									<viewfilter>
+										
+									</viewfilter>
+									<editfilter>
+										
+									</editfilter>	
+								</dataSource>
+							</data>
+						</module> -->
+					</submodules>
+
+				</module> 
+			</submodules>
+		</module>
+	
+</config>

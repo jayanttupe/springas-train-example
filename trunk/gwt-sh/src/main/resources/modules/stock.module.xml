@@ -1,0 +1,974 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	<!-- 仓储管理 -->
+	<module name="stockServiceBusiness" icon="stock">
+		<submodules>
+			<!-- 基础数据管理 -->
+			<module name="basicData" icon="stock_01" >
+				<submodules>
+					<!-- 库房管理 -->
+					<module name="stockRoom" icon="stock_01_01">
+						<feature>ADD,DELETE,MODIFY,VIEW,PRINT,EXPORT,IMPORT,SENIORSEARCH</feature>
+						<data default="stockRoom_dataSource">
+							<dataSource name="stockRoom_dataSource"
+								className="com.skynet.spms.persistence.entity.stockServiceBusiness.warehouseManageBusiness.stockRoomManage.StockRoom">
+								<viewfilter>
+								</viewfilter>
+								<editfilter>
+								</editfilter>
+							</dataSource>
+							<dataSource name="stockArea_dataSource"
+								className="com.skynet.spms.persistence.entity.stockServiceBusiness.warehouseManageBusiness.stockRoomManage.StockArea">
+								<viewfilter>
+								</viewfilter>
+								<editfilter>
+								</editfilter>
+							</dataSource>
+							<dataSource name="logicStock_dataSource"
+								className="com.skynet.spms.persistence.entity.stockServiceBusiness.warehouseManageBusiness.logicStockManage.LogicStock">
+								<viewfilter>
+								</viewfilter>
+								<editfilter>
+								</editfilter>
+							</dataSource>
+						</data>
+					</module>
+					<!-- 货位管理 -->
+					<module name="cargoSpace" icon="stock_01_02">
+						<feature>ADD,DELETE,VIEW,SET_LOGIC,SPLIT_MERGE,PRINT,PRINT_CARGO_LABEL,PRINT_CARGO_CARD,EXPORT,IMPORT,SENIORSEARCH</feature>
+						<data default="cargoSpace_dataSource">
+							<dataSource name="cargoSpace_dataSource"
+								className="com.skynet.spms.persistence.entity.stockServiceBusiness.warehouseManageBusiness.cargoSpaceManage.CargoSpace">
+								<viewfilter>
+								</viewfilter>
+								<editfilter>
+								</editfilter>
+							</dataSource>
+						</data>
+					</module>
+					<!-- 货架管理 -->
+					<!-- <module name="storageRacks" icon="stock_01_03" >
+						<feature>PRINT,EXPORT,IMPORT,SENIORSEARCH</feature>
+						<data default="cargoSpace_dataSource">
+							<dataSource name="storageRacks_dataSource"
+								className="com.skynet.spms.persistence.entity.stockServiceBusiness.warehouseManageBusiness.cargoSpaceManage.CargoSpace">
+								<viewfilter>
+								</viewfilter>
+								<editfilter>
+								</editfilter>
+							</dataSource>
+						</data>
+					</module> -->
+					<!-- 库存策略管理 -->
+					<!-- <module name="stockPolicy">
+						<feature>ADD,DELETE,MODIFY,PRINT,EXPORT,IMPORT,SENIORSEARCH</feature>
+						<data default="stockPolicy_dataSource">
+							<dataSource name="stockPolicy_dataSource"
+								className="com.skynet.spms.persistence.entity.stockServiceBusiness.stockManageTool.stockPolicy.StockPolicy">
+								<viewfilter>
+								</viewfilter>
+								<editfilter>
+								</editfilter>
+							</dataSource>
+						</data>
+					</module> -->
+					<!-- 货位策略管理 -->
+					<!-- 
+					<module name="cargoSpaceManagePolicy">
+						<feature>ADD,DELETE,MODIFY,PRINT,EXPORT,IMPORT,SENIORSEARCH</feature>
+						<data default="cargoSpaceManagePolicy_dataSource">
+							<dataSource name="cargoSpaceManagePolicy_dataSource"
+								className="com.skynet.spms.persistence.entity.stockServiceBusiness.stockManageTool.cargoSpaceManagePolicy.CargoSpaceManagePolicy">
+								<viewfilter>
+								</viewfilter>
+								<editfilter>
+								</editfilter>
+							</dataSource>
+						</data>
+					</module>
+					 -->
+					<!-- 容器管理 -->
+					<module name="container" icon="stock_01_04">
+						<feature>ADD,DELETE,MODIFY,VIEW,PRINT_CONTAINER_CARD,EXPORT,IMPORT,SENIORSEARCH</feature>
+						<data default="container_dataSource">
+							<dataSource name="container_dataSource"
+								className="com.skynet.spms.persistence.entity.stockServiceBusiness.containerManage.Container">
+								<viewfilter>
+								</viewfilter>
+								<editfilter>
+								</editfilter>
+							</dataSource>
+						</data>
+					</module>
+					<!-- 补码管理 -->
+					<module name="repairCode" icon="stock_01_05">
+						<feature>ADD,DELETE,MODIFY,REPAIR_CODE_TASK,EXPORT,IMPORT,SENIORSEARCH</feature>
+						<data default="repairCode_dataSource">
+							<dataSource name="repairCode_dataSource"
+								className="com.skynet.spms.persistence.entity.stockServiceBusiness.repairCodeBusiness.RepairCode">
+								<viewfilter>
+								</viewfilter>
+								<editfilter>
+								</editfilter>
+							</dataSource>
+							<dataSource name="repairCodeCargoSpaceItem_dataSource"
+								className="com.skynet.spms.persistence.entity.stockServiceBusiness.repairCodeBusiness.RepairCodeCargoSpaceItem">
+								<viewfilter>
+								</viewfilter>
+								<editfilter>
+								</editfilter>
+							</dataSource>
+							<dataSource name="repairCodePartItem_dataSource"
+								className="com.skynet.spms.persistence.entity.stockServiceBusiness.repairCodeBusiness.RepairCodePartItem">
+								<viewfilter>
+								</viewfilter>
+								<editfilter>
+								</editfilter>
+							</dataSource>
+						</data>
+					</module>
+				</submodules>
+			</module>
+			<!-- 航材收料入库 -->
+			<module name="inStockRoomBusiness" icon="stock_02">
+				<submodules>
+					<!-- 待收料航材 -->
+					<module name="waitReceivingSheet"  icon="stock_02_01">
+						<feature>RCEIVING,EXPORT,IMPORT,SENIORSEARCH</feature>
+						<data default="pickupOrder_dataSource">
+							<dataSource name="pickupOrder_dataSource"
+								className="com.skynet.spms.persistence.entity.stockServiceBusiness.inStockRoomBusiness.receivingSheet.ReceivingSheet">
+								<viewfilter>
+								</viewfilter>
+								<editfilter>
+								</editfilter>
+							</dataSource>
+							<dataSource name="pickupOrderItems_dataSource"
+								className="com.skynet.spms.persistence.entity.stockServiceBusiness.inStockRoomBusiness.receivingSheet.ReceivingSheetItems">
+								<viewfilter>
+								</viewfilter>
+								<editfilter>
+								</editfilter>
+							</dataSource>
+						</data>
+					</module>
+					<!-- 航材收料单 -->
+					<module name="receivingSheet"  icon="stock_02_02">
+						<feature>ADD,DELETE,MODIFY,VIEW,PRINT,PRINT_RECEIVING_SHEET,EXPORT,IMPORT,SENIORSEARCH</feature>
+						<data default="receivingSheet_dataSource">
+							<dataSource name="receivingSheet_dataSource"
+								className="com.skynet.spms.persistence.entity.stockServiceBusiness.inStockRoomBusiness.receivingSheet.ReceivingSheet">
+								<viewfilter>
+								</viewfilter>
+								<editfilter>
+								</editfilter>
+							</dataSource>
+							<dataSource name="receivingSheetItems_dataSource"
+								className="com.skynet.spms.persistence.entity.stockServiceBusiness.inStockRoomBusiness.receivingSheet.ReceivingSheetItems">
+								<viewfilter>
+								</viewfilter>
+								<editfilter>
+								</editfilter>
+							</dataSource>
+						</data>
+					</module>
+					<!-- 合格待入库 -->
+					<module name="inStockRecord" icon="stock_02_03">
+						<feature>SET,PRINT_MATRIX,PRINT_ALL_LABEL,SENDCARD,ORDER,EXPORT,IMPORT,SENIORSEARCH</feature>
+						<data default="inStockRecord_dataSource">
+							<dataSource name="inStockRecord_dataSource"
+								className="com.skynet.spms.persistence.entity.stockServiceBusiness.inStockRoomBusiness.inStockRecord.InStockRecord">
+								<viewfilter>
+								</viewfilter>
+								<editfilter>
+								</editfilter>
+							</dataSource>
+						</data>
+					</module>
+					<!-- 入库记录管理 -->
+					<module name="inStockRecordManage" icon="stock_02_05">
+						<feature>PRINT,EXPORT,IMPORT,SENIORSEARCH</feature>
+						<data default="inStockRecord_dataSource">
+							<dataSource name="inStockRecord_dataSource"
+								className="com.skynet.spms.persistence.entity.stockServiceBusiness.inStockRoomBusiness.inStockRecord.InStockRecord">
+								<viewfilter>
+								</viewfilter>
+								<editfilter>
+								</editfilter>
+							</dataSource>
+						</data>
+					</module>
+					<!-- 送修件登记 -->
+					<module name="reparePartRegister" icon="stock_02_06">
+						<feature>ADD,DELETE,MODIFY,VIEW,PRINT,EXPORT,IMPORT,SENIORSEARCH</feature>
+						<data default="reparePartRegister_dataSource">
+							<dataSource name="reparePartRegister_dataSource"
+								className="com.skynet.spms.persistence.entity.stockServiceBusiness.inStockRoomBusiness.reparePartRegister.ReparePartRegister">
+								<viewfilter>
+								</viewfilter>
+								<editfilter>
+								</editfilter>
+							</dataSource>
+						</data>
+					</module>
+				</submodules>
+			</module>
+			<!-- 航材检验管理 -->
+			<module name="checkAndAcceptBusiness" icon="stock_03">
+				<submodules>
+					<!-- 待检验航材 -->
+					<module name="waitCheckAndAcceptSheet"  icon="stock_03_01">
+						<feature>CHECKING,EXPORT,IMPORT,SENIORSEARCH</feature>
+						<data default="receivingSheet_dataSource">
+							<dataSource name="receivingSheet_dataSource"
+								className="com.skynet.spms.persistence.entity.stockServiceBusiness.inStockRoomBusiness.receivingSheet.ReceivingSheet">
+								<viewfilter>
+								</viewfilter>
+								<editfilter>
+								</editfilter>
+							</dataSource>
+							<dataSource name="receivingSheetItems_dataSource"
+								className="com.skynet.spms.persistence.entity.stockServiceBusiness.inStockRoomBusiness.receivingSheet.ReceivingSheetItems">
+								<viewfilter>
+								</viewfilter>
+								<editfilter>
+								</editfilter>
+							</dataSource>
+						</data>
+					</module>
+					<!-- 航材检验单 -->
+					<module name="checkAndAcceptSheet" icon="stock_03_02">
+						<feature>ADD,DELETE,MODIFY,VIEW,PRINT,EXPORT,IMPORT,SENIORSEARCH</feature>
+						<data default="checkAndAcceptSheet_dataSource">
+							<dataSource name="checkAndAcceptSheet_dataSource"
+								className="com.skynet.spms.persistence.entity.stockServiceBusiness.checkAndAcceptBusiness.checkAndAcceptSheet.CheckAndAcceptSheet">
+								<viewfilter>
+								</viewfilter>
+								<editfilter>
+								</editfilter>
+							</dataSource>
+						</data>
+					</module>
+					<!-- 不合格品登记记录 -->
+					<module name="nonconformingReport" icon="stock_03_03">
+						<feature>TRANSACT,PRINT,PRINT_NONCONFORMING_REPORT,EXPORT,IMPORT,SENIORSEARCH</feature>
+						<data default="nonconformingReport_dataSource">
+							<dataSource name="nonconformingReport_dataSource"
+								className="com.skynet.spms.persistence.entity.stockServiceBusiness.checkAndAcceptBusiness.nonconformingReport.NonconformingReport">
+								<viewfilter>
+								</viewfilter>
+								<editfilter>
+								</editfilter>
+							</dataSource>
+						</data>
+					</module>
+					<!-- 航材证书管理 -->
+					<module name="credentialsRecord" icon="stock_03_04">
+						<feature>EXPORT,IMPORT,SENIORSEARCH,MANUALFILE</feature>
+						<data default="credentialsRecord_dataSource">
+							<dataSource name="credentialsRecord_dataSource"
+								className="com.skynet.spms.persistence.entity.stockServiceBusiness.checkAndAcceptBusiness.checkAndAcceptSheet.CheckAndAcceptSheet">
+								<viewfilter>
+								</viewfilter>
+								<editfilter>
+								</editfilter>
+							</dataSource>
+						</data>
+					</module>
+					<!-- 证书存档位置管理 -->
+					<module name="credentials" icon="stock_03_05">
+						<feature>ADD,DELETE,VIEW,PRINT,PRINT_CREDENTIAL_LABEL,EXPORT,IMPORT,SENIORSEARCH</feature>
+						<data default="credentials_dataSource">
+							<dataSource name="credentials_dataSource"
+								className="com.skynet.spms.persistence.entity.stockServiceBusiness.checkAndAcceptBusiness.credentials.Credentials">
+								<viewfilter>
+								</viewfilter>
+								<editfilter>
+								</editfilter>
+							</dataSource>
+						</data>
+					</module>
+				</submodules>
+			</module>
+			<!-- 航材发料出库 -->
+			<module name="outStockRoomBusiness" icon="stock_04">
+				<submodules>
+					<!-- 待发料指令 -->
+					<module name="waitDeliveryOrder" icon="stock_04_01">
+						<feature>PICKING_LIST,EXPORT,IMPORT,SENIORSEARCH</feature>
+						<data default="deliveryOrder_dataSource">
+							<dataSource name="deliveryOrder_dataSource"
+								className="com.skynet.spms.persistence.entity.stockServiceBusiness.outStockRoomBusiness.pickingList.PickingList">
+								<viewfilter>
+								</viewfilter>
+								<editfilter>
+								</editfilter>
+							</dataSource>
+							<dataSource name="deliveryOrderItems_dataSource"
+								className="com.skynet.spms.persistence.entity.stockServiceBusiness.outStockRoomBusiness.pickingList.pickingListPartItems.PickingListPartItems">
+								<viewfilter>
+								</viewfilter>
+								<editfilter>
+								</editfilter>
+							</dataSource>
+						</data>
+					</module>
+					<!-- 航材发料单 -->
+					<module name="pickingList" icon="stock_04_02">
+						<feature>ADD,DELETE,MODIFY,VIEW,PICKING_INSTRUCT,PRINT,EXPORT,IMPORT,SENIORSEARCH</feature>
+						<data default="pickingList_dataSource">
+							<dataSource name="pickingList_dataSource"
+								className="com.skynet.spms.persistence.entity.stockServiceBusiness.outStockRoomBusiness.pickingList.PickingList">
+								<viewfilter>
+								</viewfilter>
+								<editfilter>
+								</editfilter>
+							</dataSource>
+							<dataSource name="pickingListPartItems_dataSource"
+								className="com.skynet.spms.persistence.entity.stockServiceBusiness.outStockRoomBusiness.pickingList.pickingListPartItems.PickingListPartItems">
+								<viewfilter>
+								</viewfilter>
+								<editfilter>
+								</editfilter>
+							</dataSource>
+							<dataSource name="pickingInventory_dataSource"
+								className="com.skynet.spms.web.form.PickingInventoryForm">
+								<viewfilter>
+								</viewfilter>
+								<editfilter>
+								</editfilter>
+							</dataSource>
+						</data>
+					</module>
+					<!-- 拣货指令管理 -->
+					<!-- <module name="picking" icon="stock_04_03">
+						<feature>PICKING,PRINT,EXPORT,IMPORT,SENIORSEARCH</feature>
+						<data default="picking_dataSource">
+							<dataSource name="picking_dataSource"
+								className="com.skynet.spms.persistence.entity.stockServiceBusiness.outStockRoomBusiness.pickingList.PickingList">
+								<viewfilter>
+								</viewfilter>
+								<editfilter>
+								</editfilter>
+							</dataSource>
+							<dataSource name="pickingListPartItems_dataSource"
+								className="com.skynet.spms.persistence.entity.stockServiceBusiness.outStockRoomBusiness.pickingList.pickingListPartItems.PickingListPartItems">
+								<viewfilter>
+								</viewfilter>
+								<editfilter>
+								</editfilter>
+							</dataSource>
+						</data>
+					</module> -->
+					<!-- 拣货记录管理 -->
+					<module name="pickingRecord" icon="stock_04_04">
+						<feature>ADD_PACKINGLIST,PRINT,EXPORT,IMPORT,SENIORSEARCH</feature>
+						<data default="pickingRecord_dataSource">
+							<dataSource name="pickingRecord_dataSource"
+								className="com.skynet.spms.persistence.entity.stockServiceBusiness.outStockRoomBusiness.pickingList.PickingList">
+								<viewfilter>
+								</viewfilter>
+								<editfilter>
+								</editfilter>
+							</dataSource>
+							<dataSource name="pickingListPartItems_dataSource"
+								className="com.skynet.spms.persistence.entity.stockServiceBusiness.outStockRoomBusiness.pickingList.pickingListPartItems.PickingListPartItems">
+								<viewfilter>
+								</viewfilter>
+								<editfilter>
+								</editfilter>
+							</dataSource>
+						</data>
+					</module>
+					<!-- 装箱管理 -->
+					<module name="packingList"  icon="stock_04_05">
+						<feature>ADD,DELETE,MODIFY,VIEW,PACKING_RELEASE,PRINT,EXPORT,IMPORT,SENIORSEARCH</feature>
+						<data default="packingList_dataSource">
+							<dataSource name="packingList_dataSource"
+								className="com.skynet.spms.persistence.entity.stockServiceBusiness.outStockRoomBusiness.packingList.PackingList">
+								<viewfilter>
+								</viewfilter>
+								<editfilter>
+								</editfilter>
+							</dataSource>
+							<dataSource name="packingListPartItems_dataSource"
+								className="com.skynet.spms.persistence.entity.stockServiceBusiness.outStockRoomBusiness.packingList.packingListPartItems.PackingListPartItems">
+								<viewfilter>
+								</viewfilter>
+								<editfilter>
+								</editfilter>
+							</dataSource>
+							<dataSource name="packingListBoxItems_dataSource"
+								className="com.skynet.spms.persistence.entity.stockServiceBusiness.outStockRoomBusiness.packingList.PackingListBoxItems">
+								<viewfilter>
+								</viewfilter>
+								<editfilter>
+								</editfilter>
+							</dataSource>
+						</data>
+					</module>
+					<!-- 出库记录管理 -->
+					<module name="outStockRoomRecord" icon="stock_04_06">
+						<feature>PRINT,EXPORT,IMPORT,SENIORSEARCH</feature>
+						<data default="packingList_dataSource">
+							<dataSource name="packingList_dataSource"
+								className="com.skynet.spms.persistence.entity.stockServiceBusiness.outStockRoomBusiness.packingList.PackingList">
+								<viewfilter>
+								</viewfilter>
+								<editfilter>
+								</editfilter>
+							</dataSource>
+							<dataSource name="packingListPartItems_dataSource"
+								className="com.skynet.spms.persistence.entity.stockServiceBusiness.outStockRoomBusiness.packingList.packingListPartItems.PackingListPartItems">
+								<viewfilter>
+								</viewfilter>
+								<editfilter>
+								</editfilter>
+							</dataSource>
+						</data>
+					</module>
+				</submodules>
+			</module>
+			<!-- 航材库存日常业务 -->
+			<module name="partsInventory" icon="stock_05">
+				<submodules>
+					<!-- 备件库存查询 -->
+					<module name="partsInventoryRecord"   icon="stock_05_01">
+						<feature>PRINT,EXPORT,IMPORT,SENIORSEARCH</feature>
+						<data default="partsInventoryRecord_dataSource">
+							<dataSource name="partsInventoryRecord_dataSource"
+								className="com.skynet.spms.persistence.entity.stockServiceBusiness.partsInventory.partsInventoryRecord.PartsInventoryRecord">
+								<viewfilter>
+								</viewfilter>
+								<editfilter>
+								</editfilter>
+							</dataSource>
+						</data>
+					</module>
+					<!-- 库存盘点管理 -->
+					<module name="stockCheckBusiness" icon="stock_05_02">
+						<submodules>
+							<!-- 盘点项目管理 -->
+							<module name="stockCheckManager" icon="stock_05_02_01">
+								<feature>ADD,DELETE,MODIFY,VIEW,ORDER_CHECK,EXPORT,IMPORT,SENIORSEARCH</feature>
+								<data default="stockCheck_dataSource">
+									<dataSource name="stockCheck_dataSource"
+										className="com.skynet.spms.persistence.entity.stockServiceBusiness.stockCheckBusiness.StockCheck">
+										<viewfilter>
+										</viewfilter>
+										<editfilter>
+										</editfilter>
+									</dataSource>
+									<dataSource name="stockCheckItem_dataSource"
+										className="com.skynet.spms.persistence.entity.stockServiceBusiness.stockCheckBusiness.StockCheckItem">
+										<viewfilter>
+										</viewfilter>
+										<editfilter>
+										</editfilter>
+									</dataSource>
+									<dataSource name="partsSelect_dataSource"
+										className="com.skynet.spms.persistence.entity.stockServiceBusiness.partsInventory.partsInventoryRecord.PartsInventoryRecord">
+										<viewfilter>
+										</viewfilter>
+										<editfilter>
+										</editfilter>
+									</dataSource>
+								</data>
+							</module>
+							<!-- 盘点结果管理 -->
+							<module name="stockCheckResult" icon="stock_05_02_02">
+								<feature>VIEW_SC,EXPORT,IMPORT,SENIORSEARCH</feature>
+								<data default="stockCheckResult_dataSource">
+									<dataSource name="stockCheckResult_dataSource"
+										className="com.skynet.spms.persistence.entity.stockServiceBusiness.stockCheckBusiness.StockCheck">
+										<viewfilter>
+										</viewfilter>
+										<editfilter>
+										</editfilter>
+									</dataSource>
+									<dataSource name="stockCheckResultItem_dataSource"
+										className="com.skynet.spms.persistence.entity.stockServiceBusiness.stockCheckBusiness.StockCheckItem">
+										<viewfilter>
+										</viewfilter>
+										<editfilter>
+										</editfilter>
+									</dataSource>
+								</data>
+							</module>
+							<!-- 盘点结果跟踪 -->
+							<!-- <module name="stockCheckResultTrack" icon="stock_05_02_03">
+								<feature>VIEW_SC,EXPORT,IMPORT,SENIORSEARCH</feature>
+								<data default="stockCheckResultTrack_dataSource">
+									<dataSource name="stockCheckResultTrack_dataSource"
+										className="com.skynet.spms.persistence.entity.stockServiceBusiness.stockCheckBusiness.StockCheck">
+										<viewfilter>
+										</viewfilter>
+										<editfilter>
+										</editfilter>
+									</dataSource>
+									<dataSource name="stockCheckResultTrackItem_dataSource"
+										className="com.skynet.spms.persistence.entity.stockServiceBusiness.stockCheckBusiness.StockCheckItem">
+										<viewfilter>
+										</viewfilter>
+										<editfilter>
+										</editfilter>
+									</dataSource>
+								</data>
+							</module> -->
+						</submodules>
+					</module>
+					<!-- 航材包管理 -->
+					<!-- 航材移库管理 -->
+					<module name="stockMoveBusiness"  icon="stock_05_03">
+						<submodules>
+							<!-- 移库申请管理 -->
+							<!-- 移库审批管理 -->
+							<!-- 移库申请 -->
+							<module name="stockMoveApply" icon="stock_05_03_01">
+								<feature>ADD,DELETE,MODIFY,VIEW,APPLY,EXPORT,IMPORT,SENIORSEARCH</feature>
+								<data default="stockMovingApply_dataSource">																	
+									<dataSource name="stockMovingApply_dataSource"
+										className="com.skynet.spms.persistence.entity.stockServiceBusiness.stockMoveBusiness.StockMovingRecord">
+										<viewfilter>
+										</viewfilter>
+										<editfilter>
+										</editfilter>
+									</dataSource>
+									<dataSource name="stockMovingRecordItems_dataSource"
+										className="com.skynet.spms.persistence.entity.stockServiceBusiness.stockMoveBusiness.StockMovingRecordItems">
+										<viewfilter>
+										</viewfilter>
+										<editfilter>
+										</editfilter>
+									</dataSource>
+								</data>
+							</module>
+							<!-- 移库审批 -->
+							<module name="stockMoveApproval" icon="stock_05_03_02">
+							<feature>PASS,BACK,EXPORT,IMPORT,SENIORSEARCH</feature>
+								<data default="stockMovingApproval_dataSource">									
+									<dataSource name="stockMovingApproval_dataSource"
+										className="com.skynet.spms.persistence.entity.stockServiceBusiness.stockMoveBusiness.StockMovingRecord">
+										<viewfilter>
+										</viewfilter>
+										<editfilter>
+										</editfilter>
+									</dataSource>
+									<dataSource name="stockMovingRecordItems_dataSource"
+										className="com.skynet.spms.persistence.entity.stockServiceBusiness.stockMoveBusiness.StockMovingRecordItems">
+										<viewfilter>
+										</viewfilter>
+										<editfilter>
+										</editfilter>
+									</dataSource>
+								</data>
+							</module>
+							<!-- 航材移出记录管理 -->
+							<module name="stockMoveOutRecord" icon="stock_05_03_03">
+								<feature>ADD,DELETE,MODIFY,ORDER,EXPORT,IMPORT,SENIORSEARCH</feature>
+								<data default="stockMovingRecord_dataSource">
+									<dataSource name="stockMovingOutRecord_dataSource"
+										className="com.skynet.spms.persistence.entity.stockServiceBusiness.stockMoveBusiness.StockMovingRecord">
+										<viewfilter>
+										</viewfilter>
+										<editfilter>
+										</editfilter>
+									</dataSource>
+									
+									<dataSource name="stockMovingApproval_dataSource"
+										className="com.skynet.spms.persistence.entity.stockServiceBusiness.stockMoveBusiness.StockMovingRecord">
+										<viewfilter>
+										</viewfilter>
+										<editfilter>
+										</editfilter>
+									</dataSource>
+									<dataSource name="stockMovingApply_dataSource"
+										className="com.skynet.spms.persistence.entity.stockServiceBusiness.stockMoveBusiness.StockMovingRecord">
+										<viewfilter>
+										</viewfilter>
+										<editfilter>
+										</editfilter>
+									</dataSource>
+									<dataSource name="stockMovingRecordItems_dataSource"
+										className="com.skynet.spms.persistence.entity.stockServiceBusiness.stockMoveBusiness.StockMovingRecordItems">
+										<viewfilter>
+										</viewfilter>
+										<editfilter>
+										</editfilter>
+									</dataSource>
+								</data>
+							</module>
+							<!-- 航材移入记录管理 -->
+							<module name="stockMoveInRecord" icon="stock_05_03_04">
+								<feature>EXPORT,IMPORT,SENIORSEARCH,SURE_MOVE</feature>
+								<data default="stockMovingInRecord_dataSource">
+									<dataSource name="stockMovingInRecord_dataSource"
+										className="com.skynet.spms.persistence.entity.stockServiceBusiness.stockMoveBusiness.StockMovingRecord">
+										<viewfilter>
+										</viewfilter>
+										<editfilter>
+										</editfilter>
+									</dataSource>
+									<dataSource name="stockMovingRecordItems_dataSource"
+										className="com.skynet.spms.persistence.entity.stockServiceBusiness.stockMoveBusiness.StockMovingRecordItems">
+										<viewfilter>
+										</viewfilter>
+										<editfilter>
+										</editfilter>
+									</dataSource>
+								</data>
+							</module>
+						</submodules>
+					</module>
+					<!-- 库存冻结管理 -->
+					<module name="freezeRecord" icon="stock_05_04">
+						<feature>FREEZE,DEFROST,EXPORT,IMPORT,SENIORSEARCH</feature>
+						<data default="freezeRecord_dataSource">
+							<dataSource name="freezeRecord_dataSource"
+								className="com.skynet.spms.persistence.entity.stockServiceBusiness.partsInventory.freezeRecord.FreezeRecord">
+								<viewfilter>
+								</viewfilter>
+								<editfilter>
+								</editfilter>
+							</dataSource>
+						</data>
+					</module>
+					<!-- 库存时控件管理 -->
+					<module name="timeControlPartBusiness" icon="stock_05_05">
+						<feature>DISPOSE,CHECK_TIME_CONTROL_PART,EXPORT,IMPORT,SENIORSEARCH</feature>
+						<data default="timeControlPartBusiness_dataSource">
+							<dataSource name="timeControlPartBusiness_dataSource"
+								className="com.skynet.spms.persistence.entity.stockServiceBusiness.partsInventory.partsInventoryRecord.PartsInventoryRecord">
+								<viewfilter>
+								</viewfilter>
+								<editfilter>
+								</editfilter>
+							</dataSource>
+						</data>
+					</module>
+					<!-- 库存寿命件管理 -->
+					<module name="partLifeTime" icon="stock_05_06">
+						<feature>DISCARD,EXPORT,IMPORT,SENIORSEARCH</feature>
+						<data default="partLifeTime_dataSource">
+							<dataSource name="partLifeTime_dataSource"
+								className="com.skynet.spms.persistence.entity.stockServiceBusiness.partsInventory.partsInventoryRecord.PartsInventoryRecord">
+								<viewfilter>
+								</viewfilter>
+								<editfilter>
+								</editfilter>
+							</dataSource>
+						</data>
+					</module>
+					<!-- 航材报废管理 -->
+					<module name="discardServiceBusiness" icon="stock_05_07">
+						<feature>ADD,DELETE,MODIFY,VIEW,APPLY,EXPORT,IMPORT,SENIORSEARCH</feature>
+						<data default="discardServiceBusiness_dataSource">
+							<dataSource name="discardServiceBusiness_dataSource"
+								className="com.skynet.spms.persistence.entity.stockServiceBusiness.discardServiceBusiness.DiscardServiceBusiness">
+								<viewfilter>
+								</viewfilter>
+								<editfilter>
+								</editfilter>
+							</dataSource>
+						</data>
+					</module>
+					<!-- 航材调拨管理 -->
+					<module name="allocationBillBusiness" icon="stock_05_08">
+						<feature>ADD,DELETE,MODIFY,VIEW,APPLY,PRINT,EXPORT,IMPORT,SENIORSEARCH</feature>
+						<data default="allocationBillBusiness_dataSource">
+							<dataSource name="allocationBillBusiness_dataSource"
+								className="com.skynet.spms.persistence.entity.stockServiceBusiness.allocationBillBusiness.AllocationBillBusiness">
+								<viewfilter>
+								</viewfilter>
+								<editfilter>
+								</editfilter>
+							</dataSource>
+							<dataSource name="allocationGood_dataSource"
+								className="com.skynet.spms.persistence.entity.stockServiceBusiness.allocationBillBusiness.AllocationGood">
+								<viewfilter>
+								</viewfilter>
+								<editfilter>
+								</editfilter>
+							</dataSource>
+						</data>
+					</module>
+				</submodules>
+			</module>
+			<!-- 任务管理 -->
+			<module name="stockTask" icon="stock_07" >
+				<submodules>
+					<!-- 发卡任务管理 -->
+					<module name="sendCardTask" icon="stock_07_01">
+						<feature>EXPORT,IMPORT,SENIORSEARCH</feature>
+						<data default="stockTask_dataSource">
+							<dataSource name="stockTask_dataSource"
+								className="com.skynet.spms.persistence.entity.stockServiceBusiness.stockTask.StockTask">
+								<viewfilter>
+								</viewfilter>
+								<editfilter>
+								</editfilter>
+							</dataSource>
+							<dataSource name="sendCardTaskItem_dataSource"
+								className="com.skynet.spms.persistence.entity.stockServiceBusiness.stockTask.SendCardTaskItem">
+								<viewfilter>
+								</viewfilter>
+								<editfilter>
+								</editfilter>
+							</dataSource>
+						</data>
+					</module>
+					<!-- 上架任务管理 -->
+					<module name="shelvingTask" icon="stock_07_02">
+						<feature>SHELVING,EXPORT,IMPORT,SENIORSEARCH</feature>
+						<data default="stockTask_dataSource">
+							<dataSource name="stockTask_dataSource"
+								className="com.skynet.spms.persistence.entity.stockServiceBusiness.stockTask.StockTask">
+								<viewfilter>
+								</viewfilter>
+								<editfilter>
+								</editfilter>
+							</dataSource>
+							<dataSource name="shelvingTaskItem_dataSource"
+								className="com.skynet.spms.persistence.entity.stockServiceBusiness.stockTask.ShelvingTaskItem">
+								<viewfilter>
+								</viewfilter>
+								<editfilter>
+								</editfilter>
+							</dataSource>
+						</data>
+					</module>
+					<!-- 拣货任务管理 -->
+					<module name="pickingTask" icon="stock_07_03">
+						<feature>PICKING,EXPORT,IMPORT,SENIORSEARCH</feature>
+						<data default="stockTask_dataSource">
+							<dataSource name="stockTask_dataSource"
+								className="com.skynet.spms.persistence.entity.stockServiceBusiness.stockTask.StockTask">
+								<viewfilter>
+								</viewfilter>
+								<editfilter>
+								</editfilter>
+							</dataSource>
+							<dataSource name="pickingTaskItem_dataSource"
+								className="com.skynet.spms.persistence.entity.stockServiceBusiness.stockTask.PickingTaskItem">
+								<viewfilter>
+								</viewfilter>
+								<editfilter>
+								</editfilter>
+							</dataSource>
+						</data>
+					</module>
+					<!-- 装箱任务管理 -->
+					<module name="packingTask" icon="stock_07_04">
+						<feature>EXPORT,IMPORT,SENIORSEARCH</feature>
+						<data default="stockTask_dataSource">
+							<dataSource name="stockTask_dataSource"
+								className="com.skynet.spms.persistence.entity.stockServiceBusiness.stockTask.StockTask">
+								<viewfilter>
+								</viewfilter>
+								<editfilter>
+								</editfilter>
+							</dataSource>
+							<dataSource name="packingTaskItem_dataSource"
+								className="com.skynet.spms.persistence.entity.stockServiceBusiness.stockTask.PackingTaskItem">
+								<viewfilter>
+								</viewfilter>
+								<editfilter>
+								</editfilter>
+							</dataSource>
+						</data>
+					</module>
+					<!-- 移库任务管理 -->
+					<module name="stockMoveTask" icon="stock_07_05">
+						<feature>EXPORT,IMPORT,SENIORSEARCH</feature>
+						<data default="stockTask_dataSource">
+							<dataSource name="stockTask_dataSource"
+								className="com.skynet.spms.persistence.entity.stockServiceBusiness.stockTask.StockTask">
+								<viewfilter>
+								</viewfilter>
+								<editfilter>
+								</editfilter>
+							</dataSource>
+							<dataSource name="shelvingTaskItem_dataSource"
+								className="com.skynet.spms.persistence.entity.stockServiceBusiness.stockTask.ShelvingTaskItem">
+								<viewfilter>
+								</viewfilter>
+								<editfilter>
+								</editfilter>
+							</dataSource>
+						</data>
+					</module>
+					<!-- 盘点任务管理 -->
+					<module name="stockCheckTask" icon="stock_07_06">
+						<feature>EXPORT,IMPORT,SENIORSEARCH</feature>
+						<data default="stockTask_dataSource">
+							<dataSource name="stockTask_dataSource"
+								className="com.skynet.spms.persistence.entity.stockServiceBusiness.stockTask.StockTask">
+								<viewfilter>
+								</viewfilter>
+								<editfilter>
+								</editfilter>
+							</dataSource>
+							<dataSource name="stockCheckTaskItem_dataSource"
+								className="com.skynet.spms.persistence.entity.stockServiceBusiness.stockTask.StockCheckTaskItem">
+								<viewfilter>
+								</viewfilter>
+								<editfilter>
+								</editfilter>
+							</dataSource>
+						</data>
+					</module>
+					<!-- 补码任务管理 -->
+					<module name="repairCodeTask" icon="stock_07_07">
+						<feature>EXPORT,IMPORT,SENIORSEARCH</feature>
+						<data default="stockTask_dataSource">
+							<dataSource name="stockTask_dataSource"
+								className="com.skynet.spms.persistence.entity.stockServiceBusiness.stockTask.StockTask">
+								<viewfilter>
+								</viewfilter>
+								<editfilter>
+								</editfilter>
+							</dataSource>
+							<dataSource name="repairCodeTaskItem_dataSource"
+								className="com.skynet.spms.persistence.entity.stockServiceBusiness.stockTask.RepairCodeTaskItem">
+								<viewfilter>
+								</viewfilter>
+								<editfilter>
+								</editfilter>
+							</dataSource>
+						</data>
+					</module>
+				</submodules>
+			</module>
+			<!-- 保税库业务 -->
+			<module name="bondedWarehouseBusiness" icon="stock_06" >
+				<submodules>
+					<!-- 经营范围电子账册 -->
+					<module name="businessScopeAccountBook" icon="stock_06_01">
+						<feature>ADD,DELETE,MODIFY,VIEW,PRINT,EXPORT,IMPORT,SENIORSEARCH</feature>
+						<data default="businessScopeAccountBook_dataSource">
+							<dataSource name="businessScopeAccountBook_dataSource"
+								className="com.skynet.spms.persistence.entity.stockServiceBusiness.bondedWarehouseBusiness.businessScopeAccountBook.BusinessScopeAccountBook">
+								<viewfilter>
+								</viewfilter>
+								<editfilter>
+								</editfilter>
+							</dataSource>
+							<dataSource name="businessScopeAccountBookItems_dataSource"
+								className="com.skynet.spms.persistence.entity.stockServiceBusiness.bondedWarehouseBusiness.businessScopeAccountBook.businessScopeAccountBookItems.BusinessScopeAccountBookItems">
+								<viewfilter>
+								</viewfilter>
+								<editfilter>
+								</editfilter>
+							</dataSource>
+						</data>
+					</module>
+					<!-- 通关电子账册 -->
+					<module name="clearanceAccountBook" icon="stock_06_02">
+						<feature>ADD,DELETE,MODIFY,VIEW,PRINT,EXPORT,IMPORT,SENIORSEARCH</feature>
+						<data default="clearanceAccountBook_dataSource">
+							<dataSource name="clearanceAccountBook_dataSource"
+								className="com.skynet.spms.persistence.entity.stockServiceBusiness.bondedWarehouseBusiness.clearanceAccountBook.ClearanceAccountBook">
+								<viewfilter>
+								</viewfilter>
+								<editfilter>
+								</editfilter>
+							</dataSource>
+							<dataSource name="clearanceAccountBookItems_dataSource"
+								className="com.skynet.spms.persistence.entity.stockServiceBusiness.bondedWarehouseBusiness.clearanceAccountBook.clearanceAccountBookItems.ClearanceAccountBookItems">
+								<viewfilter>
+								</viewfilter>
+								<editfilter>
+								</editfilter>
+							</dataSource>
+						</data>
+					</module>
+					
+					<!-- 保税库入库 -->
+					<module name="bondedWarehouseInStock" icon="stock_06_03">
+						<feature>SENDBONDED,EXPORT,IMPORT,SENIORSEARCH</feature>
+						<data default="bondedWarehouseInStock_dataSource">
+							<dataSource name="bondedWarehouseInStock_dataSource"
+								className="com.skynet.spms.persistence.entity.stockServiceBusiness.bondedWarehouseBusiness.BondedWarehouseInStock">
+								<viewfilter>
+								</viewfilter>
+								<editfilter>
+								</editfilter>
+							</dataSource>
+						</data>
+					</module>
+					
+					<!-- 保税库出库 -->
+					<module name="bondedWarehouseOutStock" icon="stock_06_04">
+						<feature>SENDBONDED,EXPORT,IMPORT,SENIORSEARCH</feature>
+						<data default="bondedWarehouseOutStock_dataSource">
+							<dataSource name="bondedWarehouseOutStock_dataSource"
+								className="com.skynet.spms.persistence.entity.stockServiceBusiness.bondedWarehouseBusiness.BondedWarehouseOutStock">
+								<viewfilter>
+								</viewfilter>
+								<editfilter>
+								</editfilter>
+							</dataSource>
+						</data>
+					</module>
+					<!-- 保税库在库 -->
+					<module name="bondedWarehouseInventoryStock" icon="stock_06_05">
+						<feature>EXPORT,IMPORT,SENIORSEARCH</feature>
+						<data default="bondedWarehouseInventoryStock_dataSource">
+							<dataSource name="bondedWarehouseInventoryStock_dataSource"
+								className="com.skynet.spms.persistence.entity.stockServiceBusiness.bondedWarehouseBusiness.BondedWarehouseInStock">
+								<viewfilter>
+								</viewfilter>
+								<editfilter>
+								</editfilter>
+							</dataSource>
+						</data>
+					</module>
+					<!-- 海关监管 -->
+					<module name="customsSupervision" icon="stock_06_06">
+						<submodules>
+							<!-- 海保税库入库 -->
+							<module name="bondedWarehouseInStockByIsCustoms" icon="stock_06_06_01">
+								<feature>EXPORT,IMPORT,SENIORSEARCH</feature>
+								<data default="bondedWarehouseInStockByIsCustoms_dataSource">
+									<dataSource name="bondedWarehouseInStockByIsCustoms_dataSource"
+										className="com.skynet.spms.persistence.entity.stockServiceBusiness.bondedWarehouseBusiness.BondedWarehouseInStock">
+										<viewfilter>
+										</viewfilter>
+										<editfilter>
+										</editfilter>
+									</dataSource>
+								</data>
+							</module>
+							<!-- 海保税库出库 -->
+							<module name="bondedWarehouseOutStockByIsCustoms" icon="stock_06_06_02">
+								<feature>EXPORT,IMPORT,SENIORSEARCH</feature>
+								<data default="bondedWarehouseOutStockByIsCustoms_dataSource">
+									<dataSource name="bondedWarehouseOutStockByIsCustoms_dataSource"
+										className="com.skynet.spms.persistence.entity.stockServiceBusiness.bondedWarehouseBusiness.BondedWarehouseOutStock">
+										<viewfilter>
+										</viewfilter>
+										<editfilter>
+										</editfilter>
+									</dataSource>
+								</data>
+							</module>
+							<!-- 海保税库在库 -->
+							<module name="bondedWarehouseInventoryStockByIsCustoms" icon="stock_06_06_03">
+								<feature>EXPORT,IMPORT,SENIORSEARCH</feature>
+								<data default="bondedWarehouseInventoryStockByIsCustoms_dataSource">
+									<dataSource name="bondedWarehouseInventoryStockByIsCustoms_dataSource"
+										className="com.skynet.spms.persistence.entity.stockServiceBusiness.bondedWarehouseBusiness.BondedWarehouseInStock">
+										<viewfilter>
+										</viewfilter>
+										<editfilter>
+										</editfilter>
+									</dataSource>
+								</data>
+							</module>
+						</submodules>
+					</module>
+				</submodules>
+			</module>
+		</submodules>
+	</module>
+</config>

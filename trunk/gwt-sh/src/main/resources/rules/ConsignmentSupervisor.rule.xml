@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 寄售业务人员 -->
+<config name="ConsignmentSupervisor" >
+<moduleFilter default="none">
+	<!-- 供应商管理-寄售业务 (supplierSupport.module.xml) -->
+	<!-- 寄售协议,寄售补库,寄售提货指令   -->
+	<include prefix="supplierSupport.consignment">
+		consignProtocol,consignRenew,consignOrder
+	</include>
+	
+	<!-- 供应商管理-采购业务 (supplierSupport.module.xml) -->
+	<!-- 备件计划需求,采购计划,采购指令,执行采购,采购询价单,采购合同,采购提货,调拨单 -->	
+	<include prefix="supplierSupport.procurementOrder">
+		PartRequirement,ProcurementPlan,ProcurementOrder,doProcurementOrder,procurementInquirySheet,procurementContract,procurementPickupOrder,transferSheet
+	</include>
+	
+	<!-- 客户管理-销售服务 (customerService.module.xml) -->
+	<!-- 报价，报价单管理，客户订单，销售合同，发货指令 -->
+	<include prefix="customerService.salesService">
+		doQuotation,salesQuotationSheet,salesRequisitionSheet,salesContract,salesDeliveryOrder
+	</include>
+	
+	
+	<!-- 组织管理 (organization.module.xml)-->
+	<!-- 用户管理 -->
+	<include prefix="organization">
+		userinfo
+	</include>
+	
+	<!-- 组织管理-企业管理-->
+	<!-- 上客服，客户企业，供应商，制造商，报送代理商，运代商，承修商，部门管理 -->
+	<include prefix="organization.enterprise">
+		COMACSC,customer,supplier,manufacturer,clearanceAgency,carrier,repairAgency,department
+	</include>
+	
+	<!-- 备件目录 (partCatalog.module.xml) -->
+	<!-- 备件技术目录，备件销售目录，供应商价格目录，飞机构型,维修能力 -->
+	<include prefix="partCatalog">
+		technical,sales,supplierPrice,aircraftConfig,repairable
+	</include>
+	
+	<!-- 财务管理-申请管理 (account.module.xml) -->
+	<!-- 付款申请,发票申请  -->	
+	<include prefix="account.applyManager">
+		payApplyManager,invoiceApplyManager
+	</include>
+</moduleFilter>	
+	
+<modules>
+	<!-- 备件目录 -->
+	<module name="partCatalog.technical">
+	</module>
+	<module name="partCatalog.sales">
+	</module>
+	<module name="partCatalog.supplierPrice">
+	</module>
+	<module name="partCatalog.aircraftConfig">
+	</module>
+	
+	<!-- 用户 -->
+	<module name="organization.userinfo">
+	</module>
+	
+	<!-- 组织机构 -->
+	<module name="organization.enterprise.COMACSC">
+	</module>
+	<module name="organization.enterprise.customer">
+	</module>
+	<module name="organization.enterprise.supplier">
+	</module>
+	<module name="organization.enterprise.manufacturer">
+	</module>
+	<module name="organization.enterprise.clearanceAgency">
+	</module>
+	<module name="organization.enterprise.carrier">
+	</module>
+	<module name="organization.enterprise.department">
+	</module>
+	
+	<!-- 采购 -->
+	<module name="supplierSupport.procurementOrder.PartRequirement">
+	</module>
+	<module name="supplierSupport.procurementOrder.ProcurementPlan">
+	</module>
+	<module name="supplierSupport.procurementOrder.ProcurementOrder">
+	</module>
+	<module name="supplierSupport.procurementOrder.doProcurementOrder">
+	</module>
+	<module name="supplierSupport.procurementOrder.procurementInquirySheet">
+	</module>
+	<module name="supplierSupport.procurementOrder.procurementContract">
+	</module>
+	<module name="supplierSupport.procurementOrder.procurementPickupOrder">
+	</module>
+	<module name="supplierSupport.procurementOrder.transferSheet">
+	</module>
+	
+	<!-- 销售 -->
+	<module name="customerService.salesService.doQuotation">
+	</module>
+	<module name="customerService.salesService.salesQuotationSheet">
+	</module>
+	<module name="customerService.salesService.salesRequisitionSheet">
+	</module>
+	<module name="customerService.salesService.salesContract">
+	</module>
+	<module name="customerService.salesService.salesDeliveryOrder">
+	</module>
+	
+</modules> 
+
+</config>

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 交换业务人员 -->
+<config name="ExchangeExecutive" >
+<moduleFilter default="none">
+	
+	<!-- 客户管理-交换 (customerService.module.xml) -->
+	<!-- 交换申请单 -->				
+	<include prefix="customerService.exchangeRequisition">
+		exchangeRequisition
+	</include>
+	
+	<!-- 组织管理 (organization.module.xml)-->
+	<!-- 用户管理 -->
+	<include prefix="organization">
+		userinfo
+	</include>
+	
+	<!-- 组织管理-企业管理-->
+	<!-- 上客服，客户企业，供应商，制造商，报送代理商，运代商，承修商，部门管理 -->
+	<include prefix="organization.enterprise">
+		COMACSC,customer,supplier,manufacturer,clearanceAgency,carrier,repairAgency,department
+	</include>
+	
+	<!-- 备件目录 (partCatalog.module.xml) -->
+	<!-- 备件技术目录，备件销售目录，供应商价格目录，飞机构型,维修能力 -->
+	<include prefix="partCatalog">
+		technical,sales,supplierPrice,aircraftConfig,repairable
+	</include>
+	
+	<!-- 财务管理-申请管理 (account.module.xml) -->
+	<!-- 付款申请,发票申请  -->	
+	<include prefix="account.applyManager">
+		payApplyManager,invoiceApplyManager
+	</include>
+</moduleFilter>	
+
+<modules>
+	
+	<!-- 备件目录 -->
+	<module name="partCatalog.technical">
+	</module>
+	<module name="partCatalog.sales">
+	</module>
+	<module name="partCatalog.supplierPrice">
+	</module>
+	<module name="partCatalog.aircraftConfig">
+	</module>
+	
+	<!-- 用户 -->
+	<module name="organization.userinfo">
+	</module>
+	
+	<!-- 组织机构 -->
+	<module name="organization.enterprise.COMACSC">
+	</module>
+	<module name="organization.enterprise.customer">
+	</module>
+	<module name="organization.enterprise.supplier">
+	</module>
+	<module name="organization.enterprise.manufacturer">
+	</module>
+	<module name="organization.enterprise.clearanceAgency">
+	</module>
+	<module name="organization.enterprise.carrier">
+	</module>
+	<module name="organization.enterprise.department">
+	</module>
+</modules>
+</config>

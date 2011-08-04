@@ -1,0 +1,322 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<title>COMAC SPMS Enterprise Edition</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+<!--
+body {
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	background-color: #CEE8F5;
+	background-image: url();
+	background-repeat: no-repeat;
+	background-position: left top;
+}
+
+.input1 {
+	height: 17px;
+	border: 1px #878686 solid;
+	line-height: 17px;
+	background-image: url(images/login/log_inp.gif);
+	background-repeat: repeat-x;
+	background-position: top;
+	font-size: 12px;
+	font-family: arial;
+	color: #1760ae;
+}
+.body-mid-mid01{
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	background-color: #ffffff;
+	background-image: url(./images/login/login_mid_m1.jpg);
+	background-repeat: no-repeat;
+	background-position:left top;
+	}
+.body-mid-mid02{
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	background-color: #ffffff;
+	background-image: url(./images/login/login_mid_m2.jpg);
+	background-repeat: no-repeat;
+	background-position:left top;
+	}
+.body-low_mid{
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	background-color: #ffffff;
+	background-image: url(./images/login/login_mid_l2.jpg);
+	background-repeat: no-repeat;
+	background-position:left top;
+	}
+	
+.body-right01{
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	background-color: #ffffff;
+	background-image: url(./images/login/login_right_c1.jpg);
+	background-repeat: no-repeat;
+	background-position:left top;
+	}
+.body-right02{
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	background-color: #ffffff;
+	background-image: url(./images/login/login_right_c2.jpg);
+	background-repeat: no-repeat;
+	background-position:left top;
+	}
+.body-user{
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	background-image: url(./images/login/user.png);
+	background-repeat: no-repeat;
+	background-position:right top;
+	}
+.body-password{
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	background-image: url(./images/login/password.png);
+	background-repeat: no-repeat;
+	background-position:right top;
+	}
+-->
+</style>
+         
+<SCRIPT language="Javascript" type="text/javascript">
+	
+	function getCookie(c_name)	{
+		var i,x,y,ARRcookies=document.cookie.split(";");
+		for (i=0;i<ARRcookies.length;i++)
+		{
+		  x=ARRcookies[i].substr(0,ARRcookies[i].indexOf("="));
+		  y=ARRcookies[i].substr(ARRcookies[i].indexOf("=")+1);
+		  x=x.replace(/^\s+|\s+$/g,"");
+		  if (x==c_name) {
+		    return unescape(y);
+		  }
+		  
+		}
+	}
+	
+	function setSele(seleID,seleVal){
+		var sele=document.getElementById(seleID);
+		
+		for (i=0;i<sele.length;i++){
+			if(sele.options[i].value==seleVal){
+				sele.options[i].selected="selected";				
+			}else{
+				sele.options[i].selected=null;
+			}
+		}
+	}
+	
+	function setTargetSele(loc){
+		seleTar=document.getElementById("target-sele");
+		if(loc=="en"){
+			seleTar.options[0].text="spms system";
+			seleTar.options[1].text="demo system";			
+		}else if(loc=="zh_cn"){
+			seleTar.options[0].text="正式系统";
+			seleTar.options[1].text="培训系统";
+		}
+		seleTar.options[0].value="spms";
+		seleTar.options[1].value="demo";		
+	}
+	function saveSele(){
+		var seleLoc=document.getElementById("loc-sele");
+		var loc=seleLoc.options[seleLoc.selectedIndex].value;
+		var seleTar=document.getElementById("target-sele");
+		var tar=seleTar.options[seleTar.selectedIndex].value;
+		document.cookie="spms.env=" + escape(loc+","+tar);				
+		
+	}
+	
+	function changeTarProm(){
+		var seleLoc=document.getElementById("loc-sele");
+		var loc=seleLoc.options[seleLoc.selectedIndex].value;
+		setTargetSele(loc);
+	}
+	
+	function onload(){
+		
+		var env=getCookie("spms.env");
+		if(env!=null && env!="" && env.indexOf(",")!=-1){
+			var array=env.split(",");			
+			setSele("loc-sele",array[0]);
+			setTargetSele(array[0]);			
+			setSele("target-sele",array[1]);			
+		}
+	}
+	
+	
+	 function loadAllBuildHistory() {
+              // first display the "loading..." icon
+             // var box = $("loadAllBuildHistory");
+             //box.innerHTML = '<img alt="" src="/static/d233662f/images/spinner.gif" />';
+
+              // then actually fetch the HTML
+              new Ajax.Request("/job/spms/buildHistory/all",{
+                method: "get",
+                onComplete: function(rsp,_) {
+                  
+                  var hist = $("buildHistory");
+                  var p = hist.parentNode;
+                  var next = hist.nextSibling;
+                  p.removeChild(hist);
+
+                  var div = document.createElement('div');
+                  div.innerHTML = rsp.responseText;
+
+                  p.insertBefore(div,next);
+                }
+            });
+            }
+	
+</SCRIPT>
+
+</head>
+<body style="height: 100%; overflow: hidden; width: 100%;" scroll="no">
+  <center>
+  <!-- /j_spring_security_check 默认由 UsernamePasswordAuthenticationFilter转发  -->
+		<form  id="login-frm" name="f" action="./j_spring_security_check" method="post" >
+      
+  <table width="1024" height="640" border="0" cellpadding="0" cellspacing="0">
+          <tr>
+            <td width="90"><img src="./images/login/login_left_c1.jpg" width="90" height="640" /></td>
+            
+            <td width="90"><img src="./images/login/login_left_c2.jpg" width="90" height="640" /></td>
+            
+            <td width="644" ><table width="644" border="0" cellspacing="0" cellpadding="0">
+              <tr>
+                <td width="322" height="80"><img src="./images/login/login_mid_t1.jpg" /></td>
+                <td width="322"height="80"><img src="./images/login/login_mid_t2.jpg" /></td>
+              </tr>
+              <tr>
+                <td width="322" height="80"><img src="./images/login/login_mid_t3.jpg" /></td>
+                <td width="322" height="80"><img src="./images/login/login_mid_t4.jpg" /></td>
+              </tr>
+              <tr align="left" valign="top">
+                <td height="150" colspan="2" class="body-mid-mid01">&nbsp;</td>
+              </tr>
+              <tr align="left" valign="top">
+                <td height="150" colspan="2" class="body-mid-mid02">
+                
+                
+                <table width="644" border="0" cellspacing="0" cellpadding="0">
+                  <tr>
+                    <td height="30" colspan="2">&nbsp;</td>
+                    <td width="173">&nbsp;</td>
+                    <td width="36">&nbsp;</td>
+                    <td width="112">&nbsp;</td>
+                    <td width="204">&nbsp;</td>
+                  </tr>
+                  <tr>
+                    <td width="103" height="37" class="body-user"></td>
+                    <td width="12">  </td>
+                    <!--spring security默认的用户名 j_username  -->
+                    <td><input type="text" name="j_username" class="input1" style="width: 170px; height: 17px;" tabindex="0" /></td>
+                    <td>&nbsp;</td>
+                    
+                    <td>
+								<select style="WIDTH: 81px" name="locale" id="loc-sele" onchange="changeTarProm()">
+										<option value="zh_cn" selected="selected">简体中文</option>
+										<option value="en">English</option>
+								</select>
+                    </td>
+                    
+                    <td>        <select   style="WIDTH: 105px" name="target" id="target-sele">
+                                        <option value="spms" selected="selected">正式系统</option>
+										<option value="demo">培训系统</option>
+										
+								</select>
+                                
+                                </td>
+                  </tr>
+                  <tr>
+                    <td height="37" class="body-password">&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <!--spring security默认的用户密码  j_password  -->
+                    <td><input type="password" name="j_password" class="input1" style="width: 170px; height: 17px;" tabindex="1" /></td>
+                    <td>&nbsp;</td>
+                    <td><input type="submit" onclick="saveSele()"value="登录"  tabindex="2" />
+                    <input name="reset" type="reset">
+                    <td></td>
+                    <td width="4">&nbsp;</td>
+                  </tr>
+                  <tr>
+                    <td colspan="2">&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                  </tr>
+                  <tr>
+                    <td colspan="2">&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                  </tr>
+                </table>
+                            
+              </tr>
+              <tr>
+                <td height="180" colspan="2"><table width="644" border="0" cellspacing="0" cellpadding="0">
+                  <tr>
+                    <td><img src="./images/login/login_mid_l1.jpg" /></td>
+                  </tr>
+                  <tr>
+                    <td height="60" class="body-low_mid"><table width="644" border="0" align="center" cellpadding="0" cellspacing="0">
+                      <tr>
+                        <td width="68" height="30">&nbsp;</td>
+                        <td width="181" align="right">&nbsp;</td>
+                        <td width="325">
+
+<div id="navigation"><script defer="true">updateBuildHistory("http://200.0.0.54:8081/job/spms/buildHistory/ajax",122);</script></div>
+      
+      </td>
+      
+      
+                        <td width="70">&nbsp;</td>
+                      </tr>
+                      <tr>
+                        <td height="30">&nbsp;</td>
+                        <td height="20" align="right">&nbsp;</td>
+                        <td><br /></td>
+                        <td>&nbsp;</td>
+                      </tr>
+                    </table></td>
+                  </tr>
+                  <tr>
+                    <td><img src="./images/login/login_mid_l3.jpg" /></td>
+                  </tr>
+                </table></td>
+              </tr>
+            </table></td>
+            <td width="100" class="body-right01">&nbsp;</td>
+            <td width="100" class="body-right02">&nbsp;</td>
+    </tr>
+  </table>
+	</form>
+    
+	</center>
+</body>
+
+</html>

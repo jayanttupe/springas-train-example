@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 业务审批副总角色-->
+<config name="ViceGeneralApprover" >
+<moduleFilter default="all">
+	
+</moduleFilter>	
+
+</config>

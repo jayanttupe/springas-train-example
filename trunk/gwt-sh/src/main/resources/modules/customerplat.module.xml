@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	<module name="customerplat">
+		<submodules>
+			<!-- 单件号查询 -->
+			<module name="singleSpareQuery" icon="customerplat_01">
+				<!-- <data default=" "> <dataSource name=" " className=""> <viewfilter> 
+					</viewfilter> <editfilter> </editfilter> </dataSource> </data> -->
+			</module>
+			<!-- 多件号查询 <module name="multiSpareQuery" icon="account_01"> </module> -->
+			<!--询价 -->
+			<module name="queryPrice" icon="customerplat_02">
+				<submodules>
+					<!-- 询价信息 -->
+					<module name="contact" icon="customerplat_02_01">
+						<feature>
+							ADD,DELETE,MODIFY,VIEW,REFRESH,PUBLISH,CANCELPUBLISH,MESSAGE,LOG,PRINT,EXPORT,SENIORSEARCH
+						</feature>
+						<data default="doQuotation_dataSource">
+							<!-- 主表数据源 -->
+							<dataSource name="doQuotation_dataSource"
+								className="com.skynet.spms.persistence.entity.customerService.sales.salesInquirySheet.SalesInquirySheet">
+								<viewfilter></viewfilter>
+								<editfilter></editfilter>
+							</dataSource>
+							<!-- 项表数据源 -->
+							<dataSource name="doQuotationItem_dataSource"
+								className="com.skynet.spms.persistence.entity.customerService.sales.salesInquirySheet.SalesInquirySheetItem">
+								<viewfilter></viewfilter>
+								<editfilter></editfilter>
+							</dataSource>
+						</data>
+					</module>
+					<!-- 报价详细信息 -->
+					<module name="contactDetail" icon="customerplat_02_02">
+						<feature>
+							ADDSALESREQUISITION,VIEW,REFRESH,MESSAGE,LOG,PRINT,EXPORT,SENIORSEARCH
+						</feature>
+						<data default="salesQuotationSheet_dataSource">
+							<!-- 主表数据源 -->
+							<dataSource name="salesQuotationSheet_dataSource"
+								className="com.skynet.spms.persistence.entity.customerService.sales.salesQuotationSheet.SalesQuotationSheet">
+								<viewfilter></viewfilter>
+								<editfilter></editfilter>
+							</dataSource>
+							<!-- 项表数据源 -->
+							<dataSource name="salesQuotationSheetItem_dataSource"
+								className="com.skynet.spms.persistence.entity.customerService.sales.salesQuotationSheet.SalesQuotationSheetItem">
+								<viewfilter></viewfilter>
+								<editfilter></editfilter>
+							</dataSource>
+							<!-- 销售分段报价数据源 -->
+							<dataSource name="SalesPiecewiseQuotationItem_datasource"
+								className="com.skynet.spms.persistence.entity.customerService.sales.salesPiecewiseQuotationItem.SalesPiecewiseQuotationItem">
+								<viewfilter></viewfilter>
+								<editfilter></editfilter>
+							</dataSource>
+						</data>
+					</module>
+				</submodules>
+			</module>
+			<!--下采购订单 -->
+			<module name="takeProcurementOrder" icon="customerplat_03">
+				<submodules>
+					<module name="orderCreate" icon="customerplat_03_01">
+						<feature>
+							ADD,DELETE,MODIFY,VIEW,REFRESH,PUBLISH,CANCELPUBLISH,MESSAGE,LOG,PRINT,EXPORT,SENIORSEARCH
+						</feature>
+						<data default="salesRequisitionSheet_dataSource">
+							<!-- 主表数据源 -->
+							<dataSource name="salesRequisitionSheet_dataSource"
+								className="com.skynet.spms.persistence.entity.customerService.sales.salesRequisitionSheet.SalesRequisitionSheet">
+								<viewfilter></viewfilter>
+								<editfilter></editfilter>
+							</dataSource>
+							<!-- 项表数据源 -->
+							<dataSource name="salesRequisitionSheetItem_dataSource"
+								className="com.skynet.spms.persistence.entity.customerService.sales.salesRequisitionSheet.SalesRequisitionSheetItem">
+								<viewfilter></viewfilter>
+								<editfilter></editfilter>
+							</dataSource>
+							<dataSource name="aircraftRegistration_dataSource"
+								className="com.skynet.spms.persistence.entity.partCatalog.aircraftConfigCatalog.AircraftRegistration">
+								<viewfilter></viewfilter>
+								<editfilter></editfilter>
+							</dataSource>
+						</data>
+					</module>
+					<module name="orderTrack" icon="customerplat_03_01">
+						<feature>
+							VIEW,REFRESH,MESSAGE,LOG,PRINT,EXPORT,SENIORSEARCH
+						</feature>
+						<data default="salesRequisitionSheet_dataSource">
+							<!-- 主表数据源 -->
+							<dataSource name="salesRequisitionSheet_dataSource"
+								className="com.skynet.spms.persistence.entity.customerService.sales.salesRequisitionSheet.SalesRequisitionSheet">
+								<viewfilter></viewfilter>
+								<editfilter></editfilter>
+							</dataSource>
+							<!-- 项表数据源 -->
+							<dataSource name="salesRequisitionSheetItem_dataSource"
+								className="com.skynet.spms.persistence.entity.customerService.sales.salesRequisitionSheet.SalesRequisitionSheetItem">
+								<viewfilter></viewfilter>
+								<editfilter></editfilter>
+							</dataSource>
+							<dataSource name="aircraftRegistration_dataSource"
+								className="com.skynet.spms.persistence.entity.partCatalog.aircraftConfigCatalog.AircraftRegistration">
+								<viewfilter></viewfilter>
+								<editfilter></editfilter>
+							</dataSource>
+						</data>
+					</module>
+
+				</submodules>
+			</module>
+			<!--交换 -->
+			<module name="exchangeRequisition" icon="customerplat_04">
+				<submodules>
+					<module name="exchangeRequisition" icon="customerplat_04_01">
+
+						<feature>
+							ADD,DELETE,MODIFY,VIEW,REFRESH,PUBLISH,CANCELPUBLISH,MESSAGE,LOG,PRINT,EXPORT,SENIORSEARCH
+						</feature>
+						<data default="exchangeRequisition_dataSource">
+							<!-- 主表数据源 -->
+							<dataSource name="exchangeRequisition_dataSource"
+								className="com.skynet.spms.persistence.entity.customerService.sales.exchangeRequisitionSheet.ExchangeRequisitionSheet">
+								<viewfilter></viewfilter>
+								<editfilter></editfilter>
+							</dataSource>
+							<!-- 项表数据源 <dataSource name="exchangeRequisitionItem_dataSource" className="com.skynet.spms.persistence.entity.customerService.sales.exchangeRequisitionSheet.ExchangeRequisitionSheetItem"> 
+								<viewfilter></viewfilter> <editfilter></editfilter> </dataSource> -->
+						</data>
+					</module>
+				</submodules>
+
+			</module>
+			<!--客户资料 -->
+			<module name="customerData" icon="customerplat_05">
+				<submodules>
+					<module name="accountInfo" icon="customerplat_05_01">
+						<feature>ADD,DELETE,MODIFY,VIEW,REFRESH,ROLETOGROUP,MODIFYROLEQUOTA,PRINTIDCARD,PRINT,EXPORT,IMPORT,SENIORSEARCH
+						</feature>
+					</module>
+					<module name="customerInfo" icon="customerplat_05_02">
+						<feature>ADD,DELETE,MODIFY,VIEW,REFRESH,PRINT,EXPORT,IMPORT,SENIORSEARCH
+						</feature>
+					</module>
+					<!-- <module name="customerUser" icon="customerplat_05_03"> </module> 
+						<module name="customerForward" icon="customerplat_05_04"> </module> -->
+				</submodules>
+			</module>
+
+			<!-- 回购申请单 -->
+			<module name="buybackSheetService" icon="customer_04_01">
+				<feature>
+					ADD,DELETE,MODIFY,VIEW,REFRESH,PUBLISH,CANCELPUBLISH,MESSAGE,LOG,PRINT,EXPORT,SENIORSEARCH
+				</feature>
+			</module>
+
+			<!-- 担保索赔申请 -->
+			<module name="guaranteeForm" icon="customer_05_01">
+				<feature>
+					ADD,DELETE,MODIFY,VIEW,REFRESH,PUBLISH,CANCELPUBLISH,MESSAGE,LOG,PRINT,EXPORT,SENIORSEARCH
+				</feature>
+			</module>
+
+			<!-- 客户送修申请 -->
+			<module name="repairSheet" icon="customer_02_01">
+				<feature>
+					ADD,DELETE,MODIFY,VIEW,REFRESH,PUBLISH,CANCELPUBLISH,MESSAGE,LOG,PRINT,EXPORT,IMPORT,SENIORSEARCH
+				</feature>
+			</module>
+
+
+		</submodules>
+	</module>
+</config>
