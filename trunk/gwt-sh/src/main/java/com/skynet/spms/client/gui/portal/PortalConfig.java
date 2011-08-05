@@ -69,7 +69,6 @@ public class PortalConfig {
 		btn.setTitle("save layout");
 		btn.addClickHandler(new ClickHandler() {
 
-			@Override
 			public void onClick(ClickEvent event) {
 				List<List<String>> layoutList = new ArrayList<List<String>>();
 
@@ -87,7 +86,6 @@ public class PortalConfig {
 		IButton close = new IButton();
 		close.addClickHandler(new ClickHandler() {
 
-			@Override
 			public void onClick(ClickEvent event) {
 				win.destroy();
 			}
@@ -117,25 +115,21 @@ public class PortalConfig {
 
 	public class ConfigFactory implements MemberFactory {
 
-		@Override
 		public Canvas getMember(String name) {
 			LayoutWin win = new LayoutWin(name);
 
 			return win;
 		}
 
-		@Override
 		public String getDescription(String name) {
 			return name;
 		}
 
-		@Override
 		public HLayout getHLayout() {
 			HLayout layout = new HLayout();
 			return layout;
 		}
 
-		@Override
 		public VLayout getVLayout() {
 			VLayout layout = new VLayout();
 

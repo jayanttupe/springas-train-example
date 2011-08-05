@@ -80,13 +80,11 @@ public class LayoutManager {
 
 		moduleService.getPortalMembers(new AsyncCallback<Set<String>>() {
 
-			@Override
 			public void onFailure(Throwable caught) {
 				// TODO Auto-generated method stub
 
 			}
 
-			@Override
 			public void onSuccess(final Set<String> filterSet) {
 				config=new PortalConfig(filterSet);
 				for(int i=0;i<layoutArray.length;i++){

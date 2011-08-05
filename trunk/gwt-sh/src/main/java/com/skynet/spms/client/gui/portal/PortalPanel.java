@@ -75,7 +75,6 @@ public class PortalPanel {
 
 		tab.addTabSelectedHandler(new TabSelectedHandler() {
 
-			@Override
 			public void onTabSelected(TabSelectedEvent event) {
 				log.info("portal tab sele");
 				eventBus.fireEvent(new PortalRefreshEvent());
@@ -85,7 +84,6 @@ public class PortalPanel {
 		});
 		tab.addTabDeselectedHandler(new TabDeselectedHandler() {
 
-			@Override
 			public void onTabDeselected(TabDeselectedEvent event) {
 				log.info("portal tab de sele");
 				tab.setTitle(navConst.protalTab());
@@ -110,13 +108,11 @@ public class PortalPanel {
 			public void run() {
 				pollService.checkIsMsgReceive(new AsyncCallback<Boolean>() {
 
-					@Override
 					public void onFailure(Throwable caught) {
 						log.warning(caught.getMessage());
 
 					}
 
-					@Override
 					public void onSuccess(Boolean result) {
 						log.info("is msg receive:" + result);
 						if (result) {
@@ -148,13 +144,11 @@ public class PortalPanel {
 			this.layoutMang=layoutMang2;
 		}
 
-		@Override
 		public void onClick(MenuItemClickEvent event) {
 			PortalConfig config=layoutMang.getConfig();
 			
 			config.displayWin(layoutMang, new ReDrawPortal() {
 
-				@Override
 				public void doReDraw(LayoutManager layoutMang) {
 					TabSet tabSet = tab.getTabSet();
 
@@ -170,7 +164,6 @@ public class PortalPanel {
 
 	public class MainFactory implements MemberFactory {
 
-		@Override
 		public Canvas getMember(String name) {
 			PortalMember portalMember = members.getMemberByName(name);
 			Canvas canvas = portalMember.getCanvas();
@@ -185,18 +178,15 @@ public class PortalPanel {
 			return win;
 		}
 
-		@Override
 		public String getDescription(String name) {
 			PortalMember portalMember = members.getMemberByName(name);
 			return portalMember.getDescription();
 		}
 
-		@Override
 		public HLayout getHLayout() {
 			return new HLayout();
 		}
 
-		@Override
 		public VLayout getVLayout() {
 			return new VLayout();
 		}

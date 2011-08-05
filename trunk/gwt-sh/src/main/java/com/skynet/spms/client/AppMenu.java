@@ -71,7 +71,6 @@ public class AppMenu {
 
 		localMenu.addItemClickHandler(new ItemClickHandler() {
 
-			@Override
 			public void onItemClick(ItemClickEvent event) {
 
 				MenuItem item = event.getItem();
@@ -104,7 +103,6 @@ public class AppMenu {
 
 		relogin.addClickHandler(new ClickHandler() {
 
-			@Override
 			public void onClick(MenuItemClickEvent event) {
 				final com.smartgwt.client.widgets.Window winModal = getFullScreenWin();
 				winModal.addCloseClickHandler(new CloseClickHandler() {
@@ -119,7 +117,6 @@ public class AppMenu {
 
 		logout.addClickHandler(new ClickHandler() {
 
-			@Override
 			public void onClick(MenuItemClickEvent event) {
 				eventBus.fireEvent(new UserLogoutEvent());
 			}
@@ -150,7 +147,6 @@ public class AppMenu {
 			MenuItem item = new MenuItem(info[1]);
 			item.addClickHandler(new ClickHandler() {
 
-				@Override
 				public void onClick(MenuItemClickEvent event) {
 					for (MenuItem item : event.getMenu().getItems()) {
 						item.setChecked(false);
@@ -289,7 +285,6 @@ public class AppMenu {
 		
 		logMenu.addClickHandler(new ClickHandler(){
 
-			@Override
 			public void onClick(MenuItemClickEvent event) {
 				logGrid.popupWin();			
 			}
@@ -303,7 +298,6 @@ public class AppMenu {
 			
 		//增加管理员控制台的弹出窗口
 		adminConsoleMenu.addClickHandler(new ClickHandler() {
-			@Override
 			public void onClick(MenuItemClickEvent event) {
 			   SC.showConsole();
 			}
@@ -317,7 +311,6 @@ public class AppMenu {
 	private MenuItem getAboutMenu() {
 		MenuItem aboutMenu = new MenuItem();
 		aboutMenu.addClickHandler(new ClickHandler() {
-			@Override
 			public void onClick(MenuItemClickEvent event) {
 				// TODO Auto-generated method stub
 				final com.smartgwt.client.widgets.Window winModal = getAboutScreenWin();

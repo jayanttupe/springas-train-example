@@ -83,7 +83,6 @@ public class ModuleInfoAction implements ModuleInfoService{
 		return modElem.getModuleDetail(prop);
 	}
 
-
 	public Set<String> getPortalMembers() {
 		String[] array= new String[]{"Info","InstMsg",
 				"TaskList",
