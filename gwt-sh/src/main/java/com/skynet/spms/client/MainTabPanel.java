@@ -59,7 +59,6 @@ public class MainTabPanel {
 		eventBus.addHandler(RefreshModuleDetailEvent.TYPE,
 				new RefreshModuleDetailEventHandler() {
 
-					@Override
 					public void onSeleModuleDetail(
 							RefreshModuleDetailEvent event) {
 						log.info(event.getSeleModName());
@@ -69,7 +68,6 @@ public class MainTabPanel {
 				});
 
 		mainTabSet.addTabSelectedHandler(new TabSelectedHandler() {
-			@Override
 			public void onTabSelected(TabSelectedEvent event) {
 				Tab tab = event.getTab();
 				

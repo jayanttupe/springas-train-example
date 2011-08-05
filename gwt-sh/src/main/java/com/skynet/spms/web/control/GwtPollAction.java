@@ -31,7 +31,6 @@ public class GwtPollAction implements PollService {
 	
 	private ConcurrentMap<String,Set<String>> queueMap=new ConcurrentHashMap<String,Set<String>>();
 	
-	@Override
 	public boolean checkIsMsgReceive(){
 		
 		return msgSignService.checkIsMsgReceive(GwtActionHelper.getCurrUser()); 

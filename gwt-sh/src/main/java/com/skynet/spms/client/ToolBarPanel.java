@@ -127,47 +127,6 @@ public class ToolBarPanel {
 		}
 
 		modBtn.setMenu(menu);
-		//modBtn.setMenuAnimationEffect("SLIDE");
-		/*modBtn.addMouseOverHandler(new MouseOverHandler() {
-			
-			@Override
-			public void onMouseOver(MouseOverEvent event) {
-				// TODO Auto-generated method stub
-				//SC.say(event.getX()+"@@@"+event.getY()+"##########"+modBtn.getAbsoluteLeft()+"####"+modBtn.getWidthAsString()+"$$$$"+modBtn.getPageRight());
-				int x = event.getX();
-				int leftLimit = modBtn.getAbsoluteLeft();
-				int rightLimit = modBtn.getPageRight()-4;
-				if(x<leftLimit||x>rightLimit)
-				{
-					menu.animateHide( AnimationEffect.SLIDE );
-				}else{
-					menu.moveTo( modBtn.getAbsoluteLeft(), modBtn.getAbsoluteTop() + modBtn.getBottom());
-					menu.animateShow( AnimationEffect.SLIDE );	
-				}
-				
-				
-			}
-		});
-		
-		
-		
-/*		menu.addMouseOutHandler(new MouseOutHandler() {
-			
-			@Override
-			public void onMouseOut(MouseOutEvent event) {
-				// TODO Auto-generated method stub
-				menu.moveTo( modBtn.getAbsoluteLeft(), modBtn.getAbsoluteTop() + modBtn.getBottom());
-				menu.animateHide( AnimationEffect.SLIDE );
-			}
-		})
-		modBtn.addMouseOutHandler(new MouseOutHandler() {
-			
-			@Override
-			public void onMouseOut(MouseOutEvent event) {
-				// TODO Auto-generated method stub
-				menu.animateHide( AnimationEffect.SLIDE );	
-			}
-		});*/
 		return modBtn;
 	}
 }

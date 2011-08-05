@@ -39,7 +39,6 @@ public class NviTreePanel {
 				
 		//添加目录树最终节点的鼠标点击事件处理器
 		treeGrid.addLeafClickHandler(new LeafClickHandler() {
-			@Override
 			//鼠标点击目录树最终节点触发事件
 			public void onLeafClick(LeafClickEvent event) {
 				TreeNode node = event.getLeaf();
