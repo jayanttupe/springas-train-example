@@ -19,12 +19,10 @@ public class UserGroupDatasourceAction implements DataSourceAction<UserGroup> {
 	
 	@Autowired
 	private UserGroupManager userGroupManager;
-	@Override
 	public String[] getBindDsName() {
 		return new String[]{"userGroup_dataSource"};
 	}
 
-	@Override
 	public void insert(UserGroup item) {
 		log.info("=============================UserGroupDataSourceAction.insert()");
 		log.info("id : " + item.getId());
@@ -33,7 +31,6 @@ public class UserGroupDatasourceAction implements DataSourceAction<UserGroup> {
 		userGroupManager.insertEntity(item);
 	}
 
-	@Override
 	public UserGroup update(Map<String,Object> newValues, String itemID) {
 		log.info("=============================UserGroupDataSourceAction.update()");
 		for(Map.Entry<String, Object> entry : newValues.entrySet()){
@@ -58,7 +55,6 @@ public class UserGroupDatasourceAction implements DataSourceAction<UserGroup> {
 		return userGroup;
 	}
 
-	@Override
 	public void delete(String itemID) {
 		log.info("=============================UserGroupDataSourceAction.delete()");
 		log.info("deleted Id : " + itemID);
@@ -66,7 +62,6 @@ public class UserGroupDatasourceAction implements DataSourceAction<UserGroup> {
 		
 	}
 
-	@Override
 	public List<UserGroup> doQuery(Map<String,Object> values, int startRow, int endRow) {
 		log.info("=============================UserGroupDataSourceAction.doQuery()");
 		Object filter = values.remove("filter");
