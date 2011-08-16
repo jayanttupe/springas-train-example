@@ -51,13 +51,11 @@ public class DataSourceTool {
 			final PostDataSourceInit initOper){
 		return new AsyncCallback<DataInfo>(){
 
-			@Override
 			public void onFailure(Throwable caught) {
 				log.log(Level.WARNING,caught.getMessage());
 				
 			}
 
-			@Override
 			public void onSuccess(DataInfo result) {
 				DataSource dataSource = new DataSource();
 			
