@@ -27,13 +27,11 @@ public class UserTools {
 	
 		service.getUserByUserName(userName, new AsyncCallback<UserVo>() {
 			
-			@Override
 			public void onSuccess(UserVo userVo) {
 				// TODO Auto-generated method stub
 				user = userVo;
 			}
 			
-			@Override
 			public void onFailure(Throwable arg0) {
 				// TODO Auto-generated method stub
 				
@@ -48,13 +46,11 @@ public class UserTools {
 		
 		service.getUserByUserName(userName2, new AsyncCallback<UserVo>() {
 			
-			@Override
 			public void onSuccess(UserVo userVo) {
 				// TODO Auto-generated method stub
 				user = userVo;
 			}
 			
-			@Override
 			public void onFailure(Throwable arg0) {
 				// TODO Auto-generated method stub
 				

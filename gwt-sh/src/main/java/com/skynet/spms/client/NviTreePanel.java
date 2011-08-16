@@ -58,7 +58,6 @@ public class NviTreePanel {
 		eventBus.addHandler(SeleRootModuleEvent.TYPE,
 				new SeleRootModuleEventHandler() {
 
-					@Override
 					public void onSeleRootModule(SeleRootModuleEvent event) {
 
 						final String modName = event.getSeleModName();
@@ -70,12 +69,10 @@ public class NviTreePanel {
 						featureAction.getModuleTree(modName,
 								new AsyncCallback<ViewModuleTree>() {
 
-									@Override
 									public void onFailure(Throwable caught) {
 
 									}
 
-									@Override
 									public void onSuccess(ViewModuleTree result) {
 										Tree tree = result.generTree();
 
