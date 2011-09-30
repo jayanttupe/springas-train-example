@@ -9,3 +9,6 @@ http://stackoverflow.com/questions/3014288/is-there-a-maven-plugin-to-generate-a
 http://www.graniteds.org/confluence/display/DOC/3.+Gas3+Code+Generator
 
 http://www.learnosity.com/techblog/index.cfm/2010/3/21/Flex-3-to-Flex-4-Migration-Howto
+
+Making a Flash game like Plants Vs Zombies
+http://www.emanueleferonato.com/2011/01/04/making-a-flash-game-like-plants-vs-zombies-step-2/
