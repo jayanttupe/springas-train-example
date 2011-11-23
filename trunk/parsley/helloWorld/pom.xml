@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.mycompany.actionscript.parsley</groupId>
+    <artifactId>helloWorld</artifactId>
+    <packaging>swf</packaging>
+    <name>helloWorld</name>
+    <version>1.0-SNAPSHOT</version>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <!--flex-->
+        <flexmojos.version>4.1-beta</flexmojos.version>
+        <flex.sdk.version>4.5.1.21328</flex.sdk.version>
+        <flex.skins>4.5.1.21328</flex.skins>
+        <flashplayer.version>10.0.0</flashplayer.version>
+        <!--parsley-->
+        <parsley.version>2.4.1</parsley.version>
+        <spicelib.version>3.0.0</spicelib.version>
+        <legacy.version>2.5.0</legacy.version>
+        <!-- other -->
+        <antrun.plugin.antfile>${basedir}/ant-build.xml</antrun.plugin.antfile>
+    </properties>
+
+    <repositories>
+        <repository>
+            <id>yoolab.org-releases</id>
+            <url>http://projects.yoolab.org/maven/content/repositories/releases</url>
+        </repository>
+        <repository>
+            <id>flex-mojos-repository</id>
+            <url>http://repository.sonatype.org/content/groups/public</url>
+        </repository>
+        <repository>
+            <id>flex-mojos-repository-flexgroup</id>
+            <url>http://repository.sonatype.org/content/groups/flexgroup</url>
+        </repository>
+        <!--skins -->
+        <repository>
+            <id>servebox.org</id>
+            <url>http://maven.servebox.org/repository</url>
+        </repository>
+    </repositories>
+
+    <pluginRepositories>
+        <pluginRepository>
+            <id>flexmojos-repository</id>
+            <url>http://repository.sonatype.org/content/groups/flexgroup/</url>
+        </pluginRepository>
+        <pluginRepository>
+            <id>flexpmd.opensource.adobe</id>
+            <name>FlexPMD repository on opensource.adobe.com</name>
+            <url>http://opensource.adobe.com/svn/opensource/flexpmd/maven-repository/release</url>
+        </pluginRepository>
+    </pluginRepositories>
+
+    <dependencies>
+        <!--unittest-->
+        <dependency>
+            <groupId>org.sonatype.flexmojos</groupId>
+            <artifactId>flexmojos-unittest-flexunit4</artifactId>
+            <version>4.1-beta</version>
+            <type>swc</type>
+        </dependency>
+
+        <!--flex-framework-->
+        <dependency>
+            <groupId>com.adobe.flex.framework</groupId>
+            <artifactId>flex-framework</artifactId>
+            <version>${flex.sdk.version}</version>
+            <type>pom</type>
+        </dependency>
+
+        <dependency>
+            <groupId>com.adobe.flex.framework</groupId>
+            <artifactId>framework</artifactId>
+            <version>${flex.sdk.version}</version>
+            <type>swc</type>
+            <scope>compile</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>com.adobe.flex.framework</groupId>
+            <artifactId>framework</artifactId>
+            <version>${flex.sdk.version}</version>
+            <type>zip</type>
+            <classifier>configs</classifier>
+        </dependency>
+
+        <dependency>
+            <groupId>com.adobe.flex.framework</groupId>
+            <artifactId>rpc</artifactId>
+            <version>${flex.sdk.version}</version>
+            <type>swc</type>
+            <scope>compile</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>com.adobe.flex.framework</groupId>
+            <artifactId>playerglobal</artifactId>
+            <version>${flex.sdk.version}</version>
+            <type>swc</type>
+            <scope>compile</scope>
+            <classifier>10.2</classifier>
+        </dependency>
+
+        <dependency>
+            <groupId>com.adobe.flex.framework</groupId>
+            <artifactId>framework</artifactId>
+            <version>${flex.sdk.version}</version>
+            <type>rb.swc</type>
+            <scope>compile</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>com.adobe.flex.framework</groupId>
+            <artifactId>rpc</artifactId>
+            <version>${flex.sdk.version}</version>
+            <type>rb.swc</type>
+            <scope>compile</scope>
+        </dependency>
+
+        <!--skins -->
+        <dependency>
+            <groupId>com.adobe.flex.framework</groupId>
+            <artifactId>spark</artifactId>
+            <version>${flex.sdk.version}</version>
+            <classifier>theme</classifier>
+            <type>css</type>
+            <!--<scope>theme</scope>-->
+        </dependency>
+
+        <!--parsley family-->
+        <dependency>
+            <groupId>org.spicefactory.parsley</groupId>
+            <artifactId>parsley-flex4</artifactId>
+            <version>${parsley.version}</version>
+            <type>swc</type>
+        </dependency>
+        <dependency>
+            <groupId>org.spicefactory.spicelib</groupId>
+            <artifactId>spicelib-util</artifactId>
+            <version>${spicelib.version}</version>
+            <type>swc</type>
+        </dependency>
+        <dependency>
+            <groupId>org.spicefactory.spicelib</groupId>
+            <artifactId>spicelib-reflect</artifactId>
+            <version>${spicelib.version}</version>
+            <type>swc</type>
+        </dependency>
+        <dependency>
+            <groupId>org.spicefactory.spicelib</groupId>
+            <artifactId>legacy-spicelib-util</artifactId>
+            <version>${legacy.version}</version>
+            <type>swc</type>
+        </dependency>
+
+    </dependencies>
+
+    <build>
+        <sourceDirectory>src/main/flex</sourceDirectory>
+        <plugins>
+            <!--flexmojos-maven-plugin-->
+            <plugin>
+                <groupId>org.sonatype.flexmojos</groupId>
+                <artifactId>flexmojos-maven-plugin</artifactId>
+                <version>${flexmojos.version}</version>
+                <extensions>true</extensions>
+                <executions>
+                    <execution>
+                        <phase>compile</phase>
+                        <goals>
+                            <!--suppress MavenModelInspection -->
+                            <!--<goal>compile-swf</goal>-->
+                        </goals>
+                    </execution>
+                </executions>
+                <dependencies>
+                    <dependency>
+                        <groupId>com.adobe.flex</groupId>
+                        <artifactId>compiler</artifactId>
+                        <version>${flex.sdk.version}</version>
+                        <type>pom</type>
+                    </dependency>
+                </dependencies>
+                <configuration>
+                    <!--<configurationReport>true</configurationReport>-->
+                    <!--<reportOutputDirectory>${project.basedir}/target/report</reportOutputDirectory>-->
+                    <targetPlayer>${flashplayer.version}</targetPlayer>
+                    <sourceFile>${project.basedir}/src/main/flex/${project.name}.mxml</sourceFile>
+                    <htmlName>${project.name}</htmlName>
+                    <localesCompiled>
+                        <locale>en_US</locale>
+                    </localesCompiled>
+                    <parameters>
+                        <bgcolor>#FFFFFF</bgcolor>
+                    </parameters>
+                    <!--<output>${project.build.finalName}.swf</output>-->
+                    <!--<output>${project.basedir}/target/${project.build.finalName}.swf</output>-->
+                    <webappDirectory>${project.basedir}/target</webappDirectory>
+                    <!--<coverageViewerPath/>-->
+                    <warnings>true</warnings>
+                </configuration>
+            </plugin>
+
+            <!--maven-antrun-plugin-->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-antrun-plugin</artifactId>
+                <version>1.6</version>
+                <executions>
+                    <execution>
+                        <id>run</id>
+                        <!--定义一个 phase 来关联 antrun-->
+                        <phase>compile</phase>
+                        <configuration>
+                            <target>
+                                <!-- ant build.xml 路径-->
+                                <ant antfile="${antrun.plugin.antfile}"/>
+                            </target>
+                        </configuration>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>

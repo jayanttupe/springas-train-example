@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project name="maven-antrun" default="copyResources"  >
+<target name="copyResources">
+    <echo  message="synchronising file(s)..."/>
+    <!--需要拷贝的文件目录-->
+    <property name="resourceFolder" value="${basedir}/src/main/resources"/>
+    <!--目标文件夹-->
+    <property name="destinationFolder"  value="${basedir}/target/"/>
+    <!--先删除原来文件-->
+    <!--<delete dir="${destinationFolder}/assets" />-->
+    <!--拷贝文件-->
+    <copy todir="${destinationFolder}" overwrite="true" failonerror="true">
+        <fileset dir="${resourceFolder}"/>
+    </copy>
+
+</target>
+</project>
