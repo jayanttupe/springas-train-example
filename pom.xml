@@ -8,7 +8,8 @@
     <artifactId>springas-train-examples</artifactId>
     <version>1.1</version>
     <packaging>pom</packaging>
-    <name>springas train examples</name>
+    <name>Action Script Samples(SuperPom)</name>
+    <description>list a few samples for action script projects</description>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -41,7 +42,7 @@
         <module>springasMvc-scan</module>
         <module>cairngorm</module>
         <module>generateAS</module>
-        <module>cairngormstore</module>
+        <!--<module>cairngormstore</module>-->
         <module>localization</module>
         <module>multiModule</module>
         <!--<module>security</module>-->
