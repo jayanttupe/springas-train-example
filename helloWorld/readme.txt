@@ -2,7 +2,7 @@
 mvn clean compile
 
 2)cd target
-do some update opration with :
+do some update operation with :
 application_context.xml
 data.xml
 global.prop
