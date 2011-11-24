@@ -19,11 +19,6 @@
         <flexmojos.version>4.1-beta</flexmojos.version>
         <flex.sdk.version>4.5.1.21328</flex.sdk.version>
         <flex.skins>4.5.1.21328</flex.skins>
-        <flashplayer.version>10.0.0</flashplayer.version>
-        <!--parsley-->
-        <parsley.version>2.4.1</parsley.version>
-        <spicelib.version>3.0.0</spicelib.version>
-        <legacy.version>2.5.0</legacy.version>
         <!-- other -->
         <antrun.plugin.antfile>${basedir}/ant-build.xml</antrun.plugin.antfile>
     </properties>
@@ -175,7 +170,7 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <configurationReport>true</configurationReport>
+                    <storepass></storepass>
                     <swfVersion>11</swfVersion>
                     <sourceFile>${project.basedir}/src/main/flex/${project.name}.mxml</sourceFile>
                     <localesCompiled>
@@ -184,7 +179,6 @@
                     <compilerWarnings>
                         <warn-no-constructor>false</warn-no-constructor>
                     </compilerWarnings>
-                    <quality>0.90</quality>
                     <optimize>true</optimize>
                     <debug>false</debug>
                     <themes>
