@@ -34,7 +34,7 @@
 	
 	<mx:Form>
 		<mx:FormItem label="User ID: ">
-			<mx:Text id="userId" text="{isNaN( user.id ) ? 'N/A' : user.id}" />
+			<mx:Text id="userId" text="{isNaN( user.id ) ? 'N/A' : String(user.id)}" />
 		</mx:FormItem>
 		<mx:FormItem label="First Name: ">
 			<s:TextInput id="firstName" text="{user.firstName}" />
