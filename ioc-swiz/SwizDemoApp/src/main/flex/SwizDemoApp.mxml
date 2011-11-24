@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Application xmlns:fx="http://ns.adobe.com/mxml/2009"
+               xmlns:s="library://ns.adobe.com/flex/spark"
+               xmlns:mx="library://ns.adobe.com/flex/halo"
+               xmlns:views="views.*"
+               minWidth="1024" minHeight="768" preinitialize="init()">
+
+    <fx:Script>
+		<![CDATA[
+        import mx.logging.targets.TraceTarget;
+
+        import org.swizframework.utils.logging.SwizLogger
+
+        /**
+         *
+         */
+        public function init():void {
+
+        }
+        ]]>
+	</fx:Script>
+
+    <s:layout>
+        <s:VerticalLayout/>
+    </s:layout>
+
+    <views:SwizView/>
+
+</s:Application>
