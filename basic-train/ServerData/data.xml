@@ -1,0 +1,16 @@
+<list>
+	<account>
+		<username>acco01</username>
+		<password>pass1</password>
+		<isDisabled>false</isDisabled>
+		<id>1</id>
+		<version>0</version>
+	</account>
+	<account>
+		<username>acco02</username>
+		<password>pass2</password>
+		<isDisabled>false</isDisabled>
+		<id>2</id>
+		<version>0</version>
+	</account>
+</list>
