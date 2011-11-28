@@ -4,23 +4,26 @@
 package com.mycompany.userinfo.domain;
 
 import com.mycompany.userinfo.domain.Account;
+
 import java.lang.Long;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
+
 import org.springframework.transaction.annotation.Transactional;
 
 privileged aspect Account_Roo_Entity {
-    
+
     @PersistenceContext
     transient EntityManager Account.entityManager;
-    
+
     @Transactional
     public void Account.persist() {
         if (this.entityManager == null) this.entityManager = entityManager();
         this.entityManager.persist(this);
     }
-    
+
     @Transactional
     public void Account.remove() {
         if (this.entityManager == null) this.entityManager = entityManager();
@@ -31,19 +34,19 @@ privileged aspect Account_Roo_Entity {
             this.entityManager.remove(attached);
         }
     }
-    
+
     @Transactional
     public void Account.flush() {
         if (this.entityManager == null) this.entityManager = entityManager();
         this.entityManager.flush();
     }
-    
+
     @Transactional
     public void Account.clear() {
         if (this.entityManager == null) this.entityManager = entityManager();
         this.entityManager.clear();
     }
-    
+
     @Transactional
     public Account Account.merge() {
         if (this.entityManager == null) this.entityManager = entityManager();
@@ -51,28 +54,36 @@ privileged aspect Account_Roo_Entity {
         this.entityManager.flush();
         return merged;
     }
-    
+
     public static final EntityManager Account.entityManager() {
         EntityManager em = new Account().entityManager;
-        if (em == null) throw new IllegalStateException("Entity manager has not been injected (is the Spring Aspects JAR configured as an AJC/AJDT aspects library?)");
+        if (em == null)
+            throw new IllegalStateException("Entity manager has not been injected (is the Spring Aspects JAR configured as an AJC/AJDT aspects library?)");
         return em;
     }
-    
+
     public static long Account.countAccounts() {
         return entityManager().createQuery("SELECT COUNT(o) FROM Account o", Long.class).getSingleResult();
     }
-    
+
     public static List<Account> Account.findAllAccounts() {
         return entityManager().createQuery("SELECT o FROM Account o", Account.class).getResultList();
     }
-    
+
     public static Account Account.findAccount(Long id) {
         if (id == null) return null;
         return entityManager().find(Account.class, id);
     }
-    
+
     public static List<Account> Account.findAccountEntries(int firstResult, int maxResults) {
         return entityManager().createQuery("SELECT o FROM Account o", Account.class).setFirstResult(firstResult).setMaxResults(maxResults).getResultList();
     }
-    
+
+    public static TypedQuery<Account> Account.findAccountsByUsername(String username, String password) {
+        if (username == null || username.length() == 0)
+            throw new IllegalArgumentException("The username argument is required");
+        String query = "SELECT o FROM Account AS o WHERE o.username = :username and o.password = :password";
+        return entityManager().createQuery(query, Account.class);
+    }
+
 }

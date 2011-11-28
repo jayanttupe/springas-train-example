@@ -28,11 +28,14 @@ public class LoginController {
         String password = request.getParameter("password");
         Account account = null;
         try {
-//            account = Account.get
+            account = Account.findAccountsByUsername(username , password);
         } catch (Exception e){
-
+            return "loginFailed";
         }
-        return "success";
+        if(account == null){
+            return "loginFailed";
+        }
+        return "loginSuccess";
     }
 
 }
