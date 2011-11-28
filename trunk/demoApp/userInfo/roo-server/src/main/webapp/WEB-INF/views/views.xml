@@ -21,6 +21,7 @@
         <put-attribute name="body" value="/WEB-INF/views/uncaughtException.jspx"/>
     </definition>
 
-    <definition name="success" template="/success.html"/>
+    <definition name="loginSuccess" template="/success.html"/>
+    <definition name="loginFailed" template="/failed.html"/>
 
 </tiles-definitions>
