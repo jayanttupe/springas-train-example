@@ -18,16 +18,9 @@
         <flash.revision>0</flash.revision>
         <flexmojos.version>4.1-beta</flexmojos.version>
         <flex.sdk.version>4.5.1.21328</flex.sdk.version>
-        <flex.skins>4.5.1.21328</flex.skins>
-        <flashplayer.version>10.0.0</flashplayer.version>
         <!--swiz-->
         <swiz.version>1.3.1</swiz.version>
         <!-- other -->
-        <!-- AS3Commons -->
-        <as3commons-bytecode.version>0.7</as3commons-bytecode.version>
-        <as3commons-lang.version>0.3</as3commons-lang.version>
-        <as3commons-logging.version>1.2</as3commons-logging.version>
-        <as3commons-reflect.version>1.3.1</as3commons-reflect.version>
         <antrun.plugin.antfile>${basedir}/ant-build.xml</antrun.plugin.antfile>
     </properties>
 
@@ -152,13 +145,6 @@
             <type>swc</type>
         </dependency>
 
-        <!--as3 common-->
-        <dependency>
-            <groupId>org.as3commons</groupId>
-            <artifactId>as3commons-lang</artifactId>
-            <version>0.3.5</version>
-            <type>swc</type>
-        </dependency>
     </dependencies>
 
     <build>
@@ -286,7 +272,6 @@
                     </execution>
                 </executions>
             </plugin>
-
 
         </plugins>
     </build>
