@@ -8,6 +8,7 @@
     <packaging>swf</packaging>
     <name>QuickStart</name>
     <version>1.0-SNAPSHOT</version>
+    <description>A simple app shows a form which return a mock user id after creating user</description>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
