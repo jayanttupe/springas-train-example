@@ -188,6 +188,7 @@
                     </dependency>
                 </dependencies>
                 <configuration>
+                    <storepass></storepass>
                     <!--<configurationReport>true</configurationReport>-->
                     <!--<reportOutputDirectory>${project.basedir}/target/report</reportOutputDirectory>-->
                     <targetPlayer>${flashplayer.version}</targetPlayer>
@@ -203,7 +204,6 @@
                     <!--<output>${project.basedir}/target/${project.build.finalName}.swf</output>-->
                     <webappDirectory>${project.basedir}/target</webappDirectory>
                     <!--<coverageViewerPath/>-->
-                    <warnings>true</warnings>
                 </configuration>
             </plugin>
 
