@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project name="maven-antrun" default="copyResources"  >
+<target name="copyResources">
+    <echo  message="synchronising file(s)..."/>
+    <!--需要拷贝的文件目录-->
+    <property name="resourceFolder" value="${basedir}/src/main/resources"/>
+    <!--目标文件夹-->
+    <property name="targetFolder"  value="${basedir}/target/"/>
+    <!--先删除原来文件-->
+    <!--<delete dir="${destinationFolder}/assets" />-->
+    <!--拷贝文件-->
+    <copy todir="${targetFolder}" overwrite="true" failonerror="true">
+        <fileset dir="${resourceFolder}"/>
+    </copy>
+
+    <echo  message="deploy file(s) to webApp..."/>
+    <!--deploy 文件夹-->
+    <property name="deployFolder"  value="${client_deploy_path}"/>
+    <copy todir="${deployFolder}" overwrite="true" failonerror="true">
+        <fileset dir="${targetFolder}">
+            <include name="*.swf"/>
+            <include name="*.html"/>
+            <include name="*.js"/>
+            <include name="history/*.*"/>
+            <!--<include name="assets/*.*"/>-->
+            <!--<include name="appContext-*.xml"/>-->
+            <!--<include name="*.prop"/>-->
+        </fileset>
+    </copy>
+
+</target>
+</project>

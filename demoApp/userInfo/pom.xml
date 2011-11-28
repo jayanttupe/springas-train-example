@@ -11,8 +11,8 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>roo-server</module>
         <module>flash-client</module>
+        <module>roo-server</module>
     </modules>
 
     <properties>
