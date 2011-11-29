@@ -2,6 +2,7 @@ import cn.com.oceansoft.flex4.server.common.entity.Role;
 import cn.com.oceansoft.flex4.server.common.entity.User;
 import cn.com.oceansoft.flex4.server.common.service.RoleService;
 import cn.com.oceansoft.flex4.server.common.service.UserService;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ContextConfiguration;
@@ -30,6 +31,7 @@ public class InitSystemData extends AbstractTransactionalJUnit4SpringContextTest
     @Test
     public void simple(){}
 
+    @Ignore
     @Test
     @Rollback(value = false)
     public void initRole(){
