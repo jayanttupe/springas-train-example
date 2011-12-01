@@ -22,7 +22,7 @@ public class UserController {
     private UserService userService;
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public String test(@PathVariable("id")String id , Model uiModel) {
+    public String test(@PathVariable("id") String id, Model uiModel) {
         User user = userService.getUserByUsername("user");
         return "userok";
     }

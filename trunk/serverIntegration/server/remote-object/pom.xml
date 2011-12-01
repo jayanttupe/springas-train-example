@@ -13,6 +13,7 @@
     <groupId>cn.com.oceansoft.flex4</groupId>
     <artifactId>remote-object</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <name>server-remote-object</name>
 
 
 </project>

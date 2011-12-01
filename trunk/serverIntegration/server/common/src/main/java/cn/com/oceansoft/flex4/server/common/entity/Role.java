@@ -8,57 +8,57 @@ import java.util.Set;
  */
 
 @Entity
-@Table(name="tbl_comm_role")
-public class Role extends BaseEntity{
+@Table(name = "tbl_comm_role")
+public class Role extends BaseEntity {
 
     private static final long serialVersionUID = -6718238800112233445L;
 
-	private String value;// 角色标识
+    private String value;// 角色标识
     private String displayName;// 角色名称
     private Boolean isSystem;// 是否为系统内置角色
-	private String description;// 描述
+    private String description;// 描述
     private String ouId;   //组织ID
     private String projectId;//项目ID
 
-	private Set<User> userSet;// 管理员
-	private Set<Resource> resourceSet;// 资源
+    private Set<User> userSet;// 管理员
+    private Set<Resource> resourceSet;// 资源
 
     @Column(nullable = false)
-	public String getDisplayName() {
-		return displayName;
-	}
+    public String getDisplayName() {
+        return displayName;
+    }
 
-	public void setDisplayName(String displayName) {
-		this.displayName = displayName;
-	}
+    public void setDisplayName(String displayName) {
+        this.displayName = displayName;
+    }
 
-	@Column(nullable = false)
-	public String getValue() {
-		return value;
-	}
+    @Column(nullable = false)
+    public String getValue() {
+        return value;
+    }
 
-	public void setValue(String value) {
-		this.value = value;
-	}
+    public void setValue(String value) {
+        this.value = value;
+    }
 
-//	@Column(nullable = false, updatable = false)
-	@Column(nullable = false)
-	public Boolean getIsSystem() {
-		return isSystem;
-	}
+    //	@Column(nullable = false, updatable = false)
+    @Column(nullable = false)
+    public Boolean getIsSystem() {
+        return isSystem;
+    }
 
-	public void setIsSystem(Boolean isSystem) {
-		this.isSystem = isSystem;
-	}
+    public void setIsSystem(Boolean isSystem) {
+        this.isSystem = isSystem;
+    }
 
-	@Column
-	public String getDescription() {
-		return description;
-	}
+    @Column
+    public String getDescription() {
+        return description;
+    }
 
-	public void setDescription(String description) {
-		this.description = description;
-	}
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
     @ManyToMany(fetch = FetchType.LAZY, mappedBy = "roleSet")
     public Set<User> getUserSet() {
@@ -69,15 +69,15 @@ public class Role extends BaseEntity{
         this.userSet = userSet;
     }
 
-	@ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.EAGER)
     @OrderBy("displayName asc")
-	public Set<Resource> getResourceSet() {
-		return resourceSet;
-	}
+    public Set<Resource> getResourceSet() {
+        return resourceSet;
+    }
 
-	public void setResourceSet(Set<Resource> resourceSet) {
-		this.resourceSet = resourceSet;
-	}
+    public void setResourceSet(Set<Resource> resourceSet) {
+        this.resourceSet = resourceSet;
+    }
 
     @Column(length = 32)
     public String getOuId() {

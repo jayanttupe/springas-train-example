@@ -7,6 +7,7 @@ import org.junit.Test;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.AbstractTransactionalJUnit4SpringContextTests;
+
 import javax.annotation.Resource;
 import java.util.HashSet;
 import java.util.Set;
@@ -67,7 +68,7 @@ public class TestUser2Role extends AbstractTransactionalJUnit4SpringContextTests
 
     @Test
     @Rollback(value = false)
-    public void update1(){
+    public void update1() {
         User user = userService.get(USER_ID);
         Set roleSet = user.getRoleSet();
 
@@ -80,7 +81,7 @@ public class TestUser2Role extends AbstractTransactionalJUnit4SpringContextTests
 
     @Test
     @Rollback(value = false)
-    public void update2(){
+    public void update2() {
         User user = userService.get(USER_ID);
         Set roleSet = user.getRoleSet();
 
@@ -93,7 +94,7 @@ public class TestUser2Role extends AbstractTransactionalJUnit4SpringContextTests
 
     @Test
     @Rollback(value = false)
-    public void delete(){
+    public void delete() {
         User user = userService.get(USER_ID);
         Set roleSet = new HashSet();
         user.setRoleSet(roleSet);

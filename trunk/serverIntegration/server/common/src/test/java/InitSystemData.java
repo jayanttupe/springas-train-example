@@ -7,6 +7,7 @@ import org.junit.Test;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.AbstractTransactionalJUnit4SpringContextTests;
+
 import javax.annotation.Resource;
 import java.util.HashSet;
 import java.util.Set;
@@ -29,12 +30,13 @@ public class InitSystemData extends AbstractTransactionalJUnit4SpringContextTest
     private UserService userService;
 
     @Test
-    public void simple(){}
+    public void simple() {
+    }
 
     @Ignore
     @Test
     @Rollback(value = false)
-    public void initRole(){
+    public void initRole() {
         createAdminRole();
         createNormalRole();
         createAdminUser();
@@ -43,18 +45,18 @@ public class InitSystemData extends AbstractTransactionalJUnit4SpringContextTest
         assignRole2Admin();
     }
 
-    public void assignRole2Normal(){
-        Role role = roleService.get("value" , ROLE_USER);
-        User user = userService.get("username" , USER);
+    public void assignRole2Normal() {
+        Role role = roleService.get("value", ROLE_USER);
+        User user = userService.get("username", USER);
         Set roleSet = new HashSet();
         roleSet.add(role);
         user.setRoleSet(roleSet);
         userService.update(user);
     }
 
-    public void assignRole2Admin(){
-        Role role = roleService.get("value" , ROLE_ADMIN);
-        User user = userService.get("username" , ADMIN);
+    public void assignRole2Admin() {
+        Role role = roleService.get("value", ROLE_ADMIN);
+        User user = userService.get("username", ADMIN);
         Set roleSet = new HashSet();
         roleSet.add(role);
         user.setRoleSet(roleSet);
@@ -90,8 +92,8 @@ public class InitSystemData extends AbstractTransactionalJUnit4SpringContextTest
     }
 
 
-    public void createAdminRole(){
-        Role role =new Role();
+    public void createAdminRole() {
+        Role role = new Role();
         role.setDisplayName("管理员");
         role.setIsSystem(true);
         role.setDescription("系统管理员角色");
@@ -100,8 +102,8 @@ public class InitSystemData extends AbstractTransactionalJUnit4SpringContextTest
         roleService.save(role);
     }
 
-    public void createNormalRole(){
-        Role role =new Role();
+    public void createNormalRole() {
+        Role role = new Role();
         role.setDisplayName("普通用户角色");
         role.setIsSystem(true);
         role.setDescription("系统普通用户角色");

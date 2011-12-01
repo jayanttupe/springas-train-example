@@ -75,7 +75,7 @@ public class UserServiceImpl extends BaseServiceImpl<User, String> implements Us
     public List<Role> getValidRoleListByUser(String userId) {
         List<Role> resultList = roleDao.getAll();
         List<Role> roleList = userDao.getRoleListByUser(userId);
-        for(Role role : roleList){
+        for (Role role : roleList) {
             resultList.remove(role);
         }
         return resultList;
