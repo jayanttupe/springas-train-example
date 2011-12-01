@@ -8,6 +8,8 @@ import cn.com.oceansoft.flex4.server.common.service.UserService;
 import org.apache.log4j.Logger;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
 import javax.annotation.Resource;
 import java.util.List;
 
@@ -16,6 +18,7 @@ import java.util.List;
  */
 
 @Service
+@Transactional
 public class UserServiceImpl extends BaseServiceImpl<User, String> implements UserService {
 
     @Resource
