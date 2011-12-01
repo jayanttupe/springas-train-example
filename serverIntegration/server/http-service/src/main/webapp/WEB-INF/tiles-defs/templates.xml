@@ -7,9 +7,9 @@
  
 	<definition name="index" template="/index.html"/>
 
-    <definition name="dataAccessFailure" template="/dataAccessFailure.html"/>
-    <definition name="resourceNotFound" template="/resourceNotFound.html"/>
-    <definition name="uncaughtException" template="/uncaughtException.html"/>
+    <definition name="dataAccessFailure" template="/page/error/dataAccessFailure.html"/>
+    <definition name="resourceNotFound" template="/page/error/resourceNotFound.html"/>
+    <definition name="uncaughtException" template="/page/error/uncaughtException.html"/>
 
     <definition name="userok" template="/page/userok.html"/>
 
