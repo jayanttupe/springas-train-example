@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Application xmlns:fx="http://ns.adobe.com/mxml/2009"
+               xmlns:s="library://ns.adobe.com/flex/spark"
+               minWidth="955" minHeight="600">
+
+    <fx:Declarations>
+        <s:HTTPService id="srv" url="http://localhost:8080/accounts.xml"/>
+    </fx:Declarations>
+
+    <fx:Script>
+		<![CDATA[
+        import mx.collections.XMLListCollection;
+        import mx.controls.Alert;
+        import mx.rpc.events.FaultEvent;
+        import mx.rpc.events.ResultEvent;
+        import mx.rpc.http.mxml.HTTPService;
+
+        import org.osflash.thunderbolt.Logger;
+
+        private var service:HTTPService
+
+        [Bindable]
+        private var testData:XMLListCollection;
+
+        public function useHttpService():void {
+            srv.addEventListener("result", httpResult);
+            srv.addEventListener("fault", httpFault);
+            srv.send();
+        }
+
+        public function httpResult(event:ResultEvent):void {
+            var myNumber:Number = 5;
+            var myString:String = "abc"
+            Logger.info("Hello World!", myNumber, myString);
+            myDg.dataProvider = event.result.list.account;
+        }
+
+        public function httpFault(event:FaultEvent):void {
+            var faultstring:String = event.fault.faultString;
+            Alert.show(faultstring);
+        }
+        ]]>
+	</fx:Script>
+
+    <s:layout>
+        <s:VerticalLayout horizontalAlign="center"/>
+    </s:layout>
+
+    <s:DataGrid id="myDg" width="400" height="400"/>
+    <s:Button label="Get Data" click="useHttpService()"/>
+
+</s:Application>
