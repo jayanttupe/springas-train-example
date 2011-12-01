@@ -36,7 +36,7 @@
     </filter>
 
     <!--converts posted method parameters into HTTP methods-->
-   <!-- <filter>
+    <!-- <filter>
         <filter-name>HttpMethodFilter</filter-name>
         <filter-class>org.springframework.web.filter.HiddenHttpMethodFilter</filter-class>
     </filter>-->

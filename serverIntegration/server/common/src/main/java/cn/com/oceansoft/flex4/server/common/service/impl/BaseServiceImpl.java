@@ -2,6 +2,7 @@ package cn.com.oceansoft.flex4.server.common.service.impl;
 
 import cn.com.oceansoft.flex4.server.common.dao.BaseDao;
 import cn.com.oceansoft.flex4.server.common.service.BaseService;
+
 import java.io.Serializable;
 import java.util.List;
 

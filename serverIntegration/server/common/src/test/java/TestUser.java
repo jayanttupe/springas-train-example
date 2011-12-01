@@ -5,6 +5,7 @@ import org.junit.Test;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.AbstractTransactionalJUnit4SpringContextTests;
+
 import javax.annotation.Resource;
 import java.util.List;
 
@@ -21,11 +22,12 @@ public class TestUser extends AbstractTransactionalJUnit4SpringContextTests {
     private UserService userService;
 
     @Test
-    public void simple(){}
+    public void simple() {
+    }
 
     @Test
     @Rollback(value = false)
-    public void saveUser(){
+    public void saveUser() {
         User user = new User();
         user.setUsername("test username");
         user.setPassword("test password");
@@ -40,7 +42,7 @@ public class TestUser extends AbstractTransactionalJUnit4SpringContextTests {
 
     @Test
     @Rollback(value = false)
-    public void updateUser(){
+    public void updateUser() {
         User user = userService.get(TEST_ID);
         user.setProjId("update project id");
         userService.update(user);
@@ -48,13 +50,13 @@ public class TestUser extends AbstractTransactionalJUnit4SpringContextTests {
 
     @Test
     @Rollback(value = false)
-    public void deleteUser(){
+    public void deleteUser() {
         User user = userService.get(TEST_ID);
         userService.delete(user);
     }
 
     @Test
-    public void test1(){
+    public void test1() {
         List roleList = userService.getRoleListByUser("1");
         int i = roleList.size();
         Assert.assertEquals(2, i);

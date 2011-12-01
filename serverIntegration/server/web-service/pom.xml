@@ -13,6 +13,7 @@
     <groupId>cn.com.oceansoft.flex4</groupId>
     <artifactId>web-service</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <name>server-webservice</name>
 
 
 </project>

@@ -5,6 +5,7 @@ import org.junit.Test;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.AbstractTransactionalJUnit4SpringContextTests;
+
 import javax.annotation.Resource;
 import java.util.Date;
 
@@ -21,12 +22,12 @@ public class TestRole extends AbstractTransactionalJUnit4SpringContextTests {
     private RoleService roleService;
 
     @Test
-    public void simple(){
+    public void simple() {
     }
 
     @Test
     @Rollback(value = false)
-    public void saveRole(){
+    public void saveRole() {
         Role role = new Role();
         role.setDisplayName("test role");
         role.setValue("ROLE_TEST");
@@ -36,14 +37,14 @@ public class TestRole extends AbstractTransactionalJUnit4SpringContextTests {
     }
 
     @Test
-    public void queryRole(){
+    public void queryRole() {
         Role r = roleService.get(TEST_ID);
         Assert.assertEquals("TEST", r.getProjectId());
     }
 
     @Test
     @Rollback(value = false)
-    public void updateRole(){
+    public void updateRole() {
         Role r = roleService.get(TEST_ID);
         r.setDescription("updated on :" + new Date().toString());
         roleService.update(r);
@@ -51,7 +52,7 @@ public class TestRole extends AbstractTransactionalJUnit4SpringContextTests {
 
     @Test
     @Rollback(value = false)
-    public void deleteUser(){
+    public void deleteUser() {
         roleService.delete(TEST_ID);
     }
 

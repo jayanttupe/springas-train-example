@@ -3,6 +3,7 @@ package cn.com.oceansoft.flex4.server.common.service;
 
 import cn.com.oceansoft.flex4.server.common.entity.Role;
 import cn.com.oceansoft.flex4.server.common.entity.User;
+
 import java.util.List;
 
 /**
