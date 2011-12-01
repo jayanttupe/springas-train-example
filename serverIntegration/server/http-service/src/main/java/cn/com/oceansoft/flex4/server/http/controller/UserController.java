@@ -22,7 +22,6 @@ public class UserController {
     private UserService userService;
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    @Transactional
     public String test(@PathVariable("id")String id , Model uiModel) {
         User user = userService.getUserByUsername("user");
         return "userok";
