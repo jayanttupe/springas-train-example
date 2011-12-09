@@ -33,9 +33,10 @@
         <!--swiz-->
         <swiz.version>1.3.1</swiz.version>
         <!-- other -->
-        <antrun.plugin.antfile>${basedir}/ant-build.xml</antrun.plugin.antfile>
+        <!--<antrun.plugin.antfile>${basedir}/../ant-build.xml</antrun.plugin.antfile>-->
+        <antrun.plugin.antfile>${basedir}/../ant-build.xml</antrun.plugin.antfile>
         <!--<client.deploy.path>../roo-server/target/webapp-2.0-SNAPSHOT/weddingSoft</client.deploy.path>-->
-        <client.deploy.path>../roo-server/src/main/webapp/flex</client.deploy.path>
+        <client.deploy.path>${basedir}/../../server/http-service/src/main/webapp/flex</client.deploy.path>
     </properties>
 
     <dependencies>
@@ -224,20 +225,20 @@
                 </plugin>
 
                 <!--maven-antrun-plugin-->
-                <!--<plugin>
+                <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-antrun-plugin</artifactId>
                     <version>1.6</version>
                     <executions>
                         <execution>
                             <id>run</id>
-                            &lt;!&ndash;定义一个 phase 来关联 antrun&ndash;&gt;
+                            <!--定义一个 phase 来关联 antrun-->
                             <phase>compile</phase>
                             <configuration>
                                 <target>
-                                    &lt;!&ndash;将 maven 参数传給 ant&ndash;&gt;
+                                    <!--将 maven 参数传給 ant-->
                                     <property name="client_deploy_path" value="${client.deploy.path}"/>
-                                    &lt;!&ndash; ant build.xml 路径&ndash;&gt;
+                                    <!-- ant build.xml 路径-->
                                     <ant antfile="${antrun.plugin.antfile}"/>
                                 </target>
                             </configuration>
@@ -246,7 +247,7 @@
                             </goals>
                         </execution>
                     </executions>
-                </plugin>-->
+                </plugin>
 
             </plugins>
         </pluginManagement>

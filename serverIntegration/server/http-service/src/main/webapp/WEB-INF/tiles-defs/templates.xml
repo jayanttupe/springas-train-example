@@ -11,6 +11,7 @@
     <definition name="resourceNotFound" template="/page/error/resourceNotFound.html"/>
     <definition name="uncaughtException" template="/page/error/uncaughtException.html"/>
 
-    <definition name="userok" template="/page/userok.html"/>
+    <!--<definition name="userok" template="/page/userok.html"/>-->
+    <definition name="ok" template="/page/ok.html"/>
 
 </tiles-definitions>

@@ -20,7 +20,7 @@ public class LogAspect {
     public void logOnGet(String username) {
         //实现具体的日志记录
         String s = username;
-        System.out.println("logOnSave run...");
+        System.out.println("log on server side...");
     }
 
 
