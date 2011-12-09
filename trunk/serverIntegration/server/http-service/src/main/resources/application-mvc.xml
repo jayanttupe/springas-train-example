@@ -54,12 +54,14 @@
         <property name="aliases">
             <props>
                 <!--<prop key="base">com.roo.pizzashop.domain.Base</prop>-->
+                <prop key="user">cn.com.oceansoft.flex4.server.common.entity.User</prop>
             </props>
         </property>
         <property name="supportedClasses">
             <list>
                 <value>java.util.List</value>
-                <!--<value>com.roo.pizzashop.domain.Base</value>-->
+                <value>java.lang.String</value>
+                <value>cn.com.oceansoft.flex4.server.common.entity.User</value>
             </list>
         </property>
     </bean>

@@ -22,9 +22,14 @@ public class UserController {
     private UserService userService;
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public String test(@PathVariable("id") String id, Model uiModel) {
+    public void test(@PathVariable("id") String id, Model model) {
         User user = userService.getUserByUsername("user");
-        return "userok";
+        model.addAttribute("result" , "OK");
+    }
+
+    @RequestMapping(method = RequestMethod.GET)
+    public void getUsers(Model model) {
+        model.addAttribute("userList" , userService.getAll());
     }
 
 

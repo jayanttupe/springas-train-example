@@ -2,6 +2,7 @@ package cn.com.oceansoft.flex4.server.common.service.impl;
 
 import cn.com.oceansoft.flex4.server.common.dao.BaseDao;
 import cn.com.oceansoft.flex4.server.common.service.BaseService;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.io.Serializable;
 import java.util.List;
@@ -10,6 +11,7 @@ import java.util.List;
  * Service实现类 - Service实现类基类
  */
 
+@Transactional
 public class BaseServiceImpl<T, PK extends Serializable> implements BaseService<T, PK> {
 
     private BaseDao<T, PK> baseDao;

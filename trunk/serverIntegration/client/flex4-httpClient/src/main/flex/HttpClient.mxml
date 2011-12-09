@@ -4,7 +4,7 @@
                minWidth="955" minHeight="600">
 
     <fx:Declarations>
-        <s:HTTPService id="srv" url="http://localhost:8080/accounts.xml"/>
+        <s:HTTPService id="srv" url="http://localhost:8080/users.xml"/>
     </fx:Declarations>
 
     <fx:Script>
@@ -32,7 +32,7 @@
             var myNumber:Number = 5;
             var myString:String = "abc"
             Logger.info("Hello World!", myNumber, myString);
-            myDg.dataProvider = event.result.list.account;
+            myDg.dataProvider = event.result.list.user;
         }
 
         public function httpFault(event:FaultEvent):void {
@@ -47,6 +47,6 @@
     </s:layout>
 
     <s:DataGrid id="myDg" width="400" height="400"/>
-    <s:Button label="Get Data" click="useHttpService()"/>
+    <s:Button label="Get Data 4" click="useHttpService()"/>
 
 </s:Application>

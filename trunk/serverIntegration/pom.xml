@@ -374,7 +374,7 @@
                     <version>7.4.2.v20110526</version>
                     <configuration>
                         <webAppConfig>
-                            <!--<defaultsDescriptor>${project.basedir}/webdefault.xml</defaultsDescriptor>-->
+                            <defaultsDescriptor>${project.basedir}/../webdefault.xml</defaultsDescriptor>
                             <contextPath>/</contextPath>
                         </webAppConfig>
                     </configuration>
