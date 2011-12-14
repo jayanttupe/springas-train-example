@@ -1,10 +1,10 @@
 package cn.com.oceansoft.flex4.server.common.entity;
 
 import org.springframework.format.annotation.DateTimeFormat;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
+import javax.validation.constraints.Past;
 import java.util.Date;
 
 /**
@@ -51,7 +51,7 @@ public class Student extends BaseEntity{
         this.name = name;
     }
 
-    @Column(nullable = false , length = 18 , unique = true)
+    @Column(length = 18 , unique = true)
     public String getIdentityCard() {
         return identityCard;
     }
@@ -69,8 +69,9 @@ public class Student extends BaseEntity{
         this.gender = gender;
     }
 
-    @Column(nullable = false)
+    @Column
     @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @Past
     public Date getBirthDay() {
         return birthDay;
     }

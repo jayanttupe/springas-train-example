@@ -26,7 +26,7 @@ public class CommonBindingInitializer implements WebBindingInitializer {
         SimpleDateFormat dateFormat = new SimpleDateFormat(DATE_PATTERN);
         dateFormat.setLenient(false);
         binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, true));
-        binder.registerCustomEditor(String.class, new StringTrimmerEditor(false));
+//        binder.registerCustomEditor(String.class, new StringTrimmerEditor(false));
     }
 
 }
