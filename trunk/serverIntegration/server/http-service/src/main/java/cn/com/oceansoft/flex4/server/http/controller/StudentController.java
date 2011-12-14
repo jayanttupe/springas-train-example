@@ -38,7 +38,9 @@ public class StudentController extends CommonBindingInitializer{
     public void update(Student student , Model model){
         System.out.println(student.toString());
         Student stu = studentService.get(student.getId());
-        stu.setName(student.getName());
+        stu.setName(student.getName()); //更新姓名
+        stu.setStudentNumber(student.getStudentNumber()); //更新学号
+        stu.setGender(student.getGender());//更新性别
         studentService.update(stu);
         model.addAttribute("student", stu);
     }
@@ -46,7 +48,7 @@ public class StudentController extends CommonBindingInitializer{
     @RequestMapping(value ="/delete" , method = RequestMethod.POST)
     public void delete(String id , Model model){
         System.out.println(id);
-        studentService.delete(id);
+        studentService.delete(id);//根据id删除
         model.addAttribute("id", id);
     }
 

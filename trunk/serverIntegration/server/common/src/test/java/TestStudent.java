@@ -30,15 +30,17 @@ public class TestStudent extends AbstractTransactionalJUnit4SpringContextTests{
     @Test
     @Rollback(value = false)
     public void save(){
-        int i = 150;
+        int i = 120;
+        int gender = 1;
         for (int j = 100; j < i; j++) {
             Student student = new Student();
             student.setBirthDay(new Date());
-            student.setGender(1);
+            student.setGender(gender%2);
             student.setIdentityCard("320504199001011" + String.valueOf(j));
             student.setName("学生" + String.valueOf(j));
             student.setStudentNumber("SN-"+String.valueOf(j));
             studentService.save(student);
+            gender++;
         }
     }
 
