@@ -14,6 +14,10 @@
     <artifactId>remote-object</artifactId>
     <version>1.0-SNAPSHOT</version>
     <name>server-remote-object</name>
+    <packaging>war</packaging>
+    <description></description>
+
+
 
 
 </project>

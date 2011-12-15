@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+             xmlns:beans="http://www.springframework.org/schema/beans"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://www.springframework.org/schema/beans
+                        http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+                        http://www.springframework.org/schema/security
+                        http://www.springframework.org/schema/security/spring-security-3.0.xsd">
+
+    <!-- url 访问权限 -->
+    <http auto-config="true" use-expressions="true">
+        <form-login login-page="/login.html"
+                    login-processing-url="/loginVerify"
+                    authentication-success-handler-ref="customAuthenticationSuccessHandler"
+                    authentication-failure-handler-ref="customAuthenticationFailureHandler"/>
+        <!--匿名可访问-->
+        <intercept-url pattern="/login.html" access="permitAll"/>
+        <intercept-url pattern="/failed.html" access="permitAll"/>
+        <intercept-url pattern="/page/error/accountDisabled.html" access="permitAll"/>
+        <intercept-url pattern="/page/error/accountExpired.html" access="permitAll"/>
+        <intercept-url pattern="/page/error/accountLocked.html" access="permitAll"/>
+        <intercept-url pattern="/page/error/credentialsExpired.html" access="permitAll"/>
+        <!--登录授权可访问-->
+        <intercept-url pattern="/**" access="hasAnyRole('ROLE_USER','ROLE_ADMIN')"/>
+        <!-- logout 跳转 url -->
+        <logout invalidate-session="true" logout-success-url="/login.html"/>
+        <!-- session 过期跳转 url -->
+        <session-management invalid-session-url="/sessionExpired.html">
+            <!-- 防止用户重复登录 -->
+            <concurrency-control max-sessions="1"/>
+        </session-management>
+    </http>
+
+    <!--自定义用户认证类-->
+    <beans:bean id="userDetailService"
+                class="cn.com.oceansoft.flex4.server.common.service.impl.MyDetailsServiceImpl"/>
+
+    <!-- 后台管理权限认证 -->
+    <authentication-manager alias="authenticationManager">
+        <!--定义认证提供接口  -->
+        <authentication-provider user-service-ref="userDetailService">
+            <!--定义密码加密算法  -->
+            <!--<password-encoder ref="passwordEncoder">
+                   &lt;!&ndash;定义密码字元，增加密码的安全性  &ndash;&gt;
+                   <salt-source ref="saltSource"/>
+                  </password-encoder>    -->
+        </authentication-provider>
+
+    </authentication-manager>
+
+    <!--自定义 AuthenticationSuccessHandler-->
+    <!--default-target-url 的值根据本机 gwt:run 给出地址自行替换-->
+    <!--/sales.html?gwt.codesvr=127.0.0.1:9997"-->
+    <beans:bean id="customAuthenticationSuccessHandler"
+                class="cn.com.oceansoft.flex4.server.common.interceptor.CustomAuthenticationSuccessHandler">
+        <beans:property name="defaultTargetUrl" value="/index.html"/>
+        <beans:property name="alwaysUseDefaultTargetUrl" value="true"/>
+    </beans:bean>
+
+    <!--自定义AuthenticationFailureHandler-->
+    <beans:bean id="customAuthenticationFailureHandler"
+                class="cn.com.oceansoft.flex4.server.common.interceptor.CustomAuthenticationFailureHandler">
+        <!--密码错误-->
+        <beans:property name="passwordFailureUrl" value="/failed.html"/>
+        <!--账号禁用-->
+        <beans:property name="accountDisabledUrl" value="/page/error/accountDisabled.html"/>
+        <!--账号过期-->
+        <beans:property name="accountExpiredUrl" value="/page/error/accountExpired.html"/>
+        <!--账号锁定-->
+        <beans:property name="accountLockedUrl" value="/page/error/accountLocked.html"/>
+        <!--账号凭证过期-->
+        <beans:property name="credentialsExpiredUrl" value="/page/error/credentialsExpired.html"/>
+        <!--最大密码输入错误次数, 否则账号锁定-->
+        <beans:property name="maxLoginFailureCount" value="5"/>
+    </beans:bean>
+
+</beans:beans>
