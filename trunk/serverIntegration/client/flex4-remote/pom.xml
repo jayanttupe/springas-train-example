@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>cn.com.oceansoft.flex4</groupId>
+        <artifactId>client</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+
+    <groupId>cn.com.oceansoft.flex4</groupId>
+    <artifactId>flex4-remote</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>swf</packaging>
+    <name>flex4-remote</name>
+    <description>a flex4 sample project, which connecting to server using remote object</description>
+
+    <build>
+        <sourceDirectory>src/main/flex</sourceDirectory>
+
+        <plugins>
+            <!--flexmojos-maven-plugin-->
+            <plugin>
+                <groupId>org.sonatype.flexmojos</groupId>
+                <artifactId>flexmojos-maven-plugin</artifactId>
+                <configuration>
+                    <storepass></storepass>
+                    <sourceFile>${project.basedir}/src/main/flex/RemoteClient.mxml</sourceFile>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-antrun-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+    
+</project>
