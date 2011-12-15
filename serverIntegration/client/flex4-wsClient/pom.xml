@@ -11,15 +11,14 @@
     </parent>
 
     <groupId>cn.com.oceansoft.flex4</groupId>
-    <artifactId>flex4-httpClient</artifactId>
+    <artifactId>flex4-wsClient</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>swf</packaging>
-    <name>flex4-http</name>
-    <description>a flex4 sample project, which connecting to server using Http Service</description>
+    <name>flex4-ws</name>
+    <description>a flex4 sample project, which connecting to server using web Service</description>
 
     <build>
         <sourceDirectory>src/main/flex</sourceDirectory>
-        <testSourceDirectory>src/test/flex</testSourceDirectory>
 
         <plugins>
             <!--flexmojos-maven-plugin-->
@@ -28,7 +27,7 @@
                 <artifactId>flexmojos-maven-plugin</artifactId>
                 <configuration>
                     <storepass></storepass>
-                    <sourceFile>${project.basedir}/src/main/flex/HttpClient.mxml</sourceFile>
+                    <sourceFile>${project.basedir}/src/main/flex/WsClient.mxml</sourceFile>
                 </configuration>
             </plugin>
             <plugin>
