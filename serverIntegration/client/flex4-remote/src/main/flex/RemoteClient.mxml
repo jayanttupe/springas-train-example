@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Application xmlns:fx="http://ns.adobe.com/mxml/2009"
+               xmlns:s="library://ns.adobe.com/flex/spark"
+               xmlns:mx="library://ns.adobe.com/flex/mx"
+               width="100%" height="100%"
+               creationComplete="stuQueryHandler()">
+
+    <fx:Declarations>
+        <!--性别radiogroup-->
+        <s:RadioButtonGroup id="genderItem" selectedValue="{myGrid.selectedItem.gender}"/>
+        <!--增删改查 http 方法-->
+        <!--form Validator -->
+        <fx:Array id="formValidatorArray">
+            <mx:StringValidator source="{nameItem}" property="text"
+                                required="true" requiredFieldError="姓名不能为空!"/>
+            <mx:StringValidator source="{studentNumberItem}" property="text"
+                                required="true" requiredFieldError="学号不能为空!"/>
+        </fx:Array>
+        <!--web service-->
+        <s:WebService id="studentWebService"
+                      wsdl="http://localhost:8080/services/StudentService?wsdl"
+                      showBusyCursor="true"
+                      fault="httpFaultHandler(event)"
+                >
+        </s:WebService>
+    </fx:Declarations>
+
+    <fx:Script><![CDATA[
+        import mx.collections.ArrayCollection;
+        import mx.controls.Alert;
+        import mx.rpc.events.FaultEvent;
+        import mx.rpc.events.ResultEvent;
+        import mx.rpc.AbstractOperation;
+        import mx.validators.Validator;
+
+        //性别标签方法
+        protected function genderLabelFun(item:Object, column:GridColumn):String {
+            return item.gender == 1 ? "男" : "女";
+        }
+
+        //响应查询事件
+        private function stuQueryHandler():void {
+            var queryOperation:AbstractOperation = studentWebService.getOperation("getAll");
+            queryOperation.addEventListener("result", queryResultHandler);
+            queryOperation.send();
+        }
+
+        //查询返回结果
+        private function queryResultHandler(event:ResultEvent):void {
+//            myGrid.dataProvider = event.result.list.student;
+            myGrid.dataProvider = event.result as ArrayCollection;
+        }
+
+        //响应删除事件
+        private function stuDeleteHandler():void {
+            if (myGrid.selectedItem == null) {
+                return;
+            }
+            var deleteOperation:AbstractOperation = studentWebService.getOperation("delete");
+            deleteOperation.addEventListener("result", resultHandler);
+            deleteOperation.send(myGrid.selectedItem.id);
+        }
+
+        //正常返回结果
+        private function resultHandler(event:ResultEvent):void {
+            studentWebService.getOperation("getAll").send();
+        }
+
+        //处理http错误
+        private function httpFaultHandler(event:FaultEvent):void {
+            Alert.show(event.fault.faultString);
+        }
+
+        //重置form
+        private function resetFormHandler():void {
+            nameItem.text = "";
+            studentNumberItem.text = "";
+            genderItem.selectedValue = 1;
+        }
+
+        //处理创建事件
+        private function stuCreateHandler():void {
+            var arr:Array = Validator.validateAll(formValidatorArray);
+            if (arr.length == 0) {
+                var name:String = nameItem.text;
+                var studentNumber:String = studentNumberItem.text;
+                var gender:Object = genderItem.selectedValue;
+                var deleteOperation:AbstractOperation = studentWebService.getOperation("save");
+                deleteOperation.addEventListener("result", resultHandler);
+                deleteOperation.send(name,studentNumber,gender);
+            }
+        }
+
+        //处理更新事件
+        private function stuUpdateHandler():void {
+            if (myGrid.selectedItem == null) {
+                return;
+            }
+            var arr:Array = Validator.validateAll(formValidatorArray);
+            if (arr.length == 0) {
+                var id:String = myGrid.selectedItem.id;
+                var name:String = nameItem.text;
+                var studentNumber:String = studentNumberItem.text;
+                var gender:Object = genderItem.selectedValue;
+                //web service operation
+                var deleteOperation:AbstractOperation = studentWebService.getOperation("update");
+                deleteOperation.addEventListener("result", resultHandler);
+                deleteOperation.send(id,name,studentNumber,gender);
+            }
+        }
+        ]]>
+    </fx:Script>
+
+    <s:layout>
+        <s:VerticalLayout horizontalAlign="center" paddingBottom="50" paddingLeft="50"
+                          paddingRight="50" paddingTop="50"/>
+    </s:layout>
+
+    <s:DataGrid id="myGrid" width="100%" height="100%">
+        <s:columns>
+            <s:ArrayList>
+                <s:GridColumn headerText="姓名" dataField="name"/>
+                <s:GridColumn headerText="学号" dataField="studentNumber"/>
+                <s:GridColumn headerText="性别" dataField="gender" labelFunction="genderLabelFun"/>
+            </s:ArrayList>
+        </s:columns>
+    </s:DataGrid>
+    <s:BorderContainer width="100%" height="250">
+        <s:Form id="myForm" width="350" height="160">
+            <s:layout>
+                <s:FormLayout paddingLeft="20"/>
+            </s:layout>
+
+            <s:FormHeading label="学生信息:" fontWeight="bold"/>
+
+            <s:FormItem label="姓名：" required="true">
+                <s:TextInput id="nameItem" text="{myGrid.selectedItem.name}"/>
+            </s:FormItem>
+            <s:FormItem label="学号：" required="true">
+                <s:TextInput id="studentNumberItem" text="{myGrid.selectedItem.studentNumber}"/>
+            </s:FormItem>
+            <s:FormItem label="性别：" required="true">
+                <s:HGroup>
+                    <s:RadioButton value="1" label="男" groupName="genderItem" selected="true"/>
+                    <s:RadioButton value="0" label="女" groupName="genderItem"/>
+                </s:HGroup>
+            </s:FormItem>
+        </s:Form>
+        <s:HGroup x="37" y="199" height="30" horizontalAlign="center" paddingLeft="10"
+                  paddingRight="10" verticalAlign="middle">
+            <s:Button label="查询" click="stuQueryHandler()"/>
+            <s:Button label="重置" click="resetFormHandler()"/>
+            <s:Button label="创建" click="stuCreateHandler()"/>
+            <s:Button label="更新" click="stuUpdateHandler()"/>
+            <s:Button label="删除" click="stuDeleteHandler()"/>
+        </s:HGroup>
+    </s:BorderContainer>
+
+</s:Application>
