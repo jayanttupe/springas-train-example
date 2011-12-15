@@ -19,6 +19,7 @@
     <modules>
         <!--<module>flex4-common</module>-->
         <module>flex4-httpClient</module>
+        <module>flex4-wsClient</module>
     </modules>
 
     <properties>
@@ -35,8 +36,8 @@
         <!-- other -->
         <!--<antrun.plugin.antfile>${basedir}/../ant-build.xml</antrun.plugin.antfile>-->
         <antrun.plugin.antfile>${basedir}/../ant-build.xml</antrun.plugin.antfile>
-        <!--<client.deploy.path>../roo-server/target/webapp-2.0-SNAPSHOT/weddingSoft</client.deploy.path>-->
-        <client.deploy.path>${basedir}/../../server/http-service/src/main/webapp/flex</client.deploy.path>
+        <client.deploy.http.path>${basedir}/../../server/http-service/src/main/webapp/flex</client.deploy.http.path>
+        <client.deploy.ws.path>${basedir}/../../server/web-service/src/main/webapp/flex</client.deploy.ws.path>
     </properties>
 
     <dependencies>
@@ -237,7 +238,7 @@
                             <configuration>
                                 <target>
                                     <!--将 maven 参数传給 ant-->
-                                    <property name="client_deploy_path" value="${client.deploy.path}"/>
+                                    <property name="client_deploy_path" value="${client.deploy.ws.path}"/>
                                     <!-- ant build.xml 路径-->
                                     <ant antfile="${antrun.plugin.antfile}"/>
                                 </target>

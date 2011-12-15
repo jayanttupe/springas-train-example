@@ -9,11 +9,11 @@
     <!--先删除原来文件-->
     <!--<delete dir="${destinationFolder}/assets" />-->
     <!--拷贝文件-->
-    <copy todir="${targetFolder}" overwrite="true" failonerror="true">
+    <!--<copy todir="${targetFolder}" overwrite="true" failonerror="true">
         <fileset dir="${resourceFolder}"/>
-    </copy>
+    </copy>-->
 
-    <echo  message="deploy file(s) to webApp..."/>
+    <echo  message="deploy file(s) to webapp ${client_deploy_path}..."/>
     <!--deploy 文件夹-->
     <property name="deployFolder"  value="${client_deploy_path}"/>
     <copy todir="${deployFolder}" overwrite="true" failonerror="true">
