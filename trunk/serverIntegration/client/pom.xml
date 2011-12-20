@@ -39,6 +39,7 @@
         <antrun.plugin.antfile>${basedir}/../ant-build.xml</antrun.plugin.antfile>
         <client.deploy.http.path>${basedir}/../../server/http-service/src/main/webapp/flex</client.deploy.http.path>
         <client.deploy.ws.path>${basedir}/../../server/web-service/src/main/webapp/flex</client.deploy.ws.path>
+        <client.deploy.remote.path>${basedir}/../../server/remote-object/src/main/webapp/flex</client.deploy.remote.path>
     </properties>
 
     <dependencies>
@@ -239,7 +240,7 @@
                             <configuration>
                                 <target>
                                     <!--将 maven 参数传給 ant-->
-                                    <property name="client_deploy_path" value="${client.deploy.ws.path}"/>
+                                    <property name="client_deploy_path" value="${client.deploy.remote.path}"/>
                                     <!-- ant build.xml 路径-->
                                     <ant antfile="${antrun.plugin.antfile}"/>
                                 </target>

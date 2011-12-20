@@ -17,6 +17,13 @@
     <name>flex4-remote</name>
     <description>a flex4 sample project, which connecting to server using remote object</description>
 
+    <properties>
+        <client.services.path>
+            ../../server/remote-object/src/main/webapp/WEB-INF/flex/services-config.xml
+        </client.services.path>
+        <context.root>../../server/remote-object/src/main/webapp/WEB-INF/</context.root>
+    </properties>
+
     <build>
         <sourceDirectory>src/main/flex</sourceDirectory>
 
@@ -28,6 +35,9 @@
                 <configuration>
                     <storepass></storepass>
                     <sourceFile>${project.basedir}/src/main/flex/RemoteClient.mxml</sourceFile>
+                    <!--BlazeDS services-config.xml 文件位置-->
+                    <services>${client.services.path}</services>
+                    <contextRoot>/</contextRoot>
                 </configuration>
             </plugin>
             <plugin>
@@ -36,5 +46,5 @@
             </plugin>
         </plugins>
     </build>
-    
+
 </project>

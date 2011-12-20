@@ -16,22 +16,20 @@
             <mx:StringValidator source="{studentNumberItem}" property="text"
                                 required="true" requiredFieldError="学号不能为空!"/>
         </fx:Array>
-        <!--web service-->
-        <s:WebService id="studentWebService"
-                      wsdl="http://localhost:8080/services/StudentService?wsdl"
-                      showBusyCursor="true"
-                      fault="httpFaultHandler(event)"
-                >
-        </s:WebService>
+        <!--remote object -->
+        <s:RemoteObject id="ro" destination="studentRemoteService">
+        </s:RemoteObject>
     </fx:Declarations>
 
     <fx:Script><![CDATA[
+        import cn.com.oceansoft.flex4.client.remote.vo.Student;
+
         import mx.collections.ArrayCollection;
         import mx.controls.Alert;
         import mx.rpc.events.FaultEvent;
         import mx.rpc.events.ResultEvent;
-        import mx.rpc.AbstractOperation;
         import mx.validators.Validator;
+        import mx.rpc.AbstractOperation;
 
         //性别标签方法
         protected function genderLabelFun(item:Object, column:GridColumn):String {
@@ -40,14 +38,13 @@
 
         //响应查询事件
         private function stuQueryHandler():void {
-            var queryOperation:AbstractOperation = studentWebService.getOperation("getAll");
-            queryOperation.addEventListener("result", queryResultHandler);
-            queryOperation.send();
+            ro.getAll();
+            ro.addEventListener("result", queryResultHandler);
+            ro.addEventListener("fault", httpFaultHandler);
         }
 
         //查询返回结果
         private function queryResultHandler(event:ResultEvent):void {
-//            myGrid.dataProvider = event.result.list.student;
             myGrid.dataProvider = event.result as ArrayCollection;
         }
 
@@ -56,14 +53,14 @@
             if (myGrid.selectedItem == null) {
                 return;
             }
-            var deleteOperation:AbstractOperation = studentWebService.getOperation("delete");
+            var deleteOperation:AbstractOperation = ro.getOperation("delete");
             deleteOperation.addEventListener("result", resultHandler);
             deleteOperation.send(myGrid.selectedItem.id);
         }
 
         //正常返回结果
         private function resultHandler(event:ResultEvent):void {
-            studentWebService.getOperation("getAll").send();
+            ro.getAll();
         }
 
         //处理http错误
@@ -82,12 +79,13 @@
         private function stuCreateHandler():void {
             var arr:Array = Validator.validateAll(formValidatorArray);
             if (arr.length == 0) {
-                var name:String = nameItem.text;
-                var studentNumber:String = studentNumberItem.text;
-                var gender:Object = genderItem.selectedValue;
-                var deleteOperation:AbstractOperation = studentWebService.getOperation("save");
-                deleteOperation.addEventListener("result", resultHandler);
-                deleteOperation.send(name,studentNumber,gender);
+                var student:Student = new Student();
+                student.name = nameItem.text;
+                student.studentNumber = studentNumberItem.text;
+                student.gender = genderItem.selectedValue as Number;
+                var saveOperation:AbstractOperation = ro.getOperation("save");
+                saveOperation.addEventListener("result", resultHandler);
+                saveOperation.send(student);
             }
         }
 
@@ -98,14 +96,14 @@
             }
             var arr:Array = Validator.validateAll(formValidatorArray);
             if (arr.length == 0) {
-                var id:String = myGrid.selectedItem.id;
-                var name:String = nameItem.text;
-                var studentNumber:String = studentNumberItem.text;
-                var gender:Object = genderItem.selectedValue;
-                //web service operation
-                var deleteOperation:AbstractOperation = studentWebService.getOperation("update");
-                deleteOperation.addEventListener("result", resultHandler);
-                deleteOperation.send(id,name,studentNumber,gender);
+                var student:Student = new Student();
+                student.id = myGrid.selectedItem.id;
+                student.name = nameItem.text;
+                student.studentNumber = studentNumberItem.text;
+                student.gender = genderItem.selectedValue as Number;
+                var updateOperation:AbstractOperation = ro.getOperation("update");
+                updateOperation.addEventListener("result", resultHandler);
+                updateOperation.send(student);
             }
         }
         ]]>
