@@ -319,6 +319,13 @@
             <version>5.3.2</version>
         </dependency>
 
+        <!--spring-flex-->
+        <dependency>
+            <groupId>org.springframework.flex</groupId>
+            <artifactId>spring-flex-core</artifactId>
+            <version>1.5.2.RELEASE</version>
+        </dependency>
+
         <!--web service required-->
         <dependency>
             <groupId>commons-logging</groupId>
@@ -448,6 +455,12 @@
         <repository>
             <id>servebox.org</id>
             <url>http://maven.servebox.org/repository</url>
+        </repository>
+        <!--for BlazeDS dependencies-->
+        <repository>
+            <id>spring-external</id>
+            <name>Spring External Repository</name>
+            <url>http://maven.springframework.org/external</url>
         </repository>
     </repositories>
 
