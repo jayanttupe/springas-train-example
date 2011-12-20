@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mappings xmlns="http://dozer.sourceforge.net"
+          xmlns:xs="http://www.w3.org/2001/XMLSchema"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://dozer.sourceforge.net
+http://dozer.sourceforge.net/schema/beanmapping.xsd">
+
+    <!--此文件用于定义 Dozer 进行 Entity 和 Dto 之间的自动转换  -->
+    <!--每个 mapping 定义一组转换-->
+    <!--class-a 定义 server端的 Entity 路径-->
+    <!--class-b 定义 Client 端的 Dto 路径-->
+
+    <!-- Student -->
+    <mapping>
+        <class-a>cn.com.oceansoft.flex4.server.common.entity.Student</class-a>
+        <class-b>cn.com.oceansoft.flex4.server.remote.StudentDto</class-b>
+    </mapping>
+
+
+</mappings>
