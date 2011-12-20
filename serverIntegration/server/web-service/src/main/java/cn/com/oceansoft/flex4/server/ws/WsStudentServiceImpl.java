@@ -26,7 +26,6 @@ public class WsStudentServiceImpl implements WsStudentService {
 
     @Resource
     private StudentService studentService;
-
     @Resource
     private Mapper mapper;
 
