@@ -13,8 +13,10 @@
         <fileset dir="${resourceFolder}"/>
     </copy>-->
 
+    <!--suppress AntResolveInspection -->
     <echo  message="deploy file(s) to webapp ${client_deploy_path}..."/>
     <!--deploy 文件夹-->
+    <!--suppress AntResolveInspection -->
     <property name="deployFolder"  value="${client_deploy_path}"/>
     <copy todir="${deployFolder}" overwrite="true" failonerror="true">
         <fileset dir="${targetFolder}">

@@ -6,16 +6,16 @@
 
     <parent>
         <groupId>cn.com.oceansoft.flex4</groupId>
-        <artifactId>server</artifactId>
+        <artifactId>http-service</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
 
     <groupId>cn.com.oceansoft.flex4</groupId>
-    <artifactId>http-service</artifactId>
+    <artifactId>http-server</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>war</packaging>
-    <name>server-http</name>
-
+    <name>http-server</name>
+    
     <dependencies>
         <dependency>
             <groupId>cn.com.oceansoft.flex4</groupId>
@@ -33,5 +33,6 @@
             </plugin>
         </plugins>
     </build>
+
 
 </project>

@@ -6,23 +6,26 @@
 
     <parent>
         <groupId>cn.com.oceansoft.flex4</groupId>
-        <artifactId>client</artifactId>
+        <artifactId>http-service</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
 
     <groupId>cn.com.oceansoft.flex4</groupId>
-    <artifactId>flex4-httpClient</artifactId>
+    <artifactId>http-client</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>swf</packaging>
-    <name>flex4-http</name>
+    <name>http-client</name>
     <description>a flex4 sample project, which connecting to server using Http Service</description>
+
+    <properties>
+        <antrun.plugin.antfile>${basedir}/../ant-build.xml</antrun.plugin.antfile>
+        <client.deploy.http.path>${basedir}/../http-server/src/main/webapp/flex</client.deploy.http.path>
+    </properties>
 
     <build>
         <sourceDirectory>src/main/flex</sourceDirectory>
-        <testSourceDirectory>src/test/flex</testSourceDirectory>
 
         <plugins>
-            <!--flexmojos-maven-plugin-->
             <plugin>
                 <groupId>org.sonatype.flexmojos</groupId>
                 <artifactId>flexmojos-maven-plugin</artifactId>
@@ -31,11 +34,34 @@
                     <sourceFile>${project.basedir}/src/main/flex/HttpClient.mxml</sourceFile>
                 </configuration>
             </plugin>
+
+
+            <!--maven-antrun-plugin-->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-antrun-plugin</artifactId>
+                <version>1.6</version>
+                <executions>
+                    <execution>
+                        <id>run</id>
+                        <!--定义一个 phase 来关联 antrun-->
+                        <phase>compile</phase>
+                        <configuration>
+                            <target>
+                                <!--将 maven 参数传給 ant-->
+                                <property name="client_deploy_path" value="${client.deploy.http.path}"/>
+                                <!-- ant build.xml 路径-->
+                                <ant antfile="${antrun.plugin.antfile}"/>
+                            </target>
+                        </configuration>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
+
 
 </project>
