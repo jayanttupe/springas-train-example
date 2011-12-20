@@ -6,15 +6,19 @@
 
     <parent>
         <groupId>cn.com.oceansoft.flex4</groupId>
-        <artifactId>server</artifactId>
+        <artifactId>serverIntegration</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
 
     <groupId>cn.com.oceansoft.flex4</groupId>
-    <artifactId>common</artifactId>
+    <artifactId>web-service</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <packaging>jar</packaging>
-    <name>server-common</name>
+    <packaging>pom</packaging>
+    <name>3-ws pom</name>
 
+    <modules>
+        <module>ws-client</module>
+        <module>ws-server</module>
+    </modules>
 
 </project>
